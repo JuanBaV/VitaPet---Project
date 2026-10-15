@@ -1,0 +1,1233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Bitacora>
+  <Registro>
+    <IdBitacora>1</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-18T19:37:52.7670000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>58eea0c15a6456efbed7e376ca7f7569cf96e02545193426d4751c6bf91ce4e4</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>2</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-18T19:48:37.4630000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>6e43d7bb9c104edff254781cc6ee4aae4b6a50f04b785427abbafc5c1fca7c1e</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>3</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-08-18T19:55:12.1070000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>f585095f5aafccf31f0c5f071535a5914a83c1271f41cf1e5d2a9d74bfd08071</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>4</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:37:56.3100000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>3571bfb3e7bf132fe8aca4dc07a01a39b7d7779121f18f2ddf6408884875e3a8</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>5</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:38:19.6070000</Fecha>
+    <Accion>Pregunta de seguridad validada</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>11623e69d4f3a6528a210e7ae092d29e883d53c0422d9cbbc4d2a6297c0991cc</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>6</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:38:19.6300000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>3529eb2bb87cd642b6dc4ce4e2dc0c9cc0d1ad99645e0a51a8fe5fdb267b1a89</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>7</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:38:19.6430000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>08c93c2543b5dcc70fae4f5955386a00658c533447cfb72676b012e708416561</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>8</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:38:19.6570000</Fecha>
+    <Accion>Pregunta de seguridad validada</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>11623e69d4f3a6528a210e7ae092d29e883d53c0422d9cbbc4d2a6297c0991cc</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>9</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:38:19.6570000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>3529eb2bb87cd642b6dc4ce4e2dc0c9cc0d1ad99645e0a51a8fe5fdb267b1a89</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>10</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:38:19.6670000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>08c93c2543b5dcc70fae4f5955386a00658c533447cfb72676b012e708416561</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>11</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:38:42.7500000</Fecha>
+    <Accion>Recuperación de contraseña rechazada</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>68a55a021e563efc957c7b131299965a5a85e6b2669d270755c0e78efb1861a3</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>12</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:38:42.7670000</Fecha>
+    <Accion>Pregunta de seguridad validada</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e34071122406be26ddc655de7d4af88b39e2ab01976c9ce970cbe1397a0a1c7a</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>13</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:43:06.1570000</Fecha>
+    <Accion>Pregunta de seguridad validada</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>183d3e7fa5c094956a2080fdd446943917fc19cd62c881a35a04e97722a60956</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>14</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:43:12.1830000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>83aaf7860e7e64b87e9e70d1f50976b70c1d35b11aa96fa1c58a6e84ddc626dc</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>15</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-21T23:43:20.0430000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>c9af1573d0e40315454a57bb09b5a76004c348270425f8ff17a426c43892b2cf</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>68</IdBitacora>
+    <IdUsuario>
+    </IdUsuario>
+    <Fecha>2026-08-25T19:20:39.7070000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>AutenticaciÃ³n</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>cb0069cb9d8a08d1255254768e997d0baa4e385f37d75d25bd8f0b8f71b1ab07</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>69</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-25T19:21:20.8430000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>AutenticaciÃ³n</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0ac8b98012afcdace2412ec81d1e0fab5535a242a5175538128f86bf9694c7f4</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>70</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-25T19:46:28.8370000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>AutenticaciÃ³n</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>40cdc1fd87460202a0be99ebb3f7cf4ee57b6adb0bdc54ea4cffe4eb1e53e52d</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>71</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-25T19:49:50.3870000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>AutenticaciÃ³n</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>49160319f5402b02414d9f1a925a0669caea60539d23c2f47f9d657707432752</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>72</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-25T19:58:00.0970000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>AutenticaciÃ³n</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>33fb0ae42045b705d19859308a8e7aec1a5f44fa808f475b9a713e09a5461033</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>73</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-25T19:58:00.2370000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>AutenticaciÃ³n</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>33fb0ae42045b705d19859308a8e7aec1a5f44fa808f475b9a713e09a5461033</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>74</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-25T19:58:00.3500000</Fecha>
+    <Accion>Usuario bloqueado</Accion>
+    <Modulo>AutenticaciÃ³n</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>19c3b7443840df6017cc9c6ce58e7ffd5e6179dc68c1968574006829fe1eeb00</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>75</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-25T19:59:12.2270000</Fecha>
+    <Accion>Usuario bloqueado</Accion>
+    <Modulo>AutenticaciÃ³n</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>b9ecd66e6a16709a6ed53d7bcb0d2025a7c6e245b095e5f8f405fb372e98811c</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>76</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-25T20:31:05.8200000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>AutenticaciÃ³n</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>4d67341fbdd7d72e7f69a0b155786d74e1d6e39baf4930c1b020be82150f080a</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>77</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-28T16:09:03.7400000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>dc8c3bf0649bf66b46004606637a7829e1664c40779f51f4cfb5a14946609c93</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>78</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-28T16:09:03.7770000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>dc8c3bf0649bf66b46004606637a7829e1664c40779f51f4cfb5a14946609c93</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>79</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-28T16:09:03.7900000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>dc8c3bf0649bf66b46004606637a7829e1664c40779f51f4cfb5a14946609c93</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>80</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-28T17:03:37.8700000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>7393234cd1924ad5ae88c0bfdc2e4bf6501e081d1aaef386dfad2c3edb904e9b</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>81</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-28T17:23:32.6130000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>124897a975074ab62a0b9e0d0abdb7e6c572162e689bcf96ee1d8363f42c304f</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>82</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-28T17:24:18.2830000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>69d243ac71f8692725b1632d33c890fe9231ea30e866a02759f5735e3aeb7190</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>83</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-29T16:37:31.4830000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>63ea2ab0911aab07ff9c3c88622ae6a9f7abf2f17617fba994ec8e36e0974065</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>84</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-29T16:38:54.1370000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>f3bf9f3d1f6e8b99e8c98e4c4e33b8fe6611ee2b1efcf0cf6ba4c3d7fbe860cb</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>85</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-08-29T16:41:30.1800000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>8581f345cb56bd26ffd22de36caf1977c9d9807bceac3f975ffa56333b323381</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1098</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:04:53.8770000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>85d7e9b2090faff87aa13d4fcdf390abe5b2da6a0f61db180e08ea8d2101f1c2</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1099</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:49:12.7770000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>2312ac775e12dac608cd14ad013c86acc2059cfec41aec33df6ea0ef6619568b</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1100</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:49:24.3170000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>87d2ddc6451f2e1c9f6c170ee9bd394bbff9e4e3998662d19454c70b69d1c114</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1101</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:49:47.0830000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>ff816bc4bb3a3f13650f811762c5544428c4d4b0cf7a21d090220a683971f450</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1102</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:49:54.2430000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>aa173a31efd35aa44110c41ba8517b92b9af523bed4b72268a774354b9e06723</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1103</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:50:00.0130000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>4eab579aec6026dd049ff5881a7068eff22e016b35885c6b00c331d088f13eb6</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1104</IdBitacora>
+    <IdUsuario>
+    </IdUsuario>
+    <Fecha>2026-09-06T16:50:03.5770000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>cfb01ac9e00e133830ff2505b1cbfc45a8fd79627cfafa2dde3fc2d6c80a18a3</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1105</IdBitacora>
+    <IdUsuario>
+    </IdUsuario>
+    <Fecha>2026-09-06T16:50:12.2270000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>47709315a3578e378212336faf53507b1bbe32d0edd5bd2ad38f57c0c668b888</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1106</IdBitacora>
+    <IdUsuario>
+    </IdUsuario>
+    <Fecha>2026-09-06T16:50:14.7130000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>50680095b2cb5086d1fd8ca2d3192782f01f7d1e3dc13b7620e5fd48c4982305</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1107</IdBitacora>
+    <IdUsuario>
+    </IdUsuario>
+    <Fecha>2026-09-06T16:50:18.1600000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>1e9ea93419cdaa7469e2fa953139e0d4c3d26263cbc9d0c3496e15782b2e39da</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1108</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:50:45.3530000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>7c909682901ad5fb930e465910df0fccc80f4f57e49a6403fde7b2fa3cb63df3</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1109</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:50:50.2670000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e36f3438371bb43a9ce69fbadb9fe60d2e6abe7914bb599880105a0bcfc00e74</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1110</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:50:54.8770000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>15a039eb2c4977059ee377609ac071e39fecb8a4ea59ff45d1190fcd6f4cc2ea</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1111</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:51:37.9100000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>2ede8de7982022ed2c35e50a08ff98fa66c60f30b226fe49bb66df27e4fd74a3</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1112</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:51:40.8370000</Fecha>
+    <Accion>Usuario bloqueado</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>a4a81722b40bfeb9fc2a814847e2f69ef68a9d40a73ca7ab49d2c52c8b7a8b17</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1113</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:51:43.7000000</Fecha>
+    <Accion>Usuario bloqueado</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>b0eca2189c4ea8e3f3a38e29bbb1525c5a0d4598e88700b1e2427d25f11e7046</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1114</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:51:46.4900000</Fecha>
+    <Accion>Usuario bloqueado</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>076be5b2140e7742245f0685fea2dbf373d71a7ad1fd4004f3404997d2dd959e</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1115</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:51:49.2370000</Fecha>
+    <Accion>Usuario bloqueado</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>ef12ee2b502ff020297a6c3e05b53c8b6d086a0d2f8d7b395e887c91f9e4cc26</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1116</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T16:53:29.3600000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>adc3be7633c8c9ec87dfbf4f11cee19d95ea47acade0ae0ee88d98291c03e885</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1117</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:12:48.8270000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>94f5ecb1ada71f3a3478611ad620e8915c230034188526fa08c7cc82277ccb7f</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1118</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:12:52.5070000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>a12556581673b7ec1e99d78e262ce59baddaeaba6939ee2457c55116487defbf</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1119</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:12:55.3630000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>eb0a26dd1ddb7c6537cdd258d013853d52832debf15e8828d78103ef1efc7458</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1120</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:23:11.2700000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>071ef4fb19e95754e167c636ba04df875d9e491d0c5e5b59bf5efeabb4811abc</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1121</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:23:16.9800000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>ef3db8021ec7d85f0c8d10a1535b14a774ef248edb630fa770a4db72d501731e</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1122</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:23:20.7300000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>5cc56a657647d874528c01fdfc563eadeb53db5a3fa5d0b1206d7bf34031a9fe</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1123</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:23:31.7400000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>acdbf7af8c7c218b706e90eac6b3cd8b08f4927991d6fbd3b795c2a093dd8bc0</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1124</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:23:35.2930000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>ca720168a1d0fdae24f311e4585a8589b1acf587cbd812c8889f59cd277fae86</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1125</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:23:37.2430000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e17f0cfcd188a8eaa7aadd58f08199bd9b38741bdb9b33092e2dd6cedee9d9a7</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1126</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:25:45.4130000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>9f0066449540b031be89162534cdd6327c2616b94c34bee205b78b17b3a0e5e4</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1127</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:25:48.1370000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e16d7f651834da372a92189149eb5b37099bb151a82e4983628179b21ece5c25</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1128</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:29:19.4200000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>53f97f06abace116896f1d887bf40cff7066ce91ca5ea55ff315721fa5fe9c14</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1129</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-06T17:29:21.7170000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>67c631ee1f4d54d7e359842b967be6329ecf37ec4c272c8501ae82817b41172f</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1130</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-10T14:41:41.5570000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>568f181dbae3f124baf3841df29011c6e120a10c2788e2d804a230b15fe9bfc8</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1131</IdBitacora>
+    <IdUsuario>2</IdUsuario>
+    <Fecha>2026-09-10T14:42:03.9970000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>242a3f3b063be4c061d97a1034b529958abacf891adbfcaf8f6ccb1a60a755de</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1132</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-10T14:42:23.2030000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>b1eeadd25e7c7c6a1617582f11eb9b7410386c4fd257d9ac125e0465d85c9108</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1133</IdBitacora>
+    <IdUsuario>2</IdUsuario>
+    <Fecha>2026-09-10T14:42:28.9300000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>ebe5d696d72f1c3152e0c3679f0cd0087bfceef894c6b06458ffbb10bd0e1d26</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1134</IdBitacora>
+    <IdUsuario>2</IdUsuario>
+    <Fecha>2026-09-10T14:42:34.1170000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>8b52b5bc03890b6bd67c1368922fe52ee8d42f0d5273286105e3d06797846369</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1135</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-10T17:37:27.9130000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>9ec412cf3e599f3a26341d42710977acff8741f70ca16d2af5f01598dc60a4ae</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1136</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-10T17:37:32.1500000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>3f6b4e13466a3687e95535d89a13ca31988e5fba18e12e09dda64baa83b77970</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1137</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-10T21:55:06.5870000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>faba7d90b7cbdc8a03f1c060f3aa3d711ca56c4e6d77df5d4b7d1afc1f7106bf</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1138</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-10T21:59:16.8770000</Fecha>
+    <Accion>Restore realizado f25c4775cab14dc6b428aeb02fca4d0d</Accion>
+    <Modulo>Base de datos</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e07878f4138a318943ae57461959a3567e0801edfad6cd7057175f762cdce61d</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1139</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-10T21:59:25.9770000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>f43080960860b3eb4dcf69e6e48e94ca05f9ee4acb95a39a4a7ecd8229275151</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1140</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-10T21:59:29.5730000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>38805aa421a5a8609b583c5b571a6b55b2de804e3c0453413d2a05635e3ef3e2</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1141</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-10T21:59:35.6930000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>6aeaa2c6fbb43c1e2510130e2811a19211fa91bc3360fc16d6a3cdbaf7c88ce6</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1142</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-23T20:51:16.8470000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>2e7ea941523a91458b7f87d6fda88eb90e06ce4e1f5010361cbb3061cf33e8e5</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1143</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-23T20:51:25.0570000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>dffa11b3f417c1b6a3dcdd071c83fd9e900f5a7ca8f8da8efc0d0624f66b3711</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1144</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-23T20:51:40.4170000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e2abd5d07f2de96160ea5aeac353b0874a7f3a5e8e9222411abaadc1a98116dc</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1145</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-23T20:51:47.0600000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>0cabd066e54dbbce76a1dc4381c8e2dc71a218fc9af88d6599cb53c17af61eb8</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1146</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-23T20:52:05.1770000</Fecha>
+    <Accion>Contraseña restablecida</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>98594c71f4082fe86304b93436c5ecce711006732962d6e5d1a4faef179cd158</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1147</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-23T20:52:11.3570000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>38af2c66b687a6b4fa026dd1d2c5930c2212035e643e87e2fd4ec95d45f06632</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1148</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-23T20:52:22.2000000</Fecha>
+    <Accion>Backup realizado dd6f2fe3b6454a9d83ebf115f10a71c1</Accion>
+    <Modulo>Base de datos</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>fc0ff48ef520629d79f1d177b8701b2ab1715aeae25acd0f99fe213b239163cd</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1149</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-23T22:18:40.1570000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>a2e1e7cdbab47c4a8067ca8c4b21951260b2a324e54648ab9f7d56129abd9e3b</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1150</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-23T22:18:42.6870000</Fecha>
+    <Accion>Consulta de bitácora</Accion>
+    <Modulo>Bitácora</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>fe7239092719312caf3b625cdf6d096777cadc986edd7a15433f7dfa9a37c5a5</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1151</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-23T23:34:11.1970000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>46a24a73c4e19ddb49274303c715793e15c7c1495c222991f9386620584b8efa</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1152</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-24T00:12:40.1000000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>4c262c72b8d02044ac2ece49a6c92db21f3442c11f3e760b725b7b6a3d1eb48b</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1153</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-24T00:13:18.1270000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>a851e949dedde7648ebc8c5b4968b886e91afd3355282dc3f4bf688f03b3dde1</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1154</IdBitacora>
+    <IdUsuario>1</IdUsuario>
+    <Fecha>2026-09-24T00:24:12.0070000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e6dab82986b9522ea1fcc68d100d2133d897ec307988d23fddd9c2bc8f09dcdf</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1155</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T12:18:29.1130000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>9885f6f530022d660444dbf89d36d7aa6d61d5758cf85c869985ca8f632c620b</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1156</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T12:18:31.2300000</Fecha>
+    <Accion>Consulta de usuarios</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>264afea6cf4b912669e68f580ab81beaeb2cee38952b0e606860fc81e442848b</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1157</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T12:26:40.8470000</Fecha>
+    <Accion>Consulta de usuarios</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>331f484d8b3e8e8c518e6d3957482af292b31d85bbf16b728cb7037ded4c2b16</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1158</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T12:31:18.1300000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0461081edb69755b1e2c3cbd520d186e8301d593ef02a6e6251a735d53bbca20</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1159</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:44:36.0570000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>cee608750659ac6bb9c50c27a56da824c533dcdd275e1983d5443c481328cb98</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1160</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:44:37.8600000</Fecha>
+    <Accion>Consulta de usuarios</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>6ecf7f650cb29649740e34da850207a1be1b0372fa464b5980060141101ada0e</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1161</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:44:43.7800000</Fecha>
+    <Accion>Consulta de usuario (idUsuario=1)</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>477cc16a54ed1ba9cd8879841e2d8760ba7f10a5e4407f4f252d4d23b98af806</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1162</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:47:58.9570000</Fecha>
+    <Accion>Consulta de usuarios</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>d37182b0710d223a2af8cb9bcb5e10476abfd8ca282077cfb1dd1d1bdda5ea26</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1163</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:50:43.6200000</Fecha>
+    <Accion>Consulta de usuarios</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>5b21385bc8a1226d745fd8d3d30bf0cd289d64b4d6a7cb1969959d9130067c7d</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1164</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:51:00.0070000</Fecha>
+    <Accion>Bloqueo de usuario (idUsuario=1)</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>de3f3363a80327c67bac320cb115890dd874c8a6fde1756d28af1d15563b9321</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1165</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:51:00.1030000</Fecha>
+    <Accion>Consulta de usuarios</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>d1e053c558200e529850f3e3579eb25d1f0a815c8a3a090e93c43bc23aba1166</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1166</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:52:31.8600000</Fecha>
+    <Accion>Desbloqueo de usuario (idUsuario=1)</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>36dad997ae3498e54cfb9fe09bc5db7094bf667533dd49555733b0a0d11bf073</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1167</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:52:31.9600000</Fecha>
+    <Accion>Consulta de usuarios</Accion>
+    <Modulo>Gestión de usuarios</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>45bfadb9ff84c1682661c7e3d8fd4ef05135807fd4439d185fce5e4331bfdee6</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1168</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T14:59:33.0870000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e0a2b85eaa3d67316a0052c1aeaf694799c4145da24c5e95242f9d4eea34ce27</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1169</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T16:02:14.2030000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>b5eb945f695a25adc26858b17b395ca06e27e4ccce9cc905108096355eddda8d</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1170</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T16:02:18.4400000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>d59469c001b64d7932260850a9accc7e2627371f67c192aeeeebc8d2dc55f1ff</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1171</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T16:03:43.7170000</Fecha>
+    <Accion>Login fallido</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Advertencia</Criticidad>
+    <DVH>c660ba72e16994ded7c5bbff2ea8cf91845308d817901da1f78ff0080c1b166f</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1172</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T16:03:50.8430000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>df58aa1cf5e67fee0869089d6346610d07cb114fe24ad7a513f77f09241b442d</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1173</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T16:09:08.2770000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>33255ae2da678d3696de9f4c640ca4c7adaa473ff05d2cab296fdbcab31ba6b7</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1174</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T18:59:38.5170000</Fecha>
+    <Accion>Restore realizado d5df70d301e24111b0bc5754683492c0</Accion>
+    <Modulo>Base de datos</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0641bdd7399fb50087b6ec4ff2a09f450318281038856b241f1e04183f0b3a43</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1175</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T18:59:45.0700000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>c4cb66e6c06c67ec58c51dfceb015bea777648259998043aa19c491cbdb7ac35</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1176</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T18:59:52.5070000</Fecha>
+    <Accion>Backup realizado 0a210807c6d0405faa10e189f4c3e062</Accion>
+    <Modulo>Base de datos</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>2a32955779653b9ee1f97f5d6f419073c63cd7ddd705a15b2afeda9ea0ab8f3b</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1177</IdBitacora>
+    <IdUsuario>
+    </IdUsuario>
+    <Fecha>2026-09-25T19:01:12.8870000</Fecha>
+    <Accion>Restauración XML de contingencia</Accion>
+    <Modulo>Base de datos</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>7f624ca8b565ac0c7a45a24ac2f67a13c8374bec9a80c8a0e3cb505dd5d4608d</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1178</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T19:01:18.4400000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>dabcae2e119a0db2f80dc08fff65e746d6f905089472da73c49f8059b157f62b</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1179</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-25T19:01:21.3330000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0cc908c4e621656f208117bf11602fe6c6d8a85f03417c026063a792fe39cb5f</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1180</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-28T13:49:23.0570000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>ac12b9a9825a24dcfaae71cb3a697f0b879bcfd9e37b9fcd9791c7b127961944</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1181</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-28T13:49:24.6530000</Fecha>
+    <Accion>Consulta de bitácora</Accion>
+    <Modulo>Bitácora</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>a3017205a0e694c652862ed4bc4385e4ba64892e1f18926162e29c7905fc4e76</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1182</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-28T13:49:37.9530000</Fecha>
+    <Accion>Backup realizado c29150c5c1d24e99ac76d823b184c001</Accion>
+    <Modulo>Base de datos</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>fb0cbf553452ab204db1651bd70356bf48a8cc3e6b145eea3fd397ffdef242e6</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1183</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-28T15:35:58.8300000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>7fa885f12122a25909b22a0b1b89606ac5b531373fc26827e56fc833e5ecca4e</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1184</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-09-28T15:40:41.2730000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>006c9319766aeb7a9e31ab455159965a7a7a4bab1a9a1f23e745af7d56bb0748</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1185</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-01T15:42:52.0100000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>409de96f4070a5cdc2b3729559da27c29ef30c197e51bdf7ac3497754aa744fa</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1186</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-01T15:42:53.6730000</Fecha>
+    <Accion>Consulta de bitácora</Accion>
+    <Modulo>Bitácora</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e17dc3a3abafd4f2ccfc347cfa55bbf820805db5c46d0fcf5c5842fc6e359932</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1187</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-01T15:45:00.2400000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0bf5dfd74dab738d638b7e646b752fc211143e70d4cd6b38b14ea1f5765ba21d</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1188</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-01T15:45:01.8430000</Fecha>
+    <Accion>Consulta de bitácora</Accion>
+    <Modulo>Bitácora</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0ac87e648deba39c6eb3d5a34d603e96e2bf03a1623e57303718511c636541bb</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1189</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-01T15:45:07.6500000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>10cd83e9395ae9138cda3466ea5a9f92ebb81c96881485eaded845ed79bf5e85</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1190</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T10:44:43.9870000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>5448adc21d046c2c1ae64c5ea839101fa84c5b95e4198339bd2ff66744d8d549</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1191</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T10:52:32.4400000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>a5c5eb59c9f454367bc8906046d7992170ccb4de3a1c849a5bc816c1cd5217fe</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1192</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T10:52:41.8470000</Fecha>
+    <Accion>Backup realizado 5cd42a53034d4e9587d5cf4eed688ad1</Accion>
+    <Modulo>Base de datos</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>9733212888bb818cbf76972bd066c7f05667f6e72b08e2c35a2b09b0231cce68</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1193</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T11:25:43.0100000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>9c70def2dbc21ed881ac50cce0e930610fb0ebf2f12fc3abf1c449686774f9a1</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1194</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T11:32:32.5470000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>201def1ab4942727224ea0c1c41caae824378a6e1c3b31843c6d22e294da8372</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1195</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T11:33:05.3100000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>9313f08d06a00d99aa1e4c65bc57e6faf64402888f26cb838eb77e1de19e9097</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1196</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T11:33:11.9900000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>b3d7d14e509fab8461fecab59f0fd4035cda0e38f2abc450b584f4fe3cc69bd0</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1197</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T11:33:34.4130000</Fecha>
+    <Accion>Consulta de bitácora</Accion>
+    <Modulo>Bitácora</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>bc6752d2f48c960b6bd3903d345fac6b33f37e9b03a7392702920a54a3f929ec</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1198</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T12:00:33.2630000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>8bbcb7671e40649ed29e198dca0eae322173224cb0dd0e6362504e50fa4ccf55</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1199</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T12:00:55.7030000</Fecha>
+    <Accion>Consulta de bitácora</Accion>
+    <Modulo>Bitácora</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>542d78df7e7dd647086fb83fa32fe7384a0c0259b902911038a8fd33581a4513</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1200</IdBitacora>
+    <IdUsuario>3</IdUsuario>
+    <Fecha>2026-10-05T12:06:07.2470000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>2916ddc7054748eaf5bef7c2e708c0cca5696bbd2b7e4264954fce109f8b778b</DVH>
+  </Registro>
+</Bitacora>

@@ -1,0 +1,113 @@
+/* Selector del header, independiente del caché del bundle general. */
+.navbar .language-selector {
+    position: relative;
+    flex: 0 0 auto;
+    margin-left: 6px;
+}
+
+.navbar .language-selector .language-toggle {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-width: 80px;
+    height: 34px;
+    margin: 0;
+    padding: 0 11px;
+    border: 1px solid rgba(255, 255, 255, .32);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .08);
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s;
+}
+
+.navbar .language-toggle:hover,
+.navbar .language-toggle:focus,
+.navbar .language-selector.open .language-toggle {
+    background: rgba(255, 255, 255, .18);
+    border-color: rgba(255, 255, 255, .65);
+    color: #fff;
+}
+
+.navbar .language-toggle:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.navbar .language-icon {
+    display: block;
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+}
+
+.navbar .language-code { display: block; line-height: 1; }
+.navbar .language-caret {
+    display: block;
+    flex: 0 0 6px;
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 2px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+}
+
+.navbar .language-options {
+    right: 0;
+    left: auto;
+    min-width: 180px;
+    margin: 8px 0 0;
+    padding: 6px;
+    border: 1px solid #dbe7e5;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(20, 55, 50, .18);
+}
+
+.navbar .language-options > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 38px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: #174d48;
+    font-size: 13px;
+    line-height: 18px;
+    text-decoration: none;
+}
+
+.navbar .language-options > li > a:hover,
+.navbar .language-options > li > a:focus {
+    background: #edf6f4;
+    color: #174d48;
+}
+
+.navbar .language-options a[aria-current="true"] {
+    background: #e2f1ed;
+    color: #0b625b;
+    font-weight: 600;
+}
+.navbar .language-options a[aria-current="true"]::after {
+    content: "\2713";
+    margin-left: 12px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .navbar .language-selector { margin-left: 2px; }
+    .navbar .language-selector .language-toggle { height: 32px; min-width: 76px; }
+}

@@ -1,0 +1,1419 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Saludo" xml:space="preserve">
+    <value>Hola, </value>
+  </data>
+  <data name="BotonSalir" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="ErrorCambioIdioma" xml:space="preserve">
+    <value>ER048 - No se pudo cambiar el idioma. Intentá nuevamente.</value>
+  </data>
+  <data name="UI_Inicio" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="UI_MiPerfil" xml:space="preserve">
+    <value>Mi perfil</value>
+  </data>
+  <data name="UI_Planes" xml:space="preserve">
+    <value>Planes</value>
+  </data>
+  <data name="UI_Mascotas" xml:space="preserve">
+    <value>Mascotas</value>
+  </data>
+  <data name="UI_Turnos" xml:space="preserve">
+    <value>Turnos</value>
+  </data>
+  <data name="UI_Reintegros" xml:space="preserve">
+    <value>Reintegros</value>
+  </data>
+  <data name="UI_Empresas" xml:space="preserve">
+    <value>Empresas</value>
+  </data>
+  <data name="UI_ClientesCorporativos" xml:space="preserve">
+    <value>Clientes corporativos</value>
+  </data>
+  <data name="UI_ClientesCorporativos2" xml:space="preserve">
+    <value>Clientes corporativos.</value>
+  </data>
+  <data name="UI_Bitacora" xml:space="preserve">
+    <value>Bitácora</value>
+  </data>
+  <data name="UI_Usuarios" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="UI_BaseDeDatos" xml:space="preserve">
+    <value>Base de datos</value>
+  </data>
+  <data name="UI_BaseDeDatos2" xml:space="preserve">
+    <value>Base de datos.</value>
+  </data>
+  <data name="UI_FuncionalidadesDisponibles" xml:space="preserve">
+    <value>Funcionalidades disponibles</value>
+  </data>
+  <data name="UI_FuncionalidadesDisponibles2" xml:space="preserve">
+    <value>Funcionalidades disponibles.</value>
+  </data>
+  <data name="UI_CerrarSesion" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="UI_CerrarSesion2" xml:space="preserve">
+    <value>Cerrar sesión.</value>
+  </data>
+  <data name="UI_DeseaCerrarSuSesionEnVitapet" xml:space="preserve">
+    <value>¿Desea cerrar su sesión en VitaPet?</value>
+  </data>
+  <data name="UI_Cancelar" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="UI_OpcionesDeCierreDeSesion" xml:space="preserve">
+    <value>Opciones de cierre de sesión</value>
+  </data>
+  <data name="UI_OpcionesDeCierreDeSesion2" xml:space="preserve">
+    <value>Opciones de cierre de sesión.</value>
+  </data>
+  <data name="UI_AdministracionDeRespaldosYRecuperacionExclusivaParaWebmaster" xml:space="preserve">
+    <value>Administración de respaldos y recuperación exclusiva para Webmaster.</value>
+  </data>
+  <data name="UI_Integridad" xml:space="preserve">
+    <value>Integridad</value>
+  </data>
+  <data name="UI_SeVerificanUsuarioYBitacoraSusDvhDvv" xml:space="preserve">
+    <value>Se verifican todas las tablas, sus DVH/DVV y las referencias protegidas por campo. Los respaldos abarcan toda la base de datos.</value>
+  </data>
+  <data name="UI_VerificarIntegridad" xml:space="preserve">
+    <value>Verificar integridad</value>
+  </data>
+  <data name="UI_VerificarIntegridad2" xml:space="preserve">
+    <value>Verificar integridad.</value>
+  </data>
+  <data name="UI_NoSeDetectaronErroresDeIntegridad" xml:space="preserve">
+    <value>No se detectaron errores de integridad.</value>
+  </data>
+  <data name="UI_Tabla" xml:space="preserve">
+    <value>Tabla</value>
+  </data>
+  <data name="UI_FilaClave" xml:space="preserve">
+    <value>Fila (clave)</value>
+  </data>
+  <data name="UI_FilaClave2" xml:space="preserve">
+    <value>Fila (clave).</value>
+  </data>
+  <data name="UI_Columna" xml:space="preserve">
+    <value>Columna</value>
+  </data>
+  <data name="UI_Detalle" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="UI_Backups" xml:space="preserve">
+    <value>Backups</value>
+  </data>
+  <data name="UI_LosBackupsSeVerificanAntesDeOfrecerlosPara" xml:space="preserve">
+    <value>Los backups se verifican antes de ofrecerlos para restauración. No se pueden generar puntos sanos mientras haya corrupción.</value>
+  </data>
+  <data name="UI_CrearBackup" xml:space="preserve">
+    <value>Crear backup</value>
+  </data>
+  <data name="UI_CrearBackup2" xml:space="preserve">
+    <value>Crear backup.</value>
+  </data>
+  <data name="UI_RestaurarUnBackup" xml:space="preserve">
+    <value>Restaurar un backup</value>
+  </data>
+  <data name="UI_RestaurarUnBackup2" xml:space="preserve">
+    <value>Restaurar un backup.</value>
+  </data>
+  <data name="UI_BackupDisponible" xml:space="preserve">
+    <value>Backup disponible</value>
+  </data>
+  <data name="UI_BackupDisponible2" xml:space="preserve">
+    <value>Backup disponible.</value>
+  </data>
+  <data name="UI_RestaurarBackupSeleccionado" xml:space="preserve">
+    <value>Restaurar backup seleccionado</value>
+  </data>
+  <data name="UI_RestaurarBackupSeleccionado2" xml:space="preserve">
+    <value>Restaurar backup seleccionado.</value>
+  </data>
+  <data name="UI_ConfirmarOperacion" xml:space="preserve">
+    <value>Confirmar operación</value>
+  </data>
+  <data name="UI_ConfirmarOperacion2" xml:space="preserve">
+    <value>Confirmar operación.</value>
+  </data>
+  <data name="UI_Confirmar" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="UI_DuranteLaOperacionEspereLaRespuestaSinVolver" xml:space="preserve">
+    <value>Durante la operación, espere la respuesta sin volver a enviar el formulario. Al finalizar una restauración deberá iniciar sesión nuevamente.</value>
+  </data>
+  <data name="UI_RecuperacionDelWebmaster" xml:space="preserve">
+    <value>Recuperación del WebMaster</value>
+  </data>
+  <data name="UI_RecuperacionDelWebmaster2" xml:space="preserve">
+    <value>Recuperación del WebMaster.</value>
+  </data>
+  <data name="UI_ConfigureUnaCuentaDeEmergenciaAntesDeNecesitarla" xml:space="preserve">
+    <value>Configure una cuenta de emergencia antes de necesitarla. Sólo permite restaurar el sistema cuando falta un WebMaster confiable o hay fallas de integridad.</value>
+  </data>
+  <data name="UI_CorreoDeEmergencia" xml:space="preserve">
+    <value>Correo de emergencia</value>
+  </data>
+  <data name="UI_CorreoDeEmergencia2" xml:space="preserve">
+    <value>Correo de emergencia.</value>
+  </data>
+  <data name="UI_ContrasenaDeEmergencia" xml:space="preserve">
+    <value>Contraseña de emergencia</value>
+  </data>
+  <data name="UI_ContrasenaDeEmergencia2" xml:space="preserve">
+    <value>Contraseña de emergencia.</value>
+  </data>
+  <data name="UI_UseDe12A100CaracteresConMayuscula" xml:space="preserve">
+    <value>Use de 12 a 100 caracteres, con mayúscula, número y símbolo. Guarde estas credenciales en un lugar seguro.</value>
+  </data>
+  <data name="UI_GuardarCuentaYRespaldoInicial" xml:space="preserve">
+    <value>Guardar cuenta y respaldo inicial</value>
+  </data>
+  <data name="UI_GuardarCuentaYRespaldoInicial2" xml:space="preserve">
+    <value>Guardar cuenta y respaldo inicial.</value>
+  </data>
+  <data name="UI_AlGuardarSeCerraranLasSesionesLaContrasena" xml:space="preserve">
+    <value>Al guardar se cerrarán las sesiones. La contraseña nunca se muestra ni se recupera desde el archivo.</value>
+  </data>
+  <data name="UI_CrearRespaldoXmlDeContingencia" xml:space="preserve">
+    <value>Crear respaldo XML de contingencia</value>
+  </data>
+  <data name="UI_CrearRespaldoXmlDeContingencia2" xml:space="preserve">
+    <value>Crear respaldo XML de contingencia.</value>
+  </data>
+  <data name="UI_ConsultaDeBitacora" xml:space="preserve">
+    <value>Consulta de bitácora</value>
+  </data>
+  <data name="UI_ConsultaDeBitacora2" xml:space="preserve">
+    <value>Consulta de bitácora.</value>
+  </data>
+  <data name="UI_ConsultaLosEventosDelSistemaPorFechaY" xml:space="preserve">
+    <value>Consultá los eventos del sistema por fecha y criticidad. Sin filtros se muestran todos los registros.</value>
+  </data>
+  <data name="UI_FechaDesde" xml:space="preserve">
+    <value>Fecha desde</value>
+  </data>
+  <data name="UI_FechaDesde2" xml:space="preserve">
+    <value>Fecha desde.</value>
+  </data>
+  <data name="UI_FechaHasta" xml:space="preserve">
+    <value>Fecha hasta</value>
+  </data>
+  <data name="UI_FechaHasta2" xml:space="preserve">
+    <value>Fecha hasta.</value>
+  </data>
+  <data name="UI_Criticidad" xml:space="preserve">
+    <value>Criticidad</value>
+  </data>
+  <data name="UI_Todas" xml:space="preserve">
+    <value>Todas</value>
+  </data>
+  <data name="UI_Todos" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="UI_Informativa" xml:space="preserve">
+    <value>Informativa</value>
+  </data>
+  <data name="UI_Informativa2" xml:space="preserve">
+    <value>Informativa.</value>
+  </data>
+  <data name="UI_Advertencia" xml:space="preserve">
+    <value>Advertencia</value>
+  </data>
+  <data name="UI_Advertencia2" xml:space="preserve">
+    <value>Advertencia.</value>
+  </data>
+  <data name="UI_Grave" xml:space="preserve">
+    <value>Grave</value>
+  </data>
+  <data name="UI_Critica" xml:space="preserve">
+    <value>Crítica</value>
+  </data>
+  <data name="UI_Critico" xml:space="preserve">
+    <value>Crítico</value>
+  </data>
+  <data name="UI_Consultar" xml:space="preserve">
+    <value>Consultar</value>
+  </data>
+  <data name="UI_ExportarAXml" xml:space="preserve">
+    <value>Exportar a XML</value>
+  </data>
+  <data name="UI_ExportarAXml2" xml:space="preserve">
+    <value>Exportar a XML.</value>
+  </data>
+  <data name="UI_NoSeEncontraronEventosParaLaConsulta" xml:space="preserve">
+    <value>No se encontraron eventos para la consulta.</value>
+  </data>
+  <data name="UI_Evento" xml:space="preserve">
+    <value>Evento</value>
+  </data>
+  <data name="UI_Usuario" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="UI_SinUsuarioAsociado" xml:space="preserve">
+    <value>Sin usuario asociado</value>
+  </data>
+  <data name="UI_SinUsuarioAsociado2" xml:space="preserve">
+    <value>Sin usuario asociado.</value>
+  </data>
+  <data name="UI_FechaYHora" xml:space="preserve">
+    <value>Fecha y hora</value>
+  </data>
+  <data name="UI_FechaYHora2" xml:space="preserve">
+    <value>Fecha y hora.</value>
+  </data>
+  <data name="UI_Accion" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="UI_Modulo" xml:space="preserve">
+    <value>Módulo</value>
+  </data>
+  <data name="UI_Primera" xml:space="preserve">
+    <value>Primera</value>
+  </data>
+  <data name="UI_Ultima" xml:space="preserve">
+    <value>Última</value>
+  </data>
+  <data name="UI_GestionDeUsuarios" xml:space="preserve">
+    <value>Gestión de usuarios</value>
+  </data>
+  <data name="UI_GestionDeUsuarios2" xml:space="preserve">
+    <value>Gestión de usuarios.</value>
+  </data>
+  <data name="UI_BuscaPorNombreYFiltraPorEstadoSelecciona" xml:space="preserve">
+    <value>Buscá por nombre y filtrá por estado. Seleccioná un usuario para ver sus opciones.</value>
+  </data>
+  <data name="UI_NombreDeUsuario" xml:space="preserve">
+    <value>Nombre de usuario</value>
+  </data>
+  <data name="UI_NombreDeUsuario2" xml:space="preserve">
+    <value>Nombre de usuario.</value>
+  </data>
+  <data name="UI_BuscarPorNombreCompletoOParcial" xml:space="preserve">
+    <value>Buscar por nombre completo o parcial</value>
+  </data>
+  <data name="UI_BuscarPorNombreCompletoOParcial2" xml:space="preserve">
+    <value>Buscar por nombre completo o parcial.</value>
+  </data>
+  <data name="UI_Estado" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="UI_Activo" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="UI_Inactivo" xml:space="preserve">
+    <value>Inactivo</value>
+  </data>
+  <data name="UI_Bloqueado" xml:space="preserve">
+    <value>Bloqueado</value>
+  </data>
+  <data name="UI_Desbloqueado" xml:space="preserve">
+    <value>Desbloqueado</value>
+  </data>
+  <data name="UI_Desbloqueado2" xml:space="preserve">
+    <value>Desbloqueado.</value>
+  </data>
+  <data name="UI_Buscar" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="UI_NoSeEncontraronUsuariosParaLaConsulta" xml:space="preserve">
+    <value>No se encontraron usuarios para la consulta.</value>
+  </data>
+  <data name="UI_Nombre" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="UI_CorreoElectronico" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="UI_CorreoElectronico2" xml:space="preserve">
+    <value>Correo electrónico.</value>
+  </data>
+  <data name="UI_Rol" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="UI_Bloqueo" xml:space="preserve">
+    <value>Bloqueo</value>
+  </data>
+  <data name="UI_Seleccionar" xml:space="preserve">
+    <value>Seleccionar</value>
+  </data>
+  <data name="UI_Seleccionar2" xml:space="preserve">
+    <value>Seleccionar.</value>
+  </data>
+  <data name="UI_UsuarioSeleccionado" xml:space="preserve">
+    <value>Usuario seleccionado</value>
+  </data>
+  <data name="UI_UsuarioSeleccionado2" xml:space="preserve">
+    <value>Usuario seleccionado.</value>
+  </data>
+  <data name="UI_Modificar" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
+  <data name="UI_Bloquear" xml:space="preserve">
+    <value>Bloquear</value>
+  </data>
+  <data name="UI_Desbloquear" xml:space="preserve">
+    <value>Desbloquear</value>
+  </data>
+  <data name="UI_Desbloquear2" xml:space="preserve">
+    <value>Desbloquear.</value>
+  </data>
+  <data name="UI_ModificacionDeUsuario" xml:space="preserve">
+    <value>Modificación de usuario</value>
+  </data>
+  <data name="UI_ModificacionDeUsuario2" xml:space="preserve">
+    <value>Modificación de usuario.</value>
+  </data>
+  <data name="UI_VolverACargarLosDatos" xml:space="preserve">
+    <value>Volver a cargar los datos</value>
+  </data>
+  <data name="UI_VolverACargarLosDatos2" xml:space="preserve">
+    <value>Volver a cargar los datos.</value>
+  </data>
+  <data name="UI_Identificador" xml:space="preserve">
+    <value>Identificador</value>
+  </data>
+  <data name="UI_Identificador2" xml:space="preserve">
+    <value>Identificador.</value>
+  </data>
+  <data name="UI_Cliente" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="UI_Administrador" xml:space="preserve">
+    <value>Administrador</value>
+  </data>
+  <data name="UI_Administrador2" xml:space="preserve">
+    <value>Administrador.</value>
+  </data>
+  <data name="UI_Webmaster" xml:space="preserve">
+    <value>Webmaster</value>
+  </data>
+  <data name="UI_Guardar" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="UI_IrAlInicio" xml:space="preserve">
+    <value>Ir al inicio</value>
+  </data>
+  <data name="UI_IrAlInicio2" xml:space="preserve">
+    <value>Ir al inicio.</value>
+  </data>
+  <data name="UI_ConsultaDeUsuario" xml:space="preserve">
+    <value>Consulta de usuario</value>
+  </data>
+  <data name="UI_ConsultaDeUsuario2" xml:space="preserve">
+    <value>Consulta de usuario.</value>
+  </data>
+  <data name="UI_Volver" xml:space="preserve">
+    <value>Volver</value>
+  </data>
+  <data name="UI_BloqueoDeUsuario" xml:space="preserve">
+    <value>Bloqueo de usuario</value>
+  </data>
+  <data name="UI_BloqueoDeUsuario2" xml:space="preserve">
+    <value>Bloqueo de usuario.</value>
+  </data>
+  <data name="UI_ConfirmasQueQueresBloquearAlSiguienteUsuario" xml:space="preserve">
+    <value>¿Confirmás que querés bloquear al siguiente usuario?</value>
+  </data>
+  <data name="UI_ConfirmarBloqueo" xml:space="preserve">
+    <value>Confirmar bloqueo</value>
+  </data>
+  <data name="UI_ConfirmarBloqueo2" xml:space="preserve">
+    <value>Confirmar bloqueo.</value>
+  </data>
+  <data name="UI_DesbloqueoDeUsuario" xml:space="preserve">
+    <value>Desbloqueo de usuario</value>
+  </data>
+  <data name="UI_DesbloqueoDeUsuario2" xml:space="preserve">
+    <value>Desbloqueo de usuario.</value>
+  </data>
+  <data name="UI_ConfirmasQueQueresDesbloquearAlSiguienteUsuario" xml:space="preserve">
+    <value>¿Confirmás que querés desbloquear al siguiente usuario?</value>
+  </data>
+  <data name="UI_SeReiniciaranLosIntentosFallidosElEstadoActivo" xml:space="preserve">
+    <value>Se reiniciarán los intentos fallidos. El estado Activo o Inactivo se conservará.</value>
+  </data>
+  <data name="UI_ConfirmarDesbloqueo" xml:space="preserve">
+    <value>Confirmar desbloqueo</value>
+  </data>
+  <data name="UI_ConfirmarDesbloqueo2" xml:space="preserve">
+    <value>Confirmar desbloqueo.</value>
+  </data>
+  <data name="UI_AccesoDenegado" xml:space="preserve">
+    <value>Acceso denegado</value>
+  </data>
+  <data name="UI_AccesoDenegado2" xml:space="preserve">
+    <value>Acceso denegado.</value>
+  </data>
+  <data name="UI_NoTenesPermisosParaAccederAEstaPagina" xml:space="preserve">
+    <value>No tenés permisos para acceder a esta página con el rol de tu sesión.</value>
+  </data>
+  <data name="UI_VolveAlInicioParaUtilizarLasFuncionesHabilitadas" xml:space="preserve">
+    <value>Volvé al inicio para utilizar las funciones habilitadas para tu perfil.</value>
+  </data>
+  <data name="UI_VolverAlInicio" xml:space="preserve">
+    <value>Volver al inicio</value>
+  </data>
+  <data name="UI_VolverAlInicio2" xml:space="preserve">
+    <value>Volver al inicio.</value>
+  </data>
+  <data name="UI_IniciarSesion" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="UI_IniciarSesion2" xml:space="preserve">
+    <value>Iniciar sesión.</value>
+  </data>
+  <data name="UI_IngresaAVitapetConTuCorreoElectronicoY" xml:space="preserve">
+    <value>Ingresá a VitaPet con tu correo electrónico y contraseña.</value>
+  </data>
+  <data name="UI_Errores" xml:space="preserve">
+    <value>Errores</value>
+  </data>
+  <data name="UI_VerMensajesDeErrorParaCapturas" xml:space="preserve">
+    <value>Ver mensajes de error para capturas</value>
+  </data>
+  <data name="UI_VerMensajesDeErrorParaCapturas2" xml:space="preserve">
+    <value>Ver mensajes de error para capturas.</value>
+  </data>
+  <data name="UI_RevisaLosSiguientesDatos" xml:space="preserve">
+    <value>Revisá los siguientes datos:</value>
+  </data>
+  <data name="UI_Contrasena" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="UI_DebeIngresarSuContrasena" xml:space="preserve">
+    <value>Debe ingresar su contraseña.</value>
+  </data>
+  <data name="UI_Ingresar" xml:space="preserve">
+    <value>Ingresar</value>
+  </data>
+  <data name="UI_OpcionesDeAcceso" xml:space="preserve">
+    <value>Opciones de acceso</value>
+  </data>
+  <data name="UI_OpcionesDeAcceso2" xml:space="preserve">
+    <value>Opciones de acceso.</value>
+  </data>
+  <data name="UI_OlvideMiContrasena" xml:space="preserve">
+    <value>Olvidé mi contraseña</value>
+  </data>
+  <data name="UI_OlvideMiContrasena2" xml:space="preserve">
+    <value>Olvidé mi contraseña.</value>
+  </data>
+  <data name="UI_CrearUnaCuenta" xml:space="preserve">
+    <value>Crear una cuenta</value>
+  </data>
+  <data name="UI_CrearUnaCuenta2" xml:space="preserve">
+    <value>Crear una cuenta.</value>
+  </data>
+  <data name="UI_RecuperarContrasena" xml:space="preserve">
+    <value>Recuperar contraseña</value>
+  </data>
+  <data name="UI_RecuperarContrasena2" xml:space="preserve">
+    <value>Recuperar contraseña.</value>
+  </data>
+  <data name="UI_IngresaTuCorreoElectronicoYRespondeLaPregunta" xml:space="preserve">
+    <value>Ingresá tu correo electrónico y respondé la pregunta de seguridad.</value>
+  </data>
+  <data name="UI_CualEsSuFacultadFavorita" xml:space="preserve">
+    <value>Cual es su facultad favorita</value>
+  </data>
+  <data name="UI_CualEsSuFacultadFavorita2" xml:space="preserve">
+    <value>Cual es su facultad favorita.</value>
+  </data>
+  <data name="UI_DebeIngresarLaRespuesta" xml:space="preserve">
+    <value>Debe ingresar la respuesta.</value>
+  </data>
+  <data name="UI_Continuar" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="UI_OpcionesDeRecuperacion" xml:space="preserve">
+    <value>Opciones de recuperación</value>
+  </data>
+  <data name="UI_OpcionesDeRecuperacion2" xml:space="preserve">
+    <value>Opciones de recuperación.</value>
+  </data>
+  <data name="UI_VolverAlInicioDeSesion" xml:space="preserve">
+    <value>Volver al inicio de sesión</value>
+  </data>
+  <data name="UI_VolverAlInicioDeSesion2" xml:space="preserve">
+    <value>Volver al inicio de sesión.</value>
+  </data>
+  <data name="UI_RestablecerContrasena" xml:space="preserve">
+    <value>Restablecer contraseña</value>
+  </data>
+  <data name="UI_RestablecerContrasena2" xml:space="preserve">
+    <value>Restablecer contraseña.</value>
+  </data>
+  <data name="UI_IngresaYConfirmaTuNuevaContrasena" xml:space="preserve">
+    <value>Ingresá y confirmá tu nueva contraseña.</value>
+  </data>
+  <data name="UI_NuevaContrasena" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="UI_NuevaContrasena2" xml:space="preserve">
+    <value>Nueva contraseña.</value>
+  </data>
+  <data name="UI_DebeIngresarLaNuevaContrasena" xml:space="preserve">
+    <value>Debe ingresar la nueva contraseña.</value>
+  </data>
+  <data name="UI_LaContrasenaDebeTenerAlMenos8Caracteres" xml:space="preserve">
+    <value>La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial.</value>
+  </data>
+  <data name="UI_ConfirmarNuevaContrasena" xml:space="preserve">
+    <value>Confirmar nueva contraseña</value>
+  </data>
+  <data name="UI_ConfirmarNuevaContrasena2" xml:space="preserve">
+    <value>Confirmar nueva contraseña.</value>
+  </data>
+  <data name="UI_DebeConfirmarLaNuevaContrasena" xml:space="preserve">
+    <value>Debe confirmar la nueva contraseña.</value>
+  </data>
+  <data name="UI_RecuperarAccesoWebmaster" xml:space="preserve">
+    <value>Recuperar acceso WebMaster</value>
+  </data>
+  <data name="UI_RecuperarAccesoWebmaster2" xml:space="preserve">
+    <value>Recuperar acceso WebMaster.</value>
+  </data>
+  <data name="UI_AccesoDeEmergenciaExclusivoParaRestaurarElSistema" xml:space="preserve">
+    <value>Acceso de emergencia exclusivo para restaurar el sistema. La sesión vence a los 15 minutos.</value>
+  </data>
+  <data name="UI_AccederARecuperacion" xml:space="preserve">
+    <value>Acceder a recuperación</value>
+  </data>
+  <data name="UI_AccederARecuperacion2" xml:space="preserve">
+    <value>Acceder a recuperación.</value>
+  </data>
+  <data name="UI_PuntoDeRecuperacion" xml:space="preserve">
+    <value>Punto de recuperación</value>
+  </data>
+  <data name="UI_PuntoDeRecuperacion2" xml:space="preserve">
+    <value>Punto de recuperación.</value>
+  </data>
+  <data name="UI_RestaurarPuntoSeleccionado" xml:space="preserve">
+    <value>Restaurar punto seleccionado</value>
+  </data>
+  <data name="UI_RestaurarPuntoSeleccionado2" xml:space="preserve">
+    <value>Restaurar punto seleccionado.</value>
+  </data>
+  <data name="UI_ConfirmarRestauracion" xml:space="preserve">
+    <value>Confirmar restauración</value>
+  </data>
+  <data name="UI_ConfirmarRestauracion2" xml:space="preserve">
+    <value>Confirmar restauración.</value>
+  </data>
+  <data name="UI_CerrarRecuperacion" xml:space="preserve">
+    <value>Cerrar recuperación</value>
+  </data>
+  <data name="UI_CerrarRecuperacion2" xml:space="preserve">
+    <value>Cerrar recuperación.</value>
+  </data>
+  <data name="UI_DebeIngresarSuCorreoElectronico" xml:space="preserve">
+    <value>Debe ingresar su correo electrónico.</value>
+  </data>
+  <data name="UI_ElFormatoDelCorreoElectronicoNoEsValido" xml:space="preserve">
+    <value>El formato del correo electrónico no es válido.</value>
+  </data>
+  <data name="UI_ErroresDelSistema" xml:space="preserve">
+    <value>Errores del sistema</value>
+  </data>
+  <data name="UI_ErroresDelSistema2" xml:space="preserve">
+    <value>Errores del sistema.</value>
+  </data>
+  <data name="UI_ErroresDelSistemaVitapet" xml:space="preserve">
+    <value>Errores del sistema - VitaPet</value>
+  </data>
+  <data name="UI_ErroresDelSistemaVitapet2" xml:space="preserve">
+    <value>Errores del sistema - VitaPet.</value>
+  </data>
+  <data name="UI_CadaMensajeEstaSeparadoParaQuePuedasRecortarlo" xml:space="preserve">
+    <value>Cada mensaje está separado para que puedas recortarlo en una captura.</value>
+  </data>
+  <data name="UI_VolverAlLogin" xml:space="preserve">
+    <value>Volver al Login</value>
+  </data>
+  <data name="UI_VolverAlLogin2" xml:space="preserve">
+    <value>Volver al Login.</value>
+  </data>
+  <data name="UI_ElCatalogoDeErroresEstaVacio" xml:space="preserve">
+    <value>El catálogo de errores está vacío.</value>
+  </data>
+  <data name="UI_Er003FalloDeConexionNoSePudoCargar" xml:space="preserve">
+    <value>ER003 - Fallo de conexión. No se pudo cargar el catálogo.</value>
+  </data>
+  <data name="UI_AccesoExclusivoParaWebmaster" xml:space="preserve">
+    <value>Acceso exclusivo para Webmaster.</value>
+  </data>
+  <data name="UI_LaConfirmacionVencioSeleccioneNuevamenteLaOperacion" xml:space="preserve">
+    <value>La confirmación venció. Seleccione nuevamente la operación.</value>
+  </data>
+  <data name="UI_LaConfirmacionVencioSeleccioneNuevamenteElRespaldo" xml:space="preserve">
+    <value>La confirmación venció. Seleccione nuevamente el respaldo.</value>
+  </data>
+  <data name="UI_OperacionInvalida" xml:space="preserve">
+    <value>Operación inválida.</value>
+  </data>
+  <data name="UI_FalloDeConfiguracion" xml:space="preserve">
+    <value>Fallo de configuración</value>
+  </data>
+  <data name="UI_FalloDeConfiguracion2" xml:space="preserve">
+    <value>Fallo de configuración.</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaOperacionDeRespaldo" xml:space="preserve">
+    <value>No se pudo completar la operación de respaldo o restauración</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaOperacionDeRespaldo2" xml:space="preserve">
+    <value>No se pudo completar la operación de respaldo o restauración.</value>
+  </data>
+  <data name="UI_NoSePudoVerificarElMaterialCriptograficoDe" xml:space="preserve">
+    <value>No se pudo verificar el material criptográfico de la cuenta de emergencia.</value>
+  </data>
+  <data name="UI_ConfirmaLaCreacionDeUnBackupCompletoDe" xml:space="preserve">
+    <value>¿Confirma la creación de un backup completo de la base de datos?</value>
+  </data>
+  <data name="UI_FalloDeConexionOConfiguracionReintentaLaOperacion" xml:space="preserve">
+    <value>Fallo de conexión o configuración. Reintentá la operación.</value>
+  </data>
+  <data name="UI_NoSePudoGenerarLaSalidaXml" xml:space="preserve">
+    <value>No se pudo generar la salida XML.</value>
+  </data>
+  <data name="UI_NoSeEncontraronEventosParaLosFiltrosIndicados" xml:space="preserve">
+    <value>No se encontraron eventos para los filtros indicados.</value>
+  </data>
+  <data name="UI_InconsistenciaEnLaVerificacionDeIntegridad" xml:space="preserve">
+    <value>Inconsistencia en la verificación de integridad.</value>
+  </data>
+  <data name="UI_DatosInvalidosRevisaLasFechasYLaCriticidad" xml:space="preserve">
+    <value>Datos inválidos. Revisá las fechas y la criticidad.</value>
+  </data>
+  <data name="UI_LaFechaDesdeEsPosteriorALaFecha" xml:space="preserve">
+    <value>La fecha desde es posterior a la fecha hasta.</value>
+  </data>
+  <data name="UI_NoSePudoLeerElHistoricoXmlDe" xml:space="preserve">
+    <value>No se pudo leer el histórico XML de bitácora.</value>
+  </data>
+  <data name="UI_NoSePudoRegistrarLaConsultaEnBitacora" xml:space="preserve">
+    <value>No se pudo registrar la consulta en bitácora.</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaConsultaDeBitacora" xml:space="preserve">
+    <value>No se pudo completar la consulta de bitácora.</value>
+  </data>
+  <data name="UI_RevisaElNombreYElEstadoDeLa" xml:space="preserve">
+    <value>Revisá el nombre y el estado de la búsqueda.</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaOperacion" xml:space="preserve">
+    <value>No se pudo completar la operación.</value>
+  </data>
+  <data name="UI_ElUsuarioSeleccionadoYaNoExiste" xml:space="preserve">
+    <value>El usuario seleccionado ya no existe.</value>
+  </data>
+  <data name="UI_ElUsuarioSeleccionadoYaNoExisteOLa" xml:space="preserve">
+    <value>El usuario seleccionado ya no existe o la selección venció. Volvé a seleccionarlo en Gestión de usuarios.</value>
+  </data>
+  <data name="UI_ElEstadoActualDelUsuarioNoPermiteRealizar" xml:space="preserve">
+    <value>El estado actual del usuario no permite realizar la operación.</value>
+  </data>
+  <data name="UI_LosDatosDelUsuarioCambiaronDesdeSuConsulta" xml:space="preserve">
+    <value>Los datos del usuario cambiaron desde su consulta. Volvé a cargar los datos antes de editar.</value>
+  </data>
+  <data name="UI_DatosInvalidosRevisaElNombreCorreoRolY" xml:space="preserve">
+    <value>Datos inválidos. Revisá el nombre, correo, rol y estado.</value>
+  </data>
+  <data name="UI_NoSePudoActualizarElUsuario" xml:space="preserve">
+    <value>No se pudo actualizar el usuario.</value>
+  </data>
+  <data name="UI_NoSePudoRegistrarLaOperacionEnBitacora" xml:space="preserve">
+    <value>No se pudo registrar la operación en bitácora.</value>
+  </data>
+  <data name="UI_ElUsuarioSeModificoCorrectamente" xml:space="preserve">
+    <value>El usuario se modificó correctamente.</value>
+  </data>
+  <data name="UI_ElUsuarioSeBloqueoCorrectamente" xml:space="preserve">
+    <value>El usuario se bloqueó correctamente.</value>
+  </data>
+  <data name="UI_ElUsuarioSeDesbloqueoCorrectamente" xml:space="preserve">
+    <value>El usuario se desbloqueó correctamente.</value>
+  </data>
+  <data name="UI_LaIntegridadFueVerificadaInicieSesionNuevamente" xml:space="preserve">
+    <value>La integridad fue verificada. Inicie sesión nuevamente.</value>
+  </data>
+  <data name="UI_RestauracionCompletada" xml:space="preserve">
+    <value>Restauración completada</value>
+  </data>
+  <data name="UI_RestauracionCompletada2" xml:space="preserve">
+    <value>Restauración completada.</value>
+  </data>
+  <data name="UI_NoSePudoAutorizarElAccesoReviseSus" xml:space="preserve">
+    <value>No se pudo autorizar el acceso. Revise sus credenciales o espere si hubo intentos fallidos.</value>
+  </data>
+  <data name="UI_NoHayRespaldosXmlValidosDisponibles" xml:space="preserve">
+    <value>No hay respaldos XML válidos disponibles.</value>
+  </data>
+  <data name="UI_AccesoDeEmergenciaNoAutorizadoOVencido" xml:space="preserve">
+    <value>Acceso de emergencia no autorizado o vencido.</value>
+  </data>
+  <data name="UI_NoSePudoAccederAUnRespaldoValido" xml:space="preserve">
+    <value>No se pudo acceder a un respaldo válido. La recuperación no se completó.</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaRecuperacionEnSql" xml:space="preserve">
+    <value>No se pudo completar la recuperación en SQL Server. Verifique su disponibilidad y reintente.</value>
+  </data>
+  <data name="UI_LaOperacionNoPudoCompletarseSeleccioneUnRespaldo" xml:space="preserve">
+    <value>La operación no pudo completarse. Seleccione un respaldo válido y vuelva a intentarlo.</value>
+  </data>
+  <data name="UI_LosDatosDeRecuperacionNoSonValidos" xml:space="preserve">
+    <value>Los datos de recuperación no son válidos.</value>
+  </data>
+  <data name="UI_IngreseUnCorreoValidoYUnaContrasenaDe" xml:space="preserve">
+    <value>Ingrese un correo válido y una contraseña de 12 a 100 caracteres, con mayúscula, número y símbolo.</value>
+  </data>
+  <data name="UI_NoSePuedeConfigurarDuranteUnaRestauracion" xml:space="preserve">
+    <value>No se puede configurar durante una restauración.</value>
+  </data>
+  <data name="UI_RestauracionEnCurso" xml:space="preserve">
+    <value>Restauración en curso.</value>
+  </data>
+  <data name="UI_SeRequiereUnWebmasterActivoYConfiableEn" xml:space="preserve">
+    <value>Se requiere un WebMaster activo y confiable en el respaldo.</value>
+  </data>
+  <data name="UI_RestauracionPendienteNoSePuedeCrearUnBackup" xml:space="preserve">
+    <value>Restauración pendiente: no se puede crear un backup sano.</value>
+  </data>
+  <data name="UI_IdentificadorDeBackupInvalido" xml:space="preserve">
+    <value>Identificador de backup inválido.</value>
+  </data>
+  <data name="UI_LoginExitoso" xml:space="preserve">
+    <value>Login exitoso</value>
+  </data>
+  <data name="UI_LoginExitoso2" xml:space="preserve">
+    <value>Login exitoso.</value>
+  </data>
+  <data name="UI_LoginFallido" xml:space="preserve">
+    <value>Login fallido</value>
+  </data>
+  <data name="UI_LoginFallido2" xml:space="preserve">
+    <value>Login fallido.</value>
+  </data>
+  <data name="UI_UsuarioBloqueado" xml:space="preserve">
+    <value>Usuario bloqueado</value>
+  </data>
+  <data name="UI_UsuarioBloqueado2" xml:space="preserve">
+    <value>Usuario bloqueado.</value>
+  </data>
+  <data name="UI_Autenticacion" xml:space="preserve">
+    <value>Autenticación</value>
+  </data>
+  <data name="UI_Autenticacion2" xml:space="preserve">
+    <value>Autenticación.</value>
+  </data>
+  <data name="UI_Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="UI_ContrasenaRestablecida" xml:space="preserve">
+    <value>Contraseña restablecida</value>
+  </data>
+  <data name="UI_ContrasenaRestablecida2" xml:space="preserve">
+    <value>Contraseña restablecida.</value>
+  </data>
+  <data name="UI_ConsultaDeUsuarios" xml:space="preserve">
+    <value>Consulta de usuarios</value>
+  </data>
+  <data name="UI_ConsultaDeUsuarios2" xml:space="preserve">
+    <value>Consulta de usuarios.</value>
+  </data>
+  <data name="UI_Verificado" xml:space="preserve">
+    <value>Verificado</value>
+  </data>
+  <data name="UI_NoVerificado" xml:space="preserve">
+    <value>No verificado</value>
+  </data>
+  <data name="UI_NoVerificado2" xml:space="preserve">
+    <value>No verificado.</value>
+  </data>
+  <data name="UI_Idioma" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="UI_SeleccionarIdioma" xml:space="preserve">
+    <value>Seleccionar idioma</value>
+  </data>
+  <data name="UI_SeleccionarIdioma2" xml:space="preserve">
+    <value>Seleccionar idioma.</value>
+  </data>
+  <data name="UI_EsEspanol" xml:space="preserve">
+    <value>ES · Español</value>
+  </data>
+  <data name="UI_EsEspanol2" xml:space="preserve">
+    <value>ES · Español.</value>
+  </data>
+  <data name="UI_EnEnglish" xml:space="preserve">
+    <value>EN · English</value>
+  </data>
+  <data name="UI_EnEnglish2" xml:space="preserve">
+    <value>EN · English.</value>
+  </data>
+  <data name="UI_Vista" xml:space="preserve">
+    <value>Vista</value>
+  </data>
+  <data name="UI_CambiarA" xml:space="preserve">
+    <value>Cambiar a</value>
+  </data>
+  <data name="UI_Mobile" xml:space="preserve">
+    <value>Móvil</value>
+  </data>
+  <data name="UI_Desktop" xml:space="preserve">
+    <value>Escritorio</value>
+  </data>
+  <data name="UI_CorreoYaRegistrado" xml:space="preserve">
+    <value>Correo ya registrado</value>
+  </data>
+  <data name="UI_CorreoYaRegistrado2" xml:space="preserve">
+    <value>Correo ya registrado.</value>
+  </data>
+  <data name="UI_DatosIncompletos" xml:space="preserve">
+    <value>Datos incompletos</value>
+  </data>
+  <data name="UI_DatosIncompletos2" xml:space="preserve">
+    <value>Datos incompletos.</value>
+  </data>
+  <data name="UI_FalloDeConexion" xml:space="preserve">
+    <value>Fallo de conexión</value>
+  </data>
+  <data name="UI_FalloDeConexion2" xml:space="preserve">
+    <value>Fallo de conexión.</value>
+  </data>
+  <data name="UI_ErrorEnLaCargaDeLaListaDe" xml:space="preserve">
+    <value>Error en la carga de la lista de planes</value>
+  </data>
+  <data name="UI_ErrorEnLaCargaDeLaListaDe2" xml:space="preserve">
+    <value>Error en la carga de la lista de planes.</value>
+  </data>
+  <data name="UI_ElClientePoseeUnPlanIncompatibleConLa" xml:space="preserve">
+    <value>El cliente posee un plan incompatible con la contratación solicitada</value>
+  </data>
+  <data name="UI_ElClientePoseeUnPlanIncompatibleConLa2" xml:space="preserve">
+    <value>El cliente posee un plan incompatible con la contratación solicitada.</value>
+  </data>
+  <data name="UI_PagoRechazado" xml:space="preserve">
+    <value>Pago rechazado</value>
+  </data>
+  <data name="UI_PagoRechazado2" xml:space="preserve">
+    <value>Pago rechazado.</value>
+  </data>
+  <data name="UI_NoFuePosibleRegistrarLaContratacionDelPlan" xml:space="preserve">
+    <value>No fue posible registrar la contratación del plan</value>
+  </data>
+  <data name="UI_NoFuePosibleRegistrarLaContratacionDelPlan2" xml:space="preserve">
+    <value>No fue posible registrar la contratación del plan.</value>
+  </data>
+  <data name="UI_NoExisteUnaCoberturaAsociada" xml:space="preserve">
+    <value>No existe una cobertura asociada</value>
+  </data>
+  <data name="UI_NoExisteUnaCoberturaAsociada2" xml:space="preserve">
+    <value>No existe una cobertura asociada.</value>
+  </data>
+  <data name="UI_NoExistenReintegrosAsociados" xml:space="preserve">
+    <value>No existen reintegros asociados</value>
+  </data>
+  <data name="UI_NoExistenReintegrosAsociados2" xml:space="preserve">
+    <value>No existen reintegros asociados.</value>
+  </data>
+  <data name="UI_NoExistenMascotasRegistradas" xml:space="preserve">
+    <value>No existen mascotas registradas</value>
+  </data>
+  <data name="UI_NoExistenMascotasRegistradas2" xml:space="preserve">
+    <value>No existen mascotas registradas.</value>
+  </data>
+  <data name="UI_NoExistenDatosAsociados" xml:space="preserve">
+    <value>No existen datos asociados</value>
+  </data>
+  <data name="UI_NoExistenDatosAsociados2" xml:space="preserve">
+    <value>No existen datos asociados.</value>
+  </data>
+  <data name="UI_NoExistenTurnosDisponibles" xml:space="preserve">
+    <value>No existen turnos disponibles</value>
+  </data>
+  <data name="UI_NoExistenTurnosDisponibles2" xml:space="preserve">
+    <value>No existen turnos disponibles.</value>
+  </data>
+  <data name="UI_ElTurnoYaNoSeEncuentraDisponible" xml:space="preserve">
+    <value>El turno ya no se encuentra disponible</value>
+  </data>
+  <data name="UI_ElTurnoYaNoSeEncuentraDisponible2" xml:space="preserve">
+    <value>El turno ya no se encuentra disponible.</value>
+  </data>
+  <data name="UI_NoExistenTurnosAsociados" xml:space="preserve">
+    <value>No existen turnos asociados</value>
+  </data>
+  <data name="UI_NoExistenTurnosAsociados2" xml:space="preserve">
+    <value>No existen turnos asociados.</value>
+  </data>
+  <data name="UI_NoSePudoGenerarLaSalidaXml2" xml:space="preserve">
+    <value>No se pudo generar la salida XML</value>
+  </data>
+  <data name="UI_NoExistenPlanesRegistradosEnElSistema" xml:space="preserve">
+    <value>No existen planes registrados en el sistema</value>
+  </data>
+  <data name="UI_NoExistenPlanesRegistradosEnElSistema2" xml:space="preserve">
+    <value>No existen planes registrados en el sistema.</value>
+  </data>
+  <data name="UI_NoExistenEmpresasRegistradas" xml:space="preserve">
+    <value>No existen empresas registradas</value>
+  </data>
+  <data name="UI_NoExistenEmpresasRegistradas2" xml:space="preserve">
+    <value>No existen empresas registradas.</value>
+  </data>
+  <data name="UI_CredencialesIncorrectas" xml:space="preserve">
+    <value>Credenciales incorrectas</value>
+  </data>
+  <data name="UI_CredencialesIncorrectas2" xml:space="preserve">
+    <value>Credenciales incorrectas.</value>
+  </data>
+  <data name="UI_NoExistenRegistrosDeBitacora" xml:space="preserve">
+    <value>No existen registros de bitácora</value>
+  </data>
+  <data name="UI_NoExistenRegistrosDeBitacora2" xml:space="preserve">
+    <value>No existen registros de bitácora.</value>
+  </data>
+  <data name="UI_NoExistenUsuariosRegistrados" xml:space="preserve">
+    <value>No existen usuarios registrados</value>
+  </data>
+  <data name="UI_NoExistenUsuariosRegistrados2" xml:space="preserve">
+    <value>No existen usuarios registrados.</value>
+  </data>
+  <data name="UI_ErrorAlObtenerLosArchivosDeRespaldo" xml:space="preserve">
+    <value>Error al obtener los archivos de respaldo</value>
+  </data>
+  <data name="UI_ErrorAlObtenerLosArchivosDeRespaldo2" xml:space="preserve">
+    <value>Error al obtener los archivos de respaldo.</value>
+  </data>
+  <data name="UI_NoExistenArchivosDeRespaldo" xml:space="preserve">
+    <value>No existen archivos de respaldo</value>
+  </data>
+  <data name="UI_NoExistenArchivosDeRespaldo2" xml:space="preserve">
+    <value>No existen archivos de respaldo.</value>
+  </data>
+  <data name="UI_InconsistenciaEnLaVerificacionDeIntegridad2" xml:space="preserve">
+    <value>Inconsistencia en la verificación de integridad</value>
+  </data>
+  <data name="UI_UsuarioInactivoOBloqueado" xml:space="preserve">
+    <value>Usuario inactivo o bloqueado</value>
+  </data>
+  <data name="UI_UsuarioInactivoOBloqueado2" xml:space="preserve">
+    <value>Usuario inactivo o bloqueado.</value>
+  </data>
+  <data name="UI_DatosInvalidos" xml:space="preserve">
+    <value>Datos inválidos</value>
+  </data>
+  <data name="UI_DatosInvalidos2" xml:space="preserve">
+    <value>Datos inválidos.</value>
+  </data>
+  <data name="UI_LaFechaDesdeEsPosteriorALaFecha2" xml:space="preserve">
+    <value>La fecha desde es posterior a la fecha hasta</value>
+  </data>
+  <data name="UI_NoSeEncontraronUsuariosQueCoincidanConLos" xml:space="preserve">
+    <value>No se encontraron usuarios que coincidan con los parámetros de filtrado.</value>
+  </data>
+  <data name="UI_LasContrasenasNoCoinciden" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+  </data>
+  <data name="UI_LasContrasenasNoCoinciden2" xml:space="preserve">
+    <value>Las contraseñas no coinciden.</value>
+  </data>
+  <data name="UI_NoPoseeAutorizacionParaRestablecerLaContrasena" xml:space="preserve">
+    <value>No posee autorización para restablecer la contraseña</value>
+  </data>
+  <data name="UI_NoPoseeAutorizacionParaRestablecerLaContrasena2" xml:space="preserve">
+    <value>No posee autorización para restablecer la contraseña.</value>
+  </data>
+  <data name="UI_NoSePudoLeerElHistoricoXmlDe2" xml:space="preserve">
+    <value>No se pudo leer el histórico XML de bitácora</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaConsultaDeBitacora2" xml:space="preserve">
+    <value>No se pudo completar la consulta de bitácora</value>
+  </data>
+  <data name="UI_NoSePudoRegistrarLaConsultaEnBitacora2" xml:space="preserve">
+    <value>No se pudo registrar la consulta en bitácora</value>
+  </data>
+  <data name="UI_NoSePudoCompletarElCierreDeSesion" xml:space="preserve">
+    <value>No se pudo completar el cierre de sesión</value>
+  </data>
+  <data name="UI_NoSePudoCompletarElCierreDeSesion2" xml:space="preserve">
+    <value>No se pudo completar el cierre de sesión.</value>
+  </data>
+  <data name="UI_CorreoElectronicoORespuestaIncorrectos" xml:space="preserve">
+    <value>Correo electrónico o respuesta incorrectos</value>
+  </data>
+  <data name="UI_CorreoElectronicoORespuestaIncorrectos2" xml:space="preserve">
+    <value>Correo electrónico o respuesta incorrectos.</value>
+  </data>
+  <data name="UI_ElUsuarioSeleccionadoYaNoExiste2" xml:space="preserve">
+    <value>El usuario seleccionado ya no existe</value>
+  </data>
+  <data name="UI_ElEstadoActualDelUsuarioNoPermiteRealizar2" xml:space="preserve">
+    <value>El estado actual del usuario no permite realizar la operación</value>
+  </data>
+  <data name="UI_LosDatosDelUsuarioCambiaronDesdeSuConsulta2" xml:space="preserve">
+    <value>Los datos del usuario cambiaron desde su consulta</value>
+  </data>
+  <data name="UI_LosDatosDelUsuarioCambiaronDesdeSuConsulta3" xml:space="preserve">
+    <value>Los datos del usuario cambiaron desde su consulta.</value>
+  </data>
+  <data name="UI_NoSePudoActualizarElUsuario2" xml:space="preserve">
+    <value>No se pudo actualizar el usuario</value>
+  </data>
+  <data name="UI_NoSePudoRegistrarLaOperacionEnBitacora2" xml:space="preserve">
+    <value>No se pudo registrar la operación en bitácora</value>
+  </data>
+  <data name="UI_AcercaDe" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
+  <data name="UI_Contacto" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="UI_Inicio2" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="UI_DescripcionDeLaAplicacion" xml:space="preserve">
+    <value>Descripción de la aplicación.</value>
+  </data>
+  <data name="UI_UtilizaEstaSeccionParaIncluirInformacionAdicional" xml:space="preserve">
+    <value>Utilizá esta sección para incluir información adicional.</value>
+  </data>
+  <data name="UI_PaginaDeContacto" xml:space="preserve">
+    <value>Página de contacto.</value>
+  </data>
+  <data name="UI_Soporte" xml:space="preserve">
+    <value>Soporte:</value>
+  </data>
+  <data name="UI_Marketing" xml:space="preserve">
+    <value>Marketing:</value>
+  </data>
+  <data name="UI_Telefono" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="UI_MasInformacion" xml:space="preserve">
+    <value>Más información »</value>
+  </data>
+  <data name="UI_PrimerosPasos" xml:space="preserve">
+    <value>Primeros pasos</value>
+  </data>
+  <data name="UI_ObtenerMasBibliotecas" xml:space="preserve">
+    <value>Obtener más bibliotecas</value>
+  </data>
+  <data name="UI_AlojamientoWeb" xml:space="preserve">
+    <value>Alojamiento web</value>
+  </data>
+  <data name="UI_PaginaMaestraMovil" xml:space="preserve">
+    <value>Página maestra móvil</value>
+  </data>
+  <data name="UI_AspNetEsUnFrameworkWebGratuitoPara" xml:space="preserve">
+    <value>ASP.NET es un framework web gratuito para crear sitios y aplicaciones con HTML, CSS y JavaScript.</value>
+  </data>
+  <data name="UI_AspNetWebFormsPermiteCrearSitiosDinamicos" xml:space="preserve">
+    <value>ASP.NET Web Forms permite crear sitios dinámicos con un modelo de eventos y controles visuales, incluyendo acceso a datos.</value>
+  </data>
+  <data name="UI_NugetEsUnaExtensionGratuitaQueFacilitaAgregar" xml:space="preserve">
+    <value>NuGet es una extensión gratuita que facilita agregar, quitar y actualizar bibliotecas y herramientas en proyectos de Visual Studio.</value>
+  </data>
+  <data name="UI_PodesElegirUnProveedorDeAlojamientoWebCon" xml:space="preserve">
+    <value>Podés elegir un proveedor de alojamiento web con las funciones y el precio adecuados para tus aplicaciones.</value>
+  </data>
+  <data name="Error_ER001" xml:space="preserve">
+    <value>Correo ya registrado</value>
+  </data>
+  <data name="Error_ER002" xml:space="preserve">
+    <value>Datos incompletos</value>
+  </data>
+  <data name="Error_ER003" xml:space="preserve">
+    <value>Fallo de conexión</value>
+  </data>
+  <data name="Error_ER004" xml:space="preserve">
+    <value>Error en la carga de la lista de planes</value>
+  </data>
+  <data name="Error_ER005" xml:space="preserve">
+    <value>El cliente posee un plan incompatible con la contratación solicitada</value>
+  </data>
+  <data name="Error_ER006" xml:space="preserve">
+    <value>Pago rechazado</value>
+  </data>
+  <data name="Error_ER007" xml:space="preserve">
+    <value>No fue posible registrar la contratación del plan</value>
+  </data>
+  <data name="Error_ER008" xml:space="preserve">
+    <value>No existe una cobertura asociada</value>
+  </data>
+  <data name="Error_ER009" xml:space="preserve">
+    <value>No existen reintegros asociados</value>
+  </data>
+  <data name="Error_ER010" xml:space="preserve">
+    <value>No existen mascotas registradas</value>
+  </data>
+  <data name="Error_ER011" xml:space="preserve">
+    <value>No existen datos asociados</value>
+  </data>
+  <data name="Error_ER012" xml:space="preserve">
+    <value>No existen turnos disponibles</value>
+  </data>
+  <data name="Error_ER013" xml:space="preserve">
+    <value>El turno ya no se encuentra disponible</value>
+  </data>
+  <data name="Error_ER014" xml:space="preserve">
+    <value>No existen turnos asociados</value>
+  </data>
+  <data name="Error_ER015" xml:space="preserve">
+    <value>No se pudo generar la salida XML</value>
+  </data>
+  <data name="Error_ER016" xml:space="preserve">
+    <value>No existen planes registrados en el sistema</value>
+  </data>
+  <data name="Error_ER017" xml:space="preserve">
+    <value>No existen empresas registradas</value>
+  </data>
+  <data name="Error_ER018" xml:space="preserve">
+    <value>Credenciales incorrectas</value>
+  </data>
+  <data name="Error_ER019" xml:space="preserve">
+    <value>No existen registros de bitácora</value>
+  </data>
+  <data name="Error_ER020" xml:space="preserve">
+    <value>No existen usuarios registrados</value>
+  </data>
+  <data name="Error_ER021" xml:space="preserve">
+    <value>Error al obtener los archivos de respaldo</value>
+  </data>
+  <data name="Error_ER022" xml:space="preserve">
+    <value>No existen archivos de respaldo</value>
+  </data>
+  <data name="Error_ER023" xml:space="preserve">
+    <value>Inconsistencia en la verificación de integridad</value>
+  </data>
+  <data name="Error_ER024" xml:space="preserve">
+    <value>Usuario inactivo o bloqueado</value>
+  </data>
+  <data name="Error_ER025" xml:space="preserve">
+    <value>Datos inválidos</value>
+  </data>
+  <data name="Error_ER026" xml:space="preserve">
+    <value>Datos incompletos</value>
+  </data>
+  <data name="Error_ER027" xml:space="preserve">
+    <value>La fecha desde es posterior a la fecha hasta</value>
+  </data>
+  <data name="Error_ER028" xml:space="preserve">
+    <value>No se encontraron usuarios que coincidan con los parámetros de filtrado.</value>
+  </data>
+  <data name="Error_ER029" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+  </data>
+  <data name="Error_ER030" xml:space="preserve">
+    <value>No posee autorización para restablecer la contraseña</value>
+  </data>
+  <data name="Error_ER031" xml:space="preserve">
+    <value>No se pudo leer el histórico XML de bitácora</value>
+  </data>
+  <data name="Error_ER032" xml:space="preserve">
+    <value>No se pudo completar la consulta de bitácora</value>
+  </data>
+  <data name="Error_ER033" xml:space="preserve">
+    <value>No se pudo registrar la consulta en bitácora</value>
+  </data>
+  <data name="Error_ER034" xml:space="preserve">
+    <value>No se pudo completar el cierre de sesión</value>
+  </data>
+  <data name="Error_ER035" xml:space="preserve">
+    <value>Correo electrónico o respuesta incorrectos</value>
+  </data>
+  <data name="Error_ER036" xml:space="preserve">
+    <value>El usuario seleccionado ya no existe</value>
+  </data>
+  <data name="Error_ER037" xml:space="preserve">
+    <value>El estado actual del usuario no permite realizar la operación</value>
+  </data>
+  <data name="Error_ER038" xml:space="preserve">
+    <value>Los datos del usuario cambiaron desde su consulta</value>
+  </data>
+  <data name="Error_ER039" xml:space="preserve">
+    <value>No se pudo actualizar el usuario</value>
+  </data>
+  <data name="Error_ER040" xml:space="preserve">
+    <value>No se pudo registrar la operación en bitácora</value>
+  </data>
+  <data name="ResumenEventos" xml:space="preserve">
+    <value>{0} eventos. Página {1} de {2}. Hasta {3} eventos por página.</value>
+  </data>
+  <data name="ResumenUsuarios" xml:space="preserve">
+    <value>{0} usuarios. Página {1} de {2}.</value>
+  </data>
+  <data name="UsuarioNumero" xml:space="preserve">
+    <value>Usuario {0}</value>
+  </data>
+  <data name="ConfirmarRestauracionBackup" xml:space="preserve">
+    <value>Se restaurará el backup {0}. Se perderán todos los cambios posteriores, se impedirán operaciones y se cerrarán todas las sesiones. ¿Confirma la restauración?</value>
+  </data>
+  <data name="ConfirmarRestauracionPunto" xml:space="preserve">
+    <value>Se restaurará el punto {0}. Se perderán los cambios posteriores y se cerrarán todas las sesiones. ¿Confirma la restauración?</value>
+  </data>
+  <data name="BackupCreado" xml:space="preserve">
+    <value>Backup generado y verificado: {0}</value>
+  </data>
+  <data name="XmlCreado" xml:space="preserve">
+    <value>Respaldo XML de contingencia creado: {0}</value>
+  </data>
+  <data name="EventoBackup" xml:space="preserve">
+    <value>Backup realizado {0}</value>
+  </data>
+  <data name="EventoRestore" xml:space="preserve">
+    <value>Restauración realizada {0}</value>
+  </data>
+  <data name="OperacionUsuarioAuditoria" xml:space="preserve">
+    <value>{0} (idUsuario={1})</value>
+  </data>
+  <data name="IntegridadFormato" xml:space="preserve">
+    <value>Formato de integridad no inicializado o desconocido.</value>
+  </data>
+  <data name="IntegridadDvhDetalle" xml:space="preserve">
+    <value>DVH no coincide; consultar detalle por campo.</value>
+  </data>
+  <data name="IntegridadDvh" xml:space="preserve">
+    <value>DVH no coincide.</value>
+  </data>
+  <data name="IntegridadControl" xml:space="preserve">
+    <value>Control ausente.</value>
+  </data>
+  <data name="IntegridadDvv" xml:space="preserve">
+    <value>DVV no coincide.</value>
+  </data>
+  <data name="IntegridadDvvAusente" xml:space="preserve">
+    <value>DVV ausente o inconsistente.</value>
+  </data>
+  <data name="IntegridadReferencia" xml:space="preserve">
+    <value>La referencia protegida está incompleta o alterada.</value>
+  </data>
+  <data name="IntegridadCampoAusente" xml:space="preserve">
+    <value>Campo o fila sin referencia confiable.</value>
+  </data>
+  <data name="IntegridadCampoAlterado" xml:space="preserve">
+    <value>El campo o su referencia protegida fue alterado.</value>
+  </data>
+  <data name="IntegridadFilaAusente" xml:space="preserve">
+    <value>Fila ausente o referencia inesperada.</value>
+  </data>
+  <data name="IntegridadTablaAusente" xml:space="preserve">
+    <value>Faltan tablas supervisadas.</value>
+  </data>
+  <data name="IntegridadTablaSinCobertura" xml:space="preserve">
+    <value>Tabla sin cobertura de integridad.</value>
+  </data>
+  <data name="IntegridadRegistroAusente" xml:space="preserve">
+    <value>Registro ausente.</value>
+  </data>
+  <data name="Error_ER046" xml:space="preserve">
+    <value>No se seleccionó un respaldo o el seleccionado ya no está disponible</value>
+  </data>
+  <data name="Error_ER047" xml:space="preserve">
+    <value>No se pudo completar la restauración de la base de datos</value>
+  </data>
+  <data name="Registro_Descripcion" xml:space="preserve"><value>Completá tus datos para registrarte como cliente de VitaPet.</value></data>
+  <data name="Registro_Apellido" xml:space="preserve"><value>Apellido</value></data>
+  <data name="Registro_RequisitosContrasena" xml:space="preserve"><value>Usá entre 8 y 100 caracteres, con una mayúscula, un número y un símbolo.</value></data>
+  <data name="Registro_CuentaCreada" xml:space="preserve"><value>La cuenta se creó correctamente. Ya podés iniciar sesión.</value></data>
+  <data name="Error_ER049" xml:space="preserve"><value>No se pudo registrar el cliente</value></data>
+  <data name="Registro_Accion" xml:space="preserve"><value>Registro de cliente</value></data>
+  <data name="Registro_Modulo" xml:space="preserve"><value>Clientes</value></data>
+  <data name="Planes_Titulo" xml:space="preserve"><value>Planes disponibles</value></data>
+  <data name="Planes_Descripcion" xml:space="preserve"><value>Descripción</value></data>
+  <data name="Planes_DescripcionPrecios" xml:space="preserve"><value>Un plan para tu cuenta. Precios en USD por mes y por mascota activa.</value></data>
+  <data name="Planes_PrecioMascota" xml:space="preserve"><value>Precio mensual por mascota</value></data>
+  <data name="Planes_Seleccionar" xml:space="preserve"><value>Seleccionar</value></data>
+  <data name="Planes_Corporativo" xml:space="preserve"><value>El plan Corporativo se ofrece mediante convenio y no puede contratarse de manera particular.</value></data>
+  <data name="Planes_Contratar" xml:space="preserve"><value>Contratar plan</value></data>
+  <data name="Planes_MascotasActivas" xml:space="preserve"><value>Mascotas activas de la cuenta</value></data>
+  <data name="Planes_TotalMensual" xml:space="preserve"><value>Total mensual en USD</value></data>
+  <data name="Planes_Coberturas" xml:space="preserve"><value>Coberturas del plan</value></data>
+  <data name="Planes_CargandoCobertura" xml:space="preserve"><value>Consultando coberturas…</value></data>
+  <data name="Planes_CoberturaVacia" xml:space="preserve"><value>No existen coberturas detalladas para este plan.</value></data>
+  <data name="Planes_Prestacion" xml:space="preserve"><value>Prestación</value></data>
+  <data name="Planes_PendienteAviso" xml:space="preserve"><value>La contratación quedará pendiente hasta completar Gestión de pago.</value></data>
+  <data name="Planes_GestionPago" xml:space="preserve"><value>Gestión de pago</value></data>
+  <data name="Planes_PagoFuturo" xml:space="preserve"><value>La suscripción quedó pendiente. Gestión de pago todavía no está disponible; no se realizó ningún cobro ni se activó el plan.</value></data>
+  <data name="Planes_RecalculoPago" xml:space="preserve"><value>El importe mostrado corresponde a las mascotas activas y al precio actual. Se verificará nuevamente al gestionar el pago.</value></data>
+  <data name="Error_ER050" xml:space="preserve"><value>El plan seleccionado ya no está disponible</value></data>
+  <data name="Error_ER051" xml:space="preserve"><value>No existen planes disponibles para contratar</value></data>
+  <data name="Error_ER052" xml:space="preserve"><value>No existen mascotas activas asociadas al cliente</value></data>
+  <data name="Error_ER053" xml:space="preserve"><value>Los datos de la contratación cambiaron. Volvé a consultar el plan.</value></data>
+  <data name="Planes_Accion" xml:space="preserve"><value>Contratación de plan pendiente</value></data>
+  <data name="Pago_EntornoPrueba" xml:space="preserve"><value>Entorno de prueba. No se realizan cobros reales.</value></data>
+  <data name="Pago_PrecioMascota" xml:space="preserve"><value>Precio mensual por mascota</value></data>
+  <data name="Pago_Medio" xml:space="preserve"><value>Medio de pago</value></data>
+  <data name="Pago_Seleccionar" xml:space="preserve"><value>Seleccionar medio de pago</value></data>
+  <data name="Pago_Credito" xml:space="preserve"><value>Tarjeta de crédito</value></data>
+  <data name="Pago_Debito" xml:space="preserve"><value>Tarjeta de débito</value></data>
+  <data name="Pago_Titular" xml:space="preserve"><value>Titular de la tarjeta</value></data>
+  <data name="Pago_NumeroTarjeta" xml:space="preserve"><value>Número de tarjeta</value></data>
+  <data name="Pago_Vencimiento" xml:space="preserve"><value>Vencimiento (MM/AAAA)</value></data>
+  <data name="Pago_Codigo" xml:space="preserve"><value>Código de seguridad</value></data>
+  <data name="Pago_Pagar" xml:space="preserve"><value>Pagar</value></data>
+  <data name="Pago_Confirmado" xml:space="preserve"><value>Pago aprobado</value></data>
+  <data name="Pago_Numero" xml:space="preserve"><value>Número de pago</value></data>
+  <data name="Pago_Plan" xml:space="preserve"><value>Plan</value></data>
+  <data name="Pago_Importe" xml:space="preserve"><value>Importe abonado</value></data>
+  <data name="Pago_Fecha" xml:space="preserve"><value>Fecha</value></data>
+  <data name="Pago_Continuar" xml:space="preserve"><value>Continuar</value></data>
+  <data name="Pago_Dummy" xml:space="preserve"><value>Completar datos de prueba</value></data>
+  <data name="Pago_ContratacionConfirmada" xml:space="preserve"><value>El plan se contrató correctamente.</value></data>
+  <data name="Pago_Accion" xml:space="preserve"><value>Gestión de pago</value></data>
+  <data name="Pago_Modulo" xml:space="preserve"><value>Pagos</value></data>
+  <data name="Planes_AccionConfirmada" xml:space="preserve"><value>Contratación de plan</value></data>
+  <data name="Error_ER054" xml:space="preserve"><value>La suscripción no admite un nuevo pago</value></data>
+  <data name="Error_ER055" xml:space="preserve"><value>No se pudo iniciar el procesamiento del pago</value></data>
+  <data name="Error_ER056" xml:space="preserve"><value>El pago está pendiente de confirmación. No vuelvas a pagar.</value></data>
+  <data name="Error_ER057" xml:space="preserve"><value>No se pudo registrar el pago. No vuelvas a pagar.</value></data>
+  <data name="Cobertura_Titulo" xml:space="preserve"><value>Consulta de cobertura</value></data>
+  <data name="Cobertura_Consultar" xml:space="preserve"><value>Consultar cobertura</value></data>
+  <data name="Cobertura_Estado" xml:space="preserve"><value>Estado de la suscripción</value></data>
+  <data name="Cobertura_Activa" xml:space="preserve"><value>Activa</value></data>
+  <data name="Cobertura_FechaAlta" xml:space="preserve"><value>Fecha de alta</value></data>
+  <data name="Cobertura_FechaVencimiento" xml:space="preserve"><value>Fecha de vencimiento</value></data>
+  <data name="Cobertura_Prestaciones" xml:space="preserve"><value>Prestaciones incluidas</value></data>
+  <data name="Cobertura_Prestacion" xml:space="preserve"><value>Prestación</value></data>
+  <data name="Error_ER058" xml:space="preserve"><value>No se pudo consultar el servicio de cobertura</value></data>
+  <data name="Reintegro_Titulo" xml:space="preserve"><value>Consulta de estado de reintegro</value></data>
+  <data name="Reintegro_Listado" xml:space="preserve"><value>Mis reintegros</value></data>
+  <data name="Reintegro_Numero" xml:space="preserve"><value>Número de reintegro</value></data>
+  <data name="Reintegro_Fecha" xml:space="preserve"><value>Fecha de solicitud</value></data>
+  <data name="Reintegro_Importe" xml:space="preserve"><value>Importe</value></data>
+  <data name="Reintegro_Estado" xml:space="preserve"><value>Estado</value></data>
+  <data name="Reintegro_Detalle" xml:space="preserve"><value>Detalle</value></data>
+  <data name="Reintegro_Consultar" xml:space="preserve"><value>Consultar</value></data>
+  <data name="Reintegro_Exportar" xml:space="preserve"><value>Exportar a XML</value></data>
+  <data name="Reintegro_Seleccionado" xml:space="preserve"><value>Detalle del reintegro</value></data>
+  <data name="Error_ER059" xml:space="preserve"><value>No se pudo consultar la información de reintegros</value></data>
+  <data name="Reintegro_Pendiente" xml:space="preserve"><value>Pendiente</value></data>
+  <data name="Reintegro_Aprobado" xml:space="preserve"><value>Aprobado</value></data>
+  <data name="Reintegro_Rechazado" xml:space="preserve"><value>Rechazado</value></data>
+  <data name="Mascota_RegistroTitulo" xml:space="preserve"><value>Registro de mascota</value></data>
+  <data name="Mascota_Registrar" xml:space="preserve"><value>Registrar mascota</value></data>
+  <data name="Mascota_Nombre" xml:space="preserve"><value>Nombre</value></data>
+  <data name="Mascota_Especie" xml:space="preserve"><value>Especie</value></data>
+  <data name="Mascota_Raza" xml:space="preserve"><value>Raza</value></data>
+  <data name="Mascota_FechaNacimiento" xml:space="preserve"><value>Fecha de nacimiento</value></data>
+  <data name="Mascota_BotonRegistrar" xml:space="preserve"><value>Registrar</value></data>
+  <data name="Mascota_Confirmacion" xml:space="preserve"><value>La mascota se registró correctamente.</value></data>
+  <data name="Error_ER060" xml:space="preserve"><value>No se pudo registrar la mascota</value></data>
+</root>

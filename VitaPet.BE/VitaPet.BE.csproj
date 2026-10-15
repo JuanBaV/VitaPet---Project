@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>VitaPet.BE</RootNamespace>
+    <AssemblyName>VitaPet.BE</AssemblyName>
+    <ProjectGuid>{3D5C7E20-FB72-4781-8BCC-EEDCD97ED874}</ProjectGuid>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,1419 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Saludo" xml:space="preserve">
+    <value>Hello, </value>
+  </data>
+  <data name="BotonSalir" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="ErrorCambioIdioma" xml:space="preserve">
+    <value>ER048 - Could not change the language. Please try again.</value>
+  </data>
+  <data name="UI_Inicio" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="UI_MiPerfil" xml:space="preserve">
+    <value>My profile</value>
+  </data>
+  <data name="UI_Planes" xml:space="preserve">
+    <value>Plans</value>
+  </data>
+  <data name="UI_Mascotas" xml:space="preserve">
+    <value>Pets</value>
+  </data>
+  <data name="UI_Turnos" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="UI_Reintegros" xml:space="preserve">
+    <value>Reimbursements</value>
+  </data>
+  <data name="UI_Empresas" xml:space="preserve">
+    <value>Companies</value>
+  </data>
+  <data name="UI_ClientesCorporativos" xml:space="preserve">
+    <value>Corporate customers</value>
+  </data>
+  <data name="UI_ClientesCorporativos2" xml:space="preserve">
+    <value>Corporate customers.</value>
+  </data>
+  <data name="UI_Bitacora" xml:space="preserve">
+    <value>Audit log</value>
+  </data>
+  <data name="UI_Usuarios" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="UI_BaseDeDatos" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="UI_BaseDeDatos2" xml:space="preserve">
+    <value>Database.</value>
+  </data>
+  <data name="UI_FuncionalidadesDisponibles" xml:space="preserve">
+    <value>Available features</value>
+  </data>
+  <data name="UI_FuncionalidadesDisponibles2" xml:space="preserve">
+    <value>Available features.</value>
+  </data>
+  <data name="UI_CerrarSesion" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="UI_CerrarSesion2" xml:space="preserve">
+    <value>Sign out.</value>
+  </data>
+  <data name="UI_DeseaCerrarSuSesionEnVitapet" xml:space="preserve">
+    <value>Would you like to sign out of VitaPet?</value>
+  </data>
+  <data name="UI_Cancelar" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UI_OpcionesDeCierreDeSesion" xml:space="preserve">
+    <value>Sign-out options</value>
+  </data>
+  <data name="UI_OpcionesDeCierreDeSesion2" xml:space="preserve">
+    <value>Sign-out options.</value>
+  </data>
+  <data name="UI_AdministracionDeRespaldosYRecuperacionExclusivaParaWebmaster" xml:space="preserve">
+    <value>Backup and recovery administration for the Webmaster.</value>
+  </data>
+  <data name="UI_Integridad" xml:space="preserve">
+    <value>Integrity</value>
+  </data>
+  <data name="UI_SeVerificanUsuarioYBitacoraSusDvhDvv" xml:space="preserve">
+    <value>Checks cover all database tables, their row and table checksums, and protected field references. Backups include the entire database.</value>
+  </data>
+  <data name="UI_VerificarIntegridad" xml:space="preserve">
+    <value>Check integrity</value>
+  </data>
+  <data name="UI_VerificarIntegridad2" xml:space="preserve">
+    <value>Check integrity.</value>
+  </data>
+  <data name="UI_NoSeDetectaronErroresDeIntegridad" xml:space="preserve">
+    <value>No integrity errors were found.</value>
+  </data>
+  <data name="UI_Tabla" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="UI_FilaClave" xml:space="preserve">
+    <value>Row (key)</value>
+  </data>
+  <data name="UI_FilaClave2" xml:space="preserve">
+    <value>Row (key).</value>
+  </data>
+  <data name="UI_Columna" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="UI_Detalle" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="UI_Backups" xml:space="preserve">
+    <value>Backups</value>
+  </data>
+  <data name="UI_LosBackupsSeVerificanAntesDeOfrecerlosPara" xml:space="preserve">
+    <value>Backups are verified before they become available for restoration. Valid recovery points cannot be created while data is corrupted.</value>
+  </data>
+  <data name="UI_CrearBackup" xml:space="preserve">
+    <value>Create backup</value>
+  </data>
+  <data name="UI_CrearBackup2" xml:space="preserve">
+    <value>Create backup.</value>
+  </data>
+  <data name="UI_RestaurarUnBackup" xml:space="preserve">
+    <value>Restore a backup</value>
+  </data>
+  <data name="UI_RestaurarUnBackup2" xml:space="preserve">
+    <value>Restore a backup.</value>
+  </data>
+  <data name="UI_BackupDisponible" xml:space="preserve">
+    <value>Available backup</value>
+  </data>
+  <data name="UI_BackupDisponible2" xml:space="preserve">
+    <value>Available backup.</value>
+  </data>
+  <data name="UI_RestaurarBackupSeleccionado" xml:space="preserve">
+    <value>Restore selected backup</value>
+  </data>
+  <data name="UI_RestaurarBackupSeleccionado2" xml:space="preserve">
+    <value>Restore selected backup.</value>
+  </data>
+  <data name="UI_ConfirmarOperacion" xml:space="preserve">
+    <value>Confirm operation</value>
+  </data>
+  <data name="UI_ConfirmarOperacion2" xml:space="preserve">
+    <value>Confirm operation.</value>
+  </data>
+  <data name="UI_Confirmar" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="UI_DuranteLaOperacionEspereLaRespuestaSinVolver" xml:space="preserve">
+    <value>Wait for the operation to finish before submitting the form again. You must sign in again after a restoration.</value>
+  </data>
+  <data name="UI_RecuperacionDelWebmaster" xml:space="preserve">
+    <value>Webmaster recovery</value>
+  </data>
+  <data name="UI_RecuperacionDelWebmaster2" xml:space="preserve">
+    <value>Webmaster recovery.</value>
+  </data>
+  <data name="UI_ConfigureUnaCuentaDeEmergenciaAntesDeNecesitarla" xml:space="preserve">
+    <value>Configure an emergency account before you need it. It only allows system restoration when no trusted Webmaster is available or integrity checks fail.</value>
+  </data>
+  <data name="UI_CorreoDeEmergencia" xml:space="preserve">
+    <value>Emergency email</value>
+  </data>
+  <data name="UI_CorreoDeEmergencia2" xml:space="preserve">
+    <value>Emergency email.</value>
+  </data>
+  <data name="UI_ContrasenaDeEmergencia" xml:space="preserve">
+    <value>Emergency password</value>
+  </data>
+  <data name="UI_ContrasenaDeEmergencia2" xml:space="preserve">
+    <value>Emergency password.</value>
+  </data>
+  <data name="UI_UseDe12A100CaracteresConMayuscula" xml:space="preserve">
+    <value>Use 12 to 100 characters, including an uppercase letter, a number, and a symbol. Keep these credentials in a safe place.</value>
+  </data>
+  <data name="UI_GuardarCuentaYRespaldoInicial" xml:space="preserve">
+    <value>Save account and initial backup</value>
+  </data>
+  <data name="UI_GuardarCuentaYRespaldoInicial2" xml:space="preserve">
+    <value>Save account and initial backup.</value>
+  </data>
+  <data name="UI_AlGuardarSeCerraranLasSesionesLaContrasena" xml:space="preserve">
+    <value>Saving will close all sessions. The password is never displayed or recovered from the file.</value>
+  </data>
+  <data name="UI_CrearRespaldoXmlDeContingencia" xml:space="preserve">
+    <value>Create emergency XML backup</value>
+  </data>
+  <data name="UI_CrearRespaldoXmlDeContingencia2" xml:space="preserve">
+    <value>Create emergency XML backup.</value>
+  </data>
+  <data name="UI_ConsultaDeBitacora" xml:space="preserve">
+    <value>Audit log</value>
+  </data>
+  <data name="UI_ConsultaDeBitacora2" xml:space="preserve">
+    <value>Audit log.</value>
+  </data>
+  <data name="UI_ConsultaLosEventosDelSistemaPorFechaY" xml:space="preserve">
+    <value>Search system events by date and severity. All records are shown when no filters are applied.</value>
+  </data>
+  <data name="UI_FechaDesde" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="UI_FechaDesde2" xml:space="preserve">
+    <value>Start date.</value>
+  </data>
+  <data name="UI_FechaHasta" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="UI_FechaHasta2" xml:space="preserve">
+    <value>End date.</value>
+  </data>
+  <data name="UI_Criticidad" xml:space="preserve">
+    <value>Severity</value>
+  </data>
+  <data name="UI_Todas" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="UI_Todos" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="UI_Informativa" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="UI_Informativa2" xml:space="preserve">
+    <value>Information.</value>
+  </data>
+  <data name="UI_Advertencia" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="UI_Advertencia2" xml:space="preserve">
+    <value>Warning.</value>
+  </data>
+  <data name="UI_Grave" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="UI_Critica" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+  <data name="UI_Critico" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+  <data name="UI_Consultar" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="UI_ExportarAXml" xml:space="preserve">
+    <value>Export to XML</value>
+  </data>
+  <data name="UI_ExportarAXml2" xml:space="preserve">
+    <value>Export to XML.</value>
+  </data>
+  <data name="UI_NoSeEncontraronEventosParaLaConsulta" xml:space="preserve">
+    <value>No events matched the search.</value>
+  </data>
+  <data name="UI_Evento" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="UI_Usuario" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="UI_SinUsuarioAsociado" xml:space="preserve">
+    <value>No associated user</value>
+  </data>
+  <data name="UI_SinUsuarioAsociado2" xml:space="preserve">
+    <value>No associated user.</value>
+  </data>
+  <data name="UI_FechaYHora" xml:space="preserve">
+    <value>Date and time</value>
+  </data>
+  <data name="UI_FechaYHora2" xml:space="preserve">
+    <value>Date and time.</value>
+  </data>
+  <data name="UI_Accion" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="UI_Modulo" xml:space="preserve">
+    <value>Module</value>
+  </data>
+  <data name="UI_Primera" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="UI_Ultima" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="UI_GestionDeUsuarios" xml:space="preserve">
+    <value>User management</value>
+  </data>
+  <data name="UI_GestionDeUsuarios2" xml:space="preserve">
+    <value>User management.</value>
+  </data>
+  <data name="UI_BuscaPorNombreYFiltraPorEstadoSelecciona" xml:space="preserve">
+    <value>Search by name and filter by status. Select a user to view available actions.</value>
+  </data>
+  <data name="UI_NombreDeUsuario" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="UI_NombreDeUsuario2" xml:space="preserve">
+    <value>User name.</value>
+  </data>
+  <data name="UI_BuscarPorNombreCompletoOParcial" xml:space="preserve">
+    <value>Search by full or partial name</value>
+  </data>
+  <data name="UI_BuscarPorNombreCompletoOParcial2" xml:space="preserve">
+    <value>Search by full or partial name.</value>
+  </data>
+  <data name="UI_Estado" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="UI_Activo" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="UI_Inactivo" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="UI_Bloqueado" xml:space="preserve">
+    <value>Blocked</value>
+  </data>
+  <data name="UI_Desbloqueado" xml:space="preserve">
+    <value>Unblocked</value>
+  </data>
+  <data name="UI_Desbloqueado2" xml:space="preserve">
+    <value>Unblocked.</value>
+  </data>
+  <data name="UI_Buscar" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="UI_NoSeEncontraronUsuariosParaLaConsulta" xml:space="preserve">
+    <value>No users matched the search.</value>
+  </data>
+  <data name="UI_Nombre" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="UI_CorreoElectronico" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="UI_CorreoElectronico2" xml:space="preserve">
+    <value>Email.</value>
+  </data>
+  <data name="UI_Rol" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="UI_Bloqueo" xml:space="preserve">
+    <value>Block status</value>
+  </data>
+  <data name="UI_Seleccionar" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="UI_Seleccionar2" xml:space="preserve">
+    <value>Select.</value>
+  </data>
+  <data name="UI_UsuarioSeleccionado" xml:space="preserve">
+    <value>Selected user</value>
+  </data>
+  <data name="UI_UsuarioSeleccionado2" xml:space="preserve">
+    <value>Selected user.</value>
+  </data>
+  <data name="UI_Modificar" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="UI_Bloquear" xml:space="preserve">
+    <value>Block</value>
+  </data>
+  <data name="UI_Desbloquear" xml:space="preserve">
+    <value>Unblock</value>
+  </data>
+  <data name="UI_Desbloquear2" xml:space="preserve">
+    <value>Unblock.</value>
+  </data>
+  <data name="UI_ModificacionDeUsuario" xml:space="preserve">
+    <value>Edit user</value>
+  </data>
+  <data name="UI_ModificacionDeUsuario2" xml:space="preserve">
+    <value>Edit user.</value>
+  </data>
+  <data name="UI_VolverACargarLosDatos" xml:space="preserve">
+    <value>Reload user details</value>
+  </data>
+  <data name="UI_VolverACargarLosDatos2" xml:space="preserve">
+    <value>Reload user details.</value>
+  </data>
+  <data name="UI_Identificador" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="UI_Identificador2" xml:space="preserve">
+    <value>ID.</value>
+  </data>
+  <data name="UI_Cliente" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="UI_Administrador" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="UI_Administrador2" xml:space="preserve">
+    <value>Administrator.</value>
+  </data>
+  <data name="UI_Webmaster" xml:space="preserve">
+    <value>Webmaster</value>
+  </data>
+  <data name="UI_Guardar" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="UI_IrAlInicio" xml:space="preserve">
+    <value>Go to home</value>
+  </data>
+  <data name="UI_IrAlInicio2" xml:space="preserve">
+    <value>Go to home.</value>
+  </data>
+  <data name="UI_ConsultaDeUsuario" xml:space="preserve">
+    <value>User details</value>
+  </data>
+  <data name="UI_ConsultaDeUsuario2" xml:space="preserve">
+    <value>User details.</value>
+  </data>
+  <data name="UI_Volver" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="UI_BloqueoDeUsuario" xml:space="preserve">
+    <value>Block user</value>
+  </data>
+  <data name="UI_BloqueoDeUsuario2" xml:space="preserve">
+    <value>Block user.</value>
+  </data>
+  <data name="UI_ConfirmasQueQueresBloquearAlSiguienteUsuario" xml:space="preserve">
+    <value>Are you sure you want to block this user?</value>
+  </data>
+  <data name="UI_ConfirmarBloqueo" xml:space="preserve">
+    <value>Confirm block</value>
+  </data>
+  <data name="UI_ConfirmarBloqueo2" xml:space="preserve">
+    <value>Confirm block.</value>
+  </data>
+  <data name="UI_DesbloqueoDeUsuario" xml:space="preserve">
+    <value>Unblock user</value>
+  </data>
+  <data name="UI_DesbloqueoDeUsuario2" xml:space="preserve">
+    <value>Unblock user.</value>
+  </data>
+  <data name="UI_ConfirmasQueQueresDesbloquearAlSiguienteUsuario" xml:space="preserve">
+    <value>Are you sure you want to unblock this user?</value>
+  </data>
+  <data name="UI_SeReiniciaranLosIntentosFallidosElEstadoActivo" xml:space="preserve">
+    <value>Failed attempts will be reset. The active or inactive status will be preserved.</value>
+  </data>
+  <data name="UI_ConfirmarDesbloqueo" xml:space="preserve">
+    <value>Confirm unblock</value>
+  </data>
+  <data name="UI_ConfirmarDesbloqueo2" xml:space="preserve">
+    <value>Confirm unblock.</value>
+  </data>
+  <data name="UI_AccesoDenegado" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="UI_AccesoDenegado2" xml:space="preserve">
+    <value>Access denied.</value>
+  </data>
+  <data name="UI_NoTenesPermisosParaAccederAEstaPagina" xml:space="preserve">
+    <value>Your current role does not have permission to access this page.</value>
+  </data>
+  <data name="UI_VolveAlInicioParaUtilizarLasFuncionesHabilitadas" xml:space="preserve">
+    <value>Return to home to use the features available to your role.</value>
+  </data>
+  <data name="UI_VolverAlInicio" xml:space="preserve">
+    <value>Back to home</value>
+  </data>
+  <data name="UI_VolverAlInicio2" xml:space="preserve">
+    <value>Back to home.</value>
+  </data>
+  <data name="UI_IniciarSesion" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="UI_IniciarSesion2" xml:space="preserve">
+    <value>Sign in.</value>
+  </data>
+  <data name="UI_IngresaAVitapetConTuCorreoElectronicoY" xml:space="preserve">
+    <value>Sign in to VitaPet with your email and password.</value>
+  </data>
+  <data name="UI_Errores" xml:space="preserve">
+    <value>Errors</value>
+  </data>
+  <data name="UI_VerMensajesDeErrorParaCapturas" xml:space="preserve">
+    <value>View error messages for screenshots</value>
+  </data>
+  <data name="UI_VerMensajesDeErrorParaCapturas2" xml:space="preserve">
+    <value>View error messages for screenshots.</value>
+  </data>
+  <data name="UI_RevisaLosSiguientesDatos" xml:space="preserve">
+    <value>Check the following details:</value>
+  </data>
+  <data name="UI_Contrasena" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="UI_DebeIngresarSuContrasena" xml:space="preserve">
+    <value>Enter your password.</value>
+  </data>
+  <data name="UI_Ingresar" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="UI_OpcionesDeAcceso" xml:space="preserve">
+    <value>Sign-in options</value>
+  </data>
+  <data name="UI_OpcionesDeAcceso2" xml:space="preserve">
+    <value>Sign-in options.</value>
+  </data>
+  <data name="UI_OlvideMiContrasena" xml:space="preserve">
+    <value>Forgot my password</value>
+  </data>
+  <data name="UI_OlvideMiContrasena2" xml:space="preserve">
+    <value>Forgot my password.</value>
+  </data>
+  <data name="UI_CrearUnaCuenta" xml:space="preserve">
+    <value>Create an account</value>
+  </data>
+  <data name="UI_CrearUnaCuenta2" xml:space="preserve">
+    <value>Create an account.</value>
+  </data>
+  <data name="UI_RecuperarContrasena" xml:space="preserve">
+    <value>Recover password</value>
+  </data>
+  <data name="UI_RecuperarContrasena2" xml:space="preserve">
+    <value>Recover password.</value>
+  </data>
+  <data name="UI_IngresaTuCorreoElectronicoYRespondeLaPregunta" xml:space="preserve">
+    <value>Enter your email and answer the security question.</value>
+  </data>
+  <data name="UI_CualEsSuFacultadFavorita" xml:space="preserve">
+    <value>What is your favorite university faculty?</value>
+  </data>
+  <data name="UI_CualEsSuFacultadFavorita2" xml:space="preserve">
+    <value>What is your favorite university faculty?.</value>
+  </data>
+  <data name="UI_DebeIngresarLaRespuesta" xml:space="preserve">
+    <value>Enter your answer.</value>
+  </data>
+  <data name="UI_Continuar" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="UI_OpcionesDeRecuperacion" xml:space="preserve">
+    <value>Recovery options</value>
+  </data>
+  <data name="UI_OpcionesDeRecuperacion2" xml:space="preserve">
+    <value>Recovery options.</value>
+  </data>
+  <data name="UI_VolverAlInicioDeSesion" xml:space="preserve">
+    <value>Back to sign in</value>
+  </data>
+  <data name="UI_VolverAlInicioDeSesion2" xml:space="preserve">
+    <value>Back to sign in.</value>
+  </data>
+  <data name="UI_RestablecerContrasena" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="UI_RestablecerContrasena2" xml:space="preserve">
+    <value>Reset password.</value>
+  </data>
+  <data name="UI_IngresaYConfirmaTuNuevaContrasena" xml:space="preserve">
+    <value>Enter and confirm your new password.</value>
+  </data>
+  <data name="UI_NuevaContrasena" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="UI_NuevaContrasena2" xml:space="preserve">
+    <value>New password.</value>
+  </data>
+  <data name="UI_DebeIngresarLaNuevaContrasena" xml:space="preserve">
+    <value>Enter your new password.</value>
+  </data>
+  <data name="UI_LaContrasenaDebeTenerAlMenos8Caracteres" xml:space="preserve">
+    <value>The password must contain at least 8 characters, an uppercase letter, a number, and a special character.</value>
+  </data>
+  <data name="UI_ConfirmarNuevaContrasena" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
+  <data name="UI_ConfirmarNuevaContrasena2" xml:space="preserve">
+    <value>Confirm new password.</value>
+  </data>
+  <data name="UI_DebeConfirmarLaNuevaContrasena" xml:space="preserve">
+    <value>Confirm your new password.</value>
+  </data>
+  <data name="UI_RecuperarAccesoWebmaster" xml:space="preserve">
+    <value>Recover Webmaster access</value>
+  </data>
+  <data name="UI_RecuperarAccesoWebmaster2" xml:space="preserve">
+    <value>Recover Webmaster access.</value>
+  </data>
+  <data name="UI_AccesoDeEmergenciaExclusivoParaRestaurarElSistema" xml:space="preserve">
+    <value>Emergency access is only for restoring the system. The session expires after 15 minutes.</value>
+  </data>
+  <data name="UI_AccederARecuperacion" xml:space="preserve">
+    <value>Access recovery</value>
+  </data>
+  <data name="UI_AccederARecuperacion2" xml:space="preserve">
+    <value>Access recovery.</value>
+  </data>
+  <data name="UI_PuntoDeRecuperacion" xml:space="preserve">
+    <value>Recovery point</value>
+  </data>
+  <data name="UI_PuntoDeRecuperacion2" xml:space="preserve">
+    <value>Recovery point.</value>
+  </data>
+  <data name="UI_RestaurarPuntoSeleccionado" xml:space="preserve">
+    <value>Restore selected recovery point</value>
+  </data>
+  <data name="UI_RestaurarPuntoSeleccionado2" xml:space="preserve">
+    <value>Restore selected recovery point.</value>
+  </data>
+  <data name="UI_ConfirmarRestauracion" xml:space="preserve">
+    <value>Confirm restoration</value>
+  </data>
+  <data name="UI_ConfirmarRestauracion2" xml:space="preserve">
+    <value>Confirm restoration.</value>
+  </data>
+  <data name="UI_CerrarRecuperacion" xml:space="preserve">
+    <value>Close recovery</value>
+  </data>
+  <data name="UI_CerrarRecuperacion2" xml:space="preserve">
+    <value>Close recovery.</value>
+  </data>
+  <data name="UI_DebeIngresarSuCorreoElectronico" xml:space="preserve">
+    <value>Enter your email.</value>
+  </data>
+  <data name="UI_ElFormatoDelCorreoElectronicoNoEsValido" xml:space="preserve">
+    <value>The email format is invalid.</value>
+  </data>
+  <data name="UI_ErroresDelSistema" xml:space="preserve">
+    <value>System errors</value>
+  </data>
+  <data name="UI_ErroresDelSistema2" xml:space="preserve">
+    <value>System errors.</value>
+  </data>
+  <data name="UI_ErroresDelSistemaVitapet" xml:space="preserve">
+    <value>System errors - VitaPet</value>
+  </data>
+  <data name="UI_ErroresDelSistemaVitapet2" xml:space="preserve">
+    <value>System errors - VitaPet.</value>
+  </data>
+  <data name="UI_CadaMensajeEstaSeparadoParaQuePuedasRecortarlo" xml:space="preserve">
+    <value>Each message is shown separately so you can capture it in a screenshot.</value>
+  </data>
+  <data name="UI_VolverAlLogin" xml:space="preserve">
+    <value>Back to sign in</value>
+  </data>
+  <data name="UI_VolverAlLogin2" xml:space="preserve">
+    <value>Back to sign in.</value>
+  </data>
+  <data name="UI_ElCatalogoDeErroresEstaVacio" xml:space="preserve">
+    <value>The error catalog is empty.</value>
+  </data>
+  <data name="UI_Er003FalloDeConexionNoSePudoCargar" xml:space="preserve">
+    <value>ER003 - Connection failed. The error catalog could not be loaded.</value>
+  </data>
+  <data name="UI_AccesoExclusivoParaWebmaster" xml:space="preserve">
+    <value>Access is restricted to the Webmaster.</value>
+  </data>
+  <data name="UI_LaConfirmacionVencioSeleccioneNuevamenteLaOperacion" xml:space="preserve">
+    <value>The confirmation expired. Select the operation again.</value>
+  </data>
+  <data name="UI_LaConfirmacionVencioSeleccioneNuevamenteElRespaldo" xml:space="preserve">
+    <value>The confirmation expired. Select the backup again.</value>
+  </data>
+  <data name="UI_OperacionInvalida" xml:space="preserve">
+    <value>Invalid operation.</value>
+  </data>
+  <data name="UI_FalloDeConfiguracion" xml:space="preserve">
+    <value>Configuration failed</value>
+  </data>
+  <data name="UI_FalloDeConfiguracion2" xml:space="preserve">
+    <value>Configuration failed.</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaOperacionDeRespaldo" xml:space="preserve">
+    <value>The backup or restoration operation could not be completed</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaOperacionDeRespaldo2" xml:space="preserve">
+    <value>The backup or restoration operation could not be completed.</value>
+  </data>
+  <data name="UI_NoSePudoVerificarElMaterialCriptograficoDe" xml:space="preserve">
+    <value>The emergency account's cryptographic data could not be verified.</value>
+  </data>
+  <data name="UI_ConfirmaLaCreacionDeUnBackupCompletoDe" xml:space="preserve">
+    <value>Do you confirm the creation of a full database backup?</value>
+  </data>
+  <data name="UI_FalloDeConexionOConfiguracionReintentaLaOperacion" xml:space="preserve">
+    <value>Connection or configuration failed. Please try again.</value>
+  </data>
+  <data name="UI_NoSePudoGenerarLaSalidaXml" xml:space="preserve">
+    <value>The XML output could not be generated.</value>
+  </data>
+  <data name="UI_NoSeEncontraronEventosParaLosFiltrosIndicados" xml:space="preserve">
+    <value>No events matched the selected filters.</value>
+  </data>
+  <data name="UI_InconsistenciaEnLaVerificacionDeIntegridad" xml:space="preserve">
+    <value>An inconsistency was found during the integrity check.</value>
+  </data>
+  <data name="UI_DatosInvalidosRevisaLasFechasYLaCriticidad" xml:space="preserve">
+    <value>Invalid data. Check the dates and severity.</value>
+  </data>
+  <data name="UI_LaFechaDesdeEsPosteriorALaFecha" xml:space="preserve">
+    <value>The start date is later than the end date.</value>
+  </data>
+  <data name="UI_NoSePudoLeerElHistoricoXmlDe" xml:space="preserve">
+    <value>The XML audit history could not be read.</value>
+  </data>
+  <data name="UI_NoSePudoRegistrarLaConsultaEnBitacora" xml:space="preserve">
+    <value>The search could not be recorded in the audit log.</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaConsultaDeBitacora" xml:space="preserve">
+    <value>The audit log search could not be completed.</value>
+  </data>
+  <data name="UI_RevisaElNombreYElEstadoDeLa" xml:space="preserve">
+    <value>Check the search name and status.</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaOperacion" xml:space="preserve">
+    <value>The operation could not be completed.</value>
+  </data>
+  <data name="UI_ElUsuarioSeleccionadoYaNoExiste" xml:space="preserve">
+    <value>The selected user no longer exists.</value>
+  </data>
+  <data name="UI_ElUsuarioSeleccionadoYaNoExisteOLa" xml:space="preserve">
+    <value>The selected user no longer exists or the selection expired. Select the user again in User management.</value>
+  </data>
+  <data name="UI_ElEstadoActualDelUsuarioNoPermiteRealizar" xml:space="preserve">
+    <value>The user's current status does not allow this operation.</value>
+  </data>
+  <data name="UI_LosDatosDelUsuarioCambiaronDesdeSuConsulta" xml:space="preserve">
+    <value>The user's data has changed since it was loaded. Reload the data before editing.</value>
+  </data>
+  <data name="UI_DatosInvalidosRevisaElNombreCorreoRolY" xml:space="preserve">
+    <value>Invalid data. Check the name, email, role, and status.</value>
+  </data>
+  <data name="UI_NoSePudoActualizarElUsuario" xml:space="preserve">
+    <value>The user could not be updated.</value>
+  </data>
+  <data name="UI_NoSePudoRegistrarLaOperacionEnBitacora" xml:space="preserve">
+    <value>The operation could not be recorded in the audit log.</value>
+  </data>
+  <data name="UI_ElUsuarioSeModificoCorrectamente" xml:space="preserve">
+    <value>The user was updated successfully.</value>
+  </data>
+  <data name="UI_ElUsuarioSeBloqueoCorrectamente" xml:space="preserve">
+    <value>The user was blocked successfully.</value>
+  </data>
+  <data name="UI_ElUsuarioSeDesbloqueoCorrectamente" xml:space="preserve">
+    <value>The user was unblocked successfully.</value>
+  </data>
+  <data name="UI_LaIntegridadFueVerificadaInicieSesionNuevamente" xml:space="preserve">
+    <value>Integrity was verified. Please sign in again.</value>
+  </data>
+  <data name="UI_RestauracionCompletada" xml:space="preserve">
+    <value>Restoration completed</value>
+  </data>
+  <data name="UI_RestauracionCompletada2" xml:space="preserve">
+    <value>Restoration completed.</value>
+  </data>
+  <data name="UI_NoSePudoAutorizarElAccesoReviseSus" xml:space="preserve">
+    <value>Access could not be authorized. Check your credentials or wait if there have been failed attempts.</value>
+  </data>
+  <data name="UI_NoHayRespaldosXmlValidosDisponibles" xml:space="preserve">
+    <value>No valid XML backups are available.</value>
+  </data>
+  <data name="UI_AccesoDeEmergenciaNoAutorizadoOVencido" xml:space="preserve">
+    <value>Emergency access is unauthorized or expired.</value>
+  </data>
+  <data name="UI_NoSePudoAccederAUnRespaldoValido" xml:space="preserve">
+    <value>A valid backup could not be accessed. Recovery was not completed.</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaRecuperacionEnSql" xml:space="preserve">
+    <value>Recovery in SQL Server could not be completed. Check its availability and try again.</value>
+  </data>
+  <data name="UI_LaOperacionNoPudoCompletarseSeleccioneUnRespaldo" xml:space="preserve">
+    <value>The operation could not be completed. Select a valid backup and try again.</value>
+  </data>
+  <data name="UI_LosDatosDeRecuperacionNoSonValidos" xml:space="preserve">
+    <value>The recovery data is invalid.</value>
+  </data>
+  <data name="UI_IngreseUnCorreoValidoYUnaContrasenaDe" xml:space="preserve">
+    <value>Enter a valid email and a password of 12 to 100 characters, including an uppercase letter, a number, and a symbol.</value>
+  </data>
+  <data name="UI_NoSePuedeConfigurarDuranteUnaRestauracion" xml:space="preserve">
+    <value>Configuration is unavailable during restoration.</value>
+  </data>
+  <data name="UI_RestauracionEnCurso" xml:space="preserve">
+    <value>Restoration is in progress.</value>
+  </data>
+  <data name="UI_SeRequiereUnWebmasterActivoYConfiableEn" xml:space="preserve">
+    <value>The backup must contain an active, trusted Webmaster.</value>
+  </data>
+  <data name="UI_RestauracionPendienteNoSePuedeCrearUnBackup" xml:space="preserve">
+    <value>Restoration is pending: a valid backup cannot be created.</value>
+  </data>
+  <data name="UI_IdentificadorDeBackupInvalido" xml:space="preserve">
+    <value>Invalid backup ID.</value>
+  </data>
+  <data name="UI_LoginExitoso" xml:space="preserve">
+    <value>Successful sign-in</value>
+  </data>
+  <data name="UI_LoginExitoso2" xml:space="preserve">
+    <value>Successful sign-in.</value>
+  </data>
+  <data name="UI_LoginFallido" xml:space="preserve">
+    <value>Failed sign-in</value>
+  </data>
+  <data name="UI_LoginFallido2" xml:space="preserve">
+    <value>Failed sign-in.</value>
+  </data>
+  <data name="UI_UsuarioBloqueado" xml:space="preserve">
+    <value>User blocked</value>
+  </data>
+  <data name="UI_UsuarioBloqueado2" xml:space="preserve">
+    <value>User blocked.</value>
+  </data>
+  <data name="UI_Autenticacion" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="UI_Autenticacion2" xml:space="preserve">
+    <value>Authentication.</value>
+  </data>
+  <data name="UI_Logout" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="UI_ContrasenaRestablecida" xml:space="preserve">
+    <value>Password reset</value>
+  </data>
+  <data name="UI_ContrasenaRestablecida2" xml:space="preserve">
+    <value>Password reset.</value>
+  </data>
+  <data name="UI_ConsultaDeUsuarios" xml:space="preserve">
+    <value>User search</value>
+  </data>
+  <data name="UI_ConsultaDeUsuarios2" xml:space="preserve">
+    <value>User search.</value>
+  </data>
+  <data name="UI_Verificado" xml:space="preserve">
+    <value>Verified</value>
+  </data>
+  <data name="UI_NoVerificado" xml:space="preserve">
+    <value>Not verified</value>
+  </data>
+  <data name="UI_NoVerificado2" xml:space="preserve">
+    <value>Not verified.</value>
+  </data>
+  <data name="UI_Idioma" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="UI_SeleccionarIdioma" xml:space="preserve">
+    <value>Select language</value>
+  </data>
+  <data name="UI_SeleccionarIdioma2" xml:space="preserve">
+    <value>Select language.</value>
+  </data>
+  <data name="UI_EsEspanol" xml:space="preserve">
+    <value>ES · Español</value>
+  </data>
+  <data name="UI_EsEspanol2" xml:space="preserve">
+    <value>ES · Español.</value>
+  </data>
+  <data name="UI_EnEnglish" xml:space="preserve">
+    <value>EN · English</value>
+  </data>
+  <data name="UI_EnEnglish2" xml:space="preserve">
+    <value>EN · English.</value>
+  </data>
+  <data name="UI_Vista" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="UI_CambiarA" xml:space="preserve">
+    <value>Switch to</value>
+  </data>
+  <data name="UI_Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="UI_Desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="UI_CorreoYaRegistrado" xml:space="preserve">
+    <value>Email already registered</value>
+  </data>
+  <data name="UI_CorreoYaRegistrado2" xml:space="preserve">
+    <value>Email already registered.</value>
+  </data>
+  <data name="UI_DatosIncompletos" xml:space="preserve">
+    <value>Incomplete data</value>
+  </data>
+  <data name="UI_DatosIncompletos2" xml:space="preserve">
+    <value>Incomplete data.</value>
+  </data>
+  <data name="UI_FalloDeConexion" xml:space="preserve">
+    <value>Connection failed</value>
+  </data>
+  <data name="UI_FalloDeConexion2" xml:space="preserve">
+    <value>Connection failed.</value>
+  </data>
+  <data name="UI_ErrorEnLaCargaDeLaListaDe" xml:space="preserve">
+    <value>The plan list could not be loaded</value>
+  </data>
+  <data name="UI_ErrorEnLaCargaDeLaListaDe2" xml:space="preserve">
+    <value>The plan list could not be loaded.</value>
+  </data>
+  <data name="UI_ElClientePoseeUnPlanIncompatibleConLa" xml:space="preserve">
+    <value>The customer has a plan incompatible with the requested subscription</value>
+  </data>
+  <data name="UI_ElClientePoseeUnPlanIncompatibleConLa2" xml:space="preserve">
+    <value>The customer has a plan incompatible with the requested subscription.</value>
+  </data>
+  <data name="UI_PagoRechazado" xml:space="preserve">
+    <value>Payment rejected</value>
+  </data>
+  <data name="UI_PagoRechazado2" xml:space="preserve">
+    <value>Payment rejected.</value>
+  </data>
+  <data name="UI_NoFuePosibleRegistrarLaContratacionDelPlan" xml:space="preserve">
+    <value>The plan subscription could not be recorded</value>
+  </data>
+  <data name="UI_NoFuePosibleRegistrarLaContratacionDelPlan2" xml:space="preserve">
+    <value>The plan subscription could not be recorded.</value>
+  </data>
+  <data name="UI_NoExisteUnaCoberturaAsociada" xml:space="preserve">
+    <value>No coverage is associated</value>
+  </data>
+  <data name="UI_NoExisteUnaCoberturaAsociada2" xml:space="preserve">
+    <value>No coverage is associated.</value>
+  </data>
+  <data name="UI_NoExistenReintegrosAsociados" xml:space="preserve">
+    <value>No reimbursements are associated</value>
+  </data>
+  <data name="UI_NoExistenReintegrosAsociados2" xml:space="preserve">
+    <value>No reimbursements are associated.</value>
+  </data>
+  <data name="UI_NoExistenMascotasRegistradas" xml:space="preserve">
+    <value>No pets are registered</value>
+  </data>
+  <data name="UI_NoExistenMascotasRegistradas2" xml:space="preserve">
+    <value>No pets are registered.</value>
+  </data>
+  <data name="UI_NoExistenDatosAsociados" xml:space="preserve">
+    <value>No associated data exists</value>
+  </data>
+  <data name="UI_NoExistenDatosAsociados2" xml:space="preserve">
+    <value>No associated data exists.</value>
+  </data>
+  <data name="UI_NoExistenTurnosDisponibles" xml:space="preserve">
+    <value>No appointments are available</value>
+  </data>
+  <data name="UI_NoExistenTurnosDisponibles2" xml:space="preserve">
+    <value>No appointments are available.</value>
+  </data>
+  <data name="UI_ElTurnoYaNoSeEncuentraDisponible" xml:space="preserve">
+    <value>The appointment is no longer available</value>
+  </data>
+  <data name="UI_ElTurnoYaNoSeEncuentraDisponible2" xml:space="preserve">
+    <value>The appointment is no longer available.</value>
+  </data>
+  <data name="UI_NoExistenTurnosAsociados" xml:space="preserve">
+    <value>No appointments are associated</value>
+  </data>
+  <data name="UI_NoExistenTurnosAsociados2" xml:space="preserve">
+    <value>No appointments are associated.</value>
+  </data>
+  <data name="UI_NoSePudoGenerarLaSalidaXml2" xml:space="preserve">
+    <value>The XML output could not be generated</value>
+  </data>
+  <data name="UI_NoExistenPlanesRegistradosEnElSistema" xml:space="preserve">
+    <value>No plans are registered in the system</value>
+  </data>
+  <data name="UI_NoExistenPlanesRegistradosEnElSistema2" xml:space="preserve">
+    <value>No plans are registered in the system.</value>
+  </data>
+  <data name="UI_NoExistenEmpresasRegistradas" xml:space="preserve">
+    <value>No companies are registered</value>
+  </data>
+  <data name="UI_NoExistenEmpresasRegistradas2" xml:space="preserve">
+    <value>No companies are registered.</value>
+  </data>
+  <data name="UI_CredencialesIncorrectas" xml:space="preserve">
+    <value>Incorrect credentials</value>
+  </data>
+  <data name="UI_CredencialesIncorrectas2" xml:space="preserve">
+    <value>Incorrect credentials.</value>
+  </data>
+  <data name="UI_NoExistenRegistrosDeBitacora" xml:space="preserve">
+    <value>No audit log records exist</value>
+  </data>
+  <data name="UI_NoExistenRegistrosDeBitacora2" xml:space="preserve">
+    <value>No audit log records exist.</value>
+  </data>
+  <data name="UI_NoExistenUsuariosRegistrados" xml:space="preserve">
+    <value>No users are registered</value>
+  </data>
+  <data name="UI_NoExistenUsuariosRegistrados2" xml:space="preserve">
+    <value>No users are registered.</value>
+  </data>
+  <data name="UI_ErrorAlObtenerLosArchivosDeRespaldo" xml:space="preserve">
+    <value>The backup files could not be retrieved</value>
+  </data>
+  <data name="UI_ErrorAlObtenerLosArchivosDeRespaldo2" xml:space="preserve">
+    <value>The backup files could not be retrieved.</value>
+  </data>
+  <data name="UI_NoExistenArchivosDeRespaldo" xml:space="preserve">
+    <value>No backup files exist</value>
+  </data>
+  <data name="UI_NoExistenArchivosDeRespaldo2" xml:space="preserve">
+    <value>No backup files exist.</value>
+  </data>
+  <data name="UI_InconsistenciaEnLaVerificacionDeIntegridad2" xml:space="preserve">
+    <value>An inconsistency was found during the integrity check</value>
+  </data>
+  <data name="UI_UsuarioInactivoOBloqueado" xml:space="preserve">
+    <value>User inactive or blocked</value>
+  </data>
+  <data name="UI_UsuarioInactivoOBloqueado2" xml:space="preserve">
+    <value>User inactive or blocked.</value>
+  </data>
+  <data name="UI_DatosInvalidos" xml:space="preserve">
+    <value>Invalid data</value>
+  </data>
+  <data name="UI_DatosInvalidos2" xml:space="preserve">
+    <value>Invalid data.</value>
+  </data>
+  <data name="UI_LaFechaDesdeEsPosteriorALaFecha2" xml:space="preserve">
+    <value>The start date is later than the end date</value>
+  </data>
+  <data name="UI_NoSeEncontraronUsuariosQueCoincidanConLos" xml:space="preserve">
+    <value>No users matched the selected filters.</value>
+  </data>
+  <data name="UI_LasContrasenasNoCoinciden" xml:space="preserve">
+    <value>Passwords do not match</value>
+  </data>
+  <data name="UI_LasContrasenasNoCoinciden2" xml:space="preserve">
+    <value>Passwords do not match.</value>
+  </data>
+  <data name="UI_NoPoseeAutorizacionParaRestablecerLaContrasena" xml:space="preserve">
+    <value>You are not authorized to reset the password</value>
+  </data>
+  <data name="UI_NoPoseeAutorizacionParaRestablecerLaContrasena2" xml:space="preserve">
+    <value>You are not authorized to reset the password.</value>
+  </data>
+  <data name="UI_NoSePudoLeerElHistoricoXmlDe2" xml:space="preserve">
+    <value>The XML audit history could not be read</value>
+  </data>
+  <data name="UI_NoSePudoCompletarLaConsultaDeBitacora2" xml:space="preserve">
+    <value>The audit log search could not be completed</value>
+  </data>
+  <data name="UI_NoSePudoRegistrarLaConsultaEnBitacora2" xml:space="preserve">
+    <value>The search could not be recorded in the audit log</value>
+  </data>
+  <data name="UI_NoSePudoCompletarElCierreDeSesion" xml:space="preserve">
+    <value>Sign-out could not be completed</value>
+  </data>
+  <data name="UI_NoSePudoCompletarElCierreDeSesion2" xml:space="preserve">
+    <value>Sign-out could not be completed.</value>
+  </data>
+  <data name="UI_CorreoElectronicoORespuestaIncorrectos" xml:space="preserve">
+    <value>Incorrect email or answer</value>
+  </data>
+  <data name="UI_CorreoElectronicoORespuestaIncorrectos2" xml:space="preserve">
+    <value>Incorrect email or answer.</value>
+  </data>
+  <data name="UI_ElUsuarioSeleccionadoYaNoExiste2" xml:space="preserve">
+    <value>The selected user no longer exists</value>
+  </data>
+  <data name="UI_ElEstadoActualDelUsuarioNoPermiteRealizar2" xml:space="preserve">
+    <value>The user's current status does not allow this operation</value>
+  </data>
+  <data name="UI_LosDatosDelUsuarioCambiaronDesdeSuConsulta2" xml:space="preserve">
+    <value>The user's data has changed since it was loaded</value>
+  </data>
+  <data name="UI_LosDatosDelUsuarioCambiaronDesdeSuConsulta3" xml:space="preserve">
+    <value>The user's data has changed since it was loaded.</value>
+  </data>
+  <data name="UI_NoSePudoActualizarElUsuario2" xml:space="preserve">
+    <value>The user could not be updated</value>
+  </data>
+  <data name="UI_NoSePudoRegistrarLaOperacionEnBitacora2" xml:space="preserve">
+    <value>The operation could not be recorded in the audit log</value>
+  </data>
+  <data name="UI_AcercaDe" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="UI_Contacto" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="UI_Inicio2" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
+  <data name="UI_DescripcionDeLaAplicacion" xml:space="preserve">
+    <value>Your application description page.</value>
+  </data>
+  <data name="UI_UtilizaEstaSeccionParaIncluirInformacionAdicional" xml:space="preserve">
+    <value>Use this area to provide additional information.</value>
+  </data>
+  <data name="UI_PaginaDeContacto" xml:space="preserve">
+    <value>Your contact page.</value>
+  </data>
+  <data name="UI_Soporte" xml:space="preserve">
+    <value>Support:</value>
+  </data>
+  <data name="UI_Marketing" xml:space="preserve">
+    <value>Marketing:</value>
+  </data>
+  <data name="UI_Telefono" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="UI_MasInformacion" xml:space="preserve">
+    <value>Learn more »</value>
+  </data>
+  <data name="UI_PrimerosPasos" xml:space="preserve">
+    <value>Getting started</value>
+  </data>
+  <data name="UI_ObtenerMasBibliotecas" xml:space="preserve">
+    <value>Get more libraries</value>
+  </data>
+  <data name="UI_AlojamientoWeb" xml:space="preserve">
+    <value>Web Hosting</value>
+  </data>
+  <data name="UI_PaginaMaestraMovil" xml:space="preserve">
+    <value>Mobile Master Page</value>
+  </data>
+  <data name="UI_AspNetEsUnFrameworkWebGratuitoPara" xml:space="preserve">
+    <value>ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</value>
+  </data>
+  <data name="UI_AspNetWebFormsPermiteCrearSitiosDinamicos" xml:space="preserve">
+    <value>ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model. A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.</value>
+  </data>
+  <data name="UI_NugetEsUnaExtensionGratuitaQueFacilitaAgregar" xml:space="preserve">
+    <value>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</value>
+  </data>
+  <data name="UI_PodesElegirUnProveedorDeAlojamientoWebCon" xml:space="preserve">
+    <value>You can easily find a web hosting company that offers the right mix of features and price for your applications.</value>
+  </data>
+  <data name="Error_ER001" xml:space="preserve">
+    <value>Email already registered</value>
+  </data>
+  <data name="Error_ER002" xml:space="preserve">
+    <value>Incomplete data</value>
+  </data>
+  <data name="Error_ER003" xml:space="preserve">
+    <value>Connection failed</value>
+  </data>
+  <data name="Error_ER004" xml:space="preserve">
+    <value>The plan list could not be loaded</value>
+  </data>
+  <data name="Error_ER005" xml:space="preserve">
+    <value>The customer has a plan incompatible with the requested subscription</value>
+  </data>
+  <data name="Error_ER006" xml:space="preserve">
+    <value>Payment rejected</value>
+  </data>
+  <data name="Error_ER007" xml:space="preserve">
+    <value>The plan subscription could not be recorded</value>
+  </data>
+  <data name="Error_ER008" xml:space="preserve">
+    <value>No coverage is associated</value>
+  </data>
+  <data name="Error_ER009" xml:space="preserve">
+    <value>No reimbursements are associated</value>
+  </data>
+  <data name="Error_ER010" xml:space="preserve">
+    <value>No pets are registered</value>
+  </data>
+  <data name="Error_ER011" xml:space="preserve">
+    <value>No associated data exists</value>
+  </data>
+  <data name="Error_ER012" xml:space="preserve">
+    <value>No appointments are available</value>
+  </data>
+  <data name="Error_ER013" xml:space="preserve">
+    <value>The appointment is no longer available</value>
+  </data>
+  <data name="Error_ER014" xml:space="preserve">
+    <value>No appointments are associated</value>
+  </data>
+  <data name="Error_ER015" xml:space="preserve">
+    <value>The XML output could not be generated</value>
+  </data>
+  <data name="Error_ER016" xml:space="preserve">
+    <value>No plans are registered in the system</value>
+  </data>
+  <data name="Error_ER017" xml:space="preserve">
+    <value>No companies are registered</value>
+  </data>
+  <data name="Error_ER018" xml:space="preserve">
+    <value>Incorrect credentials</value>
+  </data>
+  <data name="Error_ER019" xml:space="preserve">
+    <value>No audit log records exist</value>
+  </data>
+  <data name="Error_ER020" xml:space="preserve">
+    <value>No users are registered</value>
+  </data>
+  <data name="Error_ER021" xml:space="preserve">
+    <value>The backup files could not be retrieved</value>
+  </data>
+  <data name="Error_ER022" xml:space="preserve">
+    <value>No backup files exist</value>
+  </data>
+  <data name="Error_ER023" xml:space="preserve">
+    <value>An inconsistency was found during the integrity check</value>
+  </data>
+  <data name="Error_ER024" xml:space="preserve">
+    <value>User inactive or blocked</value>
+  </data>
+  <data name="Error_ER025" xml:space="preserve">
+    <value>Invalid data</value>
+  </data>
+  <data name="Error_ER026" xml:space="preserve">
+    <value>Incomplete data</value>
+  </data>
+  <data name="Error_ER027" xml:space="preserve">
+    <value>The start date is later than the end date</value>
+  </data>
+  <data name="Error_ER028" xml:space="preserve">
+    <value>No users matched the selected filters.</value>
+  </data>
+  <data name="Error_ER029" xml:space="preserve">
+    <value>Passwords do not match</value>
+  </data>
+  <data name="Error_ER030" xml:space="preserve">
+    <value>You are not authorized to reset the password</value>
+  </data>
+  <data name="Error_ER031" xml:space="preserve">
+    <value>The XML audit history could not be read</value>
+  </data>
+  <data name="Error_ER032" xml:space="preserve">
+    <value>The audit log search could not be completed</value>
+  </data>
+  <data name="Error_ER033" xml:space="preserve">
+    <value>The search could not be recorded in the audit log</value>
+  </data>
+  <data name="Error_ER034" xml:space="preserve">
+    <value>Sign-out could not be completed</value>
+  </data>
+  <data name="Error_ER035" xml:space="preserve">
+    <value>Incorrect email or answer</value>
+  </data>
+  <data name="Error_ER036" xml:space="preserve">
+    <value>The selected user no longer exists</value>
+  </data>
+  <data name="Error_ER037" xml:space="preserve">
+    <value>The user's current status does not allow this operation</value>
+  </data>
+  <data name="Error_ER038" xml:space="preserve">
+    <value>The user's data has changed since it was loaded</value>
+  </data>
+  <data name="Error_ER039" xml:space="preserve">
+    <value>The user could not be updated</value>
+  </data>
+  <data name="Error_ER040" xml:space="preserve">
+    <value>The operation could not be recorded in the audit log</value>
+  </data>
+  <data name="ResumenEventos" xml:space="preserve">
+    <value>{0} events. Page {1} of {2}. Up to {3} events per page.</value>
+  </data>
+  <data name="ResumenUsuarios" xml:space="preserve">
+    <value>{0} users. Page {1} of {2}.</value>
+  </data>
+  <data name="UsuarioNumero" xml:space="preserve">
+    <value>User {0}</value>
+  </data>
+  <data name="ConfirmarRestauracionBackup" xml:space="preserve">
+    <value>Backup {0} will be restored. All subsequent changes will be lost, operations will be blocked, and all sessions will be closed. Do you confirm the restoration?</value>
+  </data>
+  <data name="ConfirmarRestauracionPunto" xml:space="preserve">
+    <value>Recovery point {0} will be restored. Subsequent changes will be lost and all sessions will be closed. Do you confirm the restoration?</value>
+  </data>
+  <data name="BackupCreado" xml:space="preserve">
+    <value>Backup created and verified: {0}</value>
+  </data>
+  <data name="XmlCreado" xml:space="preserve">
+    <value>Emergency XML backup created: {0}</value>
+  </data>
+  <data name="EventoBackup" xml:space="preserve">
+    <value>Backup created {0}</value>
+  </data>
+  <data name="EventoRestore" xml:space="preserve">
+    <value>Restoration completed {0}</value>
+  </data>
+  <data name="OperacionUsuarioAuditoria" xml:space="preserve">
+    <value>{0} (user ID={1})</value>
+  </data>
+  <data name="IntegridadFormato" xml:space="preserve">
+    <value>The integrity format is uninitialized or unknown.</value>
+  </data>
+  <data name="IntegridadDvhDetalle" xml:space="preserve">
+    <value>The row checksum does not match; check the field details.</value>
+  </data>
+  <data name="IntegridadDvh" xml:space="preserve">
+    <value>The row checksum does not match.</value>
+  </data>
+  <data name="IntegridadControl" xml:space="preserve">
+    <value>Checksum missing.</value>
+  </data>
+  <data name="IntegridadDvv" xml:space="preserve">
+    <value>The table checksum does not match.</value>
+  </data>
+  <data name="IntegridadDvvAusente" xml:space="preserve">
+    <value>The table checksum is missing or inconsistent.</value>
+  </data>
+  <data name="IntegridadReferencia" xml:space="preserve">
+    <value>The protected reference is incomplete or has been altered.</value>
+  </data>
+  <data name="IntegridadCampoAusente" xml:space="preserve">
+    <value>A field or row has no trusted reference.</value>
+  </data>
+  <data name="IntegridadCampoAlterado" xml:space="preserve">
+    <value>The field or its protected reference was altered.</value>
+  </data>
+  <data name="IntegridadFilaAusente" xml:space="preserve">
+    <value>A row is missing or an unexpected reference was found.</value>
+  </data>
+  <data name="IntegridadTablaAusente" xml:space="preserve">
+    <value>Monitored tables are missing.</value>
+  </data>
+  <data name="IntegridadTablaSinCobertura" xml:space="preserve">
+    <value>A table has no integrity coverage.</value>
+  </data>
+  <data name="IntegridadRegistroAusente" xml:space="preserve">
+    <value>A record is missing.</value>
+  </data>
+  <data name="Error_ER046" xml:space="preserve">
+    <value>No backup was selected or the selected backup is no longer available</value>
+  </data>
+  <data name="Error_ER047" xml:space="preserve">
+    <value>The database restoration could not be completed</value>
+  </data>
+  <data name="Registro_Descripcion" xml:space="preserve"><value>Enter your details to create a VitaPet client account.</value></data>
+  <data name="Registro_Apellido" xml:space="preserve"><value>Last name</value></data>
+  <data name="Registro_RequisitosContrasena" xml:space="preserve"><value>Use 8 to 100 characters, including an uppercase letter, a number and a symbol.</value></data>
+  <data name="Registro_CuentaCreada" xml:space="preserve"><value>Your account was created successfully. You can now sign in.</value></data>
+  <data name="Error_ER049" xml:space="preserve"><value>The client account could not be registered</value></data>
+  <data name="Registro_Accion" xml:space="preserve"><value>Client registration</value></data>
+  <data name="Registro_Modulo" xml:space="preserve"><value>Clients</value></data>
+  <data name="Planes_Titulo" xml:space="preserve"><value>Available plans</value></data>
+  <data name="Planes_Descripcion" xml:space="preserve"><value>Description</value></data>
+  <data name="Planes_DescripcionPrecios" xml:space="preserve"><value>One plan for your account. Prices in USD per month and per active pet.</value></data>
+  <data name="Planes_PrecioMascota" xml:space="preserve"><value>Monthly price per pet</value></data>
+  <data name="Planes_Seleccionar" xml:space="preserve"><value>Select</value></data>
+  <data name="Planes_Corporativo" xml:space="preserve"><value>The Corporate plan is available by agreement and cannot be contracted individually.</value></data>
+  <data name="Planes_Contratar" xml:space="preserve"><value>Subscribe to plan</value></data>
+  <data name="Planes_MascotasActivas" xml:space="preserve"><value>Active pets on the account</value></data>
+  <data name="Planes_TotalMensual" xml:space="preserve"><value>Monthly total in USD</value></data>
+  <data name="Planes_Coberturas" xml:space="preserve"><value>Plan coverage</value></data>
+  <data name="Planes_CargandoCobertura" xml:space="preserve"><value>Loading coverage…</value></data>
+  <data name="Planes_CoberturaVacia" xml:space="preserve"><value>No detailed coverage is available for this plan.</value></data>
+  <data name="Planes_Prestacion" xml:space="preserve"><value>Service</value></data>
+  <data name="Planes_PendienteAviso" xml:space="preserve"><value>The subscription will remain pending until Payment management is completed.</value></data>
+  <data name="Planes_GestionPago" xml:space="preserve"><value>Payment management</value></data>
+  <data name="Planes_PagoFuturo" xml:space="preserve"><value>The subscription is pending. Payment management is not available yet; no payment was charged and the plan was not activated.</value></data>
+  <data name="Planes_RecalculoPago" xml:space="preserve"><value>The displayed amount reflects active pets and the current price. It will be verified again when payment is processed.</value></data>
+  <data name="Error_ER050" xml:space="preserve"><value>The selected plan is no longer available</value></data>
+  <data name="Error_ER051" xml:space="preserve"><value>No plans are available to subscribe to</value></data>
+  <data name="Error_ER052" xml:space="preserve"><value>No active pets are associated with this client</value></data>
+  <data name="Error_ER053" xml:space="preserve"><value>Subscription details have changed. Please view the plan again.</value></data>
+  <data name="Planes_Accion" xml:space="preserve"><value>Pending plan subscription</value></data>
+  <data name="Pago_EntornoPrueba" xml:space="preserve"><value>Test environment. No real charges are made.</value></data>
+  <data name="Pago_PrecioMascota" xml:space="preserve"><value>Monthly price per pet</value></data>
+  <data name="Pago_Medio" xml:space="preserve"><value>Payment method</value></data>
+  <data name="Pago_Seleccionar" xml:space="preserve"><value>Select payment method</value></data>
+  <data name="Pago_Credito" xml:space="preserve"><value>Credit card</value></data>
+  <data name="Pago_Debito" xml:space="preserve"><value>Debit card</value></data>
+  <data name="Pago_Titular" xml:space="preserve"><value>Cardholder</value></data>
+  <data name="Pago_NumeroTarjeta" xml:space="preserve"><value>Card number</value></data>
+  <data name="Pago_Vencimiento" xml:space="preserve"><value>Expiry (MM/YYYY)</value></data>
+  <data name="Pago_Codigo" xml:space="preserve"><value>Security code</value></data>
+  <data name="Pago_Pagar" xml:space="preserve"><value>Pay</value></data>
+  <data name="Pago_Confirmado" xml:space="preserve"><value>Payment approved</value></data>
+  <data name="Pago_Numero" xml:space="preserve"><value>Payment number</value></data>
+  <data name="Pago_Plan" xml:space="preserve"><value>Plan</value></data>
+  <data name="Pago_Importe" xml:space="preserve"><value>Amount paid</value></data>
+  <data name="Pago_Fecha" xml:space="preserve"><value>Date</value></data>
+  <data name="Pago_Continuar" xml:space="preserve"><value>Continue</value></data>
+  <data name="Pago_Dummy" xml:space="preserve"><value>Fill test data</value></data>
+  <data name="Pago_ContratacionConfirmada" xml:space="preserve"><value>Your plan subscription is now active.</value></data>
+  <data name="Pago_Accion" xml:space="preserve"><value>Payment management</value></data>
+  <data name="Pago_Modulo" xml:space="preserve"><value>Payments</value></data>
+  <data name="Planes_AccionConfirmada" xml:space="preserve"><value>Plan subscription</value></data>
+  <data name="Error_ER054" xml:space="preserve"><value>The subscription does not allow a new payment</value></data>
+  <data name="Error_ER055" xml:space="preserve"><value>Payment processing could not be started</value></data>
+  <data name="Error_ER056" xml:space="preserve"><value>Payment confirmation is pending. Do not pay again.</value></data>
+  <data name="Error_ER057" xml:space="preserve"><value>The payment could not be recorded. Do not pay again.</value></data>
+  <data name="Cobertura_Titulo" xml:space="preserve"><value>Coverage details</value></data>
+  <data name="Cobertura_Consultar" xml:space="preserve"><value>View coverage</value></data>
+  <data name="Cobertura_Estado" xml:space="preserve"><value>Subscription status</value></data>
+  <data name="Cobertura_Activa" xml:space="preserve"><value>Active</value></data>
+  <data name="Cobertura_FechaAlta" xml:space="preserve"><value>Start date</value></data>
+  <data name="Cobertura_FechaVencimiento" xml:space="preserve"><value>Expiry date</value></data>
+  <data name="Cobertura_Prestaciones" xml:space="preserve"><value>Included benefits</value></data>
+  <data name="Cobertura_Prestacion" xml:space="preserve"><value>Benefit</value></data>
+  <data name="Error_ER058" xml:space="preserve"><value>The coverage service could not be consulted</value></data>
+  <data name="Reintegro_Titulo" xml:space="preserve"><value>Reimbursement status</value></data>
+  <data name="Reintegro_Listado" xml:space="preserve"><value>My reimbursements</value></data>
+  <data name="Reintegro_Numero" xml:space="preserve"><value>Reimbursement number</value></data>
+  <data name="Reintegro_Fecha" xml:space="preserve"><value>Request date</value></data>
+  <data name="Reintegro_Importe" xml:space="preserve"><value>Amount</value></data>
+  <data name="Reintegro_Estado" xml:space="preserve"><value>Status</value></data>
+  <data name="Reintegro_Detalle" xml:space="preserve"><value>Details</value></data>
+  <data name="Reintegro_Consultar" xml:space="preserve"><value>View details</value></data>
+  <data name="Reintegro_Exportar" xml:space="preserve"><value>Export to XML</value></data>
+  <data name="Reintegro_Seleccionado" xml:space="preserve"><value>Reimbursement details</value></data>
+  <data name="Error_ER059" xml:space="preserve"><value>Reimbursement information could not be retrieved</value></data>
+  <data name="Reintegro_Pendiente" xml:space="preserve"><value>Pending</value></data>
+  <data name="Reintegro_Aprobado" xml:space="preserve"><value>Approved</value></data>
+  <data name="Reintegro_Rechazado" xml:space="preserve"><value>Rejected</value></data>
+  <data name="Mascota_RegistroTitulo" xml:space="preserve"><value>Pet registration</value></data>
+  <data name="Mascota_Registrar" xml:space="preserve"><value>Register pet</value></data>
+  <data name="Mascota_Nombre" xml:space="preserve"><value>Name</value></data>
+  <data name="Mascota_Especie" xml:space="preserve"><value>Species</value></data>
+  <data name="Mascota_Raza" xml:space="preserve"><value>Breed</value></data>
+  <data name="Mascota_FechaNacimiento" xml:space="preserve"><value>Date of birth</value></data>
+  <data name="Mascota_BotonRegistrar" xml:space="preserve"><value>Register</value></data>
+  <data name="Mascota_Confirmacion" xml:space="preserve"><value>The pet was registered successfully.</value></data>
+  <data name="Error_ER060" xml:space="preserve"><value>The pet could not be registered</value></data>
+</root>

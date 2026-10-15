@@ -1,0 +1,17 @@
+﻿<Solution>
+  <Project Path="Tests/VitaPet.Mascota.Tests/VitaPet.Mascota.Tests.csproj" />
+  <Project Path="Tests/VitaPet.Reintegros.Tests/VitaPet.Reintegros.Tests.csproj" />
+  <Project Path="Tests/VitaPet.Cobertura.Tests/VitaPet.Cobertura.Tests.csproj" />
+  <Project Path="Tests/VitaPet.Pago.Tests/VitaPet.Pago.Tests.csproj" />
+  <Project Path="Tests/VitaPet.Contingencia.Tests/VitaPet.Contingencia.Tests.csproj" />
+  <Project Path="Tests/VitaPet.Planes.Tests/VitaPet.Planes.Tests.csproj" />
+  <Project Path="Tests/VitaPet.RegistroCliente.Tests/VitaPet.RegistroCliente.Tests.csproj" />
+  <Project Path="Tests/VitaPet.Usuarios.Tests/VitaPet.Usuarios.Tests.csproj" />
+  <Project Path="VitaPet Rework/VitaPet Rework.csproj" Id="90cc5139-2baa-4485-bca7-db005b884631" />
+  <Project Path="VitaPet.BE/VitaPet.BE.csproj" />
+  <Project Path="VitaPet.BLL/VitaPet.BLL.csproj" />
+  <Project Path="VitaPet.DAL/VitaPet.DAL.csproj" />
+  <Project Path="VitaPet.Interfaces/VitaPet.Interfaces.csproj" />
+  <Project Path="VitaPet.SECURITY/VitaPet.SECURITY.csproj" />
+  <Project Path="VitaPet.SERVICES/VitaPet.SERVICES.csproj" />
+</Solution>

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>VitaPet.Interfaces</RootNamespace>
+    <AssemblyName>VitaPet.Interfaces</AssemblyName>
+    <ProjectGuid>{C3070DF9-2E32-495F-AEBC-D5460AB3DA54}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VitaPet.BE\VitaPet.BE.csproj" />
+  </ItemGroup>
+</Project>

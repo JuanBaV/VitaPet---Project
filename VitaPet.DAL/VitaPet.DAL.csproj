@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>VitaPet.DAL</RootNamespace>
+    <AssemblyName>VitaPet.DAL</AssemblyName>
+    <ProjectGuid>{6EBE60FF-1A04-49F2-82F0-BE27D0878D4A}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VitaPet.BE\VitaPet.BE.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Database\Migrations\*.sql">
+      <LogicalName>VitaPet.DAL.Migrations.%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

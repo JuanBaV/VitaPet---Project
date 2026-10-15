@@ -1,0 +1,128 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using VitaPet.BLL.Seguridad;
+using VitaPet.BE;
+using VitaPet.DAL;
+
+namespace VitaPet.BLL
+{
+    public class ErrorSistemaBLL
+    {
+        private readonly ErrorSistemaDAL _errorSistemaDAL;
+
+        public ErrorSistemaBLL()
+        {
+            _errorSistemaDAL = new ErrorSistemaDAL();
+        }
+
+        // Alta idempotente: nunca reemplaza mensajes existentes ni repara datos corruptos.
+        public void AsegurarErroresRestauracion()
+        {
+            var errores = new[]
+            {
+                new ErrorSistemaBE { Codigo = "ER046", Descripcion = "No se seleccionó un respaldo o el seleccionado ya no está disponible", Criticidad = "Advertencia" },
+                new ErrorSistemaBE { Codigo = "ER047", Descripcion = "No se pudo completar la restauración de la base de datos", Criticidad = "Crítico" }
+            };
+            AsegurarErrores(errores);
+        }
+
+        public void AsegurarErroresIdioma()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE { Codigo = "ER048", Descripcion = "No se pudo cambiar el idioma. Intentá nuevamente.", Criticidad = "Grave" }
+            });
+        }
+
+        public void AsegurarErroresRegistroCliente()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE { Codigo = "ER049", Descripcion = "No se pudo registrar el cliente", Criticidad = "Grave" }
+            });
+        }
+
+        public void AsegurarErroresPlanes()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE { Codigo="ER050",Descripcion="El plan seleccionado ya no está disponible",Criticidad="Advertencia" },
+                new ErrorSistemaBE { Codigo="ER051",Descripcion="No existen planes disponibles para contratar",Criticidad="Advertencia" },
+                new ErrorSistemaBE { Codigo="ER052",Descripcion="No existen mascotas activas asociadas al cliente",Criticidad="Advertencia" },
+                new ErrorSistemaBE { Codigo="ER053",Descripcion="Los datos de la contratación cambiaron. Volvé a consultar el plan.",Criticidad="Advertencia" }
+            });
+        }
+
+        public void AsegurarErroresPago()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE{Codigo="ER054",Descripcion="La suscripción no admite un nuevo pago",Criticidad="Advertencia"},
+                new ErrorSistemaBE{Codigo="ER055",Descripcion="No se pudo iniciar el procesamiento del pago",Criticidad="Grave"},
+                new ErrorSistemaBE{Codigo="ER056",Descripcion="El pago está pendiente de confirmación. No vuelvas a pagar.",Criticidad="Advertencia"},
+                new ErrorSistemaBE{Codigo="ER057",Descripcion="No se pudo registrar el pago. No vuelvas a pagar.",Criticidad="Grave"}
+            });
+        }
+        public void AsegurarErroresCobertura()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE{Codigo="ER058",Descripcion="No se pudo consultar el servicio de cobertura",Criticidad="Grave"}
+            });
+        }
+        public void AsegurarErroresReintegros()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE{Codigo="ER059",Descripcion="No se pudo consultar la información de reintegros",Criticidad="Grave"}
+            });
+        }
+        public void AsegurarErroresRegistroMascota()
+        {
+            AsegurarErrores(new[] {new ErrorSistemaBE {Codigo="ER060",Descripcion="No se pudo registrar la mascota",Criticidad="Grave"}});
+        }
+        private void AsegurarErrores(IEnumerable<ErrorSistemaBE> errores)
+        {
+            using (var operacion = new OperacionIntegridadDAL())
+            {
+                var seguridad = new SecurityManager();
+                seguridad.ExigirIntegridad();
+                var tablas = new IntegridadTablasDAL();
+                var integridad = new IntegridadTablasBLL();
+                bool cambios = false;
+                foreach (var error in errores)
+                {
+                    var existente = _errorSistemaDAL.ObtenerPorCodigo(error.Codigo);
+                    if (existente != null)
+                    {
+                        if (existente.Descripcion != error.Descripcion || existente.Criticidad != error.Criticidad)
+                            throw new InvalidOperationException("Código de error ocupado con otro mensaje: " + error.Codigo);
+                        continue;
+                    }
+                    _errorSistemaDAL.Agregar(error);
+                    var fila = tablas.Leer("ErrorSistema").Rows.Cast<DataRow>()
+                        .Single(r => (string)r["codigo"] == error.Codigo);
+                    tablas.GuardarDvh("ErrorSistema", error.Codigo, integridad.CalcularDVH(fila));
+                    cambios = true;
+                }
+                if (cambios)
+                {
+                    new DVVDAL().Guardar(new DVVBE {
+                        NombreTabla = "ErrorSistema",
+                        ValorDVV = new IntegridadBLL().CalcularDVV(tablas.Leer("ErrorSistema")
+                            .Rows.Cast<DataRow>().Select(r => (string)r["dvh"]))
+                    });
+                    new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
+                    seguridad.ExigirIntegridad();
+                }
+                operacion.Complete();
+            }
+        }
+
+        public List<ErrorSistemaBE> ObtenerTodos()
+        {
+            return _errorSistemaDAL.ObtenerTodos();
+        }
+
+        public ErrorSistemaBE ObtenerPorCodigo(string codigo)
+        {
+            return _errorSistemaDAL.ObtenerPorCodigo(codigo);
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>VitaPet.BLL</RootNamespace>
+    <AssemblyName>VitaPet.BLL</AssemblyName>
+    <ProjectGuid>{1F368206-C39A-44EC-9DAA-87837CDF4619}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VitaPet.BE\VitaPet.BE.csproj" />
+    <ProjectReference Include="..\VitaPet.DAL\VitaPet.DAL.csproj" />
+    <ProjectReference Include="..\VitaPet.Interfaces\VitaPet.Interfaces.csproj" />
+    <ProjectReference Include="..\VitaPet.SECURITY\VitaPet.SECURITY.csproj" />
+    <ProjectReference Include="..\VitaPet.SERVICES\VitaPet.SERVICES.csproj" />
+  </ItemGroup>
+</Project>

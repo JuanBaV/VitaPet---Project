@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0" DefaultTargets="Build">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{90CC5139-2BAA-4485-BCA7-DB005B884631}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VitaPet.GUI</RootNamespace>
+    <AssemblyName>VitaPet.GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44382</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Compile Include="Resources\VitaPetResourceProviderFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62346</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44382/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <ItemGroup>
+    <Reference Include="System.Transactions" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VitaPet.BE\VitaPet.BE.csproj">
+      <Name>VitaPet.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VitaPet.BLL\VitaPet.BLL.csproj">
+      <Name>VitaPet.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VitaPet.DAL\VitaPet.DAL.csproj">
+      <Name>VitaPet.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VitaPet.Interfaces\VitaPet.Interfaces.csproj">
+      <Name>VitaPet.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VitaPet.SECURITY\VitaPet.SECURITY.csproj">
+      <Name>VitaPet.SECURITY</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VitaPet.SERVICES\VitaPet.SERVICES.csproj">
+      <Name>VitaPet.SERVICES</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Content Include="AccesoDenegado.aspx" />
+    <Compile Include="AccesoDenegado.aspx.cs">
+      <DependentUpon>AccesoDenegado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccesoDenegado.aspx.designer.cs">
+      <DependentUpon>AccesoDenegado.aspx</DependentUpon>
+    </Compile>
+    <Content Include="App_Data\Backups\0a210807c6d0405faa10e189f4c3e062.bak" />
+    <Content Include="App_Data\Backups\5cd42a53034d4e9587d5cf4eed688ad1.bak" />
+    <Content Include="App_Data\Backups\91992a67ceb2470c9a71a32dc2732a7d.bak" />
+    <Content Include="App_Data\Backups\antes-integridad-v2-20260928155539.bak" />
+    <Content Include="App_Data\Backups\antes-procedimientos-simples-20260928164631.bak" />
+    <Content Include="App_Data\Backups\c29150c5c1d24e99ac76d823b184c001.bak" />
+    <Content Include="App_Data\Backups\contingencia_8c0ec96765a94fb581c5698c3e6a58b0.bak" />
+    <Content Include="App_Data\Backups\contingencia_f30b71e225f74e6db3b75693e106d4f0.bak" />
+    <Content Include="App_Data\Backups\d5df70d301e24111b0bc5754683492c0.bak" />
+    <Content Include="App_Data\Backups\dd6f2fe3b6454a9d83ebf115f10a71c1.bak" />
+    <Content Include="App_Data\Backups\f25c4775cab14dc6b428aeb02fca4d0d.bak" />
+    <Content Include="App_Data\Bitacora.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260911005519834_4e766374258e44c6ba74cc2479f9dd04.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260911005523880_74778d53b5604e2499e3b828513eda6b.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260911005913039_5db3fa2c7e8a40119f7b654d123a6986.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260911005917345_4abc091d642248baa14849027a91f8a4.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260922205700788_a6352d0b3f8c4e2690cd404d5931a152.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260922205700869_0de65a093ab84a00840097ab47d8dde4.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260923201543955_848bbb504b914a64b8ddfef23e7ef981.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260923201544070_0def48a2e94b4e078913a0fbc2e76c40.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260923214317066_27ef529d806e4e60a27e65cc946b41f2.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260923214317152_2e35c9bf6464498792a68173971bb9fd.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260923235217894_8582514e50f34541b940d2d98b8a57a8.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260923235222265_4466254ce8b14be49fba4de2a73e4bbc.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260925190912901_a7cae4580ccf4fad8aab2b19cf8cf568.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260925190916450_0c64fa3b7a20478fbcfe0ea27b803395.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260925215938003_77090882dd3a416a909d48f515b55e06.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260925215938586_bcdea1d6c8824320b3451d78a732f8dc.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260925215949027_400e72d203664c7e8e1169c1230253ae.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260925215952571_a540d566170e4912816c4f2304742831.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260928164934249_cee07423bf86462db527860e401f59ba.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20260928164938048_94bec5f491874561b50f15ac95030bdf.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261005134502588_077862a6ff044eac847bb7125df53935.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261005134502633_30a8630890eb4f4b80bc50e09392ff66.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261005134517837_80876975538b46f4a483abf43beaac21.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261005134517859_c8950faa486645b389ecb44dd06ff304.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261005135238102_407e4c2298024c70a3652f9052e5018a.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261005135241979_93585b2dc1e54d029665c08b61ba14b1.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261007172253307_94ec6f61775b4a659123b0b5b87df3fa.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261007172253437_067344bca1b34c15b9430757918813a3.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261007172657258_8c5a5bede2b849b2beba4d2c30bedc77.xml" />
+    <Content Include="App_Data\Recuperacion\auditoria\20261007172701200_e140e7be5d3b45a3b50ff04447f46ef6.xml" />
+    <Content Include="App_Data\Recuperacion\catalogo\0a210807c6d0405faa10e189f4c3e062.xml" />
+    <Content Include="App_Data\Recuperacion\catalogo\0a210807c6d0405faa10e189f4c3e062.xml.firma" />
+    <Content Include="App_Data\Recuperacion\catalogo\5cd42a53034d4e9587d5cf4eed688ad1.xml" />
+    <Content Include="App_Data\Recuperacion\catalogo\5cd42a53034d4e9587d5cf4eed688ad1.xml.firma" />
+    <Content Include="App_Data\Recuperacion\catalogo\91992a67ceb2470c9a71a32dc2732a7d.xml" />
+    <Content Include="App_Data\Recuperacion\catalogo\91992a67ceb2470c9a71a32dc2732a7d.xml.firma" />
+    <Content Include="App_Data\Recuperacion\catalogo\c29150c5c1d24e99ac76d823b184c001.xml" />
+    <Content Include="App_Data\Recuperacion\catalogo\c29150c5c1d24e99ac76d823b184c001.xml.firma" />
+    <Content Include="App_Data\Recuperacion\catalogo\d5df70d301e24111b0bc5754683492c0.xml" />
+    <Content Include="App_Data\Recuperacion\catalogo\d5df70d301e24111b0bc5754683492c0.xml.firma" />
+    <Content Include="App_Data\Recuperacion\catalogo\dd6f2fe3b6454a9d83ebf115f10a71c1.xml" />
+    <Content Include="App_Data\Recuperacion\catalogo\dd6f2fe3b6454a9d83ebf115f10a71c1.xml.firma" />
+    <Content Include="App_Data\Recuperacion\catalogo\f25c4775cab14dc6b428aeb02fca4d0d.xml" />
+    <Content Include="App_Data\Recuperacion\catalogo\f25c4775cab14dc6b428aeb02fca4d0d.xml.firma" />
+    <Content Include="App_Data\Recuperacion\integridad.key" />
+    <Content Include="App_Data\Recuperacion\sesiones.txt" />
+    <Content Include="App_Data\Recuperacion\webmaster\cuenta-anterior-d5ed7eb09cdb43c4994734fd24a19f95.bak" />
+    <Content Include="App_Data\Recuperacion\webmaster\cuenta.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-00a2592df06f4d32b816a2966aed73ef.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-02ed0ba930524f6db113dbcbe61f7b45.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-1fc756b5cefa45b8ac3ffd67f2aed2eb.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-48cfaf96cdbb465a98fb2ca023b162ff.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-4ce6c3d033024755ad34e879fefc094d.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-585319518f9346a09da57a251ea6555e.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-5c799a30be994dc093ed41ee5077c91e.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-6aff69592c5143598b0810f8ab2cb812.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-77ab228479574e6ca2d00ea23d4b15be.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-846aa98d263648b7a081741460627b0a.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-859d7d4cd0fd4d8b9cd229f248a6debb.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-92095709556445a2bd86ac1789d1bada.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-99cba531045f4c34a5d737a0cbc96d23.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-bea64832fa1a4f8184c2e69e4f89c779.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-c574d94da3b8443a863035113d9921db.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-d209fd0b1de04943bf328e5de45123b5.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-e054384d52b44830a4624f7f409a4e1c.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-e14c91c66feb4ed1880720a25e9234ec.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\evento-f5bc308632f24c3d8197df9bd8a82ef2.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\respaldo-05fe20eb23ad48b099b80c1851e7e891.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\respaldo-2405459a7f8743429e281e3d71f9cce3.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\respaldo-53fe5b072b5c413ab3bac079e5841cc2.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\respaldo-5564bac8f9724a1396e9bc396606631e.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\respaldo-a30dffe1d4c644a7ab6ed2d5aae47a66.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\respaldo-c71b25bc5dfd40eaa102c13ce0a018ce.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\respaldo-d195cb7c88f545689374d1b792c7bee2.xml" />
+    <Content Include="App_Data\Recuperacion\webmaster\respaldo-dad8181a9e124d9f94eba06e9630deea.xml" />
+    <Compile Include="Resources\Textos.Designer.cs">
+      <DependentUpon>Textos.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Content Include="Resources\Textos.en.resx" />
+    <Content Include="Resources\Textos.resx" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="BaseDatos.aspx" />
+    <Compile Include="BaseDatos.aspx.cs">
+      <DependentUpon>BaseDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaseDatos.aspx.designer.cs">
+      <DependentUpon>BaseDatos.aspx</DependentUpon>
+    </Compile>
+    <Content Include="BloquearUsuario.aspx" />
+    <Compile Include="BloquearUsuario.aspx.cs">
+      <DependentUpon>BloquearUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BloquearUsuario.aspx.designer.cs">
+      <DependentUpon>BloquearUsuario.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Bundle.config" />
+    <Content Include="CatalogoErrores.aspx" />
+    <Compile Include="CatalogoErrores.aspx.cs">
+      <DependentUpon>CatalogoErrores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoErrores.aspx.designer.cs">
+      <DependentUpon>CatalogoErrores.aspx</DependentUpon>
+    </Compile>
+    <Content Include="ConsultaBitacora.aspx" />
+    <Compile Include="ConsultaBitacora.aspx.cs">
+      <DependentUpon>ConsultaBitacora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultaBitacora.aspx.designer.cs">
+      <DependentUpon>ConsultaBitacora.aspx</DependentUpon>
+    </Compile>
+    <Content Include="ConsultarUsuario.aspx" />
+    <Compile Include="ConsultarUsuario.aspx.cs">
+      <DependentUpon>ConsultarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarUsuario.aspx.designer.cs">
+      <DependentUpon>ConsultarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Contact.aspx" />
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\Idioma.css" />
+    <Content Include="Content\Images\VitaPetFavicon.png" />
+    <Content Include="Content\Images\VitaPetLogo.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="ContratarPlan.aspx" />
+    <Compile Include="ContratarPlan.aspx.cs">
+      <DependentUpon>ContratarPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContratarPlan.aspx.designer.cs">
+      <DependentUpon>ContratarPlan.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Controls\Header.ascx" />
+    <Compile Include="Controls\Header.ascx.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Header.ascx.designer.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+    </Compile>
+    <Content Include="Controls\ListadoPlanes.ascx" />
+    <Compile Include="Controls\ListadoPlanes.ascx.cs">
+      <DependentUpon>ListadoPlanes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ListadoPlanes.ascx.designer.cs">
+      <DependentUpon>ListadoPlanes.ascx</DependentUpon>
+    </Compile>
+    <Content Include="Controls\ValidacionEmail.ascx" />
+    <Compile Include="Controls\ValidacionEmail.ascx.cs">
+      <DependentUpon>ValidacionEmail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ValidacionEmail.ascx.designer.cs">
+      <DependentUpon>ValidacionEmail.ascx</DependentUpon>
+    </Compile>
+    <Content Include="Default.aspx" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Content Include="DesbloquearUsuario.aspx" />
+    <Compile Include="DesbloquearUsuario.aspx.cs">
+      <DependentUpon>DesbloquearUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesbloquearUsuario.aspx.designer.cs">
+      <DependentUpon>DesbloquearUsuario.aspx</DependentUpon>
+    </Compile>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="GestionPago.aspx" />
+    <Compile Include="GestionPago.aspx.cs">
+      <DependentUpon>GestionPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionPago.aspx.designer.cs">
+      <DependentUpon>GestionPago.aspx</DependentUpon>
+    </Compile>
+    <Content Include="GestionUsuarios.aspx" />
+    <Compile Include="GestionUsuarios.aspx.cs">
+      <DependentUpon>GestionUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionUsuarios.aspx.designer.cs">
+      <DependentUpon>GestionUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Global.asax" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Content Include="Cliente.aspx" />
+    <Compile Include="Cliente.aspx.cs">
+      <DependentUpon>Cliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente.aspx.designer.cs">
+      <DependentUpon>Cliente.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Home.aspx" />
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Login.aspx" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Logout.aspx" />
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Content Include="ModificarUsuario.aspx" />
+    <Compile Include="ModificarUsuario.aspx.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarUsuario.aspx.designer.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Content Include="OlvideContrasena.aspx" />
+    <Compile Include="OlvideContrasena.aspx.cs">
+      <DependentUpon>OlvideContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OlvideContrasena.aspx.designer.cs">
+      <DependentUpon>OlvideContrasena.aspx</DependentUpon>
+    </Compile>
+    <Content Include="packages.config" />
+    <Content Include="Planes.aspx" />
+    <Compile Include="Planes.aspx.cs">
+      <DependentUpon>Planes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Planes.aspx.designer.cs">
+      <DependentUpon>Planes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\DateTimePicker.cs" />
+    <Compile Include="Presentacion\OperacionUsuarioPage.cs" />
+    <Compile Include="Presentacion\PaginaBase.cs" />
+    <Compile Include="Presentacion\PaginaClientePlanes.cs" />
+    <Compile Include="Presentacion\PaginaConIdioma.cs" />
+    <Compile Include="Presentacion\TextosUI.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="RecuperacionWebMaster.aspx" />
+    <Compile Include="RecuperacionWebMaster.aspx.cs">
+      <DependentUpon>RecuperacionWebMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperacionWebMaster.aspx.designer.cs">
+      <DependentUpon>RecuperacionWebMaster.aspx</DependentUpon>
+    </Compile>
+    <Content Include="RegistroCliente.aspx" />
+    <Compile Include="RegistroCliente.aspx.cs">
+      <DependentUpon>RegistroCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroCliente.aspx.designer.cs">
+      <DependentUpon>RegistroCliente.aspx</DependentUpon>
+    </Compile>
+    <Content Include="RestablecerContrasena.aspx" />
+    <Compile Include="RestablecerContrasena.aspx.cs">
+      <DependentUpon>RestablecerContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RestablecerContrasena.aspx.designer.cs">
+      <DependentUpon>RestablecerContrasena.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.0.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.slim.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Site.Master" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Content Include="Site.Mobile.Master" />
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Content Include="ViewSwitcher.ascx" />
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config" />
+    <Content Include="Web.Release.config" />
+    <Content Include="RegistroMascota.aspx" />
+    <Compile Include="RegistroMascota.aspx.cs"><DependentUpon>RegistroMascota.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="RegistroMascota.aspx.designer.cs"><DependentUpon>RegistroMascota.aspx</DependentUpon></Compile>
+    <Content Include="Mascotas.aspx" />
+    <Compile Include="Mascotas.aspx.cs"><DependentUpon>Mascotas.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="Mascotas.aspx.designer.cs"><DependentUpon>Mascotas.aspx</DependentUpon></Compile>
+    <Content Include="Reintegros.aspx" />
+    <Compile Include="Reintegros.aspx.cs"><DependentUpon>Reintegros.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="Reintegros.aspx.designer.cs"><DependentUpon>Reintegros.aspx</DependentUpon></Compile>
+    <Content Include="ConsultaCobertura.aspx" />
+    <Compile Include="ConsultaCobertura.aspx.cs">
+      <DependentUpon>ConsultaCobertura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultaCobertura.aspx.designer.cs">
+      <DependentUpon>ConsultaCobertura.aspx</DependentUpon>
+    </Compile>
+    <Content Include="WebServices\CoberturaService.asmx" />
+    <Compile Include="WebServices\CoberturaService.asmx.cs">
+      <DependentUpon>CoberturaService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Textos.resx">
+      <LogicalName>VitaPet.GUI.Resources.Textos.resources</LogicalName>
+      <LastGenOutput>Textos.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>VitaPet.GUI.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Textos.en.resx">
+      <LogicalName>VitaPet.GUI.Resources.Textos.en.resources</LogicalName>
+      <DependentUpon>Textos.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.7.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Target Name="GenerarRecursosTipados" BeforeTargets="CoreCompile" Inputs="$(MSBuildProjectDirectory)\Resources\Textos.resx" Outputs="$(MSBuildProjectDirectory)\Resources\Textos.Designer.cs">
+    <GenerateResource Sources="Resources\Textos.resx" SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)" OutputResources="$(IntermediateOutputPath)VitaPet.GUI.Resources.Textos.resources" StronglyTypedLanguage="C#" StronglyTypedNamespace="VitaPet.GUI.Resources" StronglyTypedManifestPrefix="VitaPet.GUI.Resources" StronglyTypedClassName="Textos" StronglyTypedFileName="Resources\Textos.Designer.cs" PublicClass="true" />
+  </Target>
+</Project>

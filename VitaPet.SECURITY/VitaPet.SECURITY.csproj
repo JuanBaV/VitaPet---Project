@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>VitaPet.SECURITY</RootNamespace>
+    <AssemblyName>VitaPet.SECURITY</AssemblyName>
+    <ProjectGuid>{9BE41C1D-04D1-430E-A46A-6ACF5DD28201}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Security" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VitaPet.BE\VitaPet.BE.csproj" />
+    <ProjectReference Include="..\VitaPet.DAL\VitaPet.DAL.csproj" />
+  </ItemGroup>
+</Project>
