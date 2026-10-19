@@ -17,6 +17,7 @@ namespace VitaPet.BE
         public byte IntentosFallidos { get; set; }
         public bool Bloqueado { get; set; }
         public string Idioma { get; set; }
+        public bool RequiereRestablecerContrasena { get; set; }
         public string DVH { get; set; }
 
 

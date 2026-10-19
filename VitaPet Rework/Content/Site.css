@@ -1,4 +1,4 @@
-html {
+﻿html {
     min-height: 100%;
 }
 
@@ -528,3 +528,36 @@ textarea {
 .empresa-grilla td { overflow-wrap:anywhere; min-width:100px; max-width:250px; white-space:normal; }
 .empresa-grilla .empresa-seleccionada > td { background:#e4f3ef; }
 @media(max-width:600px) { .empresa-campos { grid-template-columns:minmax(0,1fr); } .empresa-acciones .btn { width:100%; } }
+
+/* CU-005-005: selección y registro corporativo. */
+.corporativo-condiciones { display:block; margin:0 0 1.5rem; line-height:1.7; }
+.corporativo-correo { margin:0 0 1.75rem; max-width:38rem; }
+.corporativo-correo .form-group { margin-bottom:1rem; }
+.corporativo-form .empresa-acciones { margin-bottom:1.5rem; }
+.corporativo-form .empresa-resumen { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.5rem; margin:0 0 1.5rem; }
+.corporativo-form .empresa-resumen dd { margin:.25rem 0 0; }
+@media (max-width:600px) { .corporativo-form .empresa-resumen { grid-template-columns:1fr; gap:1rem; } }
+
+/* Administración de planes: editor compartido de alta y modificación. */
+.plan-admin-card { max-width: 1180px; }
+.plan-admin-subtitulo { margin: 26px 0 14px; font-size: 1.3rem; }
+.plan-admin-tabla { margin: 16px 0 22px; }
+.plan-admin-tabla td, .plan-admin-tabla th { padding: 14px 12px !important; vertical-align: middle !important; }
+.plan-admin-editor { min-width: 670px; }
+.plan-admin-editor td:nth-child(1) { width: 26%; }
+.plan-admin-editor td:nth-child(2) { width: 43%; }
+.plan-admin-editor td:nth-child(3) { width: 20%; }
+.plan-admin-editor .form-control { max-width: none; width: 100%; margin: 0; }
+.plan-admin-agregar { margin: 8px 0 24px; }
+.plan-admin-card .empresa-acciones { gap: 12px; margin-top: 24px; }
+.plan-admin-card .empresa-resumen { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px 28px; margin: 0 0 30px; }
+.plan-admin-card .empresa-resumen dd { margin: 7px 0 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+@media (max-width: 600px) { .plan-admin-card { padding: 22px 18px; } .plan-admin-card .empresa-acciones { flex-wrap: wrap; } }
+@media (max-width: 600px) {
+    .plan-admin-card .empresa-resumen { grid-template-columns: minmax(0,1fr); gap: 18px; }
+    .navbar-inverse .container { flex-direction: column; align-items: stretch; }
+    .navbar-header { align-self: flex-start; }
+    .navbar-session { max-width: none; width: 100%; margin-left: 0; justify-content: flex-start; }
+    .navbar-role-menu { width: 100%; justify-content: flex-start; }
+    .navbar-role-links { flex-wrap: wrap; }
+}

@@ -17,6 +17,7 @@
         protected global::System.Web.UI.WebControls.HyperLink lnkGestionEmpresas;
         protected global::System.Web.UI.WebControls.HyperLink lnkAltaEmpresa;
         protected global::System.Web.UI.WebControls.HyperLink lnkGestionPlanes;
+        protected global::System.Web.UI.WebControls.HyperLink lnkAltaPlan;
         protected global::System.Web.UI.WebControls.HyperLink lnkClienteCorporativo;
         protected global::System.Web.UI.WebControls.Panel pnlMenuWebmaster;
         protected global::System.Web.UI.WebControls.HyperLink lnkBitacora;

@@ -94,6 +94,7 @@ namespace VitaPet.BLL
             usuario.IntentosFallidos = vigente.IntentosFallidos;
             usuario.Bloqueado = vigente.Bloqueado;
             usuario.Estado = vigente.Estado;
+            usuario.RequiereRestablecerContrasena = vigente.RequiereRestablecerContrasena;
 
             UsuarioStateBLL estadoUsuario =
                 new UsuarioStateBLL(usuario);
@@ -119,6 +120,7 @@ namespace VitaPet.BLL
             usuario.IntentosFallidos = vigente.IntentosFallidos;
             usuario.Bloqueado = vigente.Bloqueado;
             usuario.Estado = vigente.Estado;
+            usuario.RequiereRestablecerContrasena = vigente.RequiereRestablecerContrasena;
 
             UsuarioStateBLL estadoUsuario =
                 new UsuarioStateBLL(usuario);

@@ -15,6 +15,13 @@ namespace VitaPet.DAL
 
     public partial class UsuarioDAL
     {
+        private static bool LeerRestablecimiento(SqlDataReader lector)
+        {
+            for(int i=0;i<lector.FieldCount;i++)
+                if(lector.GetName(i)=="requiereRestablecerContrasena") return lector.GetBoolean(i);
+            if(ConexionDAL.EnBaseTemporal) return false; // Respaldos anteriores a la migración 024.
+            throw new InvalidOperationException("ER023: falta el indicador de restablecimiento en Usuario.");
+        }
         private readonly ConexionDAL _conexionDAL;
 
         public UsuarioDAL()
@@ -76,6 +83,7 @@ namespace VitaPet.DAL
                             IntentosFallidos = Convert.ToByte(lector["intentosFallidos"]),
                             Bloqueado = Convert.ToBoolean(lector["bloqueado"]),
                             Idioma = Convert.ToString(lector["idioma"]),
+                            RequiereRestablecerContrasena = LeerRestablecimiento(lector),
                             DVH = Convert.ToString(lector["dvh"])
                         });
                     }
@@ -114,6 +122,7 @@ namespace VitaPet.DAL
                         IntentosFallidos = Convert.ToByte(lector["intentosFallidos"]),
                         Bloqueado = Convert.ToBoolean(lector["bloqueado"]),
                         Idioma = Convert.ToString(lector["idioma"]),
+                        RequiereRestablecerContrasena = LeerRestablecimiento(lector),
                         DVH = Convert.ToString(lector["dvh"])
                     };
 

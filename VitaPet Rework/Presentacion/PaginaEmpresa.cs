@@ -64,6 +64,9 @@ namespace VitaPet.GUI.Presentacion
         {
             switch(codigo)
             {
+                case "ER072":return "La empresa seleccionada se encuentra inactiva";
+                case "ER073":return "No se encuentra disponible el plan Corporativo";
+                case "ER074":return "No se pudo consultar el correo o el plan Corporativo";
                 case "ER067":return "No se pudo consultar la información de empresas";
                 case "ER068":return "El CUIT ya se encuentra registrado para otra empresa";
                 case "ER069":return "No se pudo registrar la empresa";

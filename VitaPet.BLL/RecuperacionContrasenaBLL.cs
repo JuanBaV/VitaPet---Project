@@ -92,6 +92,8 @@ namespace VitaPet.BLL
             usuario.Contrasena =
                 _seguridad.CalcularHash(nuevaContrasena);
 
+            usuario.RequiereRestablecerContrasena = false;
+
             usuario.DVH =
                 _seguridad.CalcularDVH(usuario);
 
@@ -114,10 +116,15 @@ namespace VitaPet.BLL
                 usuario.DVH,
                 dvv);
 
+            // Elimina también la referencia de la marca verdadera; falso vuelve
+            // a su representación canónica compatible con las cuentas anteriores.
+            new ReferenciaIntegridadDAL().EliminarFila("Usuario",idUsuario.ToString(System.Globalization.CultureInfo.InvariantCulture));
             new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
             _usuarioBLL.DesbloquearUsuario(idUsuario);
 
                 new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
+                _seguridad.RegistrarBitacora(new BitacoraBE { IdUsuario=idUsuario, Fecha=DateTime.Now,
+                    Accion="Contraseña restablecida", Modulo="Autenticación", Criticidad="Informativa" });
                 operacion.Complete();
             }
         }

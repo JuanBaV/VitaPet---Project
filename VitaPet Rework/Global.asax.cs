@@ -29,6 +29,8 @@ namespace VitaPet.GUI
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresGestionMascotas();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresTurnos();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresEmpresas();
+                        new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresClienteCorporativo();
+                        new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresAdministracionPlanes();
                         new VitaPet.BLL.SolicitudTurnoBLL().AsegurarAgendaPrueba();
                         new VitaPet.BLL.ContratacionPlanBLL().AsegurarCatalogo();
                     }
@@ -70,7 +72,11 @@ namespace VitaPet.GUI
                     string.Equals(pagina, "BloquearUsuario.aspx", StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina, "DesbloquearUsuario.aspx", StringComparison.OrdinalIgnoreCase)) return;
                 // Estas páginas autorizan antes de los eventos y muestran errores del CU.
-                if (string.Equals(pagina,"Planes.aspx",StringComparison.OrdinalIgnoreCase) ||
+                if (string.Equals(pagina,"AltaPlan.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"GestionPlanes.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"ConsultaPlan.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"ModificarPlan.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"Planes.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ContratarPlan.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"GestionPago.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ConsultaCobertura.aspx",StringComparison.OrdinalIgnoreCase) ||
@@ -83,6 +89,7 @@ namespace VitaPet.GUI
                     string.Equals(pagina,"DatosClinicos.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"Turnos.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"Empresas.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"RegistroClienteCorporativo.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"AltaEmpresa.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ConsultaEmpresa.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ModificarEmpresa.aspx",StringComparison.OrdinalIgnoreCase)) return;

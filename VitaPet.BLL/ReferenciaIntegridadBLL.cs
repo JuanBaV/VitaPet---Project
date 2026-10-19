@@ -36,6 +36,8 @@ namespace VitaPet.BLL
             Add(r,"Usuario",u.IdUsuario,"intentosFallidos",u.IntentosFallidos);
             Add(r,"Usuario",u.IdUsuario,"bloqueado",u.Bloqueado);
             Add(r,"Usuario",u.IdUsuario,"idioma",u.Idioma);
+            // Ausencia canónica = falso: compatible con referencias previas a CU-005-005.
+            if(u.RequiereRestablecerContrasena) Add(r,"Usuario",u.IdUsuario,"requiereRestablecerContrasena",true);
             Add(r,"Usuario",u.IdUsuario,"dvh",u.DVH);
             return r;
         }

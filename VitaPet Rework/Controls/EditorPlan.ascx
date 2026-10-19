@@ -1,0 +1,17 @@
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EditorPlan.ascx.cs" Inherits="Controls_EditorPlan" %>
+<div class="empresa-campos">
+ <div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="txtNombrePlan" CssClass="login-label" Text="<%$ Resources:Textos, UI_Nombre %>" /><asp:TextBox ID="txtNombrePlan" runat="server" MaxLength="80" CssClass="form-control login-input" /></div>
+ <div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="txtPrecioPlan" CssClass="login-label" Text="<%$ Resources:Textos, PlanAdmin_Precio %>" /><asp:TextBox ID="txtPrecioPlan" runat="server" inputmode="decimal" CssClass="form-control login-input" /></div>
+ <div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="txtDescripcionPlan" CssClass="login-label" Text="<%$ Resources:Textos, PlanAdmin_Descripcion %>" /><asp:TextBox ID="txtDescripcionPlan" runat="server" TextMode="MultiLine" MaxLength="255" Rows="3" CssClass="form-control login-input" /></div>
+ <div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="ddlEstadoPlan" CssClass="login-label" Text="<%$ Resources:Textos, Empresa_Estado %>" /><asp:DropDownList ID="ddlEstadoPlan" runat="server" CssClass="form-control login-input"><asp:ListItem Value="1" Text="<%$ Resources:Textos, Empresa_Activo %>" /><asp:ListItem Value="0" Text="<%$ Resources:Textos, Empresa_Inactivo %>" /></asp:DropDownList></div>
+</div>
+<h2 class="plan-admin-subtitulo"><%: TextosUI.Obtener("PlanAdmin_Coberturas") %></h2>
+<div class="table-responsive plan-admin-tabla"><asp:GridView ID="gvCoberturas" runat="server" AutoGenerateColumns="false" DataKeyNames="idCobertura" CssClass="table plan-admin-editor" GridLines="None" OnRowCommand="FilaComando">
+ <Columns>
+  <asp:TemplateField HeaderText="<%$ Resources:Textos, PlanAdmin_Prestacion %>"><ItemTemplate><asp:TextBox ID="txtPrestacion" runat="server" Text='<%# Eval("prestacion") %>' MaxLength="100" CssClass="form-control login-input" aria-label="<%$ Resources:Textos, PlanAdmin_Prestacion %>" /></ItemTemplate></asp:TemplateField>
+  <asp:TemplateField HeaderText="<%$ Resources:Textos, PlanAdmin_Detalle %>"><ItemTemplate><asp:TextBox ID="txtDetalle" runat="server" Text='<%# Eval("detalle") %>' MaxLength="255" TextMode="MultiLine" Rows="2" CssClass="form-control login-input" aria-label="<%$ Resources:Textos, PlanAdmin_Detalle %>" /></ItemTemplate></asp:TemplateField>
+  <asp:TemplateField HeaderText="<%$ Resources:Textos, Empresa_Estado %>"><ItemTemplate><asp:DropDownList ID="ddlEstadoCobertura" runat="server" SelectedValue='<%# Eval("estado") %>' CssClass="form-control login-input" aria-label="<%$ Resources:Textos, Empresa_Estado %>"><asp:ListItem Value="1" Text="<%$ Resources:Textos, Empresa_Activo %>" /><asp:ListItem Value="0" Text="<%$ Resources:Textos, Empresa_Inactivo %>" /></asp:DropDownList></ItemTemplate></asp:TemplateField>
+  <asp:TemplateField><ItemTemplate><asp:LinkButton ID="lnkQuitarCoberturaNueva" runat="server" CommandName="QuitarNueva" CommandArgument='<%# Container.DataItemIndex %>' Visible='<%# (int)Eval("idCobertura")==0 %>' CausesValidation="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, PlanAdmin_Quitar %>" /></ItemTemplate></asp:TemplateField>
+ </Columns>
+</asp:GridView></div>
+<div class="plan-admin-agregar"><asp:Button ID="btnAgregarCobertura" runat="server" CausesValidation="false" CssClass="btn btn-default" OnClick="Agregar" Text="<%$ Resources:Textos, PlanAdmin_AgregarCobertura %>" /></div>

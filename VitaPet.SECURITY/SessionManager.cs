@@ -71,6 +71,8 @@ namespace VitaPet.SECURITY
 
         public void IniciarSesion(UsuarioBE usuario)
         {
+            if(usuario != null && usuario.RequiereRestablecerContrasena)
+                throw new UnauthorizedAccessException("Debe restablecer la contraseña antes de iniciar sesión.");
             if (usuario == null)
             {
                 throw new ArgumentNullException(nameof(usuario));

@@ -15,7 +15,3 @@ Las escrituras de Usuario y Bitacora mantienen sus verificadores dentro de las t
 ## Recuperación
 
 Los backups con las migraciones vigentes y los del esquema inmediatamente anterior (hasta 011) son compatibles. El respaldo anterior se verifica con sus controles originales y se amplía en una base temporal antes de sustituir la base operativa. La importación XML admite únicamente la adición conocida de la columna DVH de ErrorSistema. Mantiene la comprobación de firma, cuenta, nombre de base de datos, relaciones y controles originales. No se aceptan diferencias arbitrarias de esquema.
-
-## Verificación
-
-La suite de contingencia prueba alteración de campos en cada tabla adicional, ausencia de DVV, inserciones externas, tablas desconocidas, independencia regional de decimales, nulos, migración que rechaza corrupción previa y restauración de backups SQL/XML anteriores. La suite de usuarios conserva las pruebas de operaciones, permisos, archivado y rollback.

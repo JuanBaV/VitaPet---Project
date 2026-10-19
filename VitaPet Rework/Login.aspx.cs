@@ -104,6 +104,15 @@ public partial class LoginPage : VitaPet.GUI.Presentacion.PaginaConIdioma
             UsuarioBE usuario = usuarioBLL.ObtenerPorCorreo(
                 ucCorreo.Correo);
 
+            if (usuario != null && usuario.RequiereRestablecerContrasena && usuario.Estado && !usuario.Bloqueado)
+            {
+                // Solo deriva al recorrido existente; no autoriza la recuperación.
+                Session.Clear();
+                Session["CorreoRestablecimientoObligatorio"] = usuario.CorreoElectronico;
+                Response.Redirect(ResolveUrl("~/OlvideContrasena.aspx"),false);
+                Context.ApplicationInstance.CompleteRequest();return;
+            }
+
             string hashContrasena = seguridad.CalcularHash(
                 txtContrasena.Text);
 

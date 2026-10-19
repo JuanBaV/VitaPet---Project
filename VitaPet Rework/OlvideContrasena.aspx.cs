@@ -20,6 +20,12 @@ public partial class OlvideContrasenaPage : VitaPet.GUI.Presentacion.PaginaConId
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if(!IsPostBack && Session["CorreoRestablecimientoObligatorio"] is string)
+        {
+            ucCorreo.Correo=(string)Session["CorreoRestablecimientoObligatorio"];
+            Session.Remove("CorreoRestablecimientoObligatorio");
+            MostrarMensaje("",TextosUI.Obtener("Corporativo_Restablecer"));
+        }
     }
 
     protected void btnContinuar_Click(
@@ -118,7 +124,7 @@ public partial class OlvideContrasenaPage : VitaPet.GUI.Presentacion.PaginaConId
         string descripcion)
     {
         litMensaje.Text = Server.HtmlEncode(
-            TextosUI.Traducir(codigo) + " - " + TextosUI.Error(codigo, descripcion));
+            string.IsNullOrEmpty(codigo) ? descripcion : TextosUI.Traducir(codigo) + " - " + TextosUI.Error(codigo, descripcion));
 
         pnlMensaje.Visible = true;
     }

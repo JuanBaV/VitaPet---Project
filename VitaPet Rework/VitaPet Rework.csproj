@@ -684,4 +684,29 @@
     <Compile Include="ModificarEmpresa.aspx.cs"><DependentUpon>ModificarEmpresa.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
     <Compile Include="ModificarEmpresa.aspx.designer.cs"><DependentUpon>ModificarEmpresa.aspx</DependentUpon></Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RegistroClienteCorporativo.aspx" />
+    <Compile Include="RegistroClienteCorporativo.aspx.cs"><DependentUpon>RegistroClienteCorporativo.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="RegistroClienteCorporativo.aspx.designer.cs"><DependentUpon>RegistroClienteCorporativo.aspx</DependentUpon></Compile>
+    <Content Include="Scripts\cliente-corporativo.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Presentacion\PaginaPlan.cs" />
+    <Compile Include="Controls\EditorPlan.ascx.cs"><DependentUpon>EditorPlan.ascx</DependentUpon></Compile>
+    <Compile Include="Controls\EditorPlan.ascx.designer.cs"><DependentUpon>EditorPlan.ascx</DependentUpon></Compile>
+    <Compile Include="AltaPlan.aspx.cs"><DependentUpon>AltaPlan.aspx</DependentUpon></Compile>
+    <Compile Include="AltaPlan.aspx.designer.cs"><DependentUpon>AltaPlan.aspx</DependentUpon></Compile>
+    <Compile Include="GestionPlanes.aspx.cs"><DependentUpon>GestionPlanes.aspx</DependentUpon></Compile>
+    <Compile Include="GestionPlanes.aspx.designer.cs"><DependentUpon>GestionPlanes.aspx</DependentUpon></Compile>
+    <Compile Include="ConsultaPlan.aspx.cs"><DependentUpon>ConsultaPlan.aspx</DependentUpon></Compile>
+    <Compile Include="ConsultaPlan.aspx.designer.cs"><DependentUpon>ConsultaPlan.aspx</DependentUpon></Compile>
+    <Compile Include="ModificarPlan.aspx.cs"><DependentUpon>ModificarPlan.aspx</DependentUpon></Compile>
+    <Compile Include="ModificarPlan.aspx.designer.cs"><DependentUpon>ModificarPlan.aspx</DependentUpon></Compile>
+    <Content Include="Controls\EditorPlan.ascx" />
+    <Content Include="AltaPlan.aspx" />
+    <Content Include="GestionPlanes.aspx" />
+    <Content Include="ConsultaPlan.aspx" />
+    <Content Include="ModificarPlan.aspx" />
+  </ItemGroup>
 </Project>

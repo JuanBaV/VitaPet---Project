@@ -102,6 +102,23 @@ namespace VitaPet.BLL
                 new ErrorSistemaBE {Codigo="ER070",Descripcion="No se pudieron actualizar los datos de la empresa",Criticidad="Grave"}
             });
         }
+        public void AsegurarErroresAdministracionPlanes()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE {Codigo="ER075",Descripcion="No se pudo consultar la información del plan",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER076",Descripcion="No se pudo registrar el plan",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER077",Descripcion="No se pudieron actualizar los datos del plan",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER078",Descripcion="El nombre del plan ya se encuentra registrado",Criticidad="Advertencia"}
+            });
+        }
+        public void AsegurarErroresClienteCorporativo()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE {Codigo="ER072",Descripcion="La empresa seleccionada se encuentra inactiva",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER073",Descripcion="No se encuentra disponible el plan Corporativo",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER074",Descripcion="No se pudo consultar el correo o el plan Corporativo",Criticidad="Grave"}
+            });
+        }
         private void AsegurarErrores(IEnumerable<ErrorSistemaBE> errores)
         {
             using (var operacion = new OperacionIntegridadDAL())

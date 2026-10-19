@@ -1545,4 +1545,248 @@
     <Criticidad>Informativa</Criticidad>
     <DVH>721f2007e6e6b9b5fb480d616544c7f5d2c494d2e10638c0202084b500633132</DVH>
   </Registro>
+  <Registro>
+    <IdBitacora>1236</IdBitacora>
+    <IdUsuario>4</IdUsuario>
+    <Fecha>2026-10-15T16:08:33.8130000</Fecha>
+    <Accion>Consulta de cobertura</Accion>
+    <Modulo>Planes</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>b68d9a5ef815f37a831e9d2ff6adc803cdf4c51f3bf822e128c38cd5b56dbef8</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1237</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T16:10:52.8500000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>17a6311beccdb2d3e65c4ecb8918e75608218360d3f9344c0cb920937e3c68ec</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1238</IdBitacora>
+    <IdUsuario>4</IdUsuario>
+    <Fecha>2026-10-15T16:11:12.8570000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>296c15c2db3440bdb8e602a6ab66a51ff29725741307fcf6d8abc349e19fc673</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1239</IdBitacora>
+    <IdUsuario>4</IdUsuario>
+    <Fecha>2026-10-15T16:11:15.8400000</Fecha>
+    <Accion>Consulta de cobertura</Accion>
+    <Modulo>Planes</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>a90f6b43b5ffe04ffb281453cc558fd80f5abe08fa0cac454b8c68f8b346823a</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1240</IdBitacora>
+    <IdUsuario>4</IdUsuario>
+    <Fecha>2026-10-15T16:11:27.6000000</Fecha>
+    <Accion>Consulta de cobertura</Accion>
+    <Modulo>Planes</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0fbce9e4516cb7b94e84d31ab715352c834e5e25f4213e4a607601bdca4e1457</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1241</IdBitacora>
+    <IdUsuario>4</IdUsuario>
+    <Fecha>2026-10-15T16:31:30.8230000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>b11f8efeee3d767e3a3ebe2b4bd116829cdbb5875c7dfe0def07ce1b1d6f9c87</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1242</IdBitacora>
+    <IdUsuario>4</IdUsuario>
+    <Fecha>2026-10-15T16:31:33.1270000</Fecha>
+    <Accion>Consulta de cobertura</Accion>
+    <Modulo>Planes</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>a777838c3a3ae838959979e8a981189de063a6275f1bf296101fd88b854cf953</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1243</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T17:01:34.0270000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0cd8eb1b455725680970db698ab705332cf5307395ca4c4f88c8b536a7599550</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1244</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T17:01:41.8970000</Fecha>
+    <Accion>Consulta de estado de reintegro</Accion>
+    <Modulo>Reintegros</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>4e515961ad80851936cff637d607a9df63797f0b0482d0fc87ad75d1e51f467d</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1245</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T17:02:13.3470000</Fecha>
+    <Accion>Consulta de estado de reintegro</Accion>
+    <Modulo>Reintegros</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>d6e605afd09d79c63b150a6cdc3b976fdc5323edb19c795990f6cffda518757d</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1246</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T17:02:18.2100000</Fecha>
+    <Accion>Consulta de estado de reintegro</Accion>
+    <Modulo>Reintegros</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>3e286d10ae5bde76696856f9faf06b38eb3065b3fbc032308711dc057344abe8</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1247</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T17:05:27.6430000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>02b11ddf066c738ba7d58e2c5d5c8bb6c63c3b1a25c4fff2c31002c0fc665141</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1248</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T17:59:01.0130000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>4ad08f1469a3de07fac0b365ed702ede32a51c1b0f89f3cbb06f15df53460d24</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1249</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T18:00:44.3470000</Fecha>
+    <Accion>Registro de mascota</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0e9c398000ffd0d3d69a8ce78402c7efad2a035e28cfeccd6051bd187db07004</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1250</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T18:02:08.8670000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>ae89ef3829552798642d0d74960835fe4eb2bd08b8d8d11b57694d3f7123fef8</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1251</IdBitacora>
+    <IdUsuario>
+    </IdUsuario>
+    <Fecha>2026-10-15T19:34:33.3630000</Fecha>
+    <Accion>Carga de datos clinicos de demostracion para Luna y Gaia (cliente 2): 8 registros</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>4455d8822e26f854f6cf23812fb7eb0807a04b07d9dcd5696f70cd48d03cb06c</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1252</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T19:37:10.1670000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0efcadcfb306f71b7be565d5556702d50f111be59da3c975ab416eaf79c543f3</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1253</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T19:37:14.3170000</Fecha>
+    <Accion>Consulta de mascotas</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>36e4b2f2e087550f3327f1d79496c81e432344ae55bc110ff96c5341a7f5c76e</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1254</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T19:37:18.9930000</Fecha>
+    <Accion>Consulta de datos de mascota</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>d430f607e78d747589f072711cc6ce1ff23b63e006b8be7459d5b5f22613f2aa</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1255</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T19:37:42.7370000</Fecha>
+    <Accion>Consulta de mascotas</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>e8515d2d5df769a73079e8cd6b36b85af7799f82878ca691aa589073effb2b8e</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1256</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T19:37:45.7430000</Fecha>
+    <Accion>Consulta de historial clínico</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>06765259b1274c076f2d36c06741c23b45f95f31530a64e955223d9c3bf161b3</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1257</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T19:37:48.9300000</Fecha>
+    <Accion>Consulta de mascotas</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>0c33ad0ddd9627a36e669950e8944e4cd8322ba6ef9530c3cc79db44e6880b70</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1258</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T19:37:50.8000000</Fecha>
+    <Accion>Consulta de datos clínicos</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>067fb42580e227f46cfdac70dad7c7e79d60749551909c79fff2a180223bb1d0</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1259</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T19:38:11.0100000</Fecha>
+    <Accion>Logout</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>cbe0f7e481c78f7a1261591f77f356764b77674d07c07fd5f5733b1f7ba04c1e</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1260</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-16T10:47:05.9530000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>3b94a5bab6b215f0cf6ab780012c93c05c045be5a717435d38064f38e793e772</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1261</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-16T10:47:09.4500000</Fecha>
+    <Accion>Consulta de mascotas</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>ac7505ce60d5c512ce2cd8f1fc7e73d8ad6e0321c00f8e27b08b920f9ccfbe10</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1262</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-16T10:52:25.4530000</Fecha>
+    <Accion>Actualización de datos de mascota</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>7e75fb468fe1ca272ab7cfc62e81c758f45c226208863722473856568fb07759</DVH>
+  </Registro>
 </Bitacora>

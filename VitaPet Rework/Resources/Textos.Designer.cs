@@ -169,6 +169,87 @@ namespace VitaPet.GUI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Valor mensual desde USD 16 por mascota, sujeto a volumen, alcance y facturación unificada. Vigencia inicial: un mes desde el alta..
+        /// </summary>
+        public static string Corporativo_Condiciones {
+            get {
+                return ResourceManager.GetString("Corporativo_Condiciones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El cliente corporativo se registró correctamente. Identificador: {0} · Correo: {1} · Empresa: {2} · Plan: {3} · Vencimiento: {4}. El cliente debe restablecer la contraseña desde Login antes de acceder..
+        /// </summary>
+        public static string Corporativo_Confirmacion {
+            get {
+                return ResourceManager.GetString("Corporativo_Confirmacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empresa.
+        /// </summary>
+        public static string Corporativo_Empresa {
+            get {
+                return ResourceManager.GetString("Corporativo_Empresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plan Corporativo.
+        /// </summary>
+        public static string Corporativo_NombrePlan {
+            get {
+                return ResourceManager.GetString("Corporativo_NombrePlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plan.
+        /// </summary>
+        public static string Corporativo_Plan {
+            get {
+                return ResourceManager.GetString("Corporativo_Plan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registrar cliente.
+        /// </summary>
+        public static string Corporativo_Registrar {
+            get {
+                return ResourceManager.GetString("Corporativo_Registrar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debés restablecer la contraseña antes de iniciar sesión. Completá la recuperación para definir tu contraseña..
+        /// </summary>
+        public static string Corporativo_Restablecer {
+            get {
+                return ResourceManager.GetString("Corporativo_Restablecer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registro de cliente corporativo.
+        /// </summary>
+        public static string Corporativo_Titulo {
+            get {
+                return ResourceManager.GetString("Corporativo_Titulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validar correo.
+        /// </summary>
+        public static string Corporativo_ValidarCorreo {
+            get {
+                return ResourceManager.GetString("Corporativo_ValidarCorreo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activo.
         /// </summary>
         public static string Empresa_Activo {
@@ -176,7 +257,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Activo", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Alta de empresa.
         /// </summary>
@@ -185,7 +266,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Alta", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Modificar.
         /// </summary>
@@ -194,7 +275,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_BotonModificar", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to La empresa se registró correctamente. Identificador {0} · {1}.
         /// </summary>
@@ -203,7 +284,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_ConfirmacionAlta", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Consulta de empresa asociada.
         /// </summary>
@@ -212,7 +293,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Consulta", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Consultar.
         /// </summary>
@@ -221,7 +302,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Consultar", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to CUIT.
         /// </summary>
@@ -230,7 +311,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Cuit", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Dirección.
         /// </summary>
@@ -239,7 +320,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Direccion", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Estado.
         /// </summary>
@@ -248,7 +329,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Estado", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Empresas asociadas.
         /// </summary>
@@ -257,7 +338,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Gestion", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Guardar cambios.
         /// </summary>
@@ -266,7 +347,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Guardar", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Identificador.
         /// </summary>
@@ -275,7 +356,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Id", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Inactivo.
         /// </summary>
@@ -284,7 +365,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Inactivo", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Modificación de empresa asociada.
         /// </summary>
@@ -293,7 +374,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Modificar", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Razón social.
         /// </summary>
@@ -302,7 +383,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_RazonSocial", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Registrar empresa.
         /// </summary>
@@ -311,7 +392,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Registrar", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Seleccionar.
         /// </summary>
@@ -320,7 +401,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Seleccionar", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Teléfono.
         /// </summary>
@@ -329,7 +410,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Telefono", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Correo ya registrado.
         /// </summary>
@@ -878,7 +959,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER067", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to El CUIT ya se encuentra registrado para otra empresa.
         /// </summary>
@@ -887,7 +968,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER068", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar la empresa.
         /// </summary>
@@ -896,7 +977,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER069", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to No se pudieron actualizar los datos de la empresa.
         /// </summary>
@@ -905,7 +986,70 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER070", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La empresa seleccionada se encuentra inactiva.
+        /// </summary>
+        public static string Error_ER072 {
+            get {
+                return ResourceManager.GetString("Error_ER072", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se encuentra disponible el plan Corporativo.
+        /// </summary>
+        public static string Error_ER073 {
+            get {
+                return ResourceManager.GetString("Error_ER073", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo consultar el correo o el plan Corporativo.
+        /// </summary>
+        public static string Error_ER074 {
+            get {
+                return ResourceManager.GetString("Error_ER074", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo consultar la información del plan.
+        /// </summary>
+        public static string Error_ER075 {
+            get {
+                return ResourceManager.GetString("Error_ER075", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo registrar el plan.
+        /// </summary>
+        public static string Error_ER076 {
+            get {
+                return ResourceManager.GetString("Error_ER076", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudieron actualizar los datos del plan.
+        /// </summary>
+        public static string Error_ER077 {
+            get {
+                return ResourceManager.GetString("Error_ER077", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El nombre del plan ya se encuentra registrado.
+        /// </summary>
+        public static string Error_ER078 {
+            get {
+                return ResourceManager.GetString("Error_ER078", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to ER048 - No se pudo cambiar el idioma. Intentá nuevamente..
         /// </summary>
@@ -1488,6 +1632,123 @@ namespace VitaPet.GUI.Resources {
         public static string Pago_Vencimiento {
             get {
                 return ResourceManager.GetString("Pago_Vencimiento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agregar cobertura.
+        /// </summary>
+        public static string PlanAdmin_AgregarCobertura {
+            get {
+                return ResourceManager.GetString("PlanAdmin_AgregarCobertura", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alta de plan.
+        /// </summary>
+        public static string PlanAdmin_Alta {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Alta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coberturas.
+        /// </summary>
+        public static string PlanAdmin_Coberturas {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Coberturas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USD {0} por mes y por mascota. Vigencia inicial: un mes. Facturación unificada..
+        /// </summary>
+        public static string PlanAdmin_CondicionesCorporativo {
+            get {
+                return ResourceManager.GetString("PlanAdmin_CondicionesCorporativo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consulta de plan.
+        /// </summary>
+        public static string PlanAdmin_Consulta {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Consulta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descripción.
+        /// </summary>
+        public static string PlanAdmin_Descripcion {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Descripcion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle.
+        /// </summary>
+        public static string PlanAdmin_Detalle {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Detalle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gestión de planes.
+        /// </summary>
+        public static string PlanAdmin_Gestion {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Gestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modificación de plan.
+        /// </summary>
+        public static string PlanAdmin_Modificar {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Modificar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precio mensual por mascota (USD).
+        /// </summary>
+        public static string PlanAdmin_Precio {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Precio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestación.
+        /// </summary>
+        public static string PlanAdmin_Prestacion {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Prestacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quitar.
+        /// </summary>
+        public static string PlanAdmin_Quitar {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Quitar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registrar plan.
+        /// </summary>
+        public static string PlanAdmin_Registrar {
+            get {
+                return ResourceManager.GetString("PlanAdmin_Registrar", resourceCulture);
             }
         }
         

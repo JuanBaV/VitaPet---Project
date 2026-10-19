@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -23,7 +23,7 @@ namespace VitaPet.BLL
         public string CalcularDVH(DataRow fila)
         {
             return hash.CalcularHash(string.Concat(fila.Table.Columns.Cast<DataColumn>()
-                .Where(c => c.ColumnName != "dvh").Select(c => Pack(Valor(fila[c])))));
+                .Where(c => c.ColumnName != "dvh" && !(fila.Table.TableName=="Plan" && c.ColumnName=="esCorporativo" && !(bool)fila[c])).Select(c => Pack(Valor(fila[c])))));
         }
         internal void Inicializar()
         {
@@ -66,6 +66,7 @@ namespace VitaPet.BLL
                 foreach(DataRow fila in datos.Rows)
                 foreach(DataColumn col in datos.Columns)
                 {
+                    if(tabla=="Plan" && col.ColumnName=="esCorporativo" && !(bool)fila[col]) continue;
                     string id=Valor(fila[IntegridadTablasDAL.Claves[tabla]]);
                     string entrada=Pack("campo-v1")+Pack(tabla)+Pack(id)+Pack(col.ColumnName)+Pack(Valor(fila[col]));
                     result.Add(new ReferenciaCampoBE { Tabla=tabla,Fila=id,Columna=col.ColumnName,Huella=hash.CalcularHash(entrada) });

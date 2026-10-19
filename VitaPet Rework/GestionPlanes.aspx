@@ -1,0 +1,11 @@
+﻿<%@ Page Title="<%$ Resources:Textos, PlanAdmin_Gestion %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GestionPlanes.aspx.cs" Inherits="GestionPlanesPage" %>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server"><main class="planes-page"><section class="planes-card plan-admin-card">
+<header class="login-header"><h1><%: TextosUI.Obtener("PlanAdmin_Gestion") %></h1></header>
+<asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
+<div class="table-responsive plan-admin-tabla"><asp:GridView ID="gvPlanes" runat="server" AutoGenerateColumns="false" DataKeyNames="IdPlan" CssClass="table" GridLines="None" OnSelectedIndexChanged="Seleccionar"><SelectedRowStyle CssClass="empresa-seleccionada" /><Columns><asp:BoundField DataField="IdPlan" HeaderText="<%$ Resources:Textos, Empresa_Id %>" HtmlEncode="true" />
+<asp:BoundField DataField="Nombre" HeaderText="<%$ Resources:Textos, UI_Nombre %>" HtmlEncode="true" />
+<asp:BoundField DataField="Descripcion" HeaderText="<%$ Resources:Textos, PlanAdmin_Descripcion %>" HtmlEncode="true" />
+<asp:TemplateField HeaderText="<%$ Resources:Textos, PlanAdmin_Precio %>"><ItemTemplate><%#: Eval("Precio")==null?"—":"USD "+string.Format(System.Globalization.CultureInfo.CurrentCulture,"{0:0.00}",Eval("Precio")) %></ItemTemplate></asp:TemplateField>
+<asp:TemplateField HeaderText="<%$ Resources:Textos, Empresa_Estado %>"><ItemTemplate><%#: TextosUI.Obtener((bool)Eval("Estado")?"Empresa_Activo":"Empresa_Inactivo") %></ItemTemplate></asp:TemplateField><asp:TemplateField><ItemTemplate><asp:LinkButton ID="lnkSeleccionarPlan" runat="server" CssClass="btn btn-primary btn-sm" CommandName="Select" Text="<%$ Resources:Textos, Empresa_Seleccionar %>" /></ItemTemplate></asp:TemplateField></Columns></asp:GridView></div>
+<div class="empresa-acciones"><asp:Button ID="btnConsultarPlan" runat="server" Enabled="false" CssClass="btn btn-primary" Text="<%$ Resources:Textos, Empresa_Consultar %>" OnClick="Consultar" /><asp:Button ID="btnModificarPlan" runat="server" Enabled="false" CssClass="btn btn-primary" Text="<%$ Resources:Textos, Empresa_BotonModificar %>" OnClick="Modificar" /></div>
+</section></main></asp:Content>

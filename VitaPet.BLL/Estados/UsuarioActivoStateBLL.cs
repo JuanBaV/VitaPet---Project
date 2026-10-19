@@ -11,7 +11,7 @@ namespace VitaPet.BLL.Estados
         {
             ValidarUsuario(usuario);
 
-            return usuario.Estado && !usuario.Bloqueado;
+            return usuario.Estado && !usuario.Bloqueado && !usuario.RequiereRestablecerContrasena;
         }
 
         public void RegistrarIntentoFallido(UsuarioBE usuario)

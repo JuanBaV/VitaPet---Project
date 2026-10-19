@@ -49,6 +49,10 @@ namespace VitaPet.BLL
                 ConvertirBooleano(usuario.Bloqueado),
                 usuario.Idioma);
 
+            // Cero es el valor canónico implícito de las cuentas anteriores.
+            // El valor verdadero amplía el hash sin invalidar DVH históricos válidos.
+            if (usuario.RequiereRestablecerContrasena)
+                cadena += ConstruirCadena("requiereRestablecerContrasena", "1");
             return CalcularHash(cadena);
         }
 

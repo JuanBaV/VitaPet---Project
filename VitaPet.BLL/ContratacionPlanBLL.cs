@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -103,13 +103,16 @@ namespace VitaPet.BLL
             {
                 var sec=new SecurityManager();sec.ExigirIntegridad();var dal=new PlanDAL();
                 string[] nombres={"Plan Esencial","Plan Preventivo","Plan Integral","Plan Corporativo"};
-                string[] detalles={"Por mes y por mascota. Cobertura básica según el alcance definido para el plan.","Por mes y por mascota. Mayor orientación a controles programados y prevención.","Por mes y por mascota. Mayor alcance frente a urgencias, estudios y otras prestaciones.","Disponible mediante convenio corporativo. Precio según convenio; no contratable de manera particular."};
-                decimal?[] precios={19m,28m,39m,null};
+                string[] detalles={"Por mes y por mascota. Cobertura básica según el alcance definido para el plan.","Por mes y por mascota. Mayor orientación a controles programados y prevención.","Por mes y por mascota. Mayor alcance frente a urgencias, estudios y otras prestaciones.","Disponible mediante convenio corporativo. Precio mensual fijo por mascota; no contratable de manera particular."};
+                decimal?[] precios={19m,28m,39m,16m};
+                if(new AdministracionPlanDAL().NecesitaCatalogo())
                 for(int i=0;i<nombres.Length;i++)
                 {
                     var p=dal.AsegurarPlan(nombres[i],detalles[i],precios[i]);if(p.Item2)ActualizarIntegridad("Plan",p.Item1);
                     if(i<3){var c=dal.AsegurarCobertura(p.Item1,"Alcance del plan",detalles[i]);if(c.Item2)ActualizarIntegridad("Cobertura",c.Item1);}
                 }
+                int? corporativo=new AdministracionPlanDAL().InicializarCorporativo();
+                if(corporativo.HasValue)ActualizarIntegridad("Plan",corporativo.Value);
                 new ReferenciaIntegridadBLL().GuardarEstadoVerificado();sec.ExigirIntegridad();tx.Complete();
             }
         }

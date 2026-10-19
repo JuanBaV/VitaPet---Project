@@ -23,6 +23,7 @@ namespace VitaPet.DAL
                         CorreoElectronico = Convert.ToString(r["correoElectronico"]), Rol = Convert.ToString(r["rol"]),
                         Estado = Convert.ToBoolean(r["estado"]), Bloqueado = Convert.ToBoolean(r["bloqueado"]),
                         IntentosFallidos = Convert.ToByte(r["intentosFallidos"]), Idioma = Convert.ToString(r["idioma"]),
+                        RequiereRestablecerContrasena = LeerRestablecimiento(r),
                         Contrasena = Convert.ToString(r["contrasena"]), DVH = Convert.ToString(r["dvh"])
                     };
                 }

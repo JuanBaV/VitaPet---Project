@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Header.ascx.cs" Inherits="Controls_Header" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Header.ascx.cs" Inherits="Controls_Header" %>
 
 <header class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -90,13 +90,15 @@
                     <asp:HyperLink
                         ID="lnkGestionPlanes"
                         runat="server"
-                        NavigateUrl="~/GestiónPlanes.aspx"
+                        NavigateUrl="~/GestionPlanes.aspx"
                         Text="<%$ Resources:Textos, UI_Planes %>" />
 
                     <asp:HyperLink
+                        ID="lnkAltaPlan" runat="server" NavigateUrl="~/AltaPlan.aspx" Text="<%$ Resources:Textos, PlanAdmin_Alta %>" />
+                    <asp:HyperLink
                         ID="lnkClienteCorporativo"
                         runat="server"
-                        NavigateUrl="~/ClienteCorporativo.aspx"
+                        NavigateUrl="~/RegistroClienteCorporativo.aspx"
                         Text="<%$ Resources:Textos, UI_ClientesCorporativos %>" />
                 </asp:Panel>
 

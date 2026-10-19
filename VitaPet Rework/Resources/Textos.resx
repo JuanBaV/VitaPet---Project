@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -1478,4 +1478,33 @@
   <data name="Error_ER068" xml:space="preserve"><value>El CUIT ya se encuentra registrado para otra empresa</value></data>
   <data name="Error_ER069" xml:space="preserve"><value>No se pudo registrar la empresa</value></data>
   <data name="Error_ER070" xml:space="preserve"><value>No se pudieron actualizar los datos de la empresa</value></data>
+  <data name="Corporativo_Titulo" xml:space="preserve"><value>Registro de cliente corporativo</value></data>
+  <data name="Corporativo_Empresa" xml:space="preserve"><value>Empresa</value></data>
+  <data name="Corporativo_Plan" xml:space="preserve"><value>Plan</value></data>
+  <data name="Corporativo_NombrePlan" xml:space="preserve"><value>Plan Corporativo</value></data>
+  <data name="Corporativo_Condiciones" xml:space="preserve"><value>Valor mensual desde USD 16 por mascota, sujeto a volumen, alcance y facturación unificada. Vigencia inicial: un mes desde el alta.</value></data>
+  <data name="Corporativo_ValidarCorreo" xml:space="preserve"><value>Validar correo</value></data>
+  <data name="Corporativo_Registrar" xml:space="preserve"><value>Registrar cliente</value></data>
+  <data name="Corporativo_Restablecer" xml:space="preserve"><value>Debés restablecer la contraseña antes de iniciar sesión. Completá la recuperación para definir tu contraseña.</value></data>
+  <data name="Corporativo_Confirmacion" xml:space="preserve"><value>El cliente corporativo se registró correctamente. Identificador: {0} · Correo: {1} · Empresa: {2} · Plan: {3} · Vencimiento: {4}. El cliente debe restablecer la contraseña desde Login antes de acceder.</value></data>
+  <data name="Error_ER072" xml:space="preserve"><value>La empresa seleccionada se encuentra inactiva</value></data>
+  <data name="Error_ER073" xml:space="preserve"><value>No se encuentra disponible el plan Corporativo</value></data>
+  <data name="Error_ER074" xml:space="preserve"><value>No se pudo consultar el correo o el plan Corporativo</value></data>
+<data name="PlanAdmin_Alta" xml:space="preserve"><value>Alta de plan</value></data>
+<data name="PlanAdmin_Gestion" xml:space="preserve"><value>Gestión de planes</value></data>
+<data name="PlanAdmin_Consulta" xml:space="preserve"><value>Consulta de plan</value></data>
+<data name="PlanAdmin_Modificar" xml:space="preserve"><value>Modificación de plan</value></data>
+<data name="PlanAdmin_Registrar" xml:space="preserve"><value>Registrar plan</value></data>
+<data name="PlanAdmin_Precio" xml:space="preserve"><value>Precio mensual por mascota (USD)</value></data>
+<data name="PlanAdmin_Descripcion" xml:space="preserve"><value>Descripción</value></data>
+<data name="PlanAdmin_Coberturas" xml:space="preserve"><value>Coberturas</value></data>
+<data name="PlanAdmin_Prestacion" xml:space="preserve"><value>Prestación</value></data>
+<data name="PlanAdmin_Detalle" xml:space="preserve"><value>Detalle</value></data>
+<data name="PlanAdmin_AgregarCobertura" xml:space="preserve"><value>Agregar cobertura</value></data>
+<data name="PlanAdmin_Quitar" xml:space="preserve"><value>Quitar</value></data>
+<data name="PlanAdmin_CondicionesCorporativo" xml:space="preserve"><value>USD {0} por mes y por mascota. Vigencia inicial: un mes. Facturación unificada.</value></data>
+<data name="Error_ER075" xml:space="preserve"><value>No se pudo consultar la información del plan</value></data>
+<data name="Error_ER076" xml:space="preserve"><value>No se pudo registrar el plan</value></data>
+<data name="Error_ER077" xml:space="preserve"><value>No se pudieron actualizar los datos del plan</value></data>
+<data name="Error_ER078" xml:space="preserve"><value>El nombre del plan ya se encuentra registrado</value></data>
 </root>

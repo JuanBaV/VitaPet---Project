@@ -31,6 +31,12 @@ public partial class Controls_ValidacionEmail : System.Web.UI.UserControl
         set { txtCorreo.MaxLength = value; }
     }
 
+    public bool EnableClientValidation
+    {
+        get { return rfvCorreo.EnableClientScript; }
+        set { rfvCorreo.EnableClientScript=value;revCorreo.EnableClientScript=value; }
+    }
+
     public string ValidationGroup
     {
         get

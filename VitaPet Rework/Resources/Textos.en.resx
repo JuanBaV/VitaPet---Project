@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -1478,4 +1478,33 @@
   <data name="Error_ER068" xml:space="preserve"><value>The tax ID is already registered to another company</value></data>
   <data name="Error_ER069" xml:space="preserve"><value>Could not register the company</value></data>
   <data name="Error_ER070" xml:space="preserve"><value>Could not update the company details</value></data>
+  <data name="Corporativo_Titulo" xml:space="preserve"><value>Register corporate client</value></data>
+  <data name="Corporativo_Empresa" xml:space="preserve"><value>Company</value></data>
+  <data name="Corporativo_Plan" xml:space="preserve"><value>Plan</value></data>
+  <data name="Corporativo_NombrePlan" xml:space="preserve"><value>Corporate plan</value></data>
+  <data name="Corporativo_Condiciones" xml:space="preserve"><value>Monthly rate from USD 16 per pet, subject to volume, scope and consolidated billing. Initial term: one month from registration.</value></data>
+  <data name="Corporativo_ValidarCorreo" xml:space="preserve"><value>Validate email</value></data>
+  <data name="Corporativo_Registrar" xml:space="preserve"><value>Register client</value></data>
+  <data name="Corporativo_Restablecer" xml:space="preserve"><value>You must reset your password before signing in. Complete password recovery to set your password.</value></data>
+  <data name="Corporativo_Confirmacion" xml:space="preserve"><value>Corporate client registered successfully. ID: {0} · Email: {1} · Company: {2} · Plan: {3} · Expires: {4}. The client must reset their password from Login before signing in.</value></data>
+  <data name="Error_ER072" xml:space="preserve"><value>The selected company is inactive</value></data>
+  <data name="Error_ER073" xml:space="preserve"><value>The Corporate plan is not available</value></data>
+  <data name="Error_ER074" xml:space="preserve"><value>Unable to check the email or Corporate plan</value></data>
+<data name="PlanAdmin_Alta" xml:space="preserve"><value>Create plan</value></data>
+<data name="PlanAdmin_Gestion" xml:space="preserve"><value>Plan management</value></data>
+<data name="PlanAdmin_Consulta" xml:space="preserve"><value>Plan details</value></data>
+<data name="PlanAdmin_Modificar" xml:space="preserve"><value>Edit plan</value></data>
+<data name="PlanAdmin_Registrar" xml:space="preserve"><value>Create plan</value></data>
+<data name="PlanAdmin_Precio" xml:space="preserve"><value>Monthly price per pet (USD)</value></data>
+<data name="PlanAdmin_Descripcion" xml:space="preserve"><value>Description</value></data>
+<data name="PlanAdmin_Coberturas" xml:space="preserve"><value>Coverage</value></data>
+<data name="PlanAdmin_Prestacion" xml:space="preserve"><value>Benefit</value></data>
+<data name="PlanAdmin_Detalle" xml:space="preserve"><value>Details</value></data>
+<data name="PlanAdmin_AgregarCobertura" xml:space="preserve"><value>Add coverage</value></data>
+<data name="PlanAdmin_Quitar" xml:space="preserve"><value>Remove</value></data>
+<data name="PlanAdmin_CondicionesCorporativo" xml:space="preserve"><value>USD {0} per month per pet. Initial term: one month. Consolidated billing.</value></data>
+<data name="Error_ER075" xml:space="preserve"><value>The plan information could not be retrieved</value></data>
+<data name="Error_ER076" xml:space="preserve"><value>The plan could not be created</value></data>
+<data name="Error_ER077" xml:space="preserve"><value>The plan could not be updated</value></data>
+<data name="Error_ER078" xml:space="preserve"><value>The plan name is already registered</value></data>
 </root>

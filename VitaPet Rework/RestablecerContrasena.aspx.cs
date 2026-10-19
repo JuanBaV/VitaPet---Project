@@ -85,23 +85,6 @@ public partial class RestablecerContrasenaPage : VitaPet.GUI.Presentacion.Pagina
                 sesion.IdUsuarioRecuperacion.Value,
                 txtNuevaContrasena.Text);
 
-            SecurityManager seguridad =
-                new SecurityManager();
-
-            seguridad.RegistrarBitacora(
-                new BitacoraBE
-                {
-                    IdUsuario =
-                        sesion.IdUsuarioRecuperacion.Value,
-                    Fecha = DateTime.Now,
-                    Accion =
-                        "Contraseña restablecida",
-                    Modulo =
-                        "Autenticación",
-                    Criticidad =
-                        "Informativa"
-                });
-
             sesion.FinalizarRecuperacionContrasena();
 
             Response.Redirect(

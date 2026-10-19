@@ -40,9 +40,3 @@ por código ER. Los roles, criticidades y acciones de bitácora se traducen solo
 al mostrarlos. Los valores de filtros, datos de usuarios, registros de auditoría,
 hashes y exportaciones conservan sus valores originales. Nuevos mensajes deben
 tener una clave en ambos recursos; los textos desconocidos conservan su original.
-
-Validación web reproducible: ejecutar
-`Tests/VitaPet.Usuarios.Tests/Run-IdiomaWeb.ps1`. La prueba crea una base aislada
-y una copia del sitio, prueba ES/EN y el desplegable en Edge, y luego cierra su
-IIS Express y elimina exclusivamente su base de pruebas. Las capturas quedan
-en `artifacts/idioma-web`.

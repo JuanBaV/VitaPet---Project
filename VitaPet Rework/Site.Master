@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SiteMaster" %>
 
 <%@ Register Src="~/Controls/Header.ascx" TagPrefix="uc" TagName="Header" %>
 
@@ -15,7 +15,7 @@
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Site.css") %>?v=20261019-1" />
+    <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Site.css") %>?v=20261019-planes" />
     <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Idioma.css") %>?v=20261005-2" />
 
     <link href="~/Content/Images/VitaPetFavicon.png" rel="icon" type="image/png" />
