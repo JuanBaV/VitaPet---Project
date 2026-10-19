@@ -6,6 +6,7 @@ namespace VitaPet.DAL
     public class ConexionDAL
     {
         [System.ThreadStatic] private static string baseTemporal;
+        internal static bool EnBaseTemporal { get { return baseTemporal != null; } }
         public static System.IDisposable UsarBaseTemporal(string nombre)
         {
             if(!nombre.StartsWith("VitaPet_Verificacion_",System.StringComparison.Ordinal))

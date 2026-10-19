@@ -37,6 +37,8 @@ namespace VitaPet.GUI.Presentacion
             catch(ConsultaCoberturaException ex){MostrarErrorPlan(ex.Codigo);}
             catch(ConsultaReintegroException ex){MostrarErrorPlan(ex.Codigo);}
             catch(RegistroMascotaException ex){MostrarErrorPlan(ex.Codigo);}
+            catch(GestionMascotaException ex){MostrarErrorPlan(ex.Codigo);}
+            catch(TurnoException ex){MostrarErrorPlan(ex.Codigo);}
             catch(UnauthorizedAccessException){Response.Redirect(ResolveUrl("~/AccesoDenegado.aspx"),true);}
         }
         protected void MostrarErrorPlan(string codigo)
@@ -55,6 +57,16 @@ namespace VitaPet.GUI.Presentacion
                 case "ER009":return "No existen reintegros asociados";
                 case "ER015":return "No se pudo generar la salida XML";
                 case "ER060":return "No se pudo registrar la mascota";
+                case "ER010":return "No existen mascotas registradas";
+                case "ER012":return "No existen turnos disponibles";
+                case "ER013":return "El turno ya no se encuentra disponible";
+                case "ER014":return "No existen turnos asociados";
+                case "ER065":return "No se pudo completar la operación del servicio de turnos";
+                case "ER066":return "No se pudo registrar el turno veterinario";
+                case "ER061":return "No se pudo consultar la información de mascotas";
+                case "ER062":return "No se pudieron actualizar los datos de la mascota";
+                case "ER063":return "No se pudo consultar el servicio de historial clínico";
+                case "ER064":return "Los datos de la mascota cambiaron desde su consulta";
                 case "ER059":return "No se pudo consultar la información de reintegros";
                 case "ER058":return "No se pudo consultar el servicio de cobertura";
                 case "ER002":return "Datos incompletos";

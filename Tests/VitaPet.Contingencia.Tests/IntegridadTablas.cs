@@ -9,6 +9,14 @@ using VitaPet.BLL.Seguridad;
 using VitaPet.DAL;
 partial class Program
 {
+    static void RefrescarDatosClinicosFixture()
+    {
+        var dal=new IntegridadTablasDAL();var datos=dal.Leer("DatosClinicos");var hash=new IntegridadTablasBLL();
+        foreach(DataRow fila in datos.Rows)
+        {string dvh=hash.CalcularDVH(fila);dal.GuardarDvh("DatosClinicos",fila["idDatoClinico"],dvh);fila["dvh"]=dvh;}
+        new DVVDAL().Guardar(new DVVBE {NombreTabla="DatosClinicos",ValorDVV=new IntegridadBLL().CalcularDVV(datos.Rows.Cast<DataRow>().Select(f=>(string)f["dvh"]))});
+        typeof(ReferenciaIntegridadBLL).GetMethod("GuardarEstadoVerificado",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).Invoke(new ReferenciaIntegridadBLL(),null);
+    }
     static void SembrarTablas()
     {
         Sql(@"INSERT dbo.Empresa(razonSocial,cuit,direccion,telefono,estado,dvh) VALUES('Prueba','20-test','D','T',1,'');
@@ -20,7 +28,8 @@ INSERT dbo.Pago(idSuscripcion,importe,medioPago,fechaPago,estado,dvh) VALUES(1,1
 INSERT dbo.Mascota(idCliente,nombre,especie,raza,fechaNacimiento,estado,dvh) VALUES(1,'Mascota','Perro','Raza','20200101',1,'');
 INSERT dbo.Turno(idMascota,fecha,horario,prestacion,zona,estado,dvh) VALUES(1,'20261201','10:00','Consulta','Sur','Pendiente','');
 INSERT dbo.HistorialClinico(idMascota,fechaRegistro,diagnostico,tratamiento,observaciones,dvh) VALUES(1,'20260101','Diagnostico','Tratamiento',NULL,'');
-INSERT dbo.Reintegro(idCliente,idMascota,fechaSolicitud,importe,estado,detalle,dvh) VALUES(1,1,'20260101',12.34,'Pendiente',NULL,'');");
+INSERT dbo.Reintegro(idCliente,idMascota,fechaSolicitud,importe,estado,detalle,dvh) VALUES(1,1,'20260101',12.34,'Pendiente',NULL,'');
+INSERT dbo.AgendaTurno(zona,prestacion,horaInicio,horaFin,duracionMinutos,horizonteDias,estado,dvh) VALUES('Sur','Consulta','09:00','18:00',30,30,1,'');");
     }
     static object Escalar(string sql)
     { using(var c=new SqlConnection(connection)) using(var cmd=new SqlCommand(sql,c)) { c.Open(); return cmd.ExecuteScalar(); } }
@@ -32,8 +41,10 @@ INSERT dbo.Reintegro(idCliente,idMascota,fechaSolicitud,importe,estado,detalle,d
     static void ProbarIntegridadTablas()
     {
         var sec=new SecurityManager();
-        Check(sec.VerificarIntegridad() && Convert.ToInt32(Escalar("SELECT COUNT(*) FROM dbo.DVV"))==13,"All thirteen functional tables have valid DVV");
-        string[] campos={"razonSocial","nombre","nombre","detalle","estado","medioPago","nombre","prestacion","diagnostico","detalle","descripcion"};
+        Sql("INSERT dbo.DatosClinicos(idMascota,peso,temperatura,frecuenciaCardiaca,observaciones,dvh) VALUES(1,12.5,38.4,90,'Control','');");
+        RefrescarDatosClinicosFixture();
+        Check(sec.VerificarIntegridad() && Convert.ToInt32(Escalar("SELECT COUNT(*) FROM dbo.DVV"))==IntegridadTablasDAL.Claves.Count+2,"All supervised functional tables have valid DVV");
+        string[] campos={"razonSocial","nombre","nombre","detalle","estado","medioPago","nombre","prestacion","diagnostico","detalle","descripcion","observaciones","prestacion"};
         int n=0;
         foreach(string tabla in IntegridadTablasDAL.Claves.Keys)
         {
@@ -93,9 +104,13 @@ INSERT dbo.Reintegro(idCliente,idMascota,fechaSolicitud,importe,estado,detalle,d
             string script = reader.ReadToEnd();
             Sql(script.Substring(script.IndexOf("CREATE OR ALTER PROCEDURE", StringComparison.Ordinal)));
         }
-        Sql("DELETE dbo.__SchemaMigrations WHERE migrationId >= '013_';");
-        string xml = app.CrearRespaldo();
-        var backup = new BackupBLL().Crear();
+        Sql("DROP TABLE dbo.AgendaTurno; DROP INDEX UX_Turno_Confirmado ON dbo.Turno; DROP INDEX IX_Turno_Mascota ON dbo.Turno; DELETE dbo.DVV WHERE nombreTabla='AgendaTurno'; DROP TABLE dbo.DatosClinicos; DROP INDEX IX_HistorialClinico_Mascota ON dbo.HistorialClinico; DELETE dbo.DVV WHERE nombreTabla='DatosClinicos'; DELETE dbo.__SchemaMigrations WHERE migrationId >= '013_';");
+        string xml; BackupBE backup;
+        using(ConexionDAL.UsarBaseTemporal(new SqlConnectionStringBuilder(connection).InitialCatalog))
+        {
+            typeof(ReferenciaIntegridadBLL).GetMethod("GuardarEstadoVerificado",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).Invoke(new ReferenciaIntegridadBLL(),null);
+            xml=app.CrearRespaldo();backup=new BackupBLL().Crear();
+        }
         DatabaseMigrator.Migrate();
         Check(sec.VerificarIntegridad(), "Procedure update preserves all-table integrity");
         new BackupBLL().Restaurar(backup.Id);
@@ -115,7 +130,7 @@ INSERT dbo.Reintegro(idCliente,idMascota,fechaSolicitud,importe,estado,detalle,d
     {
         var sec=new SecurityManager(); var app=new ContingenciaWebMasterBLL(); var users=new UsuarioDAL();
         // Recreate the immediately preceding schema only inside this isolated fixture.
-        Sql("DELETE dbo.DVV WHERE nombreTabla NOT IN ('Usuario','Bitacora'); DELETE dbo.ReferenciaIntegridad; UPDATE dbo.__FormatoIntegridad SET formato='sha256-v1'; ALTER TABLE dbo.ErrorSistema DROP CONSTRAINT DF_ErrorSistema_dvh; ALTER TABLE dbo.ErrorSistema DROP COLUMN dvh; DELETE dbo.__SchemaMigrations WHERE migrationId >= '012_';");
+        Sql("DROP TABLE dbo.AgendaTurno; DROP INDEX UX_Turno_Confirmado ON dbo.Turno; DROP INDEX IX_Turno_Mascota ON dbo.Turno; DROP TABLE dbo.DatosClinicos; DROP INDEX IX_HistorialClinico_Mascota ON dbo.HistorialClinico; DELETE dbo.DVV WHERE nombreTabla NOT IN ('Usuario','Bitacora'); DELETE dbo.ReferenciaIntegridad; UPDATE dbo.__FormatoIntegridad SET formato='sha256-v1'; ALTER TABLE dbo.ErrorSistema DROP CONSTRAINT DF_ErrorSistema_dvh; ALTER TABLE dbo.ErrorSistema DROP COLUMN dvh; DELETE dbo.__SchemaMigrations WHERE migrationId >= '012_';");
         typeof(ReferenciaIntegridadBLL).GetMethod("GuardarEstadoVerificado",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic)
             .Invoke(new ReferenciaIntegridadBLL(),null);
         Check(sec.VerificarIntegridad(),"Legacy fixture retains valid original controls");

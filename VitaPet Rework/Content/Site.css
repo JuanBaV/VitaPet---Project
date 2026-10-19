@@ -1,4 +1,4 @@
-﻿html {
+html {
     min-height: 100%;
 }
 
@@ -487,3 +487,32 @@ textarea {
 .reintegro-detalle { overflow-wrap: anywhere; white-space: pre-wrap; }
 
 .mascota-confirmacion { display: block; margin-top: 18px; }
+
+.mascota-acciones { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0; }
+.mascota-seleccionada { background:#e4f3ef; }
+.mascota-formulario { max-width:520px; margin:0 auto; }
+.mascota-detalle { display:grid; grid-template-columns:minmax(140px,1fr) 2fr; gap:14px 22px; margin:24px 0; }
+.mascota-detalle dd { overflow-wrap:anywhere; margin:0; }
+.mascota-identificacion { display:block; font-size:1.2em; margin:0 0 22px; overflow-wrap:anywhere; }
+.mascota-clinica td { overflow-wrap:anywhere; min-width:100px; max-width:360px; white-space:normal; }
+@media(max-width:600px) { .mascota-acciones .btn { width:100%; } .mascota-detalle { grid-template-columns:1fr; gap:6px; } .mascota-detalle dd { margin-bottom:12px; } }
+
+.turnos-vistas { display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
+.turnos-subtitulo { font-size:18px; margin:20px 0 12px; }
+.turnos-filtros { display:flex; gap:16px 20px; align-items:flex-end; flex-wrap:wrap; margin:24px 0; }
+.turnos-zona { flex:0 1 320px; min-width:220px; }
+.turnos-zona label { display:block; margin-bottom:8px; }
+.turnos-zona .form-control { width:100%; max-width:none; }
+.turnos-filtros > .btn { flex-shrink:0; }
+.turnos-acciones { display:flex; flex-direction:column; align-items:flex-start; gap:16px; margin-top:24px; }
+.turnos-seleccion { display:block; font-weight:600; line-height:1.6; overflow-wrap:anywhere; }
+.turnos-paginador td { padding:8px; }
+.turnos-paginador a, .turnos-paginador span { padding:4px 7px; }
+.turnos-card .registro-confirmacion { display:block; margin:24px 0 0; padding:16px 20px; line-height:1.6; overflow-wrap:anywhere; }
+@media(max-width:600px) {
+    .turnos-filtros { flex-direction:column; align-items:stretch; }
+    .turnos-zona { flex:auto; min-width:0; }
+    .turnos-filtros > .btn, .turnos-acciones > .btn { width:100%; white-space:normal; }
+    .turnos-acciones { align-items:stretch; }
+    .turnos-card .registro-confirmacion { padding:14px 16px; }
+}

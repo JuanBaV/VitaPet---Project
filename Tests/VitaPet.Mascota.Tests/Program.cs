@@ -14,7 +14,7 @@ using VitaPet.BLL.Seguridad;
 using VitaPet.DAL;
 using VitaPet.SECURITY;
 
-class Program
+partial class Program
 {
     static string connection;static int checks;
     static void Check(bool ok,string text){if(!ok)throw new Exception(text);checks++;Console.WriteLine("PASS "+text);}
@@ -47,10 +47,11 @@ class Program
         {
             DatabaseMigrator.Migrate();DatabaseMigrator.Migrate();
             Sql("INSERT dbo.Usuario(correoElectronico,contrasena,nombre,rol,estado,dvh) VALUES('otro@test.local','hash','Otro','Cliente',1,''),('sinperfil@test.local','hash','Sin Perfil','Cliente',1,''); INSERT dbo.Cliente(idUsuario,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(1,'Cliente','Prueba','55555555','Individual',1,''),(4,'Otro','Cliente','55555555','Individual',1,''); INSERT dbo.Mascota(idCliente,nombre,especie,raza,fechaNacimiento,estado,dvh) VALUES(1,'Luna','Perro','Mestizo','20200101',1,''),(1,'Sol','Gato','Mestizo','20210101',1,''),(1,'Inactiva','Gato','Mestizo','20210101',0,''),(2,'Ajena','Perro','Mestizo','20210101',1,'');");
+            Sql("INSERT dbo.Usuario(correoElectronico,contrasena,nombre,rol,estado,dvh) VALUES('sinmascotas@test.local','hash','Sin mascotas','Cliente',1,''); INSERT dbo.Cliente(idUsuario,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(6,'Sin','Mascotas','55555555','Individual',1,''); INSERT dbo.HistorialClinico(idMascota,fechaRegistro,diagnostico,tratamiento,observaciones,dvh) VALUES(1,'20261001','Control general','Control anual','Sin novedades',''),(4,'20261002','Consulta ajena','Tratamiento ajeno',NULL,''); INSERT dbo.DatosClinicos(idMascota,peso,temperatura,frecuenciaCardiaca,observaciones,dvh) VALUES(1,12.50,38.40,90,'Control normal',''),(4,20.00,38.00,100,'Dato ajeno','');");
             var users=new UsuarioDAL();var h=new IntegridadBLL();
             foreach(var u in users.ObtenerParaIntegridad())
             {
-                if(u.IdUsuario==1||u.IdUsuario==4||u.IdUsuario==5)
+                if(u.IdUsuario==1||u.IdUsuario==4||u.IdUsuario==5||u.IdUsuario==6)
                 {
                     u.Contrasena=h.CalcularHash("Prueba2026!");
                     using(var c=new SqlConnection(connection))using(var cmd=new SqlCommand("UPDATE dbo.Usuario SET contrasena=@p WHERE idUsuario=@id",c)){cmd.Parameters.AddWithValue("@p",u.Contrasena);cmd.Parameters.AddWithValue("@id",u.IdUsuario);c.Open();cmd.ExecuteNonQuery();}
@@ -63,7 +64,12 @@ class Program
             Check(sec.VerificarIntegridad(),"Migración, catálogo y errores conservan integridad");
             errors.AsegurarErroresRegistroMascota();errors.AsegurarErroresRegistroMascota();
             Check(new ErrorSistemaDAL().ObtenerPorCodigo("ER060")!=null&&sec.VerificarIntegridad(),"ER060 registrado con DVH, DVV y referencias");
-            if(args.Contains("--web")){File.WriteAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"web-environment.txt"),new[]{cs.InitialCatalog,runtime});keep=true;return;}
+            errors.AsegurarErroresGestionMascotas();errors.AsegurarErroresGestionMascotas();
+            if(args.Contains("--turnos")||args.Contains("--turnos-web"))
+            {errors.AsegurarErroresTurnos();errors.AsegurarErroresTurnos();new SolicitudTurnoBLL().AsegurarAgendaPrueba();new SolicitudTurnoBLL().AsegurarAgendaPrueba();}
+            if(args.Contains("--turnos")){ProbarTurnos();Console.WriteLine("TOTAL: "+checks+" checks passed");return;}
+            if(args.Contains("--web")||args.Contains("--gestion-web")||args.Contains("--turnos-web")){File.WriteAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"web-environment.txt"),new[]{cs.InitialCatalog,runtime});keep=true;return;}
+            if(args.Contains("--gestion")){ProbarGestionMascotas();Console.WriteLine("TOTAL: "+checks+" checks passed");return;}
             var bll=new RegistroMascotaBLL();
             foreach(int actor in new[]{0,2,3}){SessionAs(actor);bool denied=false;try{bll.Registrar(Datos());}catch(UnauthorizedAccessException){denied=true;}Check(denied,"Alta exclusiva Cliente: "+actor);}
             SessionAs(5);Error(()=>bll.Registrar(Datos()),"ER011");SessionAs(1);

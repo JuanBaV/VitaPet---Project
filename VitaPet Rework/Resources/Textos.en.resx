@@ -1,4 +1,4 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -1416,4 +1416,44 @@
   <data name="Mascota_BotonRegistrar" xml:space="preserve"><value>Register</value></data>
   <data name="Mascota_Confirmacion" xml:space="preserve"><value>The pet was registered successfully.</value></data>
   <data name="Error_ER060" xml:space="preserve"><value>The pet could not be registered</value></data>
+  <data name="Mascota_Estado" xml:space="preserve"><value>Status</value></data>
+  <data name="Mascota_Activa" xml:space="preserve"><value>Active</value></data>
+  <data name="Mascota_Inactiva" xml:space="preserve"><value>Inactive</value></data>
+  <data name="Mascota_Seleccionar" xml:space="preserve"><value>Select</value></data>
+  <data name="Mascota_Actualizar" xml:space="preserve"><value>Update details</value></data>
+  <data name="Mascota_Consultar" xml:space="preserve"><value>View details</value></data>
+  <data name="Mascota_Historial" xml:space="preserve"><value>Clinical history</value></data>
+  <data name="Mascota_DatosClinicos" xml:space="preserve"><value>Clinical data</value></data>
+  <data name="Mascota_ActualizarTitulo" xml:space="preserve"><value>Update pet details</value></data>
+  <data name="Mascota_ConsultarTitulo" xml:space="preserve"><value>Pet details</value></data>
+  <data name="Mascota_Guardar" xml:space="preserve"><value>Save changes</value></data>
+  <data name="Mascota_Actualizada" xml:space="preserve"><value>The pet details were updated successfully</value></data>
+  <data name="Mascota_FechaRegistro" xml:space="preserve"><value>Record date</value></data>
+  <data name="Mascota_Diagnostico" xml:space="preserve"><value>Diagnosis</value></data>
+  <data name="Mascota_Tratamiento" xml:space="preserve"><value>Treatment</value></data>
+  <data name="Mascota_Observaciones" xml:space="preserve"><value>Notes</value></data>
+  <data name="Mascota_Peso" xml:space="preserve"><value>Weight (kg)</value></data>
+  <data name="Mascota_Temperatura" xml:space="preserve"><value>Temperature (°C)</value></data>
+  <data name="Mascota_FrecuenciaCardiaca" xml:space="preserve"><value>Heart rate (bpm)</value></data>
+  <data name="Error_ER061" xml:space="preserve"><value>The pet information could not be retrieved</value></data>
+  <data name="Error_ER062" xml:space="preserve"><value>The pet details could not be updated</value></data>
+  <data name="Error_ER063" xml:space="preserve"><value>The clinical history service could not be queried</value></data>
+  <data name="Error_ER064" xml:space="preserve"><value>The pet details have changed since they were loaded</value></data>
+  <data name="Turno_Solicitar" xml:space="preserve"><value>Request an appointment</value></data>
+  <data name="Turno_Consultar" xml:space="preserve"><value>View appointments</value></data>
+  <data name="Turno_Mascota" xml:space="preserve"><value>Pet</value></data>
+  <data name="Turno_Zona" xml:space="preserve"><value>Area</value></data>
+  <data name="Turno_SeleccionarZona" xml:space="preserve"><value>Select an area</value></data>
+  <data name="Turno_Buscar" xml:space="preserve"><value>Find available appointments</value></data>
+  <data name="Turno_Prestacion" xml:space="preserve"><value>Service</value></data>
+  <data name="Turno_Fecha" xml:space="preserve"><value>Date</value></data>
+  <data name="Turno_Horario" xml:space="preserve"><value>Time</value></data>
+  <data name="Turno_Numero" xml:space="preserve"><value>Appointment number</value></data>
+  <data name="Turno_Estado" xml:space="preserve"><value>Status</value></data>
+  <data name="Turno_Confirmado" xml:space="preserve"><value>Confirmed</value></data>
+  <data name="Turno_Confirmar" xml:space="preserve"><value>Confirm appointment</value></data>
+  <data name="Turno_Exportar" xml:space="preserve"><value>Export to XML</value></data>
+  <data name="Turno_Confirmacion" xml:space="preserve"><value>The appointment was booked successfully. Number {0} · {1} · {2} · {3} · {4} · {5}</value></data>
+  <data name="Error_ER065" xml:space="preserve"><value>The appointment service operation could not be completed</value></data>
+  <data name="Error_ER066" xml:space="preserve"><value>The veterinary appointment could not be booked</value></data>
 </root>

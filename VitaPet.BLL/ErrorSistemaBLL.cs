@@ -77,6 +77,22 @@ namespace VitaPet.BLL
         {
             AsegurarErrores(new[] {new ErrorSistemaBE {Codigo="ER060",Descripcion="No se pudo registrar la mascota",Criticidad="Grave"}});
         }
+        public void AsegurarErroresGestionMascotas()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE {Codigo="ER061",Descripcion="No se pudo consultar la información de mascotas",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER062",Descripcion="No se pudieron actualizar los datos de la mascota",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER063",Descripcion="No se pudo consultar el servicio de historial clínico",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER064",Descripcion="Los datos de la mascota cambiaron desde su consulta",Criticidad="Advertencia"}
+            });
+        }
+        public void AsegurarErroresTurnos()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE {Codigo="ER065",Descripcion="No se pudo completar la operación del servicio de turnos",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER066",Descripcion="No se pudo registrar el turno veterinario",Criticidad="Grave"}
+            });
+        }
         private void AsegurarErrores(IEnumerable<ErrorSistemaBE> errores)
         {
             using (var operacion = new OperacionIntegridadDAL())

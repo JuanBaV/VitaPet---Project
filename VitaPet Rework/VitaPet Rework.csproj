@@ -636,7 +636,37 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ActualizarMascota.aspx" />
+    <Compile Include="ActualizarMascota.aspx.cs"><DependentUpon>ActualizarMascota.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="ActualizarMascota.aspx.designer.cs"><DependentUpon>ActualizarMascota.aspx</DependentUpon></Compile>
+    <Content Include="ConsultaMascota.aspx" />
+    <Compile Include="ConsultaMascota.aspx.cs"><DependentUpon>ConsultaMascota.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="ConsultaMascota.aspx.designer.cs"><DependentUpon>ConsultaMascota.aspx</DependentUpon></Compile>
+    <Content Include="HistorialClinico.aspx" />
+    <Compile Include="HistorialClinico.aspx.cs"><DependentUpon>HistorialClinico.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="HistorialClinico.aspx.designer.cs"><DependentUpon>HistorialClinico.aspx</DependentUpon></Compile>
+    <Content Include="DatosClinicos.aspx" />
+    <Compile Include="DatosClinicos.aspx.cs"><DependentUpon>DatosClinicos.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="DatosClinicos.aspx.designer.cs"><DependentUpon>DatosClinicos.aspx</DependentUpon></Compile>
+    <Content Include="Controls\SelectorMascota.ascx" />
+    <Compile Include="Controls\SelectorMascota.ascx.cs"><DependentUpon>SelectorMascota.ascx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="Controls\SelectorMascota.ascx.designer.cs"><DependentUpon>SelectorMascota.ascx</DependentUpon></Compile>
+    <Content Include="WebServices\HistorialClínicoService.asmx" />
+    <Compile Include="WebServices\HistorialClínicoService.asmx.cs"><DependentUpon>HistorialClínicoService.asmx</DependentUpon><SubType>Component</SubType></Compile>
+    <Compile Include="Presentacion\PaginaMascota.cs" />
+  </ItemGroup>
   <Target Name="GenerarRecursosTipados" BeforeTargets="CoreCompile" Inputs="$(MSBuildProjectDirectory)\Resources\Textos.resx" Outputs="$(MSBuildProjectDirectory)\Resources\Textos.Designer.cs">
     <GenerateResource Sources="Resources\Textos.resx" SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)" OutputResources="$(IntermediateOutputPath)VitaPet.GUI.Resources.Textos.resources" StronglyTypedLanguage="C#" StronglyTypedNamespace="VitaPet.GUI.Resources" StronglyTypedManifestPrefix="VitaPet.GUI.Resources" StronglyTypedClassName="Textos" StronglyTypedFileName="Resources\Textos.Designer.cs" PublicClass="true" />
   </Target>
+  <ItemGroup>
+    <Content Include="Turnos.aspx" />
+    <Compile Include="Turnos.aspx.cs"><DependentUpon>Turnos.aspx</DependentUpon><SubType>Code</SubType></Compile>
+    <Compile Include="Turnos.aspx.designer.cs"><DependentUpon>Turnos.aspx</DependentUpon><SubType>Code</SubType></Compile>
+    <Content Include="Controls\FiltroZona.ascx" />
+    <Compile Include="Controls\FiltroZona.ascx.cs"><DependentUpon>FiltroZona.ascx</DependentUpon><SubType>Code</SubType></Compile>
+    <Compile Include="Controls\FiltroZona.ascx.designer.cs"><DependentUpon>FiltroZona.ascx</DependentUpon><SubType>Code</SubType></Compile>
+    <Content Include="WebServices\TurnoService.asmx" />
+    <Compile Include="WebServices\TurnoService.asmx.cs"><DependentUpon>TurnoService.asmx</DependentUpon><SubType>Code</SubType></Compile>
+  </ItemGroup>
 </Project>

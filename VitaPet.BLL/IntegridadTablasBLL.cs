@@ -28,7 +28,7 @@ namespace VitaPet.BLL
         internal void Inicializar()
         {
             dal.ValidarCobertura();
-            foreach (var tabla in IntegridadTablasDAL.Claves.Keys)
+            foreach (var tabla in dal.ClavesEsquema.Keys)
             {
                 var datos = dal.Leer(tabla); var valores = new List<string>();
                 foreach (DataRow fila in datos.Rows)
@@ -43,7 +43,7 @@ namespace VitaPet.BLL
         {
             try { dal.ValidarCobertura(); }
             catch (InvalidOperationException ex) { ReferenciaIntegridadBLL.Error(resultado,"Esquema","—","tabla",ex.Message); return; }
-            foreach (var tabla in IntegridadTablasDAL.Claves.Keys)
+            foreach (var tabla in dal.ClavesEsquema.Keys)
             {
                 var datos=dal.Leer(tabla); var valores=new List<string>();
                 foreach (DataRow fila in datos.Rows)
@@ -60,7 +60,7 @@ namespace VitaPet.BLL
         internal List<ReferenciaCampoBE> CamposActuales()
         {
             var result=new List<ReferenciaCampoBE>();
-            foreach(var tabla in IntegridadTablasDAL.Claves.Keys)
+            foreach(var tabla in dal.ClavesEsquema.Keys)
             {
                 var datos=dal.Leer(tabla);
                 foreach(DataRow fila in datos.Rows)

@@ -168,7 +168,8 @@ namespace VitaPet.BLL
                         if (!BackupBLL.EsquemaCompatible(b.Esquema,actual)) throw new InvalidDataException("El XML requiere migraciones compatibles.");
                         ampliar=actual!=b.Esquema;
                     }
-                    datos.ImportarTemporal(temporal, b.DatosXml, ampliar);
+                    datos.ImportarTemporal(temporal, b.DatosXml, ampliar,
+                        b.Esquema.IndexOf("021_GestionMascotas.sql:", StringComparison.Ordinal)<0);
                     using (ConexionDAL.UsarBaseTemporal(temporal))
                     {
                         if (ampliar) new ReferenciaIntegridadBLL().Inicializar();

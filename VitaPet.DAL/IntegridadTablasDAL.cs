@@ -12,8 +12,27 @@ namespace VitaPet.DAL
                 {"Empresa", "idEmpresa"}, {"Cliente", "idCliente"}, {"Plan", "idPlan"},
                 {"Cobertura", "idCobertura"}, {"Suscripcion", "idSuscripcion"}, {"Pago", "idPago"},
                 {"Mascota", "idMascota"}, {"Turno", "idTurno"}, {"HistorialClinico", "idHistorial"},
-                {"Reintegro", "idReintegro"}, {"ErrorSistema", "codigo"}
+                {"Reintegro", "idReintegro"}, {"ErrorSistema", "codigo"}, {"DatosClinicos", "idDatoClinico"}, {"AgendaTurno", "idAgendaTurno"}
             });
+        public IReadOnlyDictionary<string,string> ClavesEsquema
+        {
+            get
+            {
+                // Únicamente un respaldo temporal anterior a la migración puede omitir su tabla nueva y vacía.
+                var claves=Claves.ToDictionary(k=>k.Key,k=>k.Value);
+                if(ConexionDAL.EnBaseTemporal)
+                foreach(var ampliacion in new[]{new[]{"DatosClinicos","021_GestionMascotas.sql"},new[]{"AgendaTurno","022_Turnos.sql"}})
+                {
+                    using(var cn=new ConexionDAL().CrearConexion())
+                    using(var cmd=new SqlCommand("SELECT CASE WHEN OBJECT_ID(@tabla,'U') IS NULL AND NOT EXISTS(SELECT 1 FROM dbo.__SchemaMigrations WHERE migrationId=@migracion) AND NOT EXISTS(SELECT 1 FROM dbo.DVV WHERE nombreTabla=@nombre) THEN 1 ELSE 0 END",cn))
+                    {
+                        cmd.Parameters.AddWithValue("@tabla","dbo."+ampliacion[0]);cmd.Parameters.AddWithValue("@migracion",ampliacion[1]);cmd.Parameters.AddWithValue("@nombre",ampliacion[0]);
+                        cn.Open();if((int)cmd.ExecuteScalar()==1)claves.Remove(ampliacion[0]);
+                    }
+                }
+                return new System.Collections.ObjectModel.ReadOnlyDictionary<string,string>(claves);
+            }
+        }
         public DataTable Leer(string tabla)
         {
             if (!Claves.ContainsKey(tabla)) throw new ArgumentException("Tabla no supervisada.");
@@ -36,7 +55,7 @@ namespace VitaPet.DAL
         }
         public void ValidarCobertura()
         {
-            var esperadas = new HashSet<string>(Claves.Keys, StringComparer.Ordinal);
+            var esperadas = new HashSet<string>(ClavesEsquema.Keys, StringComparer.Ordinal);
             esperadas.UnionWith(new[] {"Usuario", "Bitacora", "DVV", "ReferenciaIntegridad", "__FormatoIntegridad", "__SchemaMigrations"});
             using (var cn = new ConexionDAL().CrearConexion())
             using (var cmd = new SqlCommand("SELECT name FROM sys.tables WHERE schema_id=SCHEMA_ID('dbo')", cn))

@@ -26,6 +26,9 @@ namespace VitaPet.GUI
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresCobertura();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresReintegros();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresRegistroMascota();
+                        new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresGestionMascotas();
+                        new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresTurnos();
+                        new VitaPet.BLL.SolicitudTurnoBLL().AsegurarAgendaPrueba();
                         new VitaPet.BLL.ContratacionPlanBLL().AsegurarCatalogo();
                     }
                 }
@@ -71,7 +74,13 @@ namespace VitaPet.GUI
                     string.Equals(pagina,"GestionPago.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ConsultaCobertura.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"Reintegros.aspx",StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(pagina,"RegistroMascota.aspx",StringComparison.OrdinalIgnoreCase)) return;
+                    string.Equals(pagina,"RegistroMascota.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"Mascotas.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"ActualizarMascota.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"ConsultaMascota.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"HistorialClinico.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"DatosClinicos.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"Turnos.aspx",StringComparison.OrdinalIgnoreCase)) return;
                 var seguridad = new VitaPet.BLL.Seguridad.SecurityManager();
                 if (string.Equals(pagina, "BaseDatos.aspx", StringComparison.OrdinalIgnoreCase))
                 {

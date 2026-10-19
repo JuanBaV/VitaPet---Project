@@ -655,6 +655,60 @@ namespace VitaPet.GUI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se pudo consultar la información de mascotas.
+        /// </summary>
+        public static string Error_ER061 {
+            get {
+                return ResourceManager.GetString("Error_ER061", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudieron actualizar los datos de la mascota.
+        /// </summary>
+        public static string Error_ER062 {
+            get {
+                return ResourceManager.GetString("Error_ER062", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo consultar el servicio de historial clínico.
+        /// </summary>
+        public static string Error_ER063 {
+            get {
+                return ResourceManager.GetString("Error_ER063", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Los datos de la mascota cambiaron desde su consulta.
+        /// </summary>
+        public static string Error_ER064 {
+            get {
+                return ResourceManager.GetString("Error_ER064", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo completar la operación del servicio de turnos.
+        /// </summary>
+        public static string Error_ER065 {
+            get {
+                return ResourceManager.GetString("Error_ER065", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo registrar el turno veterinario.
+        /// </summary>
+        public static string Error_ER066 {
+            get {
+                return ResourceManager.GetString("Error_ER066", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ER048 - No se pudo cambiar el idioma. Intentá nuevamente..
         /// </summary>
         public static string ErrorCambioIdioma {
@@ -799,6 +853,42 @@ namespace VitaPet.GUI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activa.
+        /// </summary>
+        public static string Mascota_Activa {
+            get {
+                return ResourceManager.GetString("Mascota_Activa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Los datos de la mascota se actualizaron correctamente.
+        /// </summary>
+        public static string Mascota_Actualizada {
+            get {
+                return ResourceManager.GetString("Mascota_Actualizada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actualizar datos.
+        /// </summary>
+        public static string Mascota_Actualizar {
+            get {
+                return ResourceManager.GetString("Mascota_Actualizar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actualización de datos de mascota.
+        /// </summary>
+        public static string Mascota_ActualizarTitulo {
+            get {
+                return ResourceManager.GetString("Mascota_ActualizarTitulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registrar.
         /// </summary>
         public static string Mascota_BotonRegistrar {
@@ -817,11 +907,56 @@ namespace VitaPet.GUI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Consultar datos.
+        /// </summary>
+        public static string Mascota_Consultar {
+            get {
+                return ResourceManager.GetString("Mascota_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consulta de datos de mascota.
+        /// </summary>
+        public static string Mascota_ConsultarTitulo {
+            get {
+                return ResourceManager.GetString("Mascota_ConsultarTitulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Datos clínicos.
+        /// </summary>
+        public static string Mascota_DatosClinicos {
+            get {
+                return ResourceManager.GetString("Mascota_DatosClinicos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagnóstico.
+        /// </summary>
+        public static string Mascota_Diagnostico {
+            get {
+                return ResourceManager.GetString("Mascota_Diagnostico", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Especie.
         /// </summary>
         public static string Mascota_Especie {
             get {
                 return ResourceManager.GetString("Mascota_Especie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estado.
+        /// </summary>
+        public static string Mascota_Estado {
+            get {
+                return ResourceManager.GetString("Mascota_Estado", resourceCulture);
             }
         }
         
@@ -835,11 +970,74 @@ namespace VitaPet.GUI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fecha de registro.
+        /// </summary>
+        public static string Mascota_FechaRegistro {
+            get {
+                return ResourceManager.GetString("Mascota_FechaRegistro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frecuencia cardíaca (lpm).
+        /// </summary>
+        public static string Mascota_FrecuenciaCardiaca {
+            get {
+                return ResourceManager.GetString("Mascota_FrecuenciaCardiaca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guardar cambios.
+        /// </summary>
+        public static string Mascota_Guardar {
+            get {
+                return ResourceManager.GetString("Mascota_Guardar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historial clínico.
+        /// </summary>
+        public static string Mascota_Historial {
+            get {
+                return ResourceManager.GetString("Mascota_Historial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inactiva.
+        /// </summary>
+        public static string Mascota_Inactiva {
+            get {
+                return ResourceManager.GetString("Mascota_Inactiva", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
         public static string Mascota_Nombre {
             get {
                 return ResourceManager.GetString("Mascota_Nombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Observaciones.
+        /// </summary>
+        public static string Mascota_Observaciones {
+            get {
+                return ResourceManager.GetString("Mascota_Observaciones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peso (kg).
+        /// </summary>
+        public static string Mascota_Peso {
+            get {
+                return ResourceManager.GetString("Mascota_Peso", resourceCulture);
             }
         }
         
@@ -867,6 +1065,33 @@ namespace VitaPet.GUI.Resources {
         public static string Mascota_RegistroTitulo {
             get {
                 return ResourceManager.GetString("Mascota_RegistroTitulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seleccionar.
+        /// </summary>
+        public static string Mascota_Seleccionar {
+            get {
+                return ResourceManager.GetString("Mascota_Seleccionar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperatura (°C).
+        /// </summary>
+        public static string Mascota_Temperatura {
+            get {
+                return ResourceManager.GetString("Mascota_Temperatura", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tratamiento.
+        /// </summary>
+        public static string Mascota_Tratamiento {
+            get {
+                return ResourceManager.GetString("Mascota_Tratamiento", resourceCulture);
             }
         }
         
@@ -1434,6 +1659,141 @@ namespace VitaPet.GUI.Resources {
         public static string Saludo {
             get {
                 return ResourceManager.GetString("Saludo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar disponibilidad.
+        /// </summary>
+        public static string Turno_Buscar {
+            get {
+                return ResourceManager.GetString("Turno_Buscar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El turno se registró correctamente. Número {0} · {1} · {2} · {3} · {4} · {5}.
+        /// </summary>
+        public static string Turno_Confirmacion {
+            get {
+                return ResourceManager.GetString("Turno_Confirmacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmado.
+        /// </summary>
+        public static string Turno_Confirmado {
+            get {
+                return ResourceManager.GetString("Turno_Confirmado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmar solicitud.
+        /// </summary>
+        public static string Turno_Confirmar {
+            get {
+                return ResourceManager.GetString("Turno_Confirmar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consultar turnos.
+        /// </summary>
+        public static string Turno_Consultar {
+            get {
+                return ResourceManager.GetString("Turno_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estado.
+        /// </summary>
+        public static string Turno_Estado {
+            get {
+                return ResourceManager.GetString("Turno_Estado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exportar a XML.
+        /// </summary>
+        public static string Turno_Exportar {
+            get {
+                return ResourceManager.GetString("Turno_Exportar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string Turno_Fecha {
+            get {
+                return ResourceManager.GetString("Turno_Fecha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horario.
+        /// </summary>
+        public static string Turno_Horario {
+            get {
+                return ResourceManager.GetString("Turno_Horario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mascota.
+        /// </summary>
+        public static string Turno_Mascota {
+            get {
+                return ResourceManager.GetString("Turno_Mascota", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Número de turno.
+        /// </summary>
+        public static string Turno_Numero {
+            get {
+                return ResourceManager.GetString("Turno_Numero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestación.
+        /// </summary>
+        public static string Turno_Prestacion {
+            get {
+                return ResourceManager.GetString("Turno_Prestacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seleccioná una zona.
+        /// </summary>
+        public static string Turno_SeleccionarZona {
+            get {
+                return ResourceManager.GetString("Turno_SeleccionarZona", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solicitar turno.
+        /// </summary>
+        public static string Turno_Solicitar {
+            get {
+                return ResourceManager.GetString("Turno_Solicitar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zona.
+        /// </summary>
+        public static string Turno_Zona {
+            get {
+                return ResourceManager.GetString("Turno_Zona", resourceCulture);
             }
         }
         

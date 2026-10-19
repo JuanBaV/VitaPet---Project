@@ -1,4 +1,4 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -1416,4 +1416,44 @@
   <data name="Mascota_BotonRegistrar" xml:space="preserve"><value>Registrar</value></data>
   <data name="Mascota_Confirmacion" xml:space="preserve"><value>La mascota se registró correctamente.</value></data>
   <data name="Error_ER060" xml:space="preserve"><value>No se pudo registrar la mascota</value></data>
+  <data name="Mascota_Estado" xml:space="preserve"><value>Estado</value></data>
+  <data name="Mascota_Activa" xml:space="preserve"><value>Activa</value></data>
+  <data name="Mascota_Inactiva" xml:space="preserve"><value>Inactiva</value></data>
+  <data name="Mascota_Seleccionar" xml:space="preserve"><value>Seleccionar</value></data>
+  <data name="Mascota_Actualizar" xml:space="preserve"><value>Actualizar datos</value></data>
+  <data name="Mascota_Consultar" xml:space="preserve"><value>Consultar datos</value></data>
+  <data name="Mascota_Historial" xml:space="preserve"><value>Historial clínico</value></data>
+  <data name="Mascota_DatosClinicos" xml:space="preserve"><value>Datos clínicos</value></data>
+  <data name="Mascota_ActualizarTitulo" xml:space="preserve"><value>Actualización de datos de mascota</value></data>
+  <data name="Mascota_ConsultarTitulo" xml:space="preserve"><value>Consulta de datos de mascota</value></data>
+  <data name="Mascota_Guardar" xml:space="preserve"><value>Guardar cambios</value></data>
+  <data name="Mascota_Actualizada" xml:space="preserve"><value>Los datos de la mascota se actualizaron correctamente</value></data>
+  <data name="Mascota_FechaRegistro" xml:space="preserve"><value>Fecha de registro</value></data>
+  <data name="Mascota_Diagnostico" xml:space="preserve"><value>Diagnóstico</value></data>
+  <data name="Mascota_Tratamiento" xml:space="preserve"><value>Tratamiento</value></data>
+  <data name="Mascota_Observaciones" xml:space="preserve"><value>Observaciones</value></data>
+  <data name="Mascota_Peso" xml:space="preserve"><value>Peso (kg)</value></data>
+  <data name="Mascota_Temperatura" xml:space="preserve"><value>Temperatura (°C)</value></data>
+  <data name="Mascota_FrecuenciaCardiaca" xml:space="preserve"><value>Frecuencia cardíaca (lpm)</value></data>
+  <data name="Error_ER061" xml:space="preserve"><value>No se pudo consultar la información de mascotas</value></data>
+  <data name="Error_ER062" xml:space="preserve"><value>No se pudieron actualizar los datos de la mascota</value></data>
+  <data name="Error_ER063" xml:space="preserve"><value>No se pudo consultar el servicio de historial clínico</value></data>
+  <data name="Error_ER064" xml:space="preserve"><value>Los datos de la mascota cambiaron desde su consulta</value></data>
+  <data name="Turno_Solicitar" xml:space="preserve"><value>Solicitar turno</value></data>
+  <data name="Turno_Consultar" xml:space="preserve"><value>Consultar turnos</value></data>
+  <data name="Turno_Mascota" xml:space="preserve"><value>Mascota</value></data>
+  <data name="Turno_Zona" xml:space="preserve"><value>Zona</value></data>
+  <data name="Turno_SeleccionarZona" xml:space="preserve"><value>Seleccioná una zona</value></data>
+  <data name="Turno_Buscar" xml:space="preserve"><value>Buscar disponibilidad</value></data>
+  <data name="Turno_Prestacion" xml:space="preserve"><value>Prestación</value></data>
+  <data name="Turno_Fecha" xml:space="preserve"><value>Fecha</value></data>
+  <data name="Turno_Horario" xml:space="preserve"><value>Horario</value></data>
+  <data name="Turno_Numero" xml:space="preserve"><value>Número de turno</value></data>
+  <data name="Turno_Estado" xml:space="preserve"><value>Estado</value></data>
+  <data name="Turno_Confirmado" xml:space="preserve"><value>Confirmado</value></data>
+  <data name="Turno_Confirmar" xml:space="preserve"><value>Confirmar solicitud</value></data>
+  <data name="Turno_Exportar" xml:space="preserve"><value>Exportar a XML</value></data>
+  <data name="Turno_Confirmacion" xml:space="preserve"><value>El turno se registró correctamente. Número {0} · {1} · {2} · {3} · {4} · {5}</value></data>
+  <data name="Error_ER065" xml:space="preserve"><value>No se pudo completar la operación del servicio de turnos</value></data>
+  <data name="Error_ER066" xml:space="preserve"><value>No se pudo registrar el turno veterinario</value></data>
 </root>

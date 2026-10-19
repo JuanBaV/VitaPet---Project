@@ -27,7 +27,7 @@ namespace VitaPet.DAL
             return t.Rows.Cast<DataRow>().Select(r => (string)r[0]).ToArray();
         }
         // Sólo se carga XML firmado en una base temporal recién creada con las migraciones vigentes.
-        public void ImportarTemporal(string nombre, string xml, bool ampliarIntegridad = false)
+        public void ImportarTemporal(string nombre, string xml, bool ampliarIntegridad = false, bool ampliarDatosClinicos = false)
         {
             ValidarTemporal(nombre);
             var datos = new DataSet();
@@ -38,6 +38,30 @@ namespace VitaPet.DAL
             using (var c = new ConexionDAL().CrearConexion())
             {
                 c.Open(); var tablas = Tablas(c);
+                if(ampliarDatosClinicos && !datos.Tables.Contains("DatosClinicos") && datos.Tables.Contains("DVV") &&
+                    datos.Tables.Contains("__SchemaMigrations") &&
+                    !datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>().Any(r=>(string)r["migrationId"]=="021_GestionMascotas.sql") &&
+                    !datos.Tables["DVV"].Rows.Cast<DataRow>().Any(r=>(string)r["nombreTabla"]=="DatosClinicos"))
+                {
+                    using(var a=new SqlDataAdapter("SELECT TOP(0) * FROM dbo.DatosClinicos",c))a.Fill(datos,"DatosClinicos");
+                    var fila=datos.Tables["DVV"].NewRow();
+                    fila["idDVV"]=datos.Tables["DVV"].Rows.Cast<DataRow>().Select(r=>(int)r["idDVV"]).DefaultIfEmpty(0).Max()+1;
+                    fila["nombreTabla"]="DatosClinicos";
+                    fila["valorDVV"]="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+                    datos.Tables["DVV"].Rows.Add(fila);
+                }
+                if(ampliarIntegridad && !datos.Tables.Contains("AgendaTurno") && datos.Tables.Contains("DVV") &&
+                    datos.Tables.Contains("__SchemaMigrations") &&
+                    !datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>().Any(r=>(string)r["migrationId"]=="022_Turnos.sql") &&
+                    !datos.Tables["DVV"].Rows.Cast<DataRow>().Any(r=>(string)r["nombreTabla"]=="AgendaTurno"))
+                {
+                    using(var a=new SqlDataAdapter("SELECT TOP(0) * FROM dbo.AgendaTurno",c))a.Fill(datos,"AgendaTurno");
+                    var fila=datos.Tables["DVV"].NewRow();
+                    fila["idDVV"]=datos.Tables["DVV"].Rows.Cast<DataRow>().Select(r=>(int)r["idDVV"]).DefaultIfEmpty(0).Max()+1;
+                    fila["nombreTabla"]="AgendaTurno";
+                    fila["valorDVV"]="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+                    datos.Tables["DVV"].Rows.Add(fila);
+                }
                 if (!tablas.OrderBy(n => n, StringComparer.Ordinal).SequenceEqual(datos.Tables.Cast<DataTable>().Select(t => t.TableName).OrderBy(n => n, StringComparer.Ordinal)))
                     throw new InvalidDataException("Las tablas del XML no corresponden al esquema actual.");
                 using (var tx = c.BeginTransaction())
