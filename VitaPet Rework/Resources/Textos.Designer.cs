@@ -169,6 +169,168 @@ namespace VitaPet.GUI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activo.
+        /// </summary>
+        public static string Empresa_Activo {
+            get {
+                return ResourceManager.GetString("Empresa_Activo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Alta de empresa.
+        /// </summary>
+        public static string Empresa_Alta {
+            get {
+                return ResourceManager.GetString("Empresa_Alta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Modificar.
+        /// </summary>
+        public static string Empresa_BotonModificar {
+            get {
+                return ResourceManager.GetString("Empresa_BotonModificar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to La empresa se registró correctamente. Identificador {0} · {1}.
+        /// </summary>
+        public static string Empresa_ConfirmacionAlta {
+            get {
+                return ResourceManager.GetString("Empresa_ConfirmacionAlta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Consulta de empresa asociada.
+        /// </summary>
+        public static string Empresa_Consulta {
+            get {
+                return ResourceManager.GetString("Empresa_Consulta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Consultar.
+        /// </summary>
+        public static string Empresa_Consultar {
+            get {
+                return ResourceManager.GetString("Empresa_Consultar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to CUIT.
+        /// </summary>
+        public static string Empresa_Cuit {
+            get {
+                return ResourceManager.GetString("Empresa_Cuit", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Dirección.
+        /// </summary>
+        public static string Empresa_Direccion {
+            get {
+                return ResourceManager.GetString("Empresa_Direccion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Estado.
+        /// </summary>
+        public static string Empresa_Estado {
+            get {
+                return ResourceManager.GetString("Empresa_Estado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Empresas asociadas.
+        /// </summary>
+        public static string Empresa_Gestion {
+            get {
+                return ResourceManager.GetString("Empresa_Gestion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Guardar cambios.
+        /// </summary>
+        public static string Empresa_Guardar {
+            get {
+                return ResourceManager.GetString("Empresa_Guardar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Identificador.
+        /// </summary>
+        public static string Empresa_Id {
+            get {
+                return ResourceManager.GetString("Empresa_Id", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Inactivo.
+        /// </summary>
+        public static string Empresa_Inactivo {
+            get {
+                return ResourceManager.GetString("Empresa_Inactivo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Modificación de empresa asociada.
+        /// </summary>
+        public static string Empresa_Modificar {
+            get {
+                return ResourceManager.GetString("Empresa_Modificar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Razón social.
+        /// </summary>
+        public static string Empresa_RazonSocial {
+            get {
+                return ResourceManager.GetString("Empresa_RazonSocial", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Registrar empresa.
+        /// </summary>
+        public static string Empresa_Registrar {
+            get {
+                return ResourceManager.GetString("Empresa_Registrar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Seleccionar.
+        /// </summary>
+        public static string Empresa_Seleccionar {
+            get {
+                return ResourceManager.GetString("Empresa_Seleccionar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Teléfono.
+        /// </summary>
+        public static string Empresa_Telefono {
+            get {
+                return ResourceManager.GetString("Empresa_Telefono", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Correo ya registrado.
         /// </summary>
         public static string Error_ER001 {
@@ -708,6 +870,42 @@ namespace VitaPet.GUI.Resources {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo consultar la información de empresas.
+        /// </summary>
+        public static string Error_ER067 {
+            get {
+                return ResourceManager.GetString("Error_ER067", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to El CUIT ya se encuentra registrado para otra empresa.
+        /// </summary>
+        public static string Error_ER068 {
+            get {
+                return ResourceManager.GetString("Error_ER068", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo registrar la empresa.
+        /// </summary>
+        public static string Error_ER069 {
+            get {
+                return ResourceManager.GetString("Error_ER069", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudieron actualizar los datos de la empresa.
+        /// </summary>
+        public static string Error_ER070 {
+            get {
+                return ResourceManager.GetString("Error_ER070", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to ER048 - No se pudo cambiar el idioma. Intentá nuevamente..
         /// </summary>

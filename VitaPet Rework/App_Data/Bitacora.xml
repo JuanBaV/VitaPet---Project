@@ -1482,4 +1482,67 @@
     <Criticidad>Informativa</Criticidad>
     <DVH>8ea4b4bb0de66877fa4d6fc95202a88be1b0986fbd0eb141ea063bc7875c4874</DVH>
   </Registro>
+  <Registro>
+    <IdBitacora>1229</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T11:59:49.7200000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>33d31956d8184c44894951b5ad8d9730968b8b664503600952d54b7d326642df</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1230</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T12:01:03.9730000</Fecha>
+    <Accion>Registro de mascota de prueba</Accion>
+    <Modulo>Mascotas</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>90006abddc89d3d0bf24798ffb759d1219c59dfbb2febf663cc537cb24b1c931</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1231</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T12:01:35.4630000</Fecha>
+    <Accion>Contratación de plan pendiente</Accion>
+    <Modulo>Planes</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>1f2a1c89ab8d246a7634d1e5b0d92b4e9a9b82f84fcd930b26f5ed2d06b78be4</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1232</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T12:02:42.1400000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>3fe2954090dff5131cff138b75d15705f1ee90558d603b068d7281793561e90e</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1233</IdBitacora>
+    <IdUsuario>5</IdUsuario>
+    <Fecha>2026-10-15T12:06:01.8070000</Fecha>
+    <Accion>Gestión de pago</Accion>
+    <Modulo>Pagos</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>c5c2efa644b913c52a4c38672629b9bea46c6953f8b25bcb15b3da3dbd0a5b11</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1234</IdBitacora>
+    <IdUsuario>4</IdUsuario>
+    <Fecha>2026-10-15T16:08:02.9200000</Fecha>
+    <Accion>Login exitoso</Accion>
+    <Modulo>Autenticación</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>17d8e47770d6aaa58bb92e8aa972e24d7d2f0876f7ee36259ad6e4a38b9e1211</DVH>
+  </Registro>
+  <Registro>
+    <IdBitacora>1235</IdBitacora>
+    <IdUsuario>4</IdUsuario>
+    <Fecha>2026-10-15T16:08:06.3600000</Fecha>
+    <Accion>Consulta de cobertura</Accion>
+    <Modulo>Planes</Modulo>
+    <Criticidad>Informativa</Criticidad>
+    <DVH>721f2007e6e6b9b5fb480d616544c7f5d2c494d2e10638c0202084b500633132</DVH>
+  </Registro>
 </Bitacora>

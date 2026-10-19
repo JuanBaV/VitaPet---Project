@@ -118,6 +118,18 @@ namespace VitaPet.BLL.Seguridad
             return vigente;
         }
 
+        public UsuarioBE ExigirAdministrador()
+        {
+            var sesion=VitaPet.SECURITY.SessionManager.Instancia;
+            var actual=sesion.UsuarioActual;
+            if(sesion.HaySesionContingencia || actual==null || actual.Rol!="Administrador")
+                throw new UnauthorizedAccessException("Acceso exclusivo para Administrador.");
+            var vigente=_usuarioDAL.ObtenerPorId(actual.IdUsuario);
+            if(vigente==null || vigente.Rol!="Administrador" || !new Estados.UsuarioStateBLL(vigente).PuedeIniciarSesion())
+                throw new UnauthorizedAccessException("La cuenta no puede realizar esta operación.");
+            return vigente;
+        }
+
         public UsuarioBE ExigirWebmaster()
         {
             var actual=VitaPet.SECURITY.SessionManager.Instancia.UsuarioActual;

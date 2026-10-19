@@ -15,6 +15,7 @@
         protected global::System.Web.UI.WebControls.HyperLink lnkReintegros;
         protected global::System.Web.UI.WebControls.Panel pnlMenuAdministrador;
         protected global::System.Web.UI.WebControls.HyperLink lnkGestionEmpresas;
+        protected global::System.Web.UI.WebControls.HyperLink lnkAltaEmpresa;
         protected global::System.Web.UI.WebControls.HyperLink lnkGestionPlanes;
         protected global::System.Web.UI.WebControls.HyperLink lnkClienteCorporativo;
         protected global::System.Web.UI.WebControls.Panel pnlMenuWebmaster;

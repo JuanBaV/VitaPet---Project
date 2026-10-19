@@ -1456,4 +1456,26 @@
   <data name="Turno_Confirmacion" xml:space="preserve"><value>The appointment was booked successfully. Number {0} · {1} · {2} · {3} · {4} · {5}</value></data>
   <data name="Error_ER065" xml:space="preserve"><value>The appointment service operation could not be completed</value></data>
   <data name="Error_ER066" xml:space="preserve"><value>The veterinary appointment could not be booked</value></data>
+  <data name="Empresa_Gestion" xml:space="preserve"><value>Associated companies</value></data>
+  <data name="Empresa_Alta" xml:space="preserve"><value>Register company</value></data>
+  <data name="Empresa_Consulta" xml:space="preserve"><value>Company details</value></data>
+  <data name="Empresa_Modificar" xml:space="preserve"><value>Edit company</value></data>
+  <data name="Empresa_BotonModificar" xml:space="preserve"><value>Edit</value></data>
+  <data name="Empresa_Id" xml:space="preserve"><value>Identifier</value></data>
+  <data name="Empresa_RazonSocial" xml:space="preserve"><value>Company name</value></data>
+  <data name="Empresa_Cuit" xml:space="preserve"><value>Tax ID (CUIT)</value></data>
+  <data name="Empresa_Direccion" xml:space="preserve"><value>Address</value></data>
+  <data name="Empresa_Telefono" xml:space="preserve"><value>Phone</value></data>
+  <data name="Empresa_Estado" xml:space="preserve"><value>Status</value></data>
+  <data name="Empresa_Activo" xml:space="preserve"><value>Active</value></data>
+  <data name="Empresa_Inactivo" xml:space="preserve"><value>Inactive</value></data>
+  <data name="Empresa_Seleccionar" xml:space="preserve"><value>Select</value></data>
+  <data name="Empresa_Consultar" xml:space="preserve"><value>View details</value></data>
+  <data name="Empresa_Registrar" xml:space="preserve"><value>Register company</value></data>
+  <data name="Empresa_Guardar" xml:space="preserve"><value>Save changes</value></data>
+  <data name="Empresa_ConfirmacionAlta" xml:space="preserve"><value>The company was registered successfully. Identifier {0} · {1}</value></data>
+  <data name="Error_ER067" xml:space="preserve"><value>Could not retrieve company information</value></data>
+  <data name="Error_ER068" xml:space="preserve"><value>The tax ID is already registered to another company</value></data>
+  <data name="Error_ER069" xml:space="preserve"><value>Could not register the company</value></data>
+  <data name="Error_ER070" xml:space="preserve"><value>Could not update the company details</value></data>
 </root>

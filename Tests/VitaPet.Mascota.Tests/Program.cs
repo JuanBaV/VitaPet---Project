@@ -51,7 +51,7 @@ partial class Program
             var users=new UsuarioDAL();var h=new IntegridadBLL();
             foreach(var u in users.ObtenerParaIntegridad())
             {
-                if(u.IdUsuario==1||u.IdUsuario==4||u.IdUsuario==5||u.IdUsuario==6)
+                if(u.IdUsuario==1||u.IdUsuario==4||u.IdUsuario==5||u.IdUsuario==6||((args.Contains("--empresas")||args.Contains("--empresas-web"))&&(u.IdUsuario==2||u.IdUsuario==3)))
                 {
                     u.Contrasena=h.CalcularHash("Prueba2026!");
                     using(var c=new SqlConnection(connection))using(var cmd=new SqlCommand("UPDATE dbo.Usuario SET contrasena=@p WHERE idUsuario=@id",c)){cmd.Parameters.AddWithValue("@p",u.Contrasena);cmd.Parameters.AddWithValue("@id",u.IdUsuario);c.Open();cmd.ExecuteNonQuery();}
@@ -67,8 +67,10 @@ partial class Program
             errors.AsegurarErroresGestionMascotas();errors.AsegurarErroresGestionMascotas();
             if(args.Contains("--turnos")||args.Contains("--turnos-web"))
             {errors.AsegurarErroresTurnos();errors.AsegurarErroresTurnos();new SolicitudTurnoBLL().AsegurarAgendaPrueba();new SolicitudTurnoBLL().AsegurarAgendaPrueba();}
+            if(args.Contains("--empresas")||args.Contains("--empresas-web")){errors.AsegurarErroresEmpresas();errors.AsegurarErroresEmpresas();}
+            if(args.Contains("--empresas")){ProbarEmpresas();Console.WriteLine("TOTAL: "+checks+" checks passed");return;}
             if(args.Contains("--turnos")){ProbarTurnos();Console.WriteLine("TOTAL: "+checks+" checks passed");return;}
-            if(args.Contains("--web")||args.Contains("--gestion-web")||args.Contains("--turnos-web")){File.WriteAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"web-environment.txt"),new[]{cs.InitialCatalog,runtime});keep=true;return;}
+            if(args.Contains("--web")||args.Contains("--gestion-web")||args.Contains("--turnos-web")||args.Contains("--empresas-web")){File.WriteAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"web-environment.txt"),new[]{cs.InitialCatalog,runtime});keep=true;return;}
             if(args.Contains("--gestion")){ProbarGestionMascotas();Console.WriteLine("TOTAL: "+checks+" checks passed");return;}
             var bll=new RegistroMascotaBLL();
             foreach(int actor in new[]{0,2,3}){SessionAs(actor);bool denied=false;try{bll.Registrar(Datos());}catch(UnauthorizedAccessException){denied=true;}Check(denied,"Alta exclusiva Cliente: "+actor);}

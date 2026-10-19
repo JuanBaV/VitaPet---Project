@@ -93,6 +93,15 @@ namespace VitaPet.BLL
                 new ErrorSistemaBE {Codigo="ER066",Descripcion="No se pudo registrar el turno veterinario",Criticidad="Grave"}
             });
         }
+        public void AsegurarErroresEmpresas()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE {Codigo="ER067",Descripcion="No se pudo consultar la información de empresas",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER068",Descripcion="El CUIT ya se encuentra registrado para otra empresa",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER069",Descripcion="No se pudo registrar la empresa",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER070",Descripcion="No se pudieron actualizar los datos de la empresa",Criticidad="Grave"}
+            });
+        }
         private void AsegurarErrores(IEnumerable<ErrorSistemaBE> errores)
         {
             using (var operacion = new OperacionIntegridadDAL())

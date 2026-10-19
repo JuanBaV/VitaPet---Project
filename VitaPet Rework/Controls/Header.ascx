@@ -82,8 +82,10 @@
                     <asp:HyperLink
                         ID="lnkGestionEmpresas"
                         runat="server"
-                        NavigateUrl="~/GestiónEmpresas.aspx"
+                        NavigateUrl="~/Empresas.aspx"
                         Text="<%$ Resources:Textos, UI_Empresas %>" />
+
+                    <asp:HyperLink ID="lnkAltaEmpresa" runat="server" NavigateUrl="~/AltaEmpresa.aspx" Text="<%$ Resources:Textos, Empresa_Alta %>" />
 
                     <asp:HyperLink
                         ID="lnkGestionPlanes"

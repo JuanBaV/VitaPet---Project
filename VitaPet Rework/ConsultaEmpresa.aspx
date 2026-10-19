@@ -1,0 +1,8 @@
+<%@ Page Title="<%$ Resources:Textos, Empresa_Consulta %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ConsultaEmpresa.aspx.cs" Inherits="ConsultaEmpresaPage" %>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+ <main class="planes-page"><section class="planes-card empresa-card">
+  <header class="login-header"><h1><%: TextosUI.Obtener("Empresa_Consulta") %></h1></header>
+  <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
+  <asp:Panel ID="pnlDatos" runat="server" CssClass="empresa-campos"><div class="empresa-dato"><span class="login-label"><%: TextosUI.Obtener("Empresa_Id") %></span><asp:Label ID="lblIdEmpresa" runat="server" /></div><div class="empresa-dato"><span class="login-label"><%: TextosUI.Obtener("Empresa_RazonSocial") %></span><asp:Label ID="lblRazonSocial" runat="server" /></div><div class="empresa-dato"><span class="login-label"><%: TextosUI.Obtener("Empresa_Cuit") %></span><asp:Label ID="lblCuit" runat="server" /></div><div class="empresa-dato"><span class="login-label"><%: TextosUI.Obtener("Empresa_Direccion") %></span><asp:Label ID="lblDireccion" runat="server" /></div><div class="empresa-dato"><span class="login-label"><%: TextosUI.Obtener("Empresa_Telefono") %></span><asp:Label ID="lblTelefono" runat="server" /></div><div class="empresa-dato"><span class="login-label"><%: TextosUI.Obtener("Empresa_Estado") %></span><asp:Label ID="lblEstado" runat="server" /></div></asp:Panel>
+ </section></main>
+</asp:Content>

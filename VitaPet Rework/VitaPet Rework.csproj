@@ -669,4 +669,19 @@
     <Content Include="WebServices\TurnoService.asmx" />
     <Compile Include="WebServices\TurnoService.asmx.cs"><DependentUpon>TurnoService.asmx</DependentUpon><SubType>Code</SubType></Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Presentacion\PaginaEmpresa.cs" />
+    <Content Include="Empresas.aspx" />
+    <Compile Include="Empresas.aspx.cs"><DependentUpon>Empresas.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="Empresas.aspx.designer.cs"><DependentUpon>Empresas.aspx</DependentUpon></Compile>
+    <Content Include="AltaEmpresa.aspx" />
+    <Compile Include="AltaEmpresa.aspx.cs"><DependentUpon>AltaEmpresa.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="AltaEmpresa.aspx.designer.cs"><DependentUpon>AltaEmpresa.aspx</DependentUpon></Compile>
+    <Content Include="ConsultaEmpresa.aspx" />
+    <Compile Include="ConsultaEmpresa.aspx.cs"><DependentUpon>ConsultaEmpresa.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="ConsultaEmpresa.aspx.designer.cs"><DependentUpon>ConsultaEmpresa.aspx</DependentUpon></Compile>
+    <Content Include="ModificarEmpresa.aspx" />
+    <Compile Include="ModificarEmpresa.aspx.cs"><DependentUpon>ModificarEmpresa.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="ModificarEmpresa.aspx.designer.cs"><DependentUpon>ModificarEmpresa.aspx</DependentUpon></Compile>
+  </ItemGroup>
 </Project>

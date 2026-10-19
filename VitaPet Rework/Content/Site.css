@@ -516,3 +516,15 @@ textarea {
     .turnos-acciones { align-items:stretch; }
     .turnos-card .registro-confirmacion { padding:14px 16px; }
 }
+
+/* CU-005-001 a CU-005-004 */
+.empresa-campos { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:20px 28px; margin:24px 0; }
+.empresa-campos .form-control { width:100%; max-width:none; }
+.empresa-campos .form-group { margin-bottom:0; }
+.empresa-dato { overflow-wrap:anywhere; }
+.empresa-dato .login-label { display:block; margin-bottom:8px; }
+.empresa-acciones { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+.empresa-confirmacion { display:block; margin:24px 0 0; line-height:1.6; overflow-wrap:anywhere; }
+.empresa-grilla td { overflow-wrap:anywhere; min-width:100px; max-width:250px; white-space:normal; }
+.empresa-grilla .empresa-seleccionada > td { background:#e4f3ef; }
+@media(max-width:600px) { .empresa-campos { grid-template-columns:minmax(0,1fr); } .empresa-acciones .btn { width:100%; } }

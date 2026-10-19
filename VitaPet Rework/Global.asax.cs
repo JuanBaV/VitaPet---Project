@@ -28,6 +28,7 @@ namespace VitaPet.GUI
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresRegistroMascota();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresGestionMascotas();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresTurnos();
+                        new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresEmpresas();
                         new VitaPet.BLL.SolicitudTurnoBLL().AsegurarAgendaPrueba();
                         new VitaPet.BLL.ContratacionPlanBLL().AsegurarCatalogo();
                     }
@@ -80,7 +81,11 @@ namespace VitaPet.GUI
                     string.Equals(pagina,"ConsultaMascota.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"HistorialClinico.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"DatosClinicos.aspx",StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(pagina,"Turnos.aspx",StringComparison.OrdinalIgnoreCase)) return;
+                    string.Equals(pagina,"Turnos.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"Empresas.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"AltaEmpresa.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"ConsultaEmpresa.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"ModificarEmpresa.aspx",StringComparison.OrdinalIgnoreCase)) return;
                 var seguridad = new VitaPet.BLL.Seguridad.SecurityManager();
                 if (string.Equals(pagina, "BaseDatos.aspx", StringComparison.OrdinalIgnoreCase))
                 {

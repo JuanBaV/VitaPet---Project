@@ -1456,4 +1456,26 @@
   <data name="Turno_Confirmacion" xml:space="preserve"><value>El turno se registró correctamente. Número {0} · {1} · {2} · {3} · {4} · {5}</value></data>
   <data name="Error_ER065" xml:space="preserve"><value>No se pudo completar la operación del servicio de turnos</value></data>
   <data name="Error_ER066" xml:space="preserve"><value>No se pudo registrar el turno veterinario</value></data>
+  <data name="Empresa_Gestion" xml:space="preserve"><value>Empresas asociadas</value></data>
+  <data name="Empresa_Alta" xml:space="preserve"><value>Alta de empresa</value></data>
+  <data name="Empresa_Consulta" xml:space="preserve"><value>Consulta de empresa asociada</value></data>
+  <data name="Empresa_Modificar" xml:space="preserve"><value>Modificación de empresa asociada</value></data>
+  <data name="Empresa_BotonModificar" xml:space="preserve"><value>Modificar</value></data>
+  <data name="Empresa_Id" xml:space="preserve"><value>Identificador</value></data>
+  <data name="Empresa_RazonSocial" xml:space="preserve"><value>Razón social</value></data>
+  <data name="Empresa_Cuit" xml:space="preserve"><value>CUIT</value></data>
+  <data name="Empresa_Direccion" xml:space="preserve"><value>Dirección</value></data>
+  <data name="Empresa_Telefono" xml:space="preserve"><value>Teléfono</value></data>
+  <data name="Empresa_Estado" xml:space="preserve"><value>Estado</value></data>
+  <data name="Empresa_Activo" xml:space="preserve"><value>Activo</value></data>
+  <data name="Empresa_Inactivo" xml:space="preserve"><value>Inactivo</value></data>
+  <data name="Empresa_Seleccionar" xml:space="preserve"><value>Seleccionar</value></data>
+  <data name="Empresa_Consultar" xml:space="preserve"><value>Consultar</value></data>
+  <data name="Empresa_Registrar" xml:space="preserve"><value>Registrar empresa</value></data>
+  <data name="Empresa_Guardar" xml:space="preserve"><value>Guardar cambios</value></data>
+  <data name="Empresa_ConfirmacionAlta" xml:space="preserve"><value>La empresa se registró correctamente. Identificador {0} · {1}</value></data>
+  <data name="Error_ER067" xml:space="preserve"><value>No se pudo consultar la información de empresas</value></data>
+  <data name="Error_ER068" xml:space="preserve"><value>El CUIT ya se encuentra registrado para otra empresa</value></data>
+  <data name="Error_ER069" xml:space="preserve"><value>No se pudo registrar la empresa</value></data>
+  <data name="Error_ER070" xml:space="preserve"><value>No se pudieron actualizar los datos de la empresa</value></data>
 </root>
