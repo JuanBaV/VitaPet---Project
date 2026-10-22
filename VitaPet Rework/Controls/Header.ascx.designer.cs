@@ -23,6 +23,9 @@
         protected global::System.Web.UI.WebControls.HyperLink lnkBitacora;
         protected global::System.Web.UI.WebControls.HyperLink lnkGestionUsuarios;
         protected global::System.Web.UI.WebControls.HyperLink lnkBaseDatos;
+        protected global::System.Web.UI.WebControls.HyperLink lnkPerfiles;
+        protected global::System.Web.UI.WebControls.HyperLink lnkAltaUsuario;
+        protected global::System.Web.UI.WebControls.HyperLink lnkConsultarPerfiles;
         protected global::System.Web.UI.WebControls.HyperLink lnkCerrarSesion;
         protected global::System.Web.UI.WebControls.Literal litIdiomaActual;
         protected global::System.Web.UI.WebControls.LinkButton btnIdiomaEs;

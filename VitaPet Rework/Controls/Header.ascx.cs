@@ -1,5 +1,8 @@
 using System;
 using System.Web.UI;
+using System.Linq;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
 using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.SECURITY;
@@ -7,10 +10,6 @@ using VitaPet.GUI.Presentacion;
 
 public partial class Controls_Header : UserControl
 {
-    private const string RolCliente = "Cliente";
-    private const string RolAdministrador = "Administrador";
-    private const string RolWebmaster = "Webmaster";
-
     protected void Page_Load(object sender, EventArgs e)
     {
         CargarSesion();
@@ -51,23 +50,19 @@ public partial class Controls_Header : UserControl
 
     private void CargarMenu(string rol)
     {
-        pnlMenuCliente.Visible =
-            string.Equals(
-                rol,
-                RolCliente,
-                StringComparison.OrdinalIgnoreCase);
-
-        pnlMenuAdministrador.Visible =
-            string.Equals(
-                rol,
-                RolAdministrador,
-                StringComparison.OrdinalIgnoreCase);
-
-        pnlMenuWebmaster.Visible =
-            string.Equals(
-                rol,
-                RolWebmaster,
-                StringComparison.OrdinalIgnoreCase);
+        var accesos=new HashSet<string>(new PerfilBLL().PantallasActuales(),StringComparer.OrdinalIgnoreCase);
+        foreach(var panel in new[]{pnlMenuCliente,pnlMenuAdministrador,pnlMenuWebmaster})
+        {
+            panel.Visible=true; bool alguno=false;
+            foreach(var enlace in panel.Controls.OfType<HyperLink>())
+            {
+                bool permitido=accesos.Contains(System.IO.Path.GetFileNameWithoutExtension(enlace.NavigateUrl));
+                if(enlace.NavigateUrl=="~/ConsultarPerfiles.aspx" && accesos.Contains("GestionPerfiles")) permitido=false;
+                enlace.Visible=permitido;
+                alguno|=permitido;
+            }
+            panel.Visible=alguno;
+        }
     }
 
     protected void btnIdiomaEs_Click(object sender, EventArgs e)

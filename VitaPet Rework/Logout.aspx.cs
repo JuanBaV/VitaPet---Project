@@ -26,7 +26,7 @@ public partial class LogoutPage : PaginaBase
         if (usuario == null)
             Response.Redirect(ResolveUrl("~/Login.aspx") + "?ReturnUrl=" +
                 Server.UrlEncode(Request.RawUrl), true);
-        if (!RolesPermitidos.Contains(usuario.Rol, StringComparer.OrdinalIgnoreCase))
+        if (!new PerfilBLL().PuedeAcceder("Logout"))
             Response.Redirect(ResolveUrl("~/AccesoDenegado.aspx"), true);
         ViewStateUserKey = Session.SessionID;
         Response.Cache.SetCacheability(HttpCacheability.NoCache);

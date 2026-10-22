@@ -67,12 +67,8 @@ namespace VitaPet.GUI.Presentacion
                 return false;
             }
 
-            if (RolesPermitidos != null &&
-                RolesPermitidos.Any(
-                    rol => string.Equals(
-                        rol,
-                        usuario.Rol,
-                        StringComparison.OrdinalIgnoreCase)))
+            string pantalla = System.IO.Path.GetFileNameWithoutExtension(AppRelativeVirtualPath);
+            if (new VitaPet.BLL.PerfilBLL().PuedeAcceder(pantalla))
             {
                 return true;
             }

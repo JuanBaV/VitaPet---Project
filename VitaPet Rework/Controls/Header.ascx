@@ -79,6 +79,7 @@
                     runat="server"
                     CssClass="navbar-role-links"
                     Visible="false">
+                    <asp:HyperLink ID="lnkConsultarPerfiles" runat="server" NavigateUrl="~/ConsultarPerfiles.aspx" Text="Perfiles" />
                     <asp:HyperLink
                         ID="lnkGestionEmpresas"
                         runat="server"
@@ -107,6 +108,8 @@
                     runat="server"
                     CssClass="navbar-role-links"
                     Visible="false">
+                    <asp:HyperLink ID="lnkPerfiles" runat="server" NavigateUrl="~/GestionPerfiles.aspx" Text="Perfiles" />
+                    <asp:HyperLink ID="lnkAltaUsuario" runat="server" NavigateUrl="~/AltaUsuario.aspx" Text="Alta de usuarios" />
                     <asp:HyperLink
                         ID="lnkBitacora"
                         runat="server"

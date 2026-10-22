@@ -51,7 +51,7 @@ namespace VitaPet.GUI.Presentacion
             try
             {
                 if (!SessionManager.Instancia.HaySesionActiva) Response.Redirect(ResolveUrl("~/Login.aspx"), true);
-                new SecurityManager().ExigirWebmaster();
+                new SecurityManager().ExigirPermiso(System.IO.Path.GetFileNameWithoutExtension(AppRelativeVirtualPath));
                 autorizado = true;
             }
             catch (UnauthorizedAccessException) { Response.Redirect(ResolveUrl("~/AccesoDenegado.aspx"), true); }
@@ -129,6 +129,9 @@ namespace VitaPet.GUI.Presentacion
             Etiqueta("lblIdUsuario", u.IdUsuario.ToString()); Etiqueta("lblBloqueado", u.Bloqueado ? "Bloqueado" : "Desbloqueado");
             if (Operacion == OperacionUsuario.Modificar)
             {
+                var roles=Control<DropDownList>("ddlRol");roles.Items.Clear();
+                foreach(var perfil in new PerfilBLL().Consultar().OfType<PerfilBE>())roles.Items.Add(new ListItem(perfil.Nombre,perfil.Nombre));
+                roles.Enabled=SessionManager.Instancia.UsuarioActual.Rol=="Webmaster";
                 Control<TextBox>("txtNombre").Text = u.Nombre; Control<TextBox>("txtCorreo").Text = u.CorreoElectronico;
                 Control<DropDownList>("ddlRol").SelectedValue = u.Rol; Control<DropDownList>("ddlEstado").SelectedValue = u.Estado.ToString();
             }

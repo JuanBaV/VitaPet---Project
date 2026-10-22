@@ -454,6 +454,14 @@ textarea {
 .usuarios-acciones { margin-top: 20px; padding-top: 12px; border-top: 1px solid #cbd5d5; }
 .usuarios-acciones h2 { font-size: 20px; }
 .usuarios-botones { display: flex; flex-wrap: wrap; gap: 8px; }
+.perfiles-grilla { table-layout: fixed; width: 100%; }
+.perfiles-grilla td, .perfiles-grilla th { overflow-wrap: anywhere; }
+.perfiles-grilla th:first-child { width: 20%; }
+.perfiles-grilla th:last-child { width: 100px; }
+.perfil-componentes { list-style: none; padding: 0; columns: 2; column-gap: 24px; }
+.perfil-componentes li { break-inside: avoid; margin-bottom: 8px; }
+.perfil-componentes input { margin-right: 8px; }
+@media (max-width: 767px) { .perfil-componentes { columns: 1; } }
 @media (max-width: 767px) { .usuarios-buscar { padding-top: 0; } }
 
 /* CU-007-005 a CU-007-008 */

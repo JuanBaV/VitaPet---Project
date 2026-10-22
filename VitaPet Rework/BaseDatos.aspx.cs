@@ -14,7 +14,7 @@ public partial class BaseDatosPage : PaginaBase
     protected override string[] RolesPermitidos => new[] { "Webmaster" };
     protected override void OnInit(EventArgs e)
     {
-        try { seguridad.ExigirWebmaster(); }
+        try { seguridad.ExigirWebmaster("BaseDatos"); }
         catch (UnauthorizedAccessException) { throw new HttpException(403,"Acceso exclusivo para Webmaster."); }
         ViewStateUserKey=Session.SessionID;
         base.OnInit(e);
@@ -94,7 +94,7 @@ public partial class BaseDatosPage : PaginaBase
     }
     private void Ejecutar(Action accion)
     {
-        try { seguridad.ExigirWebmaster(); accion(); }
+        try { seguridad.ExigirWebmaster("BaseDatos"); accion(); }
         catch(UnauthorizedAccessException) { throw new HttpException(403,"Acceso exclusivo para Webmaster."); }
         catch(SqlException) { MostrarError("ER003","Fallo de conexión"); }
         catch(ConfigurationErrorsException) { MostrarError("ER003","Fallo de configuración"); }

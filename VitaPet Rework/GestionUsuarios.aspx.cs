@@ -37,7 +37,7 @@ public partial class GestionUsuariosPage : PaginaBase
             if (!SessionManager.Instancia.HaySesionActiva)
                 Response.Redirect(ResolveUrl("~/Login.aspx") + "?ReturnUrl=" + Server.UrlEncode(Request.RawUrl), true);
             seguridad = new SecurityManager();
-            seguridad.ExigirWebmaster();
+            seguridad.ExigirPermiso("GestionUsuarios");
             usuarios = new UsuarioBLL();
             autorizado = true;
         }

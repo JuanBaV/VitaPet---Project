@@ -19,6 +19,7 @@ namespace VitaPet.GUI
                     {
                         VitaPet.DAL.DatabaseMigrator.Migrate();
                         new VitaPet.BLL.ReferenciaIntegridadBLL().Inicializar();
+                        new VitaPet.BLL.PerfilBLL().AsegurarIniciales();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresRestauracion();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresIdioma();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresRegistroCliente();
@@ -58,6 +59,17 @@ namespace VitaPet.GUI
                 if (recuperacion) return;
                 if (VitaPet.SECURITY.EstadoAplicacion.Mantenimiento && !login)
                     throw new HttpException(503, "La base de datos está en mantenimiento.");
+                string pantalla = System.IO.Path.GetFileNameWithoutExtension(pagina);
+                if (VitaPet.BLL.PerfilBLL.Catalogo.ContainsKey(pantalla))
+                {
+                    try
+                    {
+                        // Antes de despachar cualquier evento, también para POST y URLs directas.
+                        if (!new VitaPet.BLL.PerfilBLL().PuedeAcceder(pantalla))
+                            Response.Redirect(VirtualPathUtility.ToAbsolute(VitaPet.SECURITY.SessionManager.Instancia.HaySesionActiva ? "~/AccesoDenegado.aspx" : "~/Login.aspx"), true);
+                    }
+                    catch (System.Data.SqlClient.SqlException) { /* La página muestra el error de conexión. */ }
+                }
                 if (string.Equals(pagina, "Login.aspx", StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina, "RegistroCliente.aspx", StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina, "AccesoDenegado.aspx", StringComparison.OrdinalIgnoreCase) ||
@@ -100,7 +112,7 @@ namespace VitaPet.GUI
                 if (string.Equals(pagina, "BaseDatos.aspx", StringComparison.OrdinalIgnoreCase))
                 {
                     // Antes del ciclo de vida de la página: bloquea también POST directo.
-                    try { seguridad.ExigirWebmaster(); }
+                    try { seguridad.ExigirWebmaster("BaseDatos"); }
                     catch (UnauthorizedAccessException)
                     {
                         string destino = VitaPet.SECURITY.SessionManager.Instancia.HaySesionActiva

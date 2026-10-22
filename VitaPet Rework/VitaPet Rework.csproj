@@ -273,6 +273,30 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Content Include="BaseDatos.aspx" />
+    <Content Include="AltaUsuario.aspx" />
+    <Compile Include="AltaUsuario.aspx.cs">
+      <DependentUpon>AltaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaUsuario.aspx.designer.cs">
+      <DependentUpon>AltaUsuario.aspx</DependentUpon>
+    </Compile>
+    <Content Include="GestionPerfiles.aspx" />
+    <Compile Include="GestionPerfiles.aspx.cs">
+      <DependentUpon>GestionPerfiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionPerfiles.aspx.designer.cs">
+      <DependentUpon>GestionPerfiles.aspx</DependentUpon>
+    </Compile>
+    <Content Include="ConsultarPerfiles.aspx" />
+    <Compile Include="ConsultarPerfiles.aspx.cs">
+      <DependentUpon>ConsultarPerfiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarPerfiles.aspx.designer.cs">
+      <DependentUpon>ConsultarPerfiles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos.aspx.cs">
       <DependentUpon>BaseDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

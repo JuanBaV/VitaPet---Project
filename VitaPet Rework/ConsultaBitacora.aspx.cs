@@ -27,7 +27,7 @@ public partial class ConsultaBitacoraPage : PaginaBase
     protected override void OnPreInit(EventArgs e)
     {
         // Before loading posted values or dispatching any event, validate the actual account.
-        try { seguridad.ExigirWebmaster(); accesoAutorizado = true; }
+        try { seguridad.ExigirWebmaster("ConsultaBitacora"); accesoAutorizado = true; }
         catch (UnauthorizedAccessException) { DenegarAcceso(); }
         catch (SqlException) { errorInicial = "ER003"; }
         catch (ConfigurationErrorsException) { errorInicial = "ER003"; }
