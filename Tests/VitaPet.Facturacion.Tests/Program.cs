@@ -100,6 +100,15 @@ class Program
             Limpiar();c=Preparar();Sql("INSERT dbo.Pago(idSuscripcion,importe,medioPago,fechaPago,estado,dvh) VALUES("+c.IdSuscripcion+",38,'Tarjeta de credito','20261001','Aprobado','')");Refrescar("Pago");
             p=b.ObtenerComprobante(c.IdSuscripcion);Check(p.Factura.Importe==38m&&p.Factura.CantidadMascotas==0&&p.Factura.Titular==null,"Pago previo conserva importe histórico sin inventar titular ni descuento");
             Check(sec.VerificarIntegridad(),"Factura de pago previo mantiene integridad");
+            Limpiar();c=Preparar();var debito=Datos();debito.MedioPago=GestionPagoBLL.Debito;
+            p=b.Pagar(c.IdSuscripcion,c.ImporteUSD,debito);
+            Check(p.MedioPago==GestionPagoBLL.Debito&&p.Importe==34.2m&&p.Factura.MedioPago==GestionPagoBLL.Debito,"Débito conserva el medio y los cálculos en pago y factura");
+            Check(p.Factura.CorreoFactura=="factura@example.test"&&sec.VerificarIntegridad(),"Débito conserva destinatario, verificadores y referencias");
+            b.Pagar(c.IdSuscripcion,c.ImporteUSD,null);
+            Check(Count("Pago")==1&&Count("Factura")==1,"Repetir un pago de débito no duplica cobros ni facturas");
+            File.WriteAllBytes(Path.Combine(runtime,"factura-debito.pdf"),f.Descargar(c.IdSuscripcion));
+            new ContratacionPlanBLL().ConfirmarPago(c.IdSuscripcion);
+            Check(sec.VerificarIntegridad(),"Débito permite completar la contratación sin perder integridad");
             Console.WriteLine("TOTAL: "+checks+" verificaciones Rework; PDF "+Path.Combine(runtime,"factura-rework.pdf"));
         }
         finally
