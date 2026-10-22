@@ -55,7 +55,7 @@ class Program
                 if(u.IdUsuario==1||u.IdUsuario==4||args.Contains("--web")){u.Contrasena=h.CalcularHash("Prueba2026!");using(var cn=new SqlConnection(connection))using(var cmd=new SqlCommand("UPDATE dbo.Usuario SET contrasena=@p WHERE idUsuario=@id",cn)){cmd.Parameters.AddWithValue("@p",u.Contrasena);cmd.Parameters.AddWithValue("@id",u.IdUsuario);cn.Open();cmd.ExecuteNonQuery();}}
                 users.ActualizarDVH(u.IdUsuario,h.CalcularDVH(u));
             }
-            new DVVDAL().Guardar(new DVVBE {NombreTabla="Usuario",ValorDVV=h.CalcularDVV(users.ObtenerDVHs())});new ReferenciaIntegridadBLL().Inicializar();
+            new DVVDAL().Guardar(new DVVBE {NombreTabla="Usuario",ValorDVV=h.CalcularDVV(users.ObtenerDVHs())});new ReferenciaIntegridadBLL().Inicializar();new PerfilBLL().AsegurarIniciales();
             var err=new ErrorSistemaBLL();err.AsegurarErroresPlanes();err.AsegurarErroresPago();err.AsegurarErroresFacturacion();
             new ContratacionPlanBLL().AsegurarCatalogo();SessionAs(1);var b=new GestionPagoBLL();var f=new FacturaBLL();var sec=new SecurityManager();
             Check(sec.VerificarIntegridad(),"Esquema Rework 029 y controles íntegros");
@@ -69,6 +69,7 @@ class Program
             Sql("UPDATE dbo.__SchemaMigrations SET checksum='"+checksumCorreo+"' WHERE migrationId='029_CorreoFactura.sql'");
             Check(sec.VerificarIntegridad(),"Historial de migraciones restituido sin modificar datos ni verificadores");
             if(args.Contains("--web")){File.WriteAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"web-environment.txt"),new[]{cs.InitialCatalog,runtime});keep=true;return;}
+            if(args.Contains("--perfiles")){PerfilesTests.Run();return;}
             var c=Preparar();Check(c.ImporteUSD==34.2m&&b.Consultar(c.IdSuscripcion).Importe==34.2m,"Descuento 20% coincide en contratación y pago Rework");
             Check(f.ListarPropias().Count==0,"Perfil vacío no fabrica facturas");
             foreach(int id in new[]{0,2,3}){SessionAs(id);bool denied=false;try{f.ListarPropias();}catch(UnauthorizedAccessException){denied=true;}Check(denied,"Lista restringida a Cliente: "+id);}SessionAs(1);

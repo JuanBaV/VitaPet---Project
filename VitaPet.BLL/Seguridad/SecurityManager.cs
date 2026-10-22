@@ -108,33 +108,35 @@ namespace VitaPet.BLL.Seguridad
         }
         public UsuarioBE ExigirCliente()
         {
+            return ExigirGrupo("Cliente");
+        }
+
+        public UsuarioBE ExigirPermiso(params string[] pantallas)
+        {
             var sesion=VitaPet.SECURITY.SessionManager.Instancia;
-            var actual=sesion.UsuarioActual;
-            if(sesion.HaySesionContingencia||actual==null||actual.Rol!="Cliente")
-                throw new UnauthorizedAccessException("Acceso exclusivo para Cliente.");
-            var vigente=_usuarioDAL.ObtenerPorId(actual.IdUsuario);
-            if(vigente==null||vigente.Rol!="Cliente"||!new Estados.UsuarioStateBLL(vigente).PuedeIniciarSesion())
-                throw new UnauthorizedAccessException("La cuenta no puede realizar esta operación.");
-            return vigente;
+            if(sesion.UsuarioActual==null || sesion.HaySesionContingencia) throw new UnauthorizedAccessException("Se requiere una sesión.");
+            ExigirIntegridad();
+            var accesos=new HashSet<string>(new PerfilBLL().PantallasActuales(),StringComparer.OrdinalIgnoreCase);
+            if (!pantallas.Any(accesos.Contains)) throw new UnauthorizedAccessException("La cuenta no tiene permiso para esta pantalla.");
+            var u = _usuarioDAL.ObtenerPorId(VitaPet.SECURITY.SessionManager.Instancia.UsuarioActual.IdUsuario);
+            return u;
+        }
+
+        private UsuarioBE ExigirGrupo(string grupo)
+        {
+            return ExigirPermiso(PerfilBLL.Catalogo.Where(p => p.Value==grupo).Select(p => p.Key).ToArray());
         }
 
         public UsuarioBE ExigirAdministrador()
         {
-            var sesion=VitaPet.SECURITY.SessionManager.Instancia;
-            var actual=sesion.UsuarioActual;
-            if(sesion.HaySesionContingencia || actual==null || actual.Rol!="Administrador")
-                throw new UnauthorizedAccessException("Acceso exclusivo para Administrador.");
-            var vigente=_usuarioDAL.ObtenerPorId(actual.IdUsuario);
-            if(vigente==null || vigente.Rol!="Administrador" || !new Estados.UsuarioStateBLL(vigente).PuedeIniciarSesion())
-                throw new UnauthorizedAccessException("La cuenta no puede realizar esta operación.");
-            return vigente;
+            return ExigirGrupo("Administrador");
         }
 
         public UsuarioBE ExigirWebmaster()
         {
             var actual=VitaPet.SECURITY.SessionManager.Instancia.UsuarioActual;
-            if(actual==null || !string.Equals(actual.Rol,"Webmaster",StringComparison.OrdinalIgnoreCase))
-                throw new UnauthorizedAccessException("Acceso exclusivo para Webmaster.");
+            if(actual==null) throw new UnauthorizedAccessException("Se requiere una sesión.");
+            if(actual.Rol!="Webmaster") { ExigirIntegridad(); return ExigirGrupo("Webmaster"); }
             var vigente=_usuarioDAL.ObtenerPorCorreo(actual.CorreoElectronico);
             if(vigente==null || vigente.IdUsuario!=actual.IdUsuario || !EsWebmasterConfiable(vigente))
                 throw new UnauthorizedAccessException("No se pudo verificar la identidad del Webmaster.");

@@ -33,7 +33,7 @@ namespace VitaPet.BLL
             {
                 using(var tx=new OperacionIntegridadDAL())
                 {
-                    var s=new SecurityManager();var u=s.ExigirCliente();s.ExigirIntegridad();
+                    var s=new SecurityManager();var u=s.ExigirPermiso("GestionPago");s.ExigirIntegridad();
                     var result=action(s,u,new PagoDAL());tx.Complete();return result;
                 }
             }

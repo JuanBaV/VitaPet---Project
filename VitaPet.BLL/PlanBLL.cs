@@ -79,7 +79,7 @@ namespace VitaPet.BLL
             {throw new PlanException(escritura?"ER040":"ER033",ex);}
             catch(InvalidOperationException ex){throw new PlanException(ex.Message.StartsWith("ER023",StringComparison.Ordinal)?"ER023":escritura?"ER040":"ER033",ex);}
         }
-        public void PrepararAlta(){Ejecutar((actor,sec)=>true,"ER075");}
+        public void PrepararAlta(){new SecurityManager().ExigirPermiso("AltaPlan");Ejecutar((actor,sec)=>true,"ER075");}
         public List<PlanAdministracionBE> Listar()
         {return Ejecutar((actor,sec)=>{var list=Consulta(()=>new AdministracionPlanDAL().Listar(actor),"ER004");if(list.Count==0)throw new PlanException("ER016");Auditar(sec,actor,"Consulta de planes");return list;},"ER004");}
         public PlanAdministracionBE Seleccionar(int plan){return Ejecutar((actor,sec)=>Obtener(actor,plan),"ER075");}
