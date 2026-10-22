@@ -47,7 +47,7 @@ public partial class LoginPage : VitaPet.GUI.Presentacion.PaginaConIdioma
     {
         // Detectar antes de validar credenciales o despachar un POST del login.
         var contingencia = new ContingenciaWebMasterBLL();
-        if (contingencia.Configurada && contingencia.Necesaria())
+        if (contingencia.RequiereAccesoExterno())
         {
             Response.Redirect(ResolveUrl("~/RecuperacionWebMaster.aspx"), true);
             return;
@@ -87,6 +87,8 @@ public partial class LoginPage : VitaPet.GUI.Presentacion.PaginaConIdioma
                 if (webmaster != null)
                 {
                     SessionManager.Instancia.IniciarSesion(webmaster);
+                    try { new BitacoraBLL().RegistrarErroresIntegridad(); }
+                    catch { SessionManager.Instancia.CerrarSesion(); throw; }
                     Response.Redirect(ResolveUrl("~/BaseDatos.aspx"), false);
                     Context.ApplicationInstance.CompleteRequest();
                     return;
@@ -146,8 +148,8 @@ public partial class LoginPage : VitaPet.GUI.Presentacion.PaginaConIdioma
 
                 MostrarError(
                     seguridad,
-                    CodigoErrorCredenciales,
-                    MensajeErrorCredenciales);
+                    usuario != null && usuario.Bloqueado ? CodigoErrorEstadoUsuario : CodigoErrorCredenciales,
+                    usuario != null && usuario.Bloqueado ? MensajeErrorEstadoUsuario : MensajeErrorCredenciales);
 
                 return;
             }
@@ -219,6 +221,11 @@ public partial class LoginPage : VitaPet.GUI.Presentacion.PaginaConIdioma
             MostrarMensaje(
                 CodigoErrorConexion,
                 MensajeErrorConexion);
+        }
+        catch (Exception ex) when (ex is System.IO.IOException || ex is UnauthorizedAccessException ||
+            ex is System.Xml.XmlException || ex is BitacoraException)
+        {
+            MostrarMensaje("ER033", "No se pudo registrar el diagnóstico en bitácora");
         }
     }
 

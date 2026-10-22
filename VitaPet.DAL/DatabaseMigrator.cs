@@ -28,6 +28,23 @@ namespace VitaPet.DAL
             MigrarConexion(GetConnectionString());
         }
 
+        public static IReadOnlyList<string> MigracionesInconsistentes(bool incluirPendientes = true)
+        {
+            using (var connection = new ConexionDAL().CrearConexion())
+            {
+                connection.Open();
+                var applied = LoadAppliedMigrations(connection);
+                var expected = LoadMigrations().ToDictionary(m => m.Id, m => m.Checksum, StringComparer.OrdinalIgnoreCase);
+                var errors = applied.Where(m => !expected.ContainsKey(m.Key) ||
+                    !string.Equals(m.Value, expected[m.Key], StringComparison.OrdinalIgnoreCase))
+                    .Select(m => m.Key).ToList();
+                // Los respaldos anteriores se verifican antes de aplicar sus migraciones pendientes.
+                if (incluirPendientes && !ConexionDAL.EnBaseTemporal)
+                    errors.AddRange(expected.Keys.Where(id => !applied.ContainsKey(id)));
+                return errors;
+            }
+        }
+
         public static void CrearTemporalContingencia(string nombre)
         {
             ContingenciaDatosDAL.ValidarTemporal(nombre);

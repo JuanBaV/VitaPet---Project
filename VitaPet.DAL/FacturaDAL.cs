@@ -23,7 +23,7 @@ namespace VitaPet.DAL
         {
             var t=Leer("dbo.sp_Factura_Obtener",usuario,suscripcion);if(t.Rows.Count==0)return null;var r=t.Rows[0];
             return new FacturaBE {IdFactura=(int)r["idFactura"],IdPago=(int)r["idPago"],IdCliente=(int)r["idCliente"],IdSuscripcion=suscripcion,Numero=(string)r["numeroFactura"],
-                Cliente=(string)r["clienteNombre"],Correo=(string)r["clienteCorreo"],Plan=(string)r["planNombre"],Concepto=(string)r["concepto"],Titular=r.IsNull("titular")?null:(string)r["titular"],
+                Cliente=(string)r["clienteNombre"],Correo=(string)r["clienteCorreo"],CorreoFactura=r.IsNull("correoFactura")?null:(string)r["correoFactura"],Plan=(string)r["planNombre"],Concepto=(string)r["concepto"],Titular=r.IsNull("titular")?null:(string)r["titular"],
                 PeriodoDesde=(DateTime)r["periodoDesde"],PeriodoHasta=(DateTime)r["periodoHasta"],FechaEmision=(DateTime)r["fechaEmision"],Importe=(decimal)r["importe"],Moneda=(string)r["moneda"],MedioPago=(string)r["medioPago"],
                 CantidadMascotas=r.IsNull("cantidadMascotas")?0:(int)r["cantidadMascotas"],PrecioMascota=r.IsNull("precioMascota")?0:(decimal)r["precioMascota"],PrecioMascotaAdicional=r.IsNull("precioMascotaAdicional")?0:(decimal)r["precioMascotaAdicional"]};
         }

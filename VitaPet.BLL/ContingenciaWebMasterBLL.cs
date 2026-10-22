@@ -21,10 +21,18 @@ namespace VitaPet.BLL
         private CuentaContingenciaBE LeerCuenta() => archivos.LeerCuenta();
         private void GuardarCuenta(CuentaContingenciaBE cuenta) => archivos.GuardarCuenta(cuenta);
         private bool HayWebmasterConfiable() => new UsuarioDAL().ObtenerParaIntegridad().Any(u => seguridad.EsWebmasterConfiable(u));
-        public bool Necesaria()
+        public bool RequiereAccesoExterno()
+        {
+            if (!Configurada) return false;
+            if (EstadoAplicacion.Mantenimiento) return true;
+            try { return !HayWebmasterConfiable(); }
+            catch (SqlException) { return true; }
+            catch (InvalidOperationException) { return true; }
+        }
+        public bool Necesaria(bool permitirMigracionesPendientes = false)
         {
             if (EstadoAplicacion.Mantenimiento) return true;
-            try { return !seguridad.VerificarIntegridad() || !HayWebmasterConfiable(); }
+            try { return !seguridad.DiagnosticarIntegridad(permitirMigracionesPendientes).EsValida || !HayWebmasterConfiable(); }
             catch (SqlException) { return true; } // La autenticación de emergencia no consulta SQL.
             catch (InvalidOperationException) { return true; }
         }

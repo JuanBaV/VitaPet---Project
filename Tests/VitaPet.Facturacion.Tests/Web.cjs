@@ -19,7 +19,7 @@ const fs=require('fs'),path=require('path');
   check((await c('lblTotalMensual').innerText()).replace(',','.').includes('34.20'),'Descuento de la mascota adicional en contratación');
   await click('btnContratar');check((await c('lblImporte').innerText()).includes('34.20'),'Pago mantiene el total con descuento');
   await page.locator('#btnCompletarDummy').click();check(await c('txtNumeroTarjeta').inputValue()==='1111111111111111','Conserva el botón y la tarjeta dummy del simulador existente');
-  await click('btnPagar');const receipt=page.url();const invoice=await c('lblNumeroFactura').innerText();
+  await page.locator('#MainContent_ucCorreoFactura_txtCorreo').fill('factura@example.test');await click('btnPagar');const receipt=page.url();const invoice=await c('lblNumeroFactura').innerText();
   check(invoice.startsWith('0001-')&&await c('btnDescargarFactura').isVisible(),'Confirmación de pago muestra número y descarga de factura');
   await download('btnDescargarFactura','factura-pago.pdf');await click('btnContinuar');
   check((await page.locator('main').innerText()).includes(invoice)&&await c('lnkDescargarFactura').isVisible(),'Al terminar de contratar, Planes mantiene Descargar factura visible');

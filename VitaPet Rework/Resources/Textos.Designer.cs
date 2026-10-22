@@ -151,6 +151,24 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to ER023 [{0}] Tabla={1}; Fila={2}; Campo={3}; {4}.
+        /// </summary>
+        public static string Bitacora_Diagnostico {
+            get {
+                return ResourceManager.GetString("Bitacora_Diagnostico", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to La base presenta errores de integridad. Se muestran únicamente los diagnósticos guardados en la bitácora XML verificada..
+        /// </summary>
+        public static string Bitacora_Recuperacion {
+            get {
+                return ResourceManager.GetString("Bitacora_Recuperacion", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Cerrar sesión.
         /// </summary>
         public static string BotonSalir {
@@ -1195,6 +1213,33 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Factura enviada por correo a {0}..
+        /// </summary>
+        public static string Factura_CorreoEnviado {
+            get {
+                return ResourceManager.GetString("Factura_CorreoEnviado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo confirmar el envío de la factura. Revisá tu correo antes de reintentar..
+        /// </summary>
+        public static string Factura_CorreoPendiente {
+            get {
+                return ResourceManager.GetString("Factura_CorreoPendiente", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to La factura está emitida. Falta configurar el correo para enviarla..
+        /// </summary>
+        public static string Factura_CorreoSinConfigurar {
+            get {
+                return ResourceManager.GetString("Factura_CorreoSinConfigurar", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Descargar factura.
         /// </summary>
         public static string Factura_Descargar {
@@ -1245,6 +1290,15 @@ namespace VitaPet.GUI.Resources {
         public static string Factura_Reintentar {
             get {
                 return ResourceManager.GetString("Factura_Reintentar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Reintentar envío de factura.
+        /// </summary>
+        public static string Factura_ReintentarCorreo {
+            get {
+                return ResourceManager.GetString("Factura_ReintentarCorreo", resourceCulture);
             }
         }
 
@@ -1335,6 +1389,15 @@ namespace VitaPet.GUI.Resources {
         public static string IntegridadFormato {
             get {
                 return ResourceManager.GetString("IntegridadFormato", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Historial de migraciones ausente o alterado..
+        /// </summary>
+        public static string IntegridadMigraciones {
+            get {
+                return ResourceManager.GetString("IntegridadMigraciones", resourceCulture);
             }
         }
 
@@ -1636,6 +1699,15 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Certificado digital de autorización.
+        /// </summary>
+        public static string Pago_Certificado {
+            get {
+                return ResourceManager.GetString("Pago_Certificado", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Código de seguridad.
         /// </summary>
         public static string Pago_Codigo {
@@ -1672,6 +1744,15 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to correo al que se enviara la factura.
+        /// </summary>
+        public static string Pago_CorreoFactura {
+            get {
+                return ResourceManager.GetString("Pago_CorreoFactura", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Tarjeta de crédito.
         /// </summary>
         public static string Pago_Credito {
@@ -1690,11 +1771,38 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Descargar autorización firmada.
+        /// </summary>
+        public static string Pago_DescargarAutorizacion {
+            get {
+                return ResourceManager.GetString("Pago_DescargarAutorizacion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Descargar certificado.
+        /// </summary>
+        public static string Pago_DescargarCertificado {
+            get {
+                return ResourceManager.GetString("Pago_DescargarCertificado", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Completar datos de prueba.
         /// </summary>
         public static string Pago_Dummy {
             get {
                 return ResourceManager.GetString("Pago_Dummy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Emisor.
+        /// </summary>
+        public static string Pago_EmisorCertificado {
+            get {
+                return ResourceManager.GetString("Pago_EmisorCertificado", resourceCulture);
             }
         }
 
@@ -1713,6 +1821,24 @@ namespace VitaPet.GUI.Resources {
         public static string Pago_Fecha {
             get {
                 return ResourceManager.GetString("Pago_Fecha", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Firma verificada. La autorización corresponde a este pago y no presenta alteraciones..
+        /// </summary>
+        public static string Pago_FirmaVerificada {
+            get {
+                return ResourceManager.GetString("Pago_FirmaVerificada", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Huella SHA-256.
+        /// </summary>
+        public static string Pago_HuellaCertificado {
+            get {
+                return ResourceManager.GetString("Pago_HuellaCertificado", resourceCulture);
             }
         }
 
@@ -1798,6 +1924,15 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Número de serie.
+        /// </summary>
+        public static string Pago_SerieCertificado {
+            get {
+                return ResourceManager.GetString("Pago_SerieCertificado", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Titular de la tarjeta.
         /// </summary>
         public static string Pago_Titular {
@@ -1812,6 +1947,24 @@ namespace VitaPet.GUI.Resources {
         public static string Pago_Vencimiento {
             get {
                 return ResourceManager.GetString("Pago_Vencimiento", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Verificar firma.
+        /// </summary>
+        public static string Pago_VerificarFirma {
+            get {
+                return ResourceManager.GetString("Pago_VerificarFirma", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Vigencia.
+        /// </summary>
+        public static string Pago_VigenciaCertificado {
+            get {
+                return ResourceManager.GetString("Pago_VigenciaCertificado", resourceCulture);
             }
         }
 

@@ -325,4 +325,7 @@ VitaPet.*.dll.refresh
 
 # Material privado de backup y recuperación
 VitaPet Rework/App_Data/Recuperacion/
+VitaPet Rework/App_Data/CertificadosPago/
+VitaPet Rework/App_Data/CorreoFacturas/
+VitaPet Rework/Correo.local.config
 *.bak

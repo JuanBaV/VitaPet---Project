@@ -6,6 +6,8 @@
     <ProjectGuid>{E7053D24-7C49-4AC3-ACD0-41CAAF29B77D}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Configuration" />
     <ProjectReference Include="..\VitaPet.BE\VitaPet.BE.csproj" />
     <ProjectReference Include="..\VitaPet.Interfaces\VitaPet.Interfaces.csproj" />
   </ItemGroup>

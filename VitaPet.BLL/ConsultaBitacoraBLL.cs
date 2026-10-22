@@ -15,6 +15,7 @@ namespace VitaPet.BLL
     {
         private static readonly string[] Criticidades = { "Informativa", "Advertencia", "Grave", "Crítica" };
         private readonly SecurityManager seguridad = new SecurityManager();
+        public bool SoloHistoricoIntegridad { get; private set; }
 
         public List<BitacoraBE> Consultar(FiltroBitacoraBE filtro)
         {
@@ -23,9 +24,11 @@ namespace VitaPet.BLL
             {
                 var usuario = seguridad.ExigirWebmaster();
                 ValidarFiltro(filtro);
-                ExigirIntegridad();
-                var activos = new BitacoraDAL().ObtenerParaIntegridad();
+                SoloHistoricoIntegridad = !seguridad.VerificarIntegridad();
+                var activos = SoloHistoricoIntegridad ? new List<BitacoraBE>() : new BitacoraDAL().ObtenerParaIntegridad();
                 var historicos = LeerHistorico();
+                if (SoloHistoricoIntegridad)
+                    historicos = historicos.Where(r => r.Modulo == "Integridad").ToList();
                 var registros = activos.Concat(historicos)
                     // Restore can reuse IDs: only an identical ID + DVH is the same event.
                     .GroupBy(r => r.IdBitacora.ToString(CultureInfo.InvariantCulture) + ":" + r.DVH,
@@ -42,7 +45,7 @@ namespace VitaPet.BLL
                 // Materialize before auditing: pagination/export use this exact result set.
                 try
                 {
-                    seguridad.RegistrarBitacora(new BitacoraBE {
+                    if (!SoloHistoricoIntegridad) seguridad.RegistrarBitacora(new BitacoraBE {
                         IdUsuario = usuario.IdUsuario, Fecha = DateTime.Now,
                         Accion = "Consulta de bitácora", Modulo = "Bitácora", Criticidad = "Informativa"
                     });
@@ -108,7 +111,7 @@ namespace VitaPet.BLL
                 throw new BitacoraException("ER023", "Inconsistencia en la verificación de integridad.");
         }
 
-        private List<BitacoraBE> LeerHistorico()
+        internal List<BitacoraBE> LeerHistorico()
         {
             try
             {

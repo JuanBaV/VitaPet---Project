@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="<%$ Resources:Textos, Planes_GestionPago %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GestionPago.aspx.cs" Inherits="GestionPagoPage" %>
+<%@ Register Src="~/Controls/ValidacionEmail.ascx" TagPrefix="vp" TagName="ValidacionEmail" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="planes-page"><section class="planes-card planes-detalle pago-card">
         <asp:HyperLink ID="lnkVolver" runat="server" NavigateUrl="~/Planes.aspx" CssClass="btn btn-default formulario-volver"><span aria-hidden="true">&larr;</span> <asp:Literal runat="server" Text="<%$ Resources:Textos, UI_Volver %>" /></asp:HyperLink>
@@ -11,6 +12,9 @@
 <dt><%: VitaPet.GUI.Resources.Textos.Planes_MascotasActivas %></dt><dd><asp:Label ID="lblCantidadMascotas" runat="server" /></dd>
 <dt><%: VitaPet.GUI.Resources.Textos.Planes_TotalMensual %></dt><dd><asp:Label ID="lblImporte" runat="server" /></dd></dl>
             <div class="pago-campos">
+                <div class="pago-ancho">
+                    <vp:ValidacionEmail ID="ucCorreoFactura" runat="server" MaxLength="100" ValidationGroup="Pago" EnableClientValidation="true" TextoEtiqueta="<%$ Resources:Textos, Pago_CorreoFactura %>" />
+                </div>
                 <div class="form-group login-field pago-ancho">
                     <asp:Label runat="server" AssociatedControlID="ddlMedioPago" CssClass="login-label" Text="<%$ Resources:Textos, Pago_Medio %>" />
                     <asp:DropDownList ID="ddlMedioPago" runat="server" CssClass="form-control login-input">
@@ -37,7 +41,7 @@
 
             </div>
             <div class="usuarios-botones">
-                <asp:Button ID="btnPagar" runat="server" Text="<%$ Resources:Textos, Pago_Pagar %>" CausesValidation="false" OnClick="Pagar_Click" CssClass="btn btn-primary" OnClientClick="if(this.dataset.enviado==='1')return false;this.dataset.enviado='1';this.setAttribute('aria-disabled','true');this.classList.add('pago-enviado');" />
+                <asp:Button ID="btnPagar" runat="server" Text="<%$ Resources:Textos, Pago_Pagar %>" CausesValidation="true" ValidationGroup="Pago" formnovalidate="formnovalidate" OnClick="Pagar_Click" CssClass="btn btn-primary" OnClientClick="if(typeof(Page_ClientValidate)==='function'){if(!Page_ClientValidate('Pago'))return false;}if(this.dataset.enviado==='1')return false;this.dataset.enviado='1';this.setAttribute('aria-disabled','true');this.classList.add('pago-enviado');" />
             </div>
         </asp:Panel>
         <asp:Panel ID="pnlComprobante" runat="server" Visible="false">
@@ -48,6 +52,25 @@
 <dt><%: VitaPet.GUI.Resources.Textos.Pago_Medio %></dt><dd><asp:Label ID="lblMedioPagado" runat="server" /></dd>
 <dt><%: VitaPet.GUI.Resources.Textos.Pago_Fecha %></dt><dd><asp:Label ID="lblFechaPago" runat="server" /></dd></dl>
             <p><%: VitaPet.GUI.Resources.Textos.Factura_Numero %>: <asp:Label ID="lblNumeroFactura" runat="server" /></p>
+            <asp:Panel ID="pnlCorreo" runat="server" Visible="false">
+                <p role="status"><asp:Label ID="lblEstadoCorreo" runat="server" /></p>
+                <asp:Button ID="btnReintentarCorreo" runat="server" OnClick="ReintentarCorreo_Click" CausesValidation="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Factura_ReintentarCorreo %>" />
+            </asp:Panel>
+            <asp:Panel ID="pnlCertificado" runat="server" Visible="false" CssClass="pago-certificado">
+                <h3><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Pago_Certificado") %></h3>
+                <p role="status"><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Pago_FirmaVerificada") %></p>
+                <dl class="planes-resumen">
+                    <dt><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Pago_EmisorCertificado") %></dt><dd><asp:Label ID="lblEmisorCertificado" runat="server" /></dd>
+                    <dt><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Pago_SerieCertificado") %></dt><dd><asp:Label ID="lblSerieCertificado" runat="server" /></dd>
+                    <dt><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Pago_VigenciaCertificado") %></dt><dd><asp:Label ID="lblVigenciaCertificado" runat="server" /></dd>
+                    <dt><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Pago_HuellaCertificado") %></dt><dd><asp:Label ID="lblHuellaCertificado" runat="server" /></dd>
+                </dl>
+                <div class="usuarios-botones">
+                    <asp:Button ID="btnVerificarCertificado" runat="server" OnClick="VerificarCertificado_Click" CausesValidation="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Pago_VerificarFirma %>" />
+                    <asp:Button ID="btnDescargarCertificado" runat="server" OnClick="DescargarCertificado_Click" CausesValidation="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Pago_DescargarCertificado %>" />
+                    <asp:Button ID="btnDescargarAutorizacion" runat="server" OnClick="DescargarCertificado_Click" CausesValidation="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Pago_DescargarAutorizacion %>" />
+                </div>
+            </asp:Panel>
             <asp:Button ID="btnDescargarFactura" runat="server" OnClick="DescargarFactura_Click" CausesValidation="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Factura_Descargar %>" Visible="false" />
             <asp:Button ID="btnReintentarFactura" runat="server" OnClick="ReintentarFactura_Click" CausesValidation="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Factura_Reintentar %>" Visible="false" />
             <asp:Button ID="btnContinuar" runat="server" Text="<%$ Resources:Textos, Pago_Continuar %>" CausesValidation="false" OnClick="Continuar_Click" CssClass="btn btn-primary" />

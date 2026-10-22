@@ -54,13 +54,13 @@ namespace VitaPet.BLL.Seguridad
 
         public bool VerificarIntegridad() => DiagnosticarIntegridad().EsValida;
 
-        public ResultadoIntegridadBE DiagnosticarIntegridad()
+        public ResultadoIntegridadBE DiagnosticarIntegridad(bool permitirMigracionesPendientes = false)
         {
             using(var op=new OperacionIntegridadDAL())
             {
                 var resultado=DiagnosticarDigitos();
                 string formato=new ReferenciaIntegridadDAL().ObtenerFormato();
-                if(formato=="sha256-v2") new IntegridadTablasBLL().Verificar(resultado);
+                if(formato=="sha256-v2") new IntegridadTablasBLL().Verificar(resultado,permitirMigracionesPendientes);
                 else if(formato!="sha256-v1") ReferenciaIntegridadBLL.Error(resultado,"__FormatoIntegridad","1","formato","Formato de integridad no inicializado o desconocido.");
                 new ReferenciaIntegridadBLL().Verificar(resultado);
                 op.Complete();

@@ -25,7 +25,7 @@ namespace VitaPet.BE
         public string Estado { get; set; }
     }
 
-    // Datos transitorios: no forman parte de Pago, ViewState, auditoria ni XML.
+    // Los datos de tarjeta son transitorios; el correo se conserva con el detalle del pago.
     public sealed class DatosPagoBE
     {
         public string MedioPago { get; set; }
@@ -33,9 +33,10 @@ namespace VitaPet.BE
         public string NumeroTarjeta { get; set; }
         public string Vencimiento { get; set; }
         public string CodigoSeguridad { get; set; }
+        public string CorreoFactura { get; set; }
         public void Limpiar()
         {
-            Titular = NumeroTarjeta = Vencimiento = CodigoSeguridad = null;
+            Titular = NumeroTarjeta = Vencimiento = CodigoSeguridad = CorreoFactura = null;
         }
     }
 }

@@ -14,7 +14,8 @@ namespace VitaPet.GUI
                 try
                 {
                     var contingencia = new VitaPet.BLL.ContingenciaWebMasterBLL();
-                    if (!VitaPet.SECURITY.EstadoAplicacion.Mantenimiento && !(contingencia.Configurada && contingencia.Necesaria()))
+                    // Antes de migrar se validan los datos y los scripts ya aplicados; los nuevos aún están pendientes.
+                    if (!VitaPet.SECURITY.EstadoAplicacion.Mantenimiento && !(contingencia.Configurada && contingencia.Necesaria(true)))
                     {
                         VitaPet.DAL.DatabaseMigrator.Migrate();
                         new VitaPet.BLL.ReferenciaIntegridadBLL().Inicializar();

@@ -10,6 +10,7 @@ namespace VitaPet.BE
         public string Numero {get;set;}
         public string Cliente {get;set;}
         public string Correo {get;set;}
+        public string CorreoFactura {get;set;}
         public string Plan {get;set;}
         public string Concepto {get;set;}
         public string Titular {get;set;}
@@ -22,6 +23,8 @@ namespace VitaPet.BE
         public decimal Importe {get;set;}
         public string Moneda {get;set;}
         public string MedioPago {get;set;}
+        public string EstadoCorreo {get;set;}
+        public string DestinatarioCorreo {get;set;}
     }
     public sealed class ConsultaFacturaBE
     {

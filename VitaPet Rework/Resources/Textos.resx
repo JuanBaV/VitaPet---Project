@@ -1537,4 +1537,21 @@
   <data name="Error_ER079" xml:space="preserve"><value>No se pudo preparar o emitir la factura</value></data>
   <data name="Error_ER080" xml:space="preserve"><value>No se pudo registrar la factura o sus verificadores</value></data>
   <data name="Error_ER081" xml:space="preserve"><value>No se pudo generar o entregar el archivo de la factura</value></data>
+  <data name="IntegridadMigraciones" xml:space="preserve"><value>Historial de migraciones ausente o alterado.</value></data>
+  <data name="Bitacora_Recuperacion" xml:space="preserve"><value>La base presenta errores de integridad. Se muestran únicamente los diagnósticos guardados en la bitácora XML verificada.</value></data>
+  <data name="Bitacora_Diagnostico" xml:space="preserve"><value>ER023 [{0}] Tabla={1}; Fila={2}; Campo={3}; {4}</value></data>
+  <data name="Pago_Certificado" xml:space="preserve"><value>Certificado digital de autorización</value></data>
+  <data name="Pago_FirmaVerificada" xml:space="preserve"><value>Firma verificada. La autorización corresponde a este pago y no presenta alteraciones.</value></data>
+  <data name="Pago_EmisorCertificado" xml:space="preserve"><value>Emisor</value></data>
+  <data name="Pago_SerieCertificado" xml:space="preserve"><value>Número de serie</value></data>
+  <data name="Pago_VigenciaCertificado" xml:space="preserve"><value>Vigencia</value></data>
+  <data name="Pago_HuellaCertificado" xml:space="preserve"><value>Huella SHA-256</value></data>
+  <data name="Pago_VerificarFirma" xml:space="preserve"><value>Verificar firma</value></data>
+  <data name="Pago_DescargarCertificado" xml:space="preserve"><value>Descargar certificado</value></data>
+  <data name="Pago_DescargarAutorizacion" xml:space="preserve"><value>Descargar autorización firmada</value></data>
+  <data name="Factura_CorreoEnviado" xml:space="preserve"><value>Factura enviada por correo a {0}.</value></data>
+  <data name="Factura_CorreoSinConfigurar" xml:space="preserve"><value>La factura está emitida. Falta configurar el correo para enviarla.</value></data>
+  <data name="Factura_CorreoPendiente" xml:space="preserve"><value>No se pudo confirmar el envío de la factura. Revisá tu correo antes de reintentar.</value></data>
+  <data name="Factura_ReintentarCorreo" xml:space="preserve"><value>Reintentar envío de factura</value></data>
+  <data name="Pago_CorreoFactura" xml:space="preserve"><value>correo al que se enviara la factura</value></data>
 </root>

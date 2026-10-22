@@ -27,3 +27,21 @@ base poblada y verifica que conserve sus referencias.
 La suite existente `VitaPet.Facturacion.Tests` conserva las verificaciones de
 pagos concurrentes, factura pendiente, pagos históricos y recorrido en Edge.
 Las pruebas de este proyecto no realizan un backup/restore SQL real.
+
+Para comprobar la cobertura de corrupción del checklist:
+
+```powershell
+& Tests/VitaPet.Refactor.Tests/bin/Debug/net48/VitaPet.Refactor.Tests.exe --integridad-todas
+```
+
+Esta variante prepara tres registros por cada una de las 17 tablas de datos,
+altera un campo sin recalcular sus verificadores y exige que el diagnóstico
+identifique cada fila y columna. También prueba nueve alteraciones simultáneas,
+los cuatro controles de integridad y una tabla nueva sin cobertura. Cada caso
+revierte sus cambios y comprueba que la base vuelva a estar íntegra. Usa y
+elimina su propia base; no toca la base VitaPet ni la base del checklist manual.
+
+La variante `--integridad-login` también registra y consulta los errores de
+cada tabla en el histórico XML, verifica que no se alteren datos ni controles
+SQL y comprueba el acceso del Webmaster con cuenta de emergencia configurada.
+Prueba además el rechazo de un histórico adulterado y de usuarios sin permiso.

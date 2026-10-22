@@ -395,6 +395,7 @@ namespace VitaPet.GUI.Presentacion
             { "NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.", "UI_NugetEsUnaExtensionGratuitaQueFacilitaAgregar" },
             { "You can easily find a web hosting company that offers the right mix of features and price for your applications.", "UI_PodesElegirUnProveedorDeAlojamientoWebCon" },
             { "Formato de integridad no inicializado o desconocido.", "IntegridadFormato" },
+            { "Historial de migraciones ausente o alterado.", "IntegridadMigraciones" },
             { "DVH no coincide; consultar detalle por campo.", "IntegridadDvhDetalle" },
             { "DVH no coincide.", "IntegridadDvh" },
             { "Control ausente.", "IntegridadControl" },
@@ -439,6 +440,10 @@ namespace VitaPet.GUI.Presentacion
             if (evento.Success) return Formato(evento.Groups[1].Value == "Backup realizado" ? "EventoBackup" : "EventoRestore", evento.Groups[2].Value);
             var usuario = Regex.Match(texto, @"^(Consulta de usuario|Modificación de usuario|Bloqueo de usuario|Desbloqueo de usuario) \(idUsuario=(\d+)\)$");
             if (usuario.Success) return Formato("OperacionUsuarioAuditoria", Traducir(usuario.Groups[1].Value), usuario.Groups[2].Value);
+            var diagnostico = Regex.Match(texto, @"^ER023 \[([a-f0-9]{8})\] Tabla=(.+?); Fila=(.+?); Campo=(.+?); (.+)$");
+            if (diagnostico.Success) return Formato("Bitacora_Diagnostico", diagnostico.Groups[1].Value,
+                diagnostico.Groups[2].Value, diagnostico.Groups[3].Value, diagnostico.Groups[4].Value,
+                Traducir(diagnostico.Groups[5].Value));
             var error = Regex.Match(texto, @"^(ER\d{3})[: -]+(.+)$");
             if (error.Success) return error.Groups[1].Value + " - " + Error(error.Groups[1].Value, error.Groups[2].Value);
             return texto;

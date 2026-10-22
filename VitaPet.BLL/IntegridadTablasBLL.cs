@@ -20,10 +20,14 @@ namespace VitaPet.BLL
             return Convert.ToString(valor, CultureInfo.InvariantCulture);
         }
         internal static string Pack(string valor) => valor == null ? "-1:" : valor.Length.ToString(CultureInfo.InvariantCulture) + ":" + valor;
+        // Los registros anteriores a estas ampliaciones conservan sus dígitos y referencias.
+        private static bool CampoAnteriorVacio(DataRow fila,DataColumn columna) =>
+            (fila.Table.TableName=="Plan" && columna.ColumnName=="esCorporativo" && !(bool)fila[columna]) ||
+            (fila.Table.TableName=="DetallePago" && columna.ColumnName=="correoFactura" && fila.IsNull(columna));
         public string CalcularDVH(DataRow fila)
         {
             return hash.CalcularHash(string.Concat(fila.Table.Columns.Cast<DataColumn>()
-                .Where(c => c.ColumnName != "dvh" && !(fila.Table.TableName=="Plan" && c.ColumnName=="esCorporativo" && !(bool)fila[c])).Select(c => Pack(Valor(fila[c])))));
+                .Where(c => c.ColumnName != "dvh" && !CampoAnteriorVacio(fila,c)).Select(c => Pack(Valor(fila[c])))));
         }
         internal void Inicializar()
         {
@@ -39,10 +43,12 @@ namespace VitaPet.BLL
                 new DVVDAL().Guardar(new DVVBE { NombreTabla=tabla, ValorDVV=hash.CalcularDVV(valores) });
             }
         }
-        internal void Verificar(ResultadoIntegridadBE resultado)
+        internal void Verificar(ResultadoIntegridadBE resultado,bool permitirMigracionesPendientes = false)
         {
             try { dal.ValidarCobertura(); }
             catch (InvalidOperationException ex) { ReferenciaIntegridadBLL.Error(resultado,"Esquema","—","tabla",ex.Message); return; }
+            foreach (var migration in DatabaseMigrator.MigracionesInconsistentes(!permitirMigracionesPendientes))
+                ReferenciaIntegridadBLL.Error(resultado,"__SchemaMigrations",migration,"checksum","Historial de migraciones ausente o alterado.");
             foreach (var tabla in dal.ClavesEsquema.Keys)
             {
                 var datos=dal.Leer(tabla); var valores=new List<string>();
@@ -66,7 +72,7 @@ namespace VitaPet.BLL
                 foreach(DataRow fila in datos.Rows)
                 foreach(DataColumn col in datos.Columns)
                 {
-                    if(tabla=="Plan" && col.ColumnName=="esCorporativo" && !(bool)fila[col]) continue;
+                    if(CampoAnteriorVacio(fila,col)) continue;
                     string id=Valor(fila[IntegridadTablasDAL.Claves[tabla]]);
                     string entrada=Pack("campo-v1")+Pack(tabla)+Pack(id)+Pack(col.ColumnName)+Pack(Valor(fila[col]));
                     result.Add(new ReferenciaCampoBE { Tabla=tabla,Fila=id,Columna=col.ColumnName,Huella=hash.CalcularHash(entrada) });

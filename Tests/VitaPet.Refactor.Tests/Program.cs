@@ -27,7 +27,7 @@ class Program
     { using(var cn=new SqlConnection(connection))using(var cmd=new SqlCommand(sql,cn)){cn.Open();cmd.ExecuteNonQuery();} }
     static string Valor(string sql)
     { using(var cn=new SqlConnection(connection))using(var cmd=new SqlCommand(sql,cn)){cn.Open();return Convert.ToString(cmd.ExecuteScalar(),CultureInfo.InvariantCulture);} }
-    static void Sesion(int id)
+    internal static void Sesion(int id)
     {
         var contexto=new HttpContext(new HttpRequest("","http://localhost/",""),new HttpResponse(new StringWriter()));
         SessionStateUtility.AddHttpSessionStateToContext(contexto,new HttpSessionStateContainer(Guid.NewGuid().ToString(),new SessionStateItemCollection(),new HttpStaticObjectsCollection(),20,true,HttpCookieMode.UseCookies,SessionStateMode.InProc,false));
@@ -137,7 +137,7 @@ class Program
         }
         Sesion(1);var contratacion=new ContratacionPlanBLL();var cotizacion=contratacion.ConsultarDetalle(contratacion.ConsultarPlanes()[0].IdPlan);
         cotizacion=contratacion.PrepararContratacion(cotizacion.Plan.IdPlan,cotizacion.Plan.Version,cotizacion.CantidadMascotas);
-        var pago=new GestionPagoBLL().Pagar(cotizacion.IdSuscripcion,cotizacion.ImporteUSD,new DatosPagoBE {MedioPago=GestionPagoBLL.Credito,Titular="Prueba Prueba",NumeroTarjeta="1111111111111111",Vencimiento="12/2030",CodigoSeguridad="111"});
+        var pago=new GestionPagoBLL().Pagar(cotizacion.IdSuscripcion,cotizacion.ImporteUSD,new DatosPagoBE {MedioPago=GestionPagoBLL.Credito,Titular="Prueba Prueba",NumeroTarjeta="1111111111111111",Vencimiento="12/2030",CodigoSeguridad="111",CorreoFactura="factura@example.test"});
         Check(pago.Factura!=null&&seguridad.VerificarIntegridad(),"Procedimiento de factura nuevo emite y protege un comprobante");
         foreach(int usuario in new[]{1,2,-1})foreach(bool transaccion in new[]{false,true})
             Comparar("sp_Factura_Emitir",usuario+","+cotizacion.IdSuscripcion,transaccion);
@@ -195,7 +195,7 @@ class Program
         Check(seguridad.VerificarIntegridad(),"Rollback de pruebas de alteración restaura estado íntegro");
     }
 
-    static void Main()
+    static void Main(string[] args)
     {
         var cfg=ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         var destino=new SqlConnectionStringBuilder(cfg.ConnectionStrings.ConnectionStrings["VitaPetConnection"].ConnectionString);
@@ -212,6 +212,11 @@ class Program
             Sql("INSERT dbo.Cliente(idUsuario,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(1,'Cliente','Prueba','55555555','Individual',1,'');");
             new ReferenciaIntegridadBLL().Inicializar();new ContratacionPlanBLL().AsegurarCatalogo();
             Check(seguridad.VerificarIntegridad(),"Base aislada inicializada");
+            if(args.Contains("--integridad-todas") || args.Contains("--integridad-login"))
+            {
+                IntegridadTodasLasTablas.Run(connection,args.Contains("--integridad-login"));
+                return;
+            }
             Usuarios();Modulos();Procedimientos();Bitacora();
             Console.WriteLine("TOTAL: "+checks+" verificaciones de refactorización");
         }

@@ -8,6 +8,8 @@ using System.Text;
 using System.Xml;
 using VitaPet.BE;
 using VitaPet.DAL;
+using VitaPet.SECURITY;
+using VitaPet.BLL.Seguridad;
 
 namespace VitaPet.BLL
 {
@@ -22,6 +24,48 @@ namespace VitaPet.BLL
         {
             _bitacoraDAL = new BitacoraDAL();
             _integridadBLL = new IntegridadBLL();
+        }
+
+        public ResultadoIntegridadBE RegistrarErroresIntegridad()
+        {
+            using (EstadoAplicacion.BloquearOperacion())
+            using (var operacion = new OperacionIntegridadDAL())
+            {
+                var seguridad = new SecurityManager();
+                var usuario = seguridad.ExigirWebmaster();
+                var resultado = seguridad.DiagnosticarIntegridad();
+                if (resultado.EsValida) { operacion.Complete(); return resultado; }
+
+                // La evidencia se agrega al histórico XML sin escribir ni reparar la BD corrupta.
+                var historico = new ConsultaBitacoraBLL().LeerHistorico();
+                int id = historico.Select(r => r.IdBitacora).DefaultIfEmpty(0).Max();
+                string incidente = Guid.NewGuid().ToString("N").Substring(0, 8);
+                var documento = new XmlDocument { XmlResolver = null };
+                documento.AppendChild(documento.CreateElement("Bitacora"));
+                foreach (var registro in historico)
+                    documento.DocumentElement.AppendChild(CrearRegistroXml(documento, registro));
+                var nuevos = new List<BitacoraBE>();
+                foreach (var detalle in resultado.Detalles)
+                {
+                    var registro = new BitacoraBE {
+                        IdBitacora = checked(++id), IdUsuario = usuario.IdUsuario, Fecha = DateTime.Now,
+                        Modulo = "Integridad", Criticidad = "Grave",
+                        Accion = "ER023 [" + incidente + "] Tabla=" + detalle.Tabla + "; Fila=" + detalle.Fila +
+                            "; Campo=" + detalle.Columna + "; " + detalle.Motivo
+                    };
+                    registro.DVH = _integridadBLL.CalcularDVH(registro);
+                    nuevos.Add(registro);
+                    documento.DocumentElement.AppendChild(CrearRegistroXml(documento, registro));
+                }
+                string archivo = ObtenerRutaArchivo();
+                Directory.CreateDirectory(Path.GetDirectoryName(archivo));
+                EstadoAplicacion.EscribirAtomico(archivo, documento.OuterXml);
+                var verificados = new ConsultaBitacoraBLL().LeerHistorico();
+                if (nuevos.Any(n => !verificados.Any(v => v.IdBitacora == n.IdBitacora && v.DVH == n.DVH)))
+                    throw new InvalidDataException("No se pudo verificar el diagnóstico guardado en bitácora.");
+                operacion.Complete();
+                return resultado;
+            }
         }
 
         public int Registrar(

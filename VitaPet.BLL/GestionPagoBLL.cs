@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Transactions;
 using System.Xml;
+using System.Security.Cryptography;
+using VitaPet.SECURITY;
+using VitaPet.SERVICES;
 using VitaPet.BE;
 using VitaPet.BLL.Seguridad;
 using VitaPet.DAL;
@@ -51,18 +54,36 @@ namespace VitaPet.BLL
         public PagoBE ObtenerComprobante(int suscripcion)
         {return CompletarFactura(Ejecutar((s,u,d)=>{var p=d.Comprobante(u.IdUsuario,suscripcion);if(p==null)throw new GestionPagoException("ER054");return p;}));}
 
+        public CertificadoPagoBE ObtenerCertificado(int suscripcion)
+        {
+            var pago = Ejecutar((s,u,d)=>{var p=d.Comprobante(u.IdUsuario,suscripcion);if(p==null)throw new GestionPagoException("ER054");return p;});
+            if (!EsPruebaLocal) throw new GestionPagoException("ER055");
+            return Certificar(pago);
+        }
+
+        private static CertificadoPagoBE Certificar(PagoBE pago)
+        {
+            try
+            {
+                string carpeta = Path.Combine(Path.GetDirectoryName(EstadoAplicacion.ResolverRuta("RutaBitacoraXml", "~/App_Data/Bitacora.xml")), "CertificadosPago");
+                return new CertificadoPagoService().Obtener(pago, carpeta);
+            }
+            catch(Exception ex) when(ex is CryptographicException || ex is IOException || ex is UnauthorizedAccessException)
+            {throw new GestionPagoException("ER055",ex);}
+        }
+
         public PagoBE Pagar(int suscripcion,decimal importeConfirmado,DatosPagoBE datos)
         {
             try
             {
-                return CompletarFactura(Ejecutar((s,u,d)=>{
+                var resultado = CompletarFactura(Ejecutar((s,u,d)=>{
                     var anterior=d.Comprobante(u.IdUsuario,suscripcion);if(anterior!=null)return anterior;
                     var resumen=d.ConsultarPendiente(u.IdUsuario,suscripcion);
                     Validar(datos);
                     // Nunca aceptar el importe del navegador ni cobrar un resumen anterior.
                     if(importeConfirmado!=resumen.Importe)throw new GestionPagoException("ER025");
                     ProcesarPrueba(datos);
-                    d.Registrar(u.IdUsuario,suscripcion,resumen.Importe,datos.MedioPago,datos.Titular);
+                    d.Registrar(u.IdUsuario,suscripcion,resumen.Importe,datos.MedioPago,datos.Titular,datos.CorreoFactura);
                     var pago=d.Comprobante(u.IdUsuario,suscripcion);
                     IntegridadRegistroBLL.Actualizar("Pago",pago.IdPago);
                     IntegridadRegistroBLL.Actualizar("DetallePago",pago.IdPago);
@@ -75,6 +96,8 @@ namespace VitaPet.BLL
                     {throw new GestionPagoException("ER040",ex);}
                     s.ExigirIntegridad();return pago;
                 }));
+                if(EsPruebaLocal)Certificar(resultado);
+                return resultado;
             }
             finally {if(datos!=null)datos.Limpiar();}
         }
@@ -88,11 +111,13 @@ namespace VitaPet.BLL
 
         private static void Validar(DatosPagoBE d)
         {
-            if(d==null||new[]{d.MedioPago,d.Titular,d.NumeroTarjeta,d.Vencimiento,d.CodigoSeguridad}.Any(string.IsNullOrWhiteSpace))
+            if(d==null||new[]{d.MedioPago,d.Titular,d.NumeroTarjeta,d.Vencimiento,d.CodigoSeguridad,d.CorreoFactura}.Any(string.IsNullOrWhiteSpace))
                 throw new GestionPagoException("ER002");
+            d.CorreoFactura=d.CorreoFactura.Trim();
             string numero=d.NumeroTarjeta.Replace(" ","").Replace("-","");
             DateTime vencimiento;
-            if((d.MedioPago!=Credito&&d.MedioPago!=Debito)||d.Titular.Trim().Length<2||d.Titular.Length>100||
+            if(d.CorreoFactura.Length>100||!Regex.IsMatch(d.CorreoFactura,@"\A[^@\s]+@[^@\s]+\.[^@\s]+\z")||
+                (d.MedioPago!=Credito&&d.MedioPago!=Debito)||d.Titular.Trim().Length<2||d.Titular.Length>100||
                 d.NumeroTarjeta.Length>25||!Regex.IsMatch(numero,@"\A[0-9]{13,19}\z")||
                 !Regex.IsMatch(d.CodigoSeguridad,@"\A[0-9]{3,4}\z")||
                 !DateTime.TryParseExact(d.Vencimiento,"MM/yyyy",CultureInfo.InvariantCulture,DateTimeStyles.None,out vencimiento)||

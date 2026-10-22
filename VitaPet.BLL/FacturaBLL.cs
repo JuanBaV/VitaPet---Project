@@ -10,6 +10,7 @@ using VitaPet.BE;
 using VitaPet.DAL;
 using VitaPet.BLL.Seguridad;
 using VitaPet.SERVICES;
+using VitaPet.SECURITY;
 namespace VitaPet.BLL
 {
     public sealed class FacturaBLL
@@ -31,7 +32,7 @@ namespace VitaPet.BLL
         public List<ConsultaFacturaBE> ListarPropias(){return Ejecutar((s,u,d)=>d.Listar(u.IdUsuario),"ER079");}
         public FacturaBE Emitir(int suscripcion)
         {
-            return Ejecutar((s,u,d)=>{
+            var factura = Ejecutar((s,u,d)=>{
                 var r=d.Emitir(u.IdUsuario,suscripcion);
                 if(r.Item2)
                 {
@@ -42,6 +43,19 @@ namespace VitaPet.BLL
                 }
                 return d.Obtener(u.IdUsuario,suscripcion);
             },"ER080");
+            EnviarCorreo(factura, false);
+            return factura;
+        }
+        public FacturaBE ReintentarCorreo(int suscripcion)
+        {
+            var factura=Ejecutar((s,u,d)=>{var f=d.Obtener(u.IdUsuario,suscripcion);if(f==null)throw new GestionPagoException("ER079");return f;},"ER079");
+            EnviarCorreo(factura,true);
+            return factura;
+        }
+        private static void EnviarCorreo(FacturaBE factura,bool reintentar)
+        {
+            string carpeta=Path.Combine(Path.GetDirectoryName(EstadoAplicacion.ResolverRuta("RutaBitacoraXml","~/App_Data/Bitacora.xml")),"CorreoFacturas");
+            new CorreoFacturaService().Enviar(factura,carpeta,reintentar);
         }
         public byte[] Descargar(int suscripcion)
         {

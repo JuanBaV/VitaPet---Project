@@ -106,6 +106,7 @@ public partial class ConsultaBitacoraPage : PaginaBase
     private ResultadoConsulta Consultar(FiltroBitacoraBE filtro)
     {
         var consulta = new ResultadoConsulta { Filtro = filtro, Registros = bitacora.Consultar(filtro) };
+        consulta.SoloHistoricoIntegridad = bitacora.SoloHistoricoIntegridad;
         string clave = ViewState["ConsultaId"] as string;
         if (clave == null)
         {
@@ -133,7 +134,12 @@ public partial class ConsultaBitacoraPage : PaginaBase
         gvBitacora.PageIndex = Math.Max(0, Math.Min(pagina, paginas - 1));
         gvBitacora.DataSource = consulta.Registros;
         gvBitacora.DataBind();
-        btnExportarXml.Enabled = consulta.Registros.Count > 0;
+        btnExportarXml.Enabled = !consulta.SoloHistoricoIntegridad && consulta.Registros.Count > 0;
+        if (consulta.SoloHistoricoIntegridad)
+        {
+            litMensaje.Text = Server.HtmlEncode(TextosUI.Obtener("Bitacora_Recuperacion"));
+            pnlMensaje.Visible = true;
+        }
         litResultados.Text = TextosUI.Formato("ResumenEventos", consulta.Registros.Count, gvBitacora.PageIndex + 1, paginas, gvBitacora.PageSize);
     }
 
@@ -219,5 +225,6 @@ public partial class ConsultaBitacoraPage : PaginaBase
     {
         public FiltroBitacoraBE Filtro { get; set; }
         public List<BitacoraBE> Registros { get; set; }
+        public bool SoloHistoricoIntegridad { get; set; }
     }
 }

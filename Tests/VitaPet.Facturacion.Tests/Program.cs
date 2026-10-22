@@ -33,11 +33,13 @@ class Program
         new DVVDAL().Guardar(new DVVBE {NombreTabla=table,ValorDVV=new IntegridadBLL().CalcularDVV(t.Rows.Cast<DataRow>().Select(r=>(string)r["dvh"]))});
         typeof(ReferenciaIntegridadBLL).GetMethod("GuardarEstadoVerificado",BindingFlags.NonPublic|BindingFlags.Instance).Invoke(new ReferenciaIntegridadBLL(),null);
     }
-    static DatosPagoBE Datos(){return new DatosPagoBE {MedioPago=GestionPagoBLL.Credito,Titular="Prueba Prueba",NumeroTarjeta="1111111111111111",Vencimiento="12/2030",CodigoSeguridad="111"};}
+    static DatosPagoBE Datos(){return new DatosPagoBE {MedioPago=GestionPagoBLL.Credito,Titular="Prueba Prueba",NumeroTarjeta="1111111111111111",Vencimiento="12/2030",CodigoSeguridad="111",CorreoFactura="factura@example.test"};}
     static CotizacionPlanBE Preparar(){var b=new ContratacionPlanBLL();var c=b.ConsultarDetalle(b.ConsultarPlanes()[0].IdPlan);return b.PrepararContratacion(c.Plan.IdPlan,c.Plan.Version,c.CantidadMascotas);}
     static void Limpiar(){Sql("DELETE dbo.Factura;DELETE dbo.DetallePago;DELETE dbo.Pago;DELETE dbo.Suscripcion;");foreach(string t in new[]{"Factura","DetallePago","Pago","Suscripcion"})Refrescar(t);}
     static void Main(string[] args)
     {
+        if(args.Contains("--certificados")){CertificadosPagoTests.Run();return;}
+        if(args.Contains("--correo")){CorreoFacturaTests.Run();return;}
         var cfg=ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);var cs=new SqlConnectionStringBuilder(cfg.ConnectionStrings.ConnectionStrings["VitaPetConnection"].ConnectionString);
         if(!cs.InitialCatalog.StartsWith("VitaPet_Verificacion_Rework",StringComparison.Ordinal))throw new Exception("Only isolated databases allowed");
         cs.InitialCatalog="VitaPet_Verificacion_Rework_"+Guid.NewGuid().ToString("N");connection=cs.ConnectionString;
@@ -56,17 +58,38 @@ class Program
             new DVVDAL().Guardar(new DVVBE {NombreTabla="Usuario",ValorDVV=h.CalcularDVV(users.ObtenerDVHs())});new ReferenciaIntegridadBLL().Inicializar();
             var err=new ErrorSistemaBLL();err.AsegurarErroresPlanes();err.AsegurarErroresPago();err.AsegurarErroresFacturacion();
             new ContratacionPlanBLL().AsegurarCatalogo();SessionAs(1);var b=new GestionPagoBLL();var f=new FacturaBLL();var sec=new SecurityManager();
-            Check(sec.VerificarIntegridad(),"Esquema Rework 027 y controles íntegros");
+            Check(sec.VerificarIntegridad(),"Esquema Rework 029 y controles íntegros");
+            string checksumCorreo;
+            using(var cn=new SqlConnection(connection))using(var cmd=new SqlCommand("SELECT checksum FROM dbo.__SchemaMigrations WHERE migrationId='029_CorreoFactura.sql'",cn))
+            {cn.Open();checksumCorreo=(string)cmd.ExecuteScalar();}
+            Sql("DELETE dbo.__SchemaMigrations WHERE migrationId='029_CorreoFactura.sql'");
+            Check(!sec.VerificarIntegridad()&&sec.DiagnosticarIntegridad(true).EsValida,"Solo la validación previa a migrar admite scripts pendientes, conservando la validación de datos");
+            Sql("INSERT dbo.__SchemaMigrations(migrationId,checksum) VALUES('029_CorreoFactura.sql',REPLICATE('0',64))");
+            Check(!sec.DiagnosticarIntegridad(true).EsValida,"La validación previa a migrar sigue rechazando un checksum aplicado alterado");
+            Sql("UPDATE dbo.__SchemaMigrations SET checksum='"+checksumCorreo+"' WHERE migrationId='029_CorreoFactura.sql'");
+            Check(sec.VerificarIntegridad(),"Historial de migraciones restituido sin modificar datos ni verificadores");
             if(args.Contains("--web")){File.WriteAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"web-environment.txt"),new[]{cs.InitialCatalog,runtime});keep=true;return;}
             var c=Preparar();Check(c.ImporteUSD==34.2m&&b.Consultar(c.IdSuscripcion).Importe==34.2m,"Descuento 20% coincide en contratación y pago Rework");
             Check(f.ListarPropias().Count==0,"Perfil vacío no fabrica facturas");
             foreach(int id in new[]{0,2,3}){SessionAs(id);bool denied=false;try{f.ListarPropias();}catch(UnauthorizedAccessException){denied=true;}Check(denied,"Lista restringida a Cliente: "+id);}SessionAs(1);
+            var sinCorreo=Datos();sinCorreo.CorreoFactura="";Error(()=>b.Pagar(c.IdSuscripcion,c.ImporteUSD,sinCorreo),"ER002");
+            foreach(string correo in new[]{"sin-arroba","a@@ejemplo.com","a@ejemplo","a@ejemplo.com\r\nBcc: otro@ejemplo.com",new string('a',95)+"@ejemplo.com"})
+            {var invalido=Datos();invalido.CorreoFactura=correo;Error(()=>b.Pagar(c.IdSuscripcion,c.ImporteUSD,invalido),"ER025");}
+            Check(Count("Pago")==0&&Count("Factura")==0,"Correo vacío o inválido no registra cobros ni facturas");
             var datos=Datos();var p=b.Pagar(c.IdSuscripcion,c.ImporteUSD,datos);
             Check(p.Factura!=null&&p.Factura.Importe==34.2m&&p.Factura.Titular=="Prueba Prueba","Reutiliza simulador existente y emite factura del cobro");
+            Check(p.Factura.CorreoFactura=="factura@example.test"&&p.Factura.Correo!=p.Factura.CorreoFactura,"Conserva el correo elegido en el pago, separado del correo del cliente");
+            var reconsulta=b.ObtenerComprobante(c.IdSuscripcion);
+            Check(reconsulta.Factura.CorreoFactura=="factura@example.test","Reconsulta conserva el destinatario elegido para los reintentos");
+            Sql("UPDATE dbo.DetallePago SET correoFactura='alterado@example.test'");
+            Check(!sec.VerificarIntegridad(),"El correo elegido está protegido por los verificadores de integridad");
+            Sql("UPDATE dbo.DetallePago SET correoFactura='factura@example.test'");
+            Check(sec.VerificarIntegridad(),"Recupera integridad al restituir el correo original sin recalcular dígitos");
             Check(datos.NumeroTarjeta==null&&datos.CodigoSeguridad==null,"Descarta datos sensibles del cobro");
             Check(Count("Pago")==1&&Count("Factura")==1&&Count("DetallePago")==1&&sec.VerificarIntegridad(),"Pago, detalle y factura protegidos y auditados");
+            Check(b.ObtenerCertificado(c.IdSuscripcion).Certificado.Length>0,"Cliente obtiene certificado del pago aprobado");
             Check(f.ListarPropias().Single().NumeroFactura==p.Factura.Numero,"Perfil lista la factura propia");
-            SessionAs(4);Check(f.ListarPropias().Count==0,"Cliente ajeno no ve la factura");Error(()=>f.Emitir(c.IdSuscripcion),"ER054");Error(()=>f.Descargar(c.IdSuscripcion),"ER081");SessionAs(1);
+            SessionAs(4);Check(f.ListarPropias().Count==0,"Cliente ajeno no ve la factura");Error(()=>f.Emitir(c.IdSuscripcion),"ER054");Error(()=>f.Descargar(c.IdSuscripcion),"ER081");Error(()=>b.ObtenerCertificado(c.IdSuscripcion),"ER054");SessionAs(1);
             b.Pagar(c.IdSuscripcion,0,null);f.Emitir(c.IdSuscripcion);Check(Count("Pago")==1&&Count("Factura")==1,"Reenvíos y reemisión no duplican cobro ni factura");
             new ContratacionPlanBLL().ConfirmarPago(c.IdSuscripcion);Check(f.ListarPropias().Single().NumeroFactura==p.Factura.Numero,"Consulta sigue disponible tras activar la suscripción");
             File.WriteAllBytes(Path.Combine(runtime,"factura-rework.pdf"),f.Descargar(c.IdSuscripcion));

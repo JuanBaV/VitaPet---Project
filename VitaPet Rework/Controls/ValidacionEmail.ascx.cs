@@ -24,6 +24,12 @@ public partial class Controls_ValidacionEmail : System.Web.UI.UserControl
         }
     }
 
+    public string TextoEtiqueta
+    {
+        get { return lblCorreo.Text; }
+        set { lblCorreo.Text = value; }
+    }
+
 
     public int MaxLength
     {
