@@ -179,7 +179,7 @@ namespace VitaPet.BLL.Seguridad
         {
             using(var operacion = new OperacionIntegridadDAL())
             {
-                new VitaPet.BLL.Seguridad.SecurityManager().ExigirIntegridad();
+                ExigirIntegridad();
 
             if (registro == null)
             {

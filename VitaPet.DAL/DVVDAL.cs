@@ -49,13 +49,20 @@ namespace VitaPet.DAL
         public void Guardar(DVVBE dvv)
         {
             using (SqlConnection conexion = _conexionDAL.CrearConexion())
+            {
+                conexion.Open();
+                Guardar(conexion, dvv);
+            }
+        }
+
+        internal static void Guardar(SqlConnection conexion, DVVBE dvv)
+        {
             using (SqlCommand comando = new SqlCommand("dbo.sp_DVV_Guardar", conexion))
             {
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Add("@nombreTabla", SqlDbType.VarChar, 60).Value = dvv.NombreTabla;
                 comando.Parameters.Add("@valorDVV", SqlDbType.VarChar, 255).Value = dvv.ValorDVV;
 
-                conexion.Open();
                 comando.ExecuteNonQuery();
             }
         }

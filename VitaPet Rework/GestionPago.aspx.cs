@@ -10,6 +10,8 @@ public partial class GestionPagoPage : PaginaClientePlanes
     private int IdSuscripcion { get {int id;return int.TryParse(Request.QueryString["contratacion"],out id)&&id>0?id:0;} }
     protected override void EjecutarFuncionalidad()
     {
+        if (!IsPostBack && Request.QueryString["origen"] == "perfil")
+            lnkVolver.NavigateUrl = "~/Cliente.aspx";
         if(!IsPostBack && Request.QueryString["descargar"]=="1"){DescargarFactura_Click(this,EventArgs.Empty);return;}
         pnlDummy.Visible=GestionPagoBLL.EsPruebaLocal && pnlPendiente.Visible;
         if(!IsPostBack)EjecutarPlan(()=>{
@@ -30,6 +32,7 @@ public partial class GestionPagoPage : PaginaClientePlanes
             MostrarErrorPlan("ER054");MostrarComprobante();return;
         }
         pnlPendiente.Visible=true;pnlComprobante.Visible=false;
+        lnkVolver.NavigateUrl="~/ContratarPlan.aspx?plan="+c.IdPlan.ToString(CultureInfo.InvariantCulture);
         lblNombrePlan.Text=Server.HtmlEncode(c.NombrePlan);lblPrecioMascota.Text=USD(c.PrecioMascota);
         lblCantidadMascotas.Text=c.CantidadMascotas.ToString();lblImporte.Text=USD(c.Importe);
         ViewState["ImporteConfirmado"]=c.Importe;

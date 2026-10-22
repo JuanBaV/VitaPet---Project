@@ -111,23 +111,17 @@ namespace VitaPet.BLL
             var bytes=new byte[32];using(var rng=RandomNumberGenerator.Create())rng.GetBytes(bytes);
             return sec.CalcularHash(Convert.ToBase64String(bytes)+"Aa1!");
         }
-        private static DataRow Integridad(string tabla,int id,SecurityManager sec)
-        {
-            var dal=new IntegridadTablasDAL();var data=dal.Leer(tabla);var fila=data.Rows.Cast<DataRow>().Single(r=>(int)r[IntegridadTablasDAL.Claves[tabla]]==id);
-            var hash=new IntegridadTablasBLL().CalcularDVH(fila);dal.GuardarDvh(tabla,id,hash);fila["dvh"]=hash;
-            new DVVDAL().Guardar(new DVVBE{NombreTabla=tabla,ValorDVV=sec.CalcularDVV(data.Rows.Cast<DataRow>().Select(r=>(string)r["dvh"]))});return fila;
-        }
         public AltaClienteCorporativoBE Registrar(DatosClienteCorporativoBE datos)
         {
             return Ejecutar((actor,sec)=>{
                 var d=Validar(datos);var prep=Preparar(actor,d.IdEmpresa);Unico(actor,d.Correo);
                 var dal=new ClienteCorporativoDAL();int usuario=dal.RegistrarUsuario(actor,d.Nombre+" "+d.Apellido,d.Correo,HashAutomatico(sec));
                 var usuarios=new UsuarioDAL();var u=usuarios.ObtenerPorId(usuario);usuarios.ActualizarDVH(usuario,sec.CalcularDVH(u));
-                int cliente=dal.RegistrarCliente(actor,usuario,d);Integridad("Cliente",cliente,sec);
+                int cliente=dal.RegistrarCliente(actor,usuario,d);IntegridadRegistroBLL.ActualizarDigitos("Cliente",cliente);
                 int suscripcion;
                 try{suscripcion=dal.AsignarPlan(actor,cliente,prep.IdPlan);}
                 catch(SqlException ex){if(ex.Number==50024||ex.Number==50072||ex.Number==50073)throw;throw new ClienteCorporativoException(Conexion(ex)?"ER003":"ER007",ex);}
-                var sub=Integridad("Suscripcion",suscripcion,sec);
+                var sub=IntegridadRegistroBLL.ActualizarDigitos("Suscripcion",suscripcion);
                 new DVVDAL().Guardar(new DVVBE{NombreTabla="Usuario",ValorDVV=sec.CalcularDVV(usuarios.ObtenerDVHs())});
                 new ReferenciaIntegridadBLL().GuardarEstadoVerificado();Auditar(sec,actor);
                 return new AltaClienteCorporativoBE{IdUsuario=usuario,IdCliente=cliente,Correo=d.Correo,Empresa=prep.Empresa.RazonSocial,Plan=prep.Plan,Vencimiento=(DateTime)sub["fechaVencimiento"]};

@@ -119,17 +119,6 @@ namespace VitaPet.BLL
             { throw new EmpresaException(ex.Message.StartsWith("ER023",StringComparison.Ordinal) ? "ER023" : escritura ? "ER040" : "ER033",ex); }
         }
 
-        private static void ActualizarIntegridad(int empresa,SecurityManager seguridad)
-        {
-            var tablas=new IntegridadTablasDAL();var filas=tablas.Leer("Empresa");
-            var fila=filas.Rows.Cast<DataRow>().Single(r=>(int)r["idEmpresa"]==empresa);
-            string dvh=new IntegridadTablasBLL().CalcularDVH(fila);
-            tablas.GuardarDvh("Empresa",empresa,dvh);fila["dvh"]=dvh;
-            new DVVDAL().Guardar(new DVVBE { NombreTabla="Empresa",
-                ValorDVV=seguridad.CalcularDVV(filas.Rows.Cast<DataRow>().Select(r=>(string)r["dvh"])) });
-            new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
-        }
-
         public List<EmpresaBE> Listar()
         {
             return Ejecutar((actor,seguridad)=>{
@@ -153,7 +142,7 @@ namespace VitaPet.BLL
         {
             return Ejecutar((actor,seguridad)=>{
                 var d=Validar(datos);ExigirCuitUnico(actor,d);
-                int id=new EmpresaDAL().Registrar(actor,d);ActualizarIntegridad(id,seguridad);
+                int id=new EmpresaDAL().Registrar(actor,d);IntegridadRegistroBLL.Actualizar("Empresa",id);
                 Auditar(seguridad,actor,"Alta de empresa",true);
                 return new EmpresaBE {IdEmpresa=id,RazonSocial=d.RazonSocial,Cuit=d.Cuit,Direccion=d.Direccion,Telefono=d.Telefono,Estado=true};
             },"ER069");
@@ -163,7 +152,7 @@ namespace VitaPet.BLL
         {
             Ejecutar((actor,seguridad)=>{
                 var d=Validar(datos);Obtener(actor,empresa);ExigirCuitUnico(actor,d,empresa);
-                new EmpresaDAL().Actualizar(actor,empresa,d);ActualizarIntegridad(empresa,seguridad);
+                new EmpresaDAL().Actualizar(actor,empresa,d);IntegridadRegistroBLL.Actualizar("Empresa",empresa);
                 Auditar(seguridad,actor,"Modificación de empresa asociada",true);return true;
             },"ER070");
         }

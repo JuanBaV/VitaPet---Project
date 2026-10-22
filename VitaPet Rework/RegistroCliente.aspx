@@ -4,6 +4,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="login-page">
         <section class="login-card registro-card" aria-labelledby="tituloRegistro">
+            <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/Login.aspx" CssClass="btn btn-default formulario-volver"><span aria-hidden="true">&larr;</span> <asp:Literal runat="server" Text="<%$ Resources:Textos, UI_Volver %>" /></asp:HyperLink>
             <header class="login-header">
                 <h1 id="tituloRegistro"><%: VitaPet.GUI.Resources.Textos.UI_CrearUnaCuenta %></h1>
                 <p><%: VitaPet.GUI.Resources.Textos.Registro_Descripcion %></p>
@@ -42,9 +43,6 @@
                 <asp:CustomValidator ID="cvDatosRegistro" runat="server" ValidationGroup="RegistroCliente" ValidateEmptyText="true" EnableClientScript="false" OnServerValidate="ValidarDatos" Display="Dynamic" CssClass="login-validation" ErrorMessage="<%$ Resources:Textos, Alta_DatosInvalidos %>" />
 <asp:Button ID="btnRegistrar" runat="server" Text="<%$ Resources:Textos, UI_CrearUnaCuenta %>" CausesValidation="true" ValidationGroup="RegistroCliente" OnClick="btnRegistrar_Click" CssClass="btn btn-primary btn-block login-submit" />
             </asp:Panel>
-            <nav class="login-links" aria-label="<%: VitaPet.GUI.Resources.Textos.UI_OpcionesDeAcceso %>">
-                <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/Login.aspx" Text="<%$ Resources:Textos, UI_VolverAlInicioDeSesion %>" />
-            </nav>
         </section>
     </main>
 </asp:Content>

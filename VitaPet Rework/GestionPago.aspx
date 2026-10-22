@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="<%$ Resources:Textos, Planes_GestionPago %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GestionPago.aspx.cs" Inherits="GestionPagoPage" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="planes-page"><section class="planes-card planes-detalle pago-card">
+        <asp:HyperLink ID="lnkVolver" runat="server" NavigateUrl="~/Planes.aspx" CssClass="btn btn-default formulario-volver"><span aria-hidden="true">&larr;</span> <asp:Literal runat="server" Text="<%$ Resources:Textos, UI_Volver %>" /></asp:HyperLink>
         <header class="login-header"><h1><%: VitaPet.GUI.Resources.Textos.Planes_GestionPago %></h1></header>
         <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
         <asp:Panel ID="pnlPendiente" runat="server" Visible="false" DefaultButton="btnPagar">
@@ -37,7 +38,6 @@
             </div>
             <div class="usuarios-botones">
                 <asp:Button ID="btnPagar" runat="server" Text="<%$ Resources:Textos, Pago_Pagar %>" CausesValidation="false" OnClick="Pagar_Click" CssClass="btn btn-primary" OnClientClick="if(this.dataset.enviado==='1')return false;this.dataset.enviado='1';this.setAttribute('aria-disabled','true');this.classList.add('pago-enviado');" />
-                <asp:HyperLink ID="lnkVolver" runat="server" NavigateUrl="~/Planes.aspx" CssClass="btn btn-default" Text="<%$ Resources:Textos, UI_Volver %>" />
             </div>
         </asp:Panel>
         <asp:Panel ID="pnlComprobante" runat="server" Visible="false">

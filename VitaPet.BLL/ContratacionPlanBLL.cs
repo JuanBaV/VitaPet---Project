@@ -62,7 +62,7 @@ namespace VitaPet.BLL
                 cotizacion.IdSuscripcion=resultado.Item1;
                 if(resultado.Item2)
                 {
-                    ActualizarIntegridad("Suscripcion",resultado.Item1);
+                    IntegridadRegistroBLL.ActualizarDigitos("Suscripcion",resultado.Item1);
                     new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
                     try {s.RegistrarBitacora(new BitacoraBE {IdUsuario=u.IdUsuario,Fecha=DateTime.Now,Accion="Contratación de plan pendiente",Modulo="Planes",Criticidad="Informativa"});}
                     catch(SqlException ex){throw new ContratacionPlanException(ex.Class>=20?"ER003":"ER040",ex);}
@@ -89,13 +89,6 @@ namespace VitaPet.BLL
                 return true;
             },"ER007");
         }
-        private static void ActualizarIntegridad(string tabla,int id)
-        {
-            var dal=new IntegridadTablasDAL();var datos=dal.Leer(tabla);
-            var fila=datos.Rows.Cast<DataRow>().Single(r=>(int)r[IntegridadTablasDAL.Claves[tabla]]==id);
-            string dvh=new IntegridadTablasBLL().CalcularDVH(fila);dal.GuardarDvh(tabla,id,dvh);fila["dvh"]=dvh;
-            new DVVDAL().Guardar(new DVVBE{NombreTabla=tabla,ValorDVV=new IntegridadBLL().CalcularDVV(datos.Rows.Cast<DataRow>().Select(r=>(string)r["dvh"]))});
-        }
         // Catálogo inicial idempotente; no modifica planes ni coberturas existentes.
         public void AsegurarCatalogo()
         {
@@ -108,11 +101,11 @@ namespace VitaPet.BLL
                 if(new AdministracionPlanDAL().NecesitaCatalogo())
                 for(int i=0;i<nombres.Length;i++)
                 {
-                    var p=dal.AsegurarPlan(nombres[i],detalles[i],precios[i]);if(p.Item2)ActualizarIntegridad("Plan",p.Item1);
-                    if(i<3){var c=dal.AsegurarCobertura(p.Item1,"Alcance del plan",detalles[i]);if(c.Item2)ActualizarIntegridad("Cobertura",c.Item1);}
+                    var p=dal.AsegurarPlan(nombres[i],detalles[i],precios[i]);if(p.Item2)IntegridadRegistroBLL.ActualizarDigitos("Plan",p.Item1);
+                    if(i<3){var c=dal.AsegurarCobertura(p.Item1,"Alcance del plan",detalles[i]);if(c.Item2)IntegridadRegistroBLL.ActualizarDigitos("Cobertura",c.Item1);}
                 }
                 int? corporativo=new AdministracionPlanDAL().InicializarCorporativo();
-                if(corporativo.HasValue)ActualizarIntegridad("Plan",corporativo.Value);
+                if(corporativo.HasValue)IntegridadRegistroBLL.ActualizarDigitos("Plan",corporativo.Value);
                 new ReferenciaIntegridadBLL().GuardarEstadoVerificado();sec.ExigirIntegridad();tx.Complete();
             }
         }

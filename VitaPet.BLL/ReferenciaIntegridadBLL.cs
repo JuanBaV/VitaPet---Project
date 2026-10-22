@@ -64,7 +64,10 @@ namespace VitaPet.BLL
         {
             if(u==null) return false;
             var refs=dal.Obtener().ToDictionary(c=>c.Clave,StringComparer.Ordinal);
-            return CamposUsuario(u).All(c=> refs.ContainsKey(c.Clave) && refs[c.Clave].Huella==c.Huella);
+            return CamposUsuario(u).All(c=> {
+                ReferenciaCampoBE anterior;
+                return refs.TryGetValue(c.Clave,out anterior) && anterior.Huella==c.Huella;
+            });
         }
         public void Verificar(ResultadoIntegridadBE resultado, bool ampliar = true)
         {
@@ -86,11 +89,18 @@ namespace VitaPet.BLL
         internal void GuardarEstadoVerificado()
         {
             var campos=CamposActuales();
+            var guardadas=dal.Obtener();
             var claves=new HashSet<string>(campos.Select(c=>c.Tabla+"/"+c.Fila),StringComparer.Ordinal);
-            foreach(var old in dal.Obtener().Where(c=>c.Tabla!="#").GroupBy(c=>c.Tabla+"/"+c.Fila))
+            foreach(var old in guardadas.Where(c=>c.Tabla!="#").GroupBy(c=>c.Tabla+"/"+c.Fila))
                 if(!claves.Contains(old.Key)) dal.EliminarFila(old.First().Tabla,old.First().Fila);
-            foreach(var c in campos) dal.Guardar(c);
-            dal.Guardar(new ReferenciaCampoBE { Tabla="#",Fila="0",Columna="sello",Huella=Sello(campos) });
+            campos.Add(new ReferenciaCampoBE { Tabla="#",Fila="0",Columna="sello",Huella=Sello(campos) });
+            var anteriores=guardadas.ToDictionary(c=>c.Clave,StringComparer.Ordinal);
+            foreach(var c in campos)
+            {
+                ReferenciaCampoBE anterior;
+                if(!anteriores.TryGetValue(c.Clave,out anterior) || anterior.Huella!=c.Huella)
+                    dal.Guardar(c);
+            }
         }
         public void Inicializar()
         {

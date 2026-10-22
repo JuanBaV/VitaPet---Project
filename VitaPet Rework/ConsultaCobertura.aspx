@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="<%$ Resources:Textos, Cobertura_Titulo %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ConsultaCobertura.aspx.cs" Inherits="ConsultaCoberturaPage" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="planes-page"><section class="planes-card planes-detalle">
+        <asp:HyperLink ID="lnkVolver" runat="server" NavigateUrl="~/Cliente.aspx" CssClass="btn btn-default formulario-volver"><span aria-hidden="true">&larr;</span> <asp:Literal runat="server" Text="<%$ Resources:Textos, UI_Volver %>" /></asp:HyperLink>
         <header class="login-header"><h1><%: VitaPet.GUI.Resources.Textos.Cobertura_Titulo %></h1></header>
         <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
         <asp:Panel ID="pnlCobertura" runat="server" Visible="false" EnableViewState="false">
@@ -21,6 +22,5 @@
                 </asp:GridView>
             </div>
         </asp:Panel>
-        <asp:HyperLink ID="lnkVolver" runat="server" NavigateUrl="~/Cliente.aspx" CssClass="btn btn-default" Text="<%$ Resources:Textos, UI_Volver %>" />
     </section></main>
 </asp:Content>

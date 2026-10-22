@@ -10,6 +10,17 @@ el acceso posterior desde Planes y Mi perfil, la consulta de cobertura, móvil,
 inglés y el rechazo de facturas ajenas. Detiene IIS Express y elimina su base.
 Las capturas y PDF quedan en web-output.
 
+Para comprobar los controles «← Volver» de los formularios secundarios:
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 'Navegacion-Web.cjs' '..\..\artifacts\navegacion-web'
+```
+
+Reutiliza el recorrido de facturación y comprueba los destinos de regreso,
+teclado, posición del control, móvil e inglés con los distintos roles. La
+fixture web asigna `Prueba2026!` a sus usuarios de prueba. Las capturas y el
+detalle de los resultados quedan en `artifacts/navegacion-web`.
+
 La migración 027 conserva los pagos y sus verificadores. Agrega DetallePago
 para los cobros nuevos y Factura, protegidos por DVH, DVV y referencias. El
 pago y su detalle se confirman juntos; la emisión y su auditoría usan otra

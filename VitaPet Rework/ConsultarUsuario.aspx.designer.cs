@@ -11,6 +11,6 @@
         protected global::System.Web.UI.WebControls.Label lblRol;
         protected global::System.Web.UI.WebControls.Label lblEstado;
         protected global::System.Web.UI.WebControls.Label lblBloqueado;
-        protected global::System.Web.UI.WebControls.Button btnVolver;
+    protected global::System.Web.UI.WebControls.LinkButton btnVolver;
         protected global::System.Web.UI.WebControls.HyperLink lnkInicio;
     }

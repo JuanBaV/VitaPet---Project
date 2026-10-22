@@ -2,6 +2,9 @@
 <%@ Register Src="~/Controls/ValidacionEmail.ascx" TagPrefix="vp" TagName="ValidacionEmail" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
  <main class="planes-page"><section class="planes-card empresa-card">
+  <% if (Request.QueryString["id"] != null || Request.QueryString["resultado"] != null) { %>
+  <a runat="server" href="~/RegistroClienteCorporativo.aspx" class="btn btn-default formulario-volver"><span aria-hidden="true">&larr;</span> <%: VitaPet.GUI.Resources.Textos.UI_Volver %></a>
+  <% } %>
   <header class="login-header"><h1><%: TextosUI.Obtener("Corporativo_Titulo") %></h1></header>
   <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
   <asp:Panel ID="pnlEmpresas" runat="server"><div class="table-responsive">

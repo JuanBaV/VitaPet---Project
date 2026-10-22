@@ -83,11 +83,7 @@ namespace VitaPet.BLL
                 catch(SqlException ex){throw new GestionMascotaException(Conexion(ex)?"ER003":ex.Number==50011?"ER011":"ER061",ex);}
                 if(string.IsNullOrEmpty(version)||actual.DVH!=version)throw new GestionMascotaException("ER064");
                 new GestionMascotaDAL().Actualizar(usuario,id,version,validos);
-                var tablas=new IntegridadTablasDAL();var filas=tablas.Leer("Mascota");
-                var fila=filas.Rows.Cast<DataRow>().Single(f=>(int)f["idMascota"]==id);
-                string dvh=new IntegridadTablasBLL().CalcularDVH(fila);tablas.GuardarDvh("Mascota",id,dvh);fila["dvh"]=dvh;
-                new DVVDAL().Guardar(new DVVBE {NombreTabla="Mascota",ValorDVV=seguridad.CalcularDVV(filas.Rows.Cast<DataRow>().Select(f=>(string)f["dvh"]))});
-                new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
+                IntegridadRegistroBLL.Actualizar("Mascota",id);
                 Auditar(seguridad,usuario,"Actualización de datos de mascota",true);return true;
             },"ER062");
         }

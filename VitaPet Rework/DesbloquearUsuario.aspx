@@ -1,6 +1,7 @@
 <%@ Page Title="<%$ Resources:Textos, UI_DesbloqueoDeUsuario %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesbloquearUsuario.aspx.cs" Inherits="DesbloquearUsuarioPage" EnableViewStateMac="true" EnableEventValidation="true" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 <section class="usuarios-page usuario-operacion" aria-labelledby="tituloOperacion">
+<asp:LinkButton ID="lnkVolverFormulario" runat="server" OnClick="Volver_Click" CssClass="btn btn-default formulario-volver" CausesValidation="false"><span aria-hidden="true">&larr;</span> <asp:Literal runat="server" Text="<%$ Resources:Textos, UI_Volver %>" /></asp:LinkButton>
 <h1 id="tituloOperacion"><%: VitaPet.GUI.Resources.Textos.UI_DesbloqueoDeUsuario %></h1>
 <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="alert alert-warning" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
 <asp:HyperLink ID="lnkRecargar" runat="server" Visible="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, UI_VolverACargarLosDatos %>" />

@@ -461,6 +461,9 @@ textarea {
 .usuario-datos .table td { overflow-wrap: anywhere; }
 .usuario-volver { margin-top: 4px; }
 
+.formulario-volver { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-bottom: 16px; }
+.formulario-volver:focus { outline: 2px solid #174d48; outline-offset: 2px; }
+
 @media (max-width: 600px) {
     body { padding-top: 0; }
     #formPrincipal { min-height: 100vh; }

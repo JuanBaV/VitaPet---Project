@@ -50,7 +50,7 @@ class Program
             Sql("INSERT dbo.Usuario(correoElectronico,contrasena,nombre,rol,estado,dvh) VALUES('otro@test.local','hash','Otro','Cliente',1,'');INSERT dbo.Cliente(idUsuario,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(1,'Juan Bautista','Villaverde','55555555','Individual',1,''),(4,'Otro','Cliente','55555555','Individual',1,'');INSERT dbo.Mascota(idCliente,nombre,especie,raza,fechaNacimiento,estado,dvh) VALUES(1,'Luna','Perro','Mestizo','20200101',1,''),(1,'Sol','Gato','Mestizo','20210101',1,''),(1,'Inactiva','Gato','Mestizo','20210101',0,''),(2,'Ajena','Perro','Mestizo','20210101',1,'');");
             var users=new UsuarioDAL();var h=new IntegridadBLL();foreach(var u in users.ObtenerParaIntegridad())
             {
-                if(u.IdUsuario==1||u.IdUsuario==4){u.Contrasena=h.CalcularHash("Prueba2026!");using(var cn=new SqlConnection(connection))using(var cmd=new SqlCommand("UPDATE dbo.Usuario SET contrasena=@p WHERE idUsuario=@id",cn)){cmd.Parameters.AddWithValue("@p",u.Contrasena);cmd.Parameters.AddWithValue("@id",u.IdUsuario);cn.Open();cmd.ExecuteNonQuery();}}
+                if(u.IdUsuario==1||u.IdUsuario==4||args.Contains("--web")){u.Contrasena=h.CalcularHash("Prueba2026!");using(var cn=new SqlConnection(connection))using(var cmd=new SqlCommand("UPDATE dbo.Usuario SET contrasena=@p WHERE idUsuario=@id",cn)){cmd.Parameters.AddWithValue("@p",u.Contrasena);cmd.Parameters.AddWithValue("@id",u.IdUsuario);cn.Open();cmd.ExecuteNonQuery();}}
                 users.ActualizarDVH(u.IdUsuario,h.CalcularDVH(u));
             }
             new DVVDAL().Guardar(new DVVBE {NombreTabla="Usuario",ValorDVV=h.CalcularDVV(users.ObtenerDVHs())});new ReferenciaIntegridadBLL().Inicializar();

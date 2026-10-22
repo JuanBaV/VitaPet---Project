@@ -85,50 +85,33 @@ namespace VitaPet.BLL
         public void RegistrarIntentoFallido(
             UsuarioBE usuario)
         {
-            using(var operacion = new OperacionIntegridadDAL())
-            {
-                new VitaPet.BLL.Seguridad.SecurityManager().ExigirIntegridad();
-
-            ValidarUsuario(usuario);
-            UsuarioBE vigente = _usuarioDAL.ObtenerParaIntegridad().Single(item => item.IdUsuario == usuario.IdUsuario);
-            usuario.IntentosFallidos = vigente.IntentosFallidos;
-            usuario.Bloqueado = vigente.Bloqueado;
-            usuario.Estado = vigente.Estado;
-            usuario.RequiereRestablecerContrasena = vigente.RequiereRestablecerContrasena;
-
-            UsuarioStateBLL estadoUsuario =
-                new UsuarioStateBLL(usuario);
-
-            estadoUsuario.RegistrarIntentoFallido();
-
-            ActualizarEstadoSeguridad(usuario);
-
-                new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
-                operacion.Complete();
-            }
+            RegistrarEstadoIngreso(usuario, false);
         }
 
         public void RegistrarIngresoExitoso(
             UsuarioBE usuario)
         {
+            RegistrarEstadoIngreso(usuario, true);
+        }
+
+        private void RegistrarEstadoIngreso(UsuarioBE usuario, bool exitoso)
+        {
             using(var operacion = new OperacionIntegridadDAL())
             {
-                new VitaPet.BLL.Seguridad.SecurityManager().ExigirIntegridad();
+                _seguridad.ExigirIntegridad();
+                ValidarUsuario(usuario);
+                var usuarios = _usuarioDAL.ObtenerParaIntegridad();
+                var vigente = usuarios.Single(item => item.IdUsuario == usuario.IdUsuario);
+                usuario.IntentosFallidos = vigente.IntentosFallidos;
+                usuario.Bloqueado = vigente.Bloqueado;
+                usuario.Estado = vigente.Estado;
+                usuario.RequiereRestablecerContrasena = vigente.RequiereRestablecerContrasena;
 
-            ValidarUsuario(usuario);
-            UsuarioBE vigente = _usuarioDAL.ObtenerParaIntegridad().Single(item => item.IdUsuario == usuario.IdUsuario);
-            usuario.IntentosFallidos = vigente.IntentosFallidos;
-            usuario.Bloqueado = vigente.Bloqueado;
-            usuario.Estado = vigente.Estado;
-            usuario.RequiereRestablecerContrasena = vigente.RequiereRestablecerContrasena;
+                var estadoUsuario = new UsuarioStateBLL(usuario);
+                if (exitoso) estadoUsuario.RegistrarIngresoExitoso();
+                else estadoUsuario.RegistrarIntentoFallido();
 
-            UsuarioStateBLL estadoUsuario =
-                new UsuarioStateBLL(usuario);
-
-            estadoUsuario.RegistrarIngresoExitoso();
-
-            ActualizarEstadoSeguridad(usuario);
-
+                ActualizarEstadoSeguridad(usuario, usuarios);
                 new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
                 operacion.Complete();
             }
@@ -139,7 +122,7 @@ namespace VitaPet.BLL
         {
             using(var operacion = new OperacionIntegridadDAL())
             {
-                new VitaPet.BLL.Seguridad.SecurityManager().ExigirIntegridad();
+                _seguridad.ExigirIntegridad();
 
             if (idUsuario <= 0)
             {
@@ -164,7 +147,7 @@ namespace VitaPet.BLL
 
             estadoUsuario.Desbloquear();
 
-            ActualizarEstadoSeguridad(usuario);
+            ActualizarEstadoSeguridad(usuario, usuarios);
 
                 new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
                 operacion.Complete();
@@ -172,20 +155,10 @@ namespace VitaPet.BLL
         }
 
         private void ActualizarEstadoSeguridad(
-            UsuarioBE usuario)
+            UsuarioBE usuario, List<UsuarioBE> usuarios)
         {
             usuario.DVH =
                 _seguridad.CalcularDVH(usuario);
-
-            List<UsuarioBE> usuarios =
-                _usuarioDAL.ObtenerParaIntegridad();
-
-            if (!usuarios.Any(item =>
-                item.IdUsuario == usuario.IdUsuario))
-            {
-                throw new InvalidOperationException(
-                    "No se encontró el usuario a actualizar.");
-            }
 
             IEnumerable<string> dvhsActualizados =
                 usuarios.Select(item =>

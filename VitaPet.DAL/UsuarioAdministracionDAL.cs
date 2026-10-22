@@ -18,14 +18,7 @@ namespace VitaPet.DAL
                 using (var r = cmd.ExecuteReader())
                 {
                     if (!r.Read()) return null;
-                    return new UsuarioBE {
-                        IdUsuario = Convert.ToInt32(r["idUsuario"]), Nombre = Convert.ToString(r["nombre"]),
-                        CorreoElectronico = Convert.ToString(r["correoElectronico"]), Rol = Convert.ToString(r["rol"]),
-                        Estado = Convert.ToBoolean(r["estado"]), Bloqueado = Convert.ToBoolean(r["bloqueado"]),
-                        IntentosFallidos = Convert.ToByte(r["intentosFallidos"]), Idioma = Convert.ToString(r["idioma"]),
-                        RequiereRestablecerContrasena = LeerRestablecimiento(r),
-                        Contrasena = Convert.ToString(r["contrasena"]), DVH = Convert.ToString(r["dvh"])
-                    };
+                    return LeerUsuario(r);
                 }
             }
         }

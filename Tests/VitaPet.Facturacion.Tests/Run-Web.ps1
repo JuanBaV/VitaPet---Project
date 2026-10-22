@@ -1,4 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop'
+$browserScript = if ($args.Count -gt 0) { $args[0] } else { 'Web.cjs' }
+$outputDirectory = if ($args.Count -gt 1) { $args[1] } else { 'web-output' }
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 Set-Location -LiteralPath $repo
 $node = 'C:\Users\juanb\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe'
@@ -9,7 +11,7 @@ if ($fixture[0] -notmatch '^VitaPet_Verificacion_Rework_[a-f0-9]{32}$') { throw 
 # Fuera de OneDrive: sus notificaciones de directorio pueden reiniciar App_Code
 # durante los POST y perder la sesión InProc de una copia recién preparada.
 $web = Join-Path ([IO.Path]::GetTempPath()) ('VitaPet-rework-site-' + [guid]::NewGuid().ToString('N'))
-$output = Join-Path $PSScriptRoot 'web-output'
+$output = Join-Path $PSScriptRoot $outputDirectory
 $proc = $null
 try {
     New-Item -ItemType Directory -Path $web | Out-Null
@@ -31,7 +33,7 @@ try {
     $proc = Start-Process -FilePath 'C:\Program Files\IIS Express\iisexpress.exe' -ArgumentList ('/path:"'+$web+'"'),'/port:60336','/systray:false' -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $fixture[1] 'iis.out') -RedirectStandardError (Join-Path $fixture[1] 'iis.err')
     New-Item -ItemType Directory -Force $output | Out-Null
     @{Url='http://localhost:60336/';Database=$fixture[0];Runtime=$fixture[1];Web=$web;Pid=$proc.Id} | ConvertTo-Json | Set-Content -Encoding utf8 (Join-Path $output 'environment.json')
-    & $node (Join-Path $PSScriptRoot 'Web.cjs') (Join-Path $output 'environment.json')
+    & $node (Join-Path $PSScriptRoot $browserScript) (Join-Path $output 'environment.json')
     if ($LASTEXITCODE -ne 0) { throw 'Payment browser checks failed' }
     $verification = New-Object System.Data.SqlClient.SqlConnection('Data Source=localhost;Initial Catalog='+$fixture[0]+';Integrated Security=True;')
     try {

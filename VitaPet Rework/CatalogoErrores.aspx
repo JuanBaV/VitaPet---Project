@@ -12,6 +12,8 @@
         h1 { margin: 0 0 10px; font-size: 22px; }
         header p { margin: 0 0 10px; }
         a { color: #174d48; }
+        .formulario-volver { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-bottom: 16px; padding: 8px 12px; border: 1px solid #b8d9d5; border-radius: 4px; text-decoration: none; }
+        .formulario-volver:focus { outline: 2px solid #174d48; outline-offset: 2px; }
         main { padding: 7px 6px; }
         .error-capture { width: 352px; max-width: 100%; margin: 0 0 24px; padding: 12px 16px;
             border: 1px solid #b8d9d5; border-radius: 6px; background: #e9f7f5; color: #174d48;
@@ -22,9 +24,9 @@
 <body>
     <form id="formCatalogo" runat="server">
         <header>
+            <asp:HyperLink runat="server" NavigateUrl="~/Login.aspx" CssClass="formulario-volver"><span aria-hidden="true">&larr;</span> <asp:Literal runat="server" Text="<%$ Resources:Textos, UI_Volver %>" /></asp:HyperLink>
             <h1><%: VitaPet.GUI.Resources.Textos.UI_ErroresDelSistema %></h1>
             <p><%: VitaPet.GUI.Resources.Textos.UI_CadaMensajeEstaSeparadoParaQuePuedasRecortarlo %></p>
-            <asp:HyperLink runat="server" NavigateUrl="~/Login.aspx" Text="<%$ Resources:Textos, UI_VolverAlLogin %>" />
         </header>
         <main>
             <asp:Label ID="lblEstado" runat="server" Visible="false" CssClass="status" role="status" />

@@ -46,11 +46,7 @@ namespace VitaPet.BLL
                 {
                     seguridad.ExigirIntegridad();var dal=new MascotaDAL();dal.ObtenerClienteActivo(usuario.IdUsuario);
                     int id=dal.Registrar(usuario.IdUsuario,d);
-                    var tablas=new IntegridadTablasDAL();var filas=tablas.Leer("Mascota");
-                    var fila=filas.Rows.Cast<DataRow>().Single(f=>(int)f["idMascota"]==id);
-                    string dvh=new IntegridadTablasBLL().CalcularDVH(fila);tablas.GuardarDvh("Mascota",id,dvh);fila["dvh"]=dvh;
-                    new DVVDAL().Guardar(new DVVBE {NombreTabla="Mascota",ValorDVV=seguridad.CalcularDVV(filas.Rows.Cast<DataRow>().Select(f=>(string)f["dvh"]))});
-                    new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
+                    IntegridadRegistroBLL.Actualizar("Mascota",id);
                     Auditar(seguridad,usuario.IdUsuario);seguridad.ExigirIntegridad();op.Complete();return id;
                 }
             }

@@ -53,7 +53,7 @@ namespace VitaPet.BLL
         {
             using(var operacion = new OperacionIntegridadDAL())
             {
-                new VitaPet.BLL.Seguridad.SecurityManager().ExigirIntegridad();
+                _seguridad.ExigirIntegridad();
 
             if (idUsuario <= 0)
             {
@@ -122,7 +122,6 @@ namespace VitaPet.BLL
             new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
             _usuarioBLL.DesbloquearUsuario(idUsuario);
 
-                new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
                 _seguridad.RegistrarBitacora(new BitacoraBE { IdUsuario=idUsuario, Fecha=DateTime.Now,
                     Accion="Contraseña restablecida", Modulo="Autenticación", Criticidad="Informativa" });
                 operacion.Complete();

@@ -2,6 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
  <main class="planes-page"><section class="planes-card">
+  <a runat="server" href="~/Mascotas.aspx" class="btn btn-default formulario-volver"><span aria-hidden="true">&larr;</span> <%: VitaPet.GUI.Resources.Textos.UI_Volver %></a>
   <header class="login-header"><h1><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Mascota_Historial") %></h1></header>
   <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
 <asp:Panel ID="pnlDatos" runat="server" Visible="false">

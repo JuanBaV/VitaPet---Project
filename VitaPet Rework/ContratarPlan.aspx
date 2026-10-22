@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="<%$ Resources:Textos, Planes_Contratar %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ContratarPlan.aspx.cs" Inherits="ContratarPlanPage" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="planes-page"><section class="planes-card planes-detalle">
+        <asp:HyperLink ID="btnVolver" runat="server" NavigateUrl="~/Planes.aspx" CssClass="btn btn-default formulario-volver"><span aria-hidden="true">&larr;</span> <asp:Literal runat="server" Text="<%$ Resources:Textos, UI_Volver %>" /></asp:HyperLink>
         <header class="login-header"><h1><%: VitaPet.GUI.Resources.Textos.Planes_Contratar %></h1></header>
         <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
         <asp:Panel ID="pnlDetalle" runat="server" Visible="false">
@@ -20,6 +21,5 @@
             <p class="planes-nota"><%: VitaPet.GUI.Resources.Textos.Planes_PendienteAviso %></p>
             <asp:Button ID="btnContratar" runat="server" Text="<%$ Resources:Textos, Planes_Contratar %>" CausesValidation="false" OnClick="Contratar_Click" CssClass="btn btn-primary login-submit" />
         </asp:Panel>
-        <asp:HyperLink ID="btnVolver" runat="server" NavigateUrl="~/Planes.aspx" CssClass="btn btn-default usuario-volver" Text="<%$ Resources:Textos, UI_Volver %>" />
     </section></main>
 </asp:Content>

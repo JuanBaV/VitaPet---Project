@@ -102,6 +102,7 @@ namespace VitaPet.GUI.Presentacion
                     Session.Remove(Clave);
                     Control<Panel>("pnlDatos").Visible = false;
                     Control<Button>("btnCancelar").Visible = false;
+                    Control<LinkButton>("lnkVolverFormulario").Visible = false;
                     Control<Literal>("litMensaje").Text = Server.HtmlEncode(TextosUI.Traducir((string)Session["Usuarios:Resultado"]));
                     Control<Panel>("pnlMensaje").CssClass = "alert alert-success";
                     Control<Panel>("pnlMensaje").Visible = true;

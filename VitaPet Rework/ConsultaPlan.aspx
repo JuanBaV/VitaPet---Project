@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="<%$ Resources:Textos, PlanAdmin_Consulta %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ConsultaPlan.aspx.cs" Inherits="ConsultaPlanPage" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server"><main class="planes-page"><section class="planes-card plan-admin-card">
+<a runat="server" href="~/GestionPlanes.aspx" class="btn btn-default formulario-volver"><span aria-hidden="true">&larr;</span> <%: VitaPet.GUI.Resources.Textos.UI_Volver %></a>
 <header class="login-header"><h1><%: TextosUI.Obtener("PlanAdmin_Consulta") %></h1></header>
 <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
 <asp:Panel ID="pnlDatos" runat="server" Visible="false"><dl class="empresa-resumen"><div><dt><%: TextosUI.Obtener("Empresa_Id") %></dt><dd><asp:Label ID="lblIdPlan" runat="server" /></dd></div>

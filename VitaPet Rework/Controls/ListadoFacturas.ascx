@@ -11,7 +11,7 @@
             </dl>
             <div class="usuarios-botones">
                 <asp:HyperLink ID="lnkDescargarFactura" runat="server" Visible='<%# !string.IsNullOrEmpty((string)Eval("NumeroFactura")) %>' NavigateUrl='<%# "~/GestionPago.aspx?contratacion="+Eval("IdSuscripcion")+"&descargar=1" %>' CssClass="btn btn-primary" Text="<%$ Resources:Textos, Factura_Descargar %>" />
-                <asp:HyperLink ID="lnkConsultarFactura" runat="server" NavigateUrl='<%# "~/GestionPago.aspx?contratacion="+Eval("IdSuscripcion")+"&comprobante=1" %>' CssClass="btn btn-default" Text="<%$ Resources:Textos, Factura_Consultar %>" />
+                <asp:HyperLink ID="lnkConsultarFactura" runat="server" NavigateUrl='<%# "~/GestionPago.aspx?contratacion="+Eval("IdSuscripcion")+"&comprobante=1"+(Page.AppRelativeVirtualPath=="~/Cliente.aspx" ? "&origen=perfil" : "") %>' CssClass="btn btn-default" Text="<%$ Resources:Textos, Factura_Consultar %>" />
             </div>
         </article>
     </ItemTemplate>

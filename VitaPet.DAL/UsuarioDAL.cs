@@ -3,9 +3,6 @@ using System.Transactions;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VitaPet.BE;
 
 namespace VitaPet.DAL
@@ -23,6 +20,23 @@ namespace VitaPet.DAL
             throw new InvalidOperationException("ER023: falta el indicador de restablecimiento en Usuario.");
         }
         private readonly ConexionDAL _conexionDAL;
+
+        private static UsuarioBE LeerUsuario(SqlDataReader lector)
+        {
+            return new UsuarioBE {
+                IdUsuario = Convert.ToInt32(lector["idUsuario"]),
+                CorreoElectronico = Convert.ToString(lector["correoElectronico"]),
+                Contrasena = Convert.ToString(lector["contrasena"]),
+                Nombre = Convert.ToString(lector["nombre"]),
+                Rol = Convert.ToString(lector["rol"]),
+                Estado = Convert.ToBoolean(lector["estado"]),
+                IntentosFallidos = Convert.ToByte(lector["intentosFallidos"]),
+                Bloqueado = Convert.ToBoolean(lector["bloqueado"]),
+                Idioma = Convert.ToString(lector["idioma"]),
+                RequiereRestablecerContrasena = LeerRestablecimiento(lector),
+                DVH = Convert.ToString(lector["dvh"])
+            };
+        }
 
         public UsuarioDAL()
         {
@@ -72,20 +86,7 @@ namespace VitaPet.DAL
                 {
                     while (lector.Read())
                     {
-                        usuarios.Add(new UsuarioBE
-                        {
-                            IdUsuario = Convert.ToInt32(lector["idUsuario"]),
-                            CorreoElectronico = Convert.ToString(lector["correoElectronico"]),
-                            Contrasena = Convert.ToString(lector["contrasena"]),
-                            Nombre = Convert.ToString(lector["nombre"]),
-                            Rol = Convert.ToString(lector["rol"]),
-                            Estado = Convert.ToBoolean(lector["estado"]),
-                            IntentosFallidos = Convert.ToByte(lector["intentosFallidos"]),
-                            Bloqueado = Convert.ToBoolean(lector["bloqueado"]),
-                            Idioma = Convert.ToString(lector["idioma"]),
-                            RequiereRestablecerContrasena = LeerRestablecimiento(lector),
-                            DVH = Convert.ToString(lector["dvh"])
-                        });
+                        usuarios.Add(LeerUsuario(lector));
                     }
                 }
             }
@@ -111,20 +112,7 @@ namespace VitaPet.DAL
                         return null;
                     }
 
-                    return new UsuarioBE
-                    {
-                        IdUsuario = Convert.ToInt32(lector["idUsuario"]),
-                        CorreoElectronico = Convert.ToString(lector["correoElectronico"]),
-                        Contrasena = Convert.ToString(lector["contrasena"]),
-                        Nombre = Convert.ToString(lector["nombre"]),
-                        Rol = Convert.ToString(lector["rol"]),
-                        Estado = Convert.ToBoolean(lector["estado"]),
-                        IntentosFallidos = Convert.ToByte(lector["intentosFallidos"]),
-                        Bloqueado = Convert.ToBoolean(lector["bloqueado"]),
-                        Idioma = Convert.ToString(lector["idioma"]),
-                        RequiereRestablecerContrasena = LeerRestablecimiento(lector),
-                        DVH = Convert.ToString(lector["dvh"])
-                    };
+                    return LeerUsuario(lector);
 
 
                 }
@@ -197,61 +185,34 @@ namespace VitaPet.DAL
                     new TransactionScope(TransactionScopeOption.Required))
                 {
                     conexion.Open();
-                    try
+                    using (SqlCommand comandoUsuario =
+                        new SqlCommand(
+                            "dbo.sp_Usuario_ActualizarContrasena",
+                            conexion))
                     {
-                        using (SqlCommand comandoUsuario =
-                            new SqlCommand(
-                                "dbo.sp_Usuario_ActualizarContrasena",
-                                conexion))
-                        {
-                            comandoUsuario.CommandType =
-                                CommandType.StoredProcedure;
+                        comandoUsuario.CommandType =
+                            CommandType.StoredProcedure;
 
-                            comandoUsuario.Parameters.Add(
-                                "@idUsuario",
-                                SqlDbType.Int).Value = idUsuario;
+                        comandoUsuario.Parameters.Add(
+                            "@idUsuario",
+                            SqlDbType.Int).Value = idUsuario;
 
-                            comandoUsuario.Parameters.Add(
-                                "@contrasena",
-                                SqlDbType.VarChar,
-                                255).Value = contrasena;
+                        comandoUsuario.Parameters.Add(
+                            "@contrasena",
+                            SqlDbType.VarChar,
+                            255).Value = contrasena;
 
-                            comandoUsuario.Parameters.Add(
-                                "@dvh",
-                                SqlDbType.VarChar,
-                                64).Value = dvh;
+                        comandoUsuario.Parameters.Add(
+                            "@dvh",
+                            SqlDbType.VarChar,
+                            64).Value = dvh;
 
-                            comandoUsuario.ExecuteNonQuery();
-                        }
-
-                        using (SqlCommand comandoDVV =
-                            new SqlCommand(
-                                "dbo.sp_DVV_Guardar",
-                                conexion))
-                        {
-                            comandoDVV.CommandType =
-                                CommandType.StoredProcedure;
-
-                            comandoDVV.Parameters.Add(
-                                "@nombreTabla",
-                                SqlDbType.VarChar,
-                                60).Value = dvv.NombreTabla;
-
-                            comandoDVV.Parameters.Add(
-                                "@valorDVV",
-                                SqlDbType.VarChar,
-                                255).Value = dvv.ValorDVV;
-
-                            comandoDVV.ExecuteNonQuery();
-                        }
-
-                        transaccion.Complete();
+                        comandoUsuario.ExecuteNonQuery();
                     }
-                    catch
-                    {
-                        // Dispose sin Complete revierte la transacción.
-                        throw;
-                    }
+
+                    DVVDAL.Guardar(conexion, dvv);
+
+                    transaccion.Complete();
                 }
             }
         }
@@ -271,69 +232,42 @@ namespace VitaPet.DAL
                     new TransactionScope(TransactionScopeOption.Required))
                 {
                     conexion.Open();
-                    try
+                    using (SqlCommand comandoUsuario =
+                        new SqlCommand(
+                            "dbo.sp_Usuario_ActualizarEstadoSeguridad",
+                            conexion))
                     {
-                        using (SqlCommand comandoUsuario =
-                            new SqlCommand(
-                                "dbo.sp_Usuario_ActualizarEstadoSeguridad",
-                                conexion))
-                        {
-                            comandoUsuario.CommandType =
-                                CommandType.StoredProcedure;
+                        comandoUsuario.CommandType =
+                            CommandType.StoredProcedure;
 
-                            comandoUsuario.Parameters.Add(
-                                "@idUsuario",
-                                SqlDbType.Int).Value = idUsuario;
+                        comandoUsuario.Parameters.Add(
+                            "@idUsuario",
+                            SqlDbType.Int).Value = idUsuario;
 
-                            comandoUsuario.Parameters.Add(
-                                "@intentosFallidos",
-                                SqlDbType.TinyInt).Value =
-                                intentosFallidos;
+                        comandoUsuario.Parameters.Add(
+                            "@intentosFallidos",
+                            SqlDbType.TinyInt).Value =
+                            intentosFallidos;
 
-                            comandoUsuario.Parameters.Add(
-                                "@bloqueado",
-                                SqlDbType.Bit).Value = bloqueado;
+                        comandoUsuario.Parameters.Add(
+                            "@bloqueado",
+                            SqlDbType.Bit).Value = bloqueado;
 
-                            comandoUsuario.Parameters.Add(
-                                "@estado",
-                                SqlDbType.Bit).Value = estado;
+                        comandoUsuario.Parameters.Add(
+                            "@estado",
+                            SqlDbType.Bit).Value = estado;
 
-                            comandoUsuario.Parameters.Add(
-                                "@dvh",
-                                SqlDbType.VarChar,
-                                64).Value = dvh;
+                        comandoUsuario.Parameters.Add(
+                            "@dvh",
+                            SqlDbType.VarChar,
+                            64).Value = dvh;
 
-                            comandoUsuario.ExecuteNonQuery();
-                        }
-
-                        using (SqlCommand comandoDVV =
-                            new SqlCommand(
-                                "dbo.sp_DVV_Guardar",
-                                conexion))
-                        {
-                            comandoDVV.CommandType =
-                                CommandType.StoredProcedure;
-
-                            comandoDVV.Parameters.Add(
-                                "@nombreTabla",
-                                SqlDbType.VarChar,
-                                60).Value = dvv.NombreTabla;
-
-                            comandoDVV.Parameters.Add(
-                                "@valorDVV",
-                                SqlDbType.VarChar,
-                                255).Value = dvv.ValorDVV;
-
-                            comandoDVV.ExecuteNonQuery();
-                        }
-
-                        transaccion.Complete();
+                        comandoUsuario.ExecuteNonQuery();
                     }
-                    catch
-                    {
-                        // Dispose sin Complete revierte la transacción.
-                        throw;
-                    }
+
+                    DVVDAL.Guardar(conexion, dvv);
+
+                    transaccion.Complete();
                 }
             }
 

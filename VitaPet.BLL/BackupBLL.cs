@@ -39,7 +39,7 @@ namespace VitaPet.BLL
             // 013-015 cambian SP; 016 admite precio NULL sin alterar filas existentes.
             var admitidas = new[] { "012_IntegridadTodasLasTablas.sql", "013_ProcedimientosSimples.sql",
                 "014_IdiomaUsuario.sql", "015_RegistroCliente.sql", "016_ContratacionPlanes.sql", "017_GestionPago.sql", "018_ConsultaCobertura.sql", "019_ConsultaReintegros.sql", "020_RegistroMascota.sql", "021_GestionMascotas.sql", "022_Turnos.sql",
-                "026_SimplificacionProcedimientos.sql", "027_Facturacion.sql" };
+                "026_SimplificacionProcedimientos.sql", "027_Facturacion.sql", "028_OptimizarLecturas.sql" };
             return pendientes.Length > 0 && pendientes.All(p =>
                 admitidas.Any(id => p.StartsWith(id + ":", StringComparison.Ordinal)));
         }

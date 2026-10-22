@@ -5,6 +5,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="login-page">
         <section class="login-card" aria-labelledby="tituloRecuperacion">
+            <asp:HyperLink ID="lnkVolverLogin" runat="server" NavigateUrl="~/Login.aspx" CssClass="btn btn-default formulario-volver"><span aria-hidden="true">&larr;</span> <asp:Literal runat="server" Text="<%$ Resources:Textos, UI_Volver %>" /></asp:HyperLink>
             <header class="login-header">
                 <h1 id="tituloRecuperacion"><%: VitaPet.GUI.Resources.Textos.UI_RecuperarContrasena %></h1>
                 <p><%: VitaPet.GUI.Resources.Textos.UI_IngresaTuCorreoElectronicoYRespondeLaPregunta %></p>
@@ -68,13 +69,6 @@
                 OnClick="btnContinuar_Click"
                 CssClass="btn btn-primary btn-block login-submit" />
 
-            <nav class="login-links" aria-label="<%: VitaPet.GUI.Resources.Textos.UI_OpcionesDeRecuperacion %>">
-                <asp:HyperLink
-                    ID="lnkVolverLogin"
-                    runat="server"
-                    NavigateUrl="~/Login.aspx"
-                    Text="<%$ Resources:Textos, UI_VolverAlInicioDeSesion %>" />
-            </nav>
         </section>
     </main>
 </asp:Content>
