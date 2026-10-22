@@ -84,6 +84,9 @@ namespace VitaPet.GUI.Presentacion
                 case "ER054":return "La suscripción no admite un nuevo pago";
                 case "ER055":return "No se pudo iniciar el procesamiento del pago";
                 case "ER057":return "No se pudo registrar el pago. No vuelvas a pagar.";
+                case "ER079":return "No se pudo preparar o emitir la factura";
+                case "ER080":return "No se pudo registrar la factura o sus verificadores";
+                case "ER081":return "No se pudo generar o entregar el archivo de la factura";
                 default:return "Datos inválidos";
             }
         }

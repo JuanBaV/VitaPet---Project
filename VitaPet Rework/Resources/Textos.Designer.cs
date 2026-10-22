@@ -10,8 +10,8 @@
 
 namespace VitaPet.GUI.Resources {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,15 +23,15 @@ namespace VitaPet.GUI.Resources {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Textos {
-        
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Textos() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace VitaPet.GUI.Resources {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,88 @@ namespace VitaPet.GUI.Resources {
                 resourceCulture = value;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER025 - La contraseña debe tener entre 8 y 100 caracteres, con mayúscula, número y símbolo..
+        /// </summary>
+        public static string Alta_ContrasenaInvalida {
+            get {
+                return ResourceManager.GetString("Alta_ContrasenaInvalida", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER025 - Ingresá un CUIT de 11 dígitos, con o sin guiones..
+        /// </summary>
+        public static string Alta_CuitInvalido {
+            get {
+                return ResourceManager.GetString("Alta_CuitInvalido", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER025 - Revisá los datos ingresados antes de continuar..
+        /// </summary>
+        public static string Alta_DatosInvalidos {
+            get {
+                return ResourceManager.GetString("Alta_DatosInvalidos", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER025 - Seleccioná un estado válido..
+        /// </summary>
+        public static string Alta_EstadoInvalido {
+            get {
+                return ResourceManager.GetString("Alta_EstadoInvalido", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER025 - Ingresá una fecha de nacimiento válida que no sea futura..
+        /// </summary>
+        public static string Alta_FechaNacimientoInvalida {
+            get {
+                return ResourceManager.GetString("Alta_FechaNacimientoInvalida", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER002 - Este campo es obligatorio..
+        /// </summary>
+        public static string Alta_Obligatorio {
+            get {
+                return ResourceManager.GetString("Alta_Obligatorio", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER025 - Ingresá un precio positivo, hasta 99999999,99, con un máximo de dos decimales..
+        /// </summary>
+        public static string Alta_PrecioInvalido {
+            get {
+                return ResourceManager.GetString("Alta_PrecioInvalido", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER025 - Ingresá un teléfono válido..
+        /// </summary>
+        public static string Alta_TelefonoInvalido {
+            get {
+                return ResourceManager.GetString("Alta_TelefonoInvalido", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER025 - Revisá el formato y la longitud de este campo..
+        /// </summary>
+        public static string Alta_TextoInvalido {
+            get {
+                return ResourceManager.GetString("Alta_TextoInvalido", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Backup generado y verificado: {0}.
         /// </summary>
@@ -68,7 +149,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("BackupCreado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cerrar sesión.
         /// </summary>
@@ -77,7 +158,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("BotonSalir", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Activa.
         /// </summary>
@@ -86,7 +167,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Cobertura_Activa", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consultar cobertura.
         /// </summary>
@@ -95,7 +176,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Cobertura_Consultar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Estado de la suscripción.
         /// </summary>
@@ -104,7 +185,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Cobertura_Estado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha de alta.
         /// </summary>
@@ -113,7 +194,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Cobertura_FechaAlta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha de vencimiento.
         /// </summary>
@@ -122,7 +203,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Cobertura_FechaVencimiento", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Prestación.
         /// </summary>
@@ -131,7 +212,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Cobertura_Prestacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Prestaciones incluidas.
         /// </summary>
@@ -140,7 +221,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Cobertura_Prestaciones", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de cobertura.
         /// </summary>
@@ -149,7 +230,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Cobertura_Titulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Se restaurará el backup {0}. Se perderán todos los cambios posteriores, se impedirán operaciones y se cerrarán todas las sesiones. ¿Confirma la restauración?.
         /// </summary>
@@ -158,7 +239,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("ConfirmarRestauracionBackup", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Se restaurará el punto {0}. Se perderán los cambios posteriores y se cerrarán todas las sesiones. ¿Confirma la restauración?.
         /// </summary>
@@ -167,7 +248,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("ConfirmarRestauracionPunto", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Valor mensual desde USD 16 por mascota, sujeto a volumen, alcance y facturación unificada. Vigencia inicial: un mes desde el alta..
         /// </summary>
@@ -176,7 +257,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Corporativo_Condiciones", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El cliente corporativo se registró correctamente. Identificador: {0} · Correo: {1} · Empresa: {2} · Plan: {3} · Vencimiento: {4}. El cliente debe restablecer la contraseña desde Login antes de acceder..
         /// </summary>
@@ -185,7 +266,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Corporativo_Confirmacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Empresa.
         /// </summary>
@@ -194,7 +275,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Corporativo_Empresa", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Plan Corporativo.
         /// </summary>
@@ -203,7 +284,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Corporativo_NombrePlan", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Plan.
         /// </summary>
@@ -212,7 +293,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Corporativo_Plan", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Registrar cliente.
         /// </summary>
@@ -221,7 +302,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Corporativo_Registrar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Debés restablecer la contraseña antes de iniciar sesión. Completá la recuperación para definir tu contraseña..
         /// </summary>
@@ -230,7 +311,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Corporativo_Restablecer", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Registro de cliente corporativo.
         /// </summary>
@@ -239,7 +320,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Corporativo_Titulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Validar correo.
         /// </summary>
@@ -248,7 +329,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Corporativo_ValidarCorreo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Activo.
         /// </summary>
@@ -257,7 +338,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Activo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Alta de empresa.
         /// </summary>
@@ -266,7 +347,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Alta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Modificar.
         /// </summary>
@@ -275,7 +356,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_BotonModificar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La empresa se registró correctamente. Identificador {0} · {1}.
         /// </summary>
@@ -284,7 +365,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_ConfirmacionAlta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de empresa asociada.
         /// </summary>
@@ -293,7 +374,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Consulta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consultar.
         /// </summary>
@@ -302,7 +383,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Consultar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to CUIT.
         /// </summary>
@@ -311,7 +392,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Cuit", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Dirección.
         /// </summary>
@@ -320,7 +401,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Direccion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Estado.
         /// </summary>
@@ -329,7 +410,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Estado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Empresas asociadas.
         /// </summary>
@@ -338,7 +419,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Gestion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Guardar cambios.
         /// </summary>
@@ -347,7 +428,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Guardar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Identificador.
         /// </summary>
@@ -356,7 +437,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Id", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Inactivo.
         /// </summary>
@@ -365,7 +446,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Inactivo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Modificación de empresa asociada.
         /// </summary>
@@ -374,7 +455,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Modificar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Razón social.
         /// </summary>
@@ -383,7 +464,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_RazonSocial", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Registrar empresa.
         /// </summary>
@@ -392,7 +473,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Registrar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Seleccionar.
         /// </summary>
@@ -401,7 +482,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Seleccionar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Teléfono.
         /// </summary>
@@ -410,7 +491,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Empresa_Telefono", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo ya registrado.
         /// </summary>
@@ -419,7 +500,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER001", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos incompletos.
         /// </summary>
@@ -428,7 +509,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER002", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fallo de conexión.
         /// </summary>
@@ -437,7 +518,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER003", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error en la carga de la lista de planes.
         /// </summary>
@@ -446,7 +527,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER004", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El cliente posee un plan incompatible con la contratación solicitada.
         /// </summary>
@@ -455,7 +536,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER005", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Pago rechazado.
         /// </summary>
@@ -464,7 +545,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER006", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No fue posible registrar la contratación del plan.
         /// </summary>
@@ -473,7 +554,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER007", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existe una cobertura asociada.
         /// </summary>
@@ -482,7 +563,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER008", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen reintegros asociados.
         /// </summary>
@@ -491,7 +572,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER009", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen mascotas registradas.
         /// </summary>
@@ -500,7 +581,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER010", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen datos asociados.
         /// </summary>
@@ -509,7 +590,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER011", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen turnos disponibles.
         /// </summary>
@@ -518,7 +599,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER012", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El turno ya no se encuentra disponible.
         /// </summary>
@@ -527,7 +608,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER013", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen turnos asociados.
         /// </summary>
@@ -536,7 +617,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER014", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo generar la salida XML.
         /// </summary>
@@ -545,7 +626,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER015", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen planes registrados en el sistema.
         /// </summary>
@@ -554,7 +635,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER016", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen empresas registradas.
         /// </summary>
@@ -563,7 +644,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER017", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Credenciales incorrectas.
         /// </summary>
@@ -572,7 +653,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER018", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen registros de bitácora.
         /// </summary>
@@ -581,7 +662,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER019", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen usuarios registrados.
         /// </summary>
@@ -590,7 +671,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER020", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error al obtener los archivos de respaldo.
         /// </summary>
@@ -599,7 +680,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER021", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen archivos de respaldo.
         /// </summary>
@@ -608,7 +689,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER022", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Inconsistencia en la verificación de integridad.
         /// </summary>
@@ -617,7 +698,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER023", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuario inactivo o bloqueado.
         /// </summary>
@@ -626,7 +707,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER024", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos inválidos.
         /// </summary>
@@ -635,7 +716,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER025", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos incompletos.
         /// </summary>
@@ -644,7 +725,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER026", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La fecha desde es posterior a la fecha hasta.
         /// </summary>
@@ -653,7 +734,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER027", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se encontraron usuarios que coincidan con los parámetros de filtrado..
         /// </summary>
@@ -662,7 +743,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER028", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Las contraseñas no coinciden.
         /// </summary>
@@ -671,7 +752,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER029", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No posee autorización para restablecer la contraseña.
         /// </summary>
@@ -680,7 +761,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER030", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo leer el histórico XML de bitácora.
         /// </summary>
@@ -689,7 +770,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER031", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la consulta de bitácora.
         /// </summary>
@@ -698,7 +779,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER032", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar la consulta en bitácora.
         /// </summary>
@@ -707,7 +788,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER033", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar el cierre de sesión.
         /// </summary>
@@ -716,7 +797,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER034", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo electrónico o respuesta incorrectos.
         /// </summary>
@@ -725,7 +806,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER035", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El usuario seleccionado ya no existe.
         /// </summary>
@@ -734,7 +815,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER036", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El estado actual del usuario no permite realizar la operación.
         /// </summary>
@@ -743,7 +824,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER037", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Los datos del usuario cambiaron desde su consulta.
         /// </summary>
@@ -752,7 +833,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER038", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo actualizar el usuario.
         /// </summary>
@@ -761,7 +842,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER039", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar la operación en bitácora.
         /// </summary>
@@ -770,7 +851,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER040", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se seleccionó un respaldo o el seleccionado ya no está disponible.
         /// </summary>
@@ -779,7 +860,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER046", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la restauración de la base de datos.
         /// </summary>
@@ -788,7 +869,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER047", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar el cliente.
         /// </summary>
@@ -797,7 +878,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER049", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El plan seleccionado ya no está disponible.
         /// </summary>
@@ -806,7 +887,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER050", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen planes disponibles para contratar.
         /// </summary>
@@ -815,7 +896,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER051", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen mascotas activas asociadas al cliente.
         /// </summary>
@@ -824,7 +905,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER052", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Los datos de la contratación cambiaron. Volvé a consultar el plan..
         /// </summary>
@@ -833,7 +914,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER053", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La suscripción no admite un nuevo pago.
         /// </summary>
@@ -842,7 +923,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER054", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo iniciar el procesamiento del pago.
         /// </summary>
@@ -851,7 +932,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER055", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El pago está pendiente de confirmación. No vuelvas a pagar..
         /// </summary>
@@ -860,7 +941,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER056", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar el pago. No vuelvas a pagar..
         /// </summary>
@@ -869,7 +950,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER057", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo consultar el servicio de cobertura.
         /// </summary>
@@ -878,7 +959,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER058", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo consultar la información de reintegros.
         /// </summary>
@@ -887,7 +968,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER059", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar la mascota.
         /// </summary>
@@ -896,7 +977,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER060", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo consultar la información de mascotas.
         /// </summary>
@@ -905,7 +986,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER061", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudieron actualizar los datos de la mascota.
         /// </summary>
@@ -914,7 +995,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER062", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo consultar el servicio de historial clínico.
         /// </summary>
@@ -923,7 +1004,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER063", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Los datos de la mascota cambiaron desde su consulta.
         /// </summary>
@@ -932,7 +1013,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER064", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la operación del servicio de turnos.
         /// </summary>
@@ -941,7 +1022,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER065", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar el turno veterinario.
         /// </summary>
@@ -950,7 +1031,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER066", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo consultar la información de empresas.
         /// </summary>
@@ -959,7 +1040,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER067", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El CUIT ya se encuentra registrado para otra empresa.
         /// </summary>
@@ -968,7 +1049,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER068", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar la empresa.
         /// </summary>
@@ -977,7 +1058,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER069", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudieron actualizar los datos de la empresa.
         /// </summary>
@@ -986,7 +1067,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER070", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La empresa seleccionada se encuentra inactiva.
         /// </summary>
@@ -995,7 +1076,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER072", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se encuentra disponible el plan Corporativo.
         /// </summary>
@@ -1004,7 +1085,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER073", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo consultar el correo o el plan Corporativo.
         /// </summary>
@@ -1013,7 +1094,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER074", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo consultar la información del plan.
         /// </summary>
@@ -1022,7 +1103,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER075", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar el plan.
         /// </summary>
@@ -1031,7 +1112,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER076", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudieron actualizar los datos del plan.
         /// </summary>
@@ -1040,7 +1121,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER077", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El nombre del plan ya se encuentra registrado.
         /// </summary>
@@ -1049,7 +1130,34 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Error_ER078", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo preparar o emitir la factura.
+        /// </summary>
+        public static string Error_ER079 {
+            get {
+                return ResourceManager.GetString("Error_ER079", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo registrar la factura o sus verificadores.
+        /// </summary>
+        public static string Error_ER080 {
+            get {
+                return ResourceManager.GetString("Error_ER080", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo generar o entregar el archivo de la factura.
+        /// </summary>
+        public static string Error_ER081 {
+            get {
+                return ResourceManager.GetString("Error_ER081", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to ER048 - No se pudo cambiar el idioma. Intentá nuevamente..
         /// </summary>
@@ -1058,7 +1166,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("ErrorCambioIdioma", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backup realizado {0}.
         /// </summary>
@@ -1067,7 +1175,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("EventoBackup", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restauración realizada {0}.
         /// </summary>
@@ -1076,7 +1184,79 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("EventoRestore", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Consultar pago y factura.
+        /// </summary>
+        public static string Factura_Consultar {
+            get {
+                return ResourceManager.GetString("Factura_Consultar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Descargar factura.
+        /// </summary>
+        public static string Factura_Descargar {
+            get {
+                return ResourceManager.GetString("Factura_Descargar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to La primera mascota abona el precio completo. Cada mascota adicional tiene un 20 % de descuento..
+        /// </summary>
+        public static string Factura_Descuento {
+            get {
+                return ResourceManager.GetString("Factura_Descuento", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Mis facturas.
+        /// </summary>
+        public static string Factura_MisFacturas {
+            get {
+                return ResourceManager.GetString("Factura_MisFacturas", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Número de factura.
+        /// </summary>
+        public static string Factura_Numero {
+            get {
+                return ResourceManager.GetString("Factura_Numero", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pendiente de emisión.
+        /// </summary>
+        public static string Factura_Pendiente {
+            get {
+                return ResourceManager.GetString("Factura_Pendiente", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Reintentar factura.
+        /// </summary>
+        public static string Factura_Reintentar {
+            get {
+                return ResourceManager.GetString("Factura_Reintentar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Todavía no tenés pagos ni facturas registrados..
+        /// </summary>
+        public static string Factura_Vacio {
+            get {
+                return ResourceManager.GetString("Factura_Vacio", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to El campo o su referencia protegida fue alterado..
         /// </summary>
@@ -1085,7 +1265,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadCampoAlterado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Campo o fila sin referencia confiable..
         /// </summary>
@@ -1094,7 +1274,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadCampoAusente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Control ausente..
         /// </summary>
@@ -1103,7 +1283,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadControl", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to DVH no coincide..
         /// </summary>
@@ -1112,7 +1292,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadDvh", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to DVH no coincide; consultar detalle por campo..
         /// </summary>
@@ -1121,7 +1301,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadDvhDetalle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to DVV no coincide..
         /// </summary>
@@ -1130,7 +1310,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadDvv", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to DVV ausente o inconsistente..
         /// </summary>
@@ -1139,7 +1319,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadDvvAusente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fila ausente o referencia inesperada..
         /// </summary>
@@ -1148,7 +1328,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadFilaAusente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Formato de integridad no inicializado o desconocido..
         /// </summary>
@@ -1157,7 +1337,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadFormato", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La referencia protegida está incompleta o alterada..
         /// </summary>
@@ -1166,7 +1346,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadReferencia", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Registro ausente..
         /// </summary>
@@ -1175,7 +1355,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadRegistroAusente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Faltan tablas supervisadas..
         /// </summary>
@@ -1184,7 +1364,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadTablaAusente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tabla sin cobertura de integridad..
         /// </summary>
@@ -1193,7 +1373,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("IntegridadTablaSinCobertura", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Activa.
         /// </summary>
@@ -1202,7 +1382,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Activa", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Los datos de la mascota se actualizaron correctamente.
         /// </summary>
@@ -1211,7 +1391,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Actualizada", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Actualizar datos.
         /// </summary>
@@ -1220,7 +1400,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Actualizar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Actualización de datos de mascota.
         /// </summary>
@@ -1229,7 +1409,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_ActualizarTitulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Registrar.
         /// </summary>
@@ -1238,7 +1418,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_BotonRegistrar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La mascota se registró correctamente..
         /// </summary>
@@ -1247,7 +1427,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Confirmacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consultar datos.
         /// </summary>
@@ -1256,7 +1436,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Consultar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de datos de mascota.
         /// </summary>
@@ -1265,7 +1445,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_ConsultarTitulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos clínicos.
         /// </summary>
@@ -1274,7 +1454,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_DatosClinicos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Diagnóstico.
         /// </summary>
@@ -1283,7 +1463,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Diagnostico", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Especie.
         /// </summary>
@@ -1292,7 +1472,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Especie", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Estado.
         /// </summary>
@@ -1301,7 +1481,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Estado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha de nacimiento.
         /// </summary>
@@ -1310,7 +1490,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_FechaNacimiento", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha de registro.
         /// </summary>
@@ -1319,7 +1499,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_FechaRegistro", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Frecuencia cardíaca (lpm).
         /// </summary>
@@ -1328,7 +1508,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_FrecuenciaCardiaca", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Guardar cambios.
         /// </summary>
@@ -1337,7 +1517,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Guardar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Historial clínico.
         /// </summary>
@@ -1346,7 +1526,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Historial", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Inactiva.
         /// </summary>
@@ -1355,7 +1535,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Inactiva", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
@@ -1364,7 +1544,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Nombre", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Observaciones.
         /// </summary>
@@ -1373,7 +1553,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Observaciones", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Peso (kg).
         /// </summary>
@@ -1382,7 +1562,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Peso", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Raza.
         /// </summary>
@@ -1391,7 +1571,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Raza", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Registrar mascota.
         /// </summary>
@@ -1400,7 +1580,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Registrar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Registro de mascota.
         /// </summary>
@@ -1409,7 +1589,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_RegistroTitulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Seleccionar.
         /// </summary>
@@ -1418,7 +1598,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Seleccionar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Temperatura (°C).
         /// </summary>
@@ -1427,7 +1607,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Temperatura", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tratamiento.
         /// </summary>
@@ -1436,7 +1616,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Mascota_Tratamiento", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} (idUsuario={1}).
         /// </summary>
@@ -1445,7 +1625,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("OperacionUsuarioAuditoria", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Gestión de pago.
         /// </summary>
@@ -1454,7 +1634,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Accion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Código de seguridad.
         /// </summary>
@@ -1463,7 +1643,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Codigo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Pago aprobado.
         /// </summary>
@@ -1472,7 +1652,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Confirmado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Continuar.
         /// </summary>
@@ -1481,7 +1661,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Continuar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El plan se contrató correctamente..
         /// </summary>
@@ -1490,7 +1670,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_ContratacionConfirmada", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tarjeta de crédito.
         /// </summary>
@@ -1499,7 +1679,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Credito", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tarjeta de débito.
         /// </summary>
@@ -1508,7 +1688,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Debito", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Completar datos de prueba.
         /// </summary>
@@ -1517,7 +1697,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Dummy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Entorno de prueba. No se realizan cobros reales..
         /// </summary>
@@ -1526,7 +1706,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_EntornoPrueba", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha.
         /// </summary>
@@ -1535,7 +1715,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Fecha", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Importe abonado.
         /// </summary>
@@ -1544,7 +1724,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Importe", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Medio de pago.
         /// </summary>
@@ -1553,7 +1733,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Medio", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Pagos.
         /// </summary>
@@ -1562,7 +1742,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Modulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Número de pago.
         /// </summary>
@@ -1571,7 +1751,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Numero", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Número de tarjeta.
         /// </summary>
@@ -1580,7 +1760,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_NumeroTarjeta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Pagar.
         /// </summary>
@@ -1589,7 +1769,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Pagar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Plan.
         /// </summary>
@@ -1598,7 +1778,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Plan", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Precio mensual por mascota.
         /// </summary>
@@ -1607,7 +1787,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_PrecioMascota", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Seleccionar medio de pago.
         /// </summary>
@@ -1616,7 +1796,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Seleccionar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Titular de la tarjeta.
         /// </summary>
@@ -1625,7 +1805,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Titular", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Vencimiento (MM/AAAA).
         /// </summary>
@@ -1634,7 +1814,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Pago_Vencimiento", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Agregar cobertura.
         /// </summary>
@@ -1643,7 +1823,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_AgregarCobertura", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Alta de plan.
         /// </summary>
@@ -1652,7 +1832,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Alta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Coberturas.
         /// </summary>
@@ -1661,7 +1841,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Coberturas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to USD {0} por mes y por mascota. Vigencia inicial: un mes. Facturación unificada..
         /// </summary>
@@ -1670,7 +1850,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_CondicionesCorporativo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de plan.
         /// </summary>
@@ -1679,7 +1859,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Consulta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Descripción.
         /// </summary>
@@ -1688,7 +1868,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Descripcion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Detalle.
         /// </summary>
@@ -1697,7 +1877,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Detalle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Gestión de planes.
         /// </summary>
@@ -1706,7 +1886,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Gestion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Modificación de plan.
         /// </summary>
@@ -1715,7 +1895,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Modificar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Precio mensual por mascota (USD).
         /// </summary>
@@ -1724,7 +1904,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Precio", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Prestación.
         /// </summary>
@@ -1733,7 +1913,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Prestacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Quitar.
         /// </summary>
@@ -1742,7 +1922,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Quitar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Registrar plan.
         /// </summary>
@@ -1751,7 +1931,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("PlanAdmin_Registrar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contratación de plan pendiente.
         /// </summary>
@@ -1760,7 +1940,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_Accion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contratación de plan.
         /// </summary>
@@ -1769,7 +1949,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_AccionConfirmada", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consultando coberturas….
         /// </summary>
@@ -1778,7 +1958,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_CargandoCobertura", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Coberturas del plan.
         /// </summary>
@@ -1787,7 +1967,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_Coberturas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen coberturas detalladas para este plan..
         /// </summary>
@@ -1796,7 +1976,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_CoberturaVacia", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contratar plan.
         /// </summary>
@@ -1805,7 +1985,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_Contratar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El plan Corporativo se ofrece mediante convenio y no puede contratarse de manera particular..
         /// </summary>
@@ -1814,7 +1994,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_Corporativo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Descripción.
         /// </summary>
@@ -1823,7 +2003,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_Descripcion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Un plan para tu cuenta. Precios en USD por mes y por mascota activa..
         /// </summary>
@@ -1832,7 +2012,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_DescripcionPrecios", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Gestión de pago.
         /// </summary>
@@ -1841,7 +2021,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_GestionPago", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Mascotas activas de la cuenta.
         /// </summary>
@@ -1850,7 +2030,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_MascotasActivas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La suscripción quedó pendiente. Gestión de pago todavía no está disponible; no se realizó ningún cobro ni se activó el plan..
         /// </summary>
@@ -1859,7 +2039,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_PagoFuturo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La contratación quedará pendiente hasta completar Gestión de pago..
         /// </summary>
@@ -1868,7 +2048,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_PendienteAviso", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Precio mensual por mascota.
         /// </summary>
@@ -1877,7 +2057,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_PrecioMascota", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Prestación.
         /// </summary>
@@ -1886,7 +2066,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_Prestacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El importe mostrado corresponde a las mascotas activas y al precio actual. Se verificará nuevamente al gestionar el pago..
         /// </summary>
@@ -1895,7 +2075,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_RecalculoPago", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Seleccionar.
         /// </summary>
@@ -1904,7 +2084,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_Seleccionar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Planes disponibles.
         /// </summary>
@@ -1913,7 +2093,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_Titulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Total mensual en USD.
         /// </summary>
@@ -1922,7 +2102,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Planes_TotalMensual", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Registro de cliente.
         /// </summary>
@@ -1931,7 +2111,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Registro_Accion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Apellido.
         /// </summary>
@@ -1940,7 +2120,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Registro_Apellido", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La cuenta se creó correctamente. Ya podés iniciar sesión..
         /// </summary>
@@ -1949,7 +2129,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Registro_CuentaCreada", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Completá tus datos para registrarte como cliente de VitaPet..
         /// </summary>
@@ -1958,7 +2138,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Registro_Descripcion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Clientes.
         /// </summary>
@@ -1967,7 +2147,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Registro_Modulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usá entre 8 y 100 caracteres, con una mayúscula, un número y un símbolo..
         /// </summary>
@@ -1976,7 +2156,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Registro_RequisitosContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Aprobado.
         /// </summary>
@@ -1985,7 +2165,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Aprobado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consultar.
         /// </summary>
@@ -1994,7 +2174,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Consultar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Detalle.
         /// </summary>
@@ -2003,7 +2183,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Detalle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Estado.
         /// </summary>
@@ -2012,7 +2192,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Estado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Exportar a XML.
         /// </summary>
@@ -2021,7 +2201,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Exportar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha de solicitud.
         /// </summary>
@@ -2030,7 +2210,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Fecha", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Importe.
         /// </summary>
@@ -2039,7 +2219,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Importe", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Mis reintegros.
         /// </summary>
@@ -2048,7 +2228,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Listado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Número de reintegro.
         /// </summary>
@@ -2057,7 +2237,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Numero", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Pendiente.
         /// </summary>
@@ -2066,7 +2246,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Pendiente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Rechazado.
         /// </summary>
@@ -2075,7 +2255,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Rechazado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Detalle del reintegro.
         /// </summary>
@@ -2084,7 +2264,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Seleccionado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de estado de reintegro.
         /// </summary>
@@ -2093,7 +2273,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Reintegro_Titulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} eventos. Página {1} de {2}. Hasta {3} eventos por página..
         /// </summary>
@@ -2102,7 +2282,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("ResumenEventos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} usuarios. Página {1} de {2}..
         /// </summary>
@@ -2111,7 +2291,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("ResumenUsuarios", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Hola, .
         /// </summary>
@@ -2120,7 +2300,16 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Saludo", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Los días resaltados tienen turnos disponibles para la especialidad elegida..
+        /// </summary>
+        public static string Turno_AyudaCalendario {
+            get {
+                return ResourceManager.GetString("Turno_AyudaCalendario", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Buscar disponibilidad.
         /// </summary>
@@ -2129,7 +2318,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Buscar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El turno se registró correctamente. Número {0} · {1} · {2} · {3} · {4} · {5}.
         /// </summary>
@@ -2138,7 +2327,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Confirmacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmado.
         /// </summary>
@@ -2147,7 +2336,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Confirmado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar solicitud.
         /// </summary>
@@ -2156,7 +2345,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Confirmar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consultar turnos.
         /// </summary>
@@ -2165,7 +2354,43 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Consultar", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Turnos disponibles.
+        /// </summary>
+        public static string Turno_DiaDisponible {
+            get {
+                return ResourceManager.GetString("Turno_DiaDisponible", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sin turnos disponibles.
+        /// </summary>
+        public static string Turno_DiaSinDisponibilidad {
+            get {
+                return ResourceManager.GetString("Turno_DiaSinDisponibilidad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Elegí la fecha.
+        /// </summary>
+        public static string Turno_ElegirFecha {
+            get {
+                return ResourceManager.GetString("Turno_ElegirFecha", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Especialidad.
+        /// </summary>
+        public static string Turno_Especialidad {
+            get {
+                return ResourceManager.GetString("Turno_Especialidad", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Estado.
         /// </summary>
@@ -2174,7 +2399,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Estado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Exportar a XML.
         /// </summary>
@@ -2183,7 +2408,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Exportar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha.
         /// </summary>
@@ -2192,7 +2417,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Fecha", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Horario.
         /// </summary>
@@ -2201,7 +2426,25 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Horario", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Horarios disponibles.
+        /// </summary>
+        public static string Turno_HorariosDisponibles {
+            get {
+                return ResourceManager.GetString("Turno_HorariosDisponibles", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Elegí tu mascota, la zona y la especialidad. Después seleccioná una fecha y un horario disponible..
+        /// </summary>
+        public static string Turno_Instrucciones {
+            get {
+                return ResourceManager.GetString("Turno_Instrucciones", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Mascota.
         /// </summary>
@@ -2210,7 +2453,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Mascota", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Número de turno.
         /// </summary>
@@ -2219,7 +2462,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Numero", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Prestación.
         /// </summary>
@@ -2228,7 +2471,25 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Prestacion", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Seleccioná una especialidad.
+        /// </summary>
+        public static string Turno_SeleccionarEspecialidad {
+            get {
+                return ResourceManager.GetString("Turno_SeleccionarEspecialidad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Seleccioná un día del calendario para ver los horarios..
+        /// </summary>
+        public static string Turno_SeleccionarFecha {
+            get {
+                return ResourceManager.GetString("Turno_SeleccionarFecha", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Seleccioná una zona.
         /// </summary>
@@ -2237,7 +2498,16 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_SeleccionarZona", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to No quedan horarios disponibles. Elegí otra fecha o especialidad..
+        /// </summary>
+        public static string Turno_SinHorarios {
+            get {
+                return ResourceManager.GetString("Turno_SinHorarios", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Solicitar turno.
         /// </summary>
@@ -2246,7 +2516,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Solicitar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Zona.
         /// </summary>
@@ -2255,7 +2525,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("Turno_Zona", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Acceder a recuperación.
         /// </summary>
@@ -2264,7 +2534,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AccederARecuperacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Acceder a recuperación..
         /// </summary>
@@ -2273,7 +2543,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AccederARecuperacion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Acceso de emergencia exclusivo para restaurar el sistema. La sesión vence a los 15 minutos..
         /// </summary>
@@ -2282,7 +2552,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AccesoDeEmergenciaExclusivoParaRestaurarElSistema", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Acceso de emergencia no autorizado o vencido..
         /// </summary>
@@ -2291,7 +2561,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AccesoDeEmergenciaNoAutorizadoOVencido", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Acceso denegado.
         /// </summary>
@@ -2300,7 +2570,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AccesoDenegado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Acceso denegado..
         /// </summary>
@@ -2309,7 +2579,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AccesoDenegado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Acceso exclusivo para Webmaster..
         /// </summary>
@@ -2318,7 +2588,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AccesoExclusivoParaWebmaster", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Acción.
         /// </summary>
@@ -2327,7 +2597,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Accion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Acerca de.
         /// </summary>
@@ -2336,7 +2606,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AcercaDe", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Activo.
         /// </summary>
@@ -2345,7 +2615,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Activo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Administración de respaldos y recuperación exclusiva para Webmaster..
         /// </summary>
@@ -2354,7 +2624,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AdministracionDeRespaldosYRecuperacionExclusivaParaWebmaster", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Administrador.
         /// </summary>
@@ -2363,7 +2633,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Administrador", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Administrador..
         /// </summary>
@@ -2372,7 +2642,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Administrador2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Advertencia.
         /// </summary>
@@ -2381,7 +2651,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Advertencia", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Advertencia..
         /// </summary>
@@ -2390,7 +2660,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Advertencia2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Al guardar se cerrarán las sesiones. La contraseña nunca se muestra ni se recupera desde el archivo..
         /// </summary>
@@ -2399,7 +2669,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AlGuardarSeCerraranLasSesionesLaContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Alojamiento web.
         /// </summary>
@@ -2408,7 +2678,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AlojamientoWeb", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ASP.NET es un framework web gratuito para crear sitios y aplicaciones con HTML, CSS y JavaScript..
         /// </summary>
@@ -2417,7 +2687,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AspNetEsUnFrameworkWebGratuitoPara", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ASP.NET Web Forms permite crear sitios dinámicos con un modelo de eventos y controles visuales, incluyendo acceso a datos..
         /// </summary>
@@ -2426,7 +2696,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_AspNetWebFormsPermiteCrearSitiosDinamicos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Autenticación.
         /// </summary>
@@ -2435,7 +2705,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Autenticacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Autenticación..
         /// </summary>
@@ -2444,7 +2714,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Autenticacion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backup disponible.
         /// </summary>
@@ -2453,7 +2723,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_BackupDisponible", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backup disponible..
         /// </summary>
@@ -2462,7 +2732,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_BackupDisponible2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backups.
         /// </summary>
@@ -2471,7 +2741,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Backups", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Base de datos.
         /// </summary>
@@ -2480,7 +2750,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_BaseDeDatos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Base de datos..
         /// </summary>
@@ -2489,7 +2759,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_BaseDeDatos2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bitácora.
         /// </summary>
@@ -2498,7 +2768,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Bitacora", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bloqueado.
         /// </summary>
@@ -2507,7 +2777,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Bloqueado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bloquear.
         /// </summary>
@@ -2516,7 +2786,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Bloquear", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bloqueo.
         /// </summary>
@@ -2525,7 +2795,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Bloqueo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bloqueo de usuario.
         /// </summary>
@@ -2534,7 +2804,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_BloqueoDeUsuario", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bloqueo de usuario..
         /// </summary>
@@ -2543,7 +2813,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_BloqueoDeUsuario2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Buscá por nombre y filtrá por estado. Seleccioná un usuario para ver sus opciones..
         /// </summary>
@@ -2552,7 +2822,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_BuscaPorNombreYFiltraPorEstadoSelecciona", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Buscar.
         /// </summary>
@@ -2561,7 +2831,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Buscar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Buscar por nombre completo o parcial.
         /// </summary>
@@ -2570,7 +2840,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_BuscarPorNombreCompletoOParcial", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Buscar por nombre completo o parcial..
         /// </summary>
@@ -2579,7 +2849,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_BuscarPorNombreCompletoOParcial2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cada mensaje está separado para que puedas recortarlo en una captura..
         /// </summary>
@@ -2588,7 +2858,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CadaMensajeEstaSeparadoParaQuePuedasRecortarlo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cambiar a.
         /// </summary>
@@ -2597,7 +2867,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CambiarA", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cancelar.
         /// </summary>
@@ -2606,7 +2876,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Cancelar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cerrar recuperación.
         /// </summary>
@@ -2615,7 +2885,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CerrarRecuperacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cerrar recuperación..
         /// </summary>
@@ -2624,7 +2894,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CerrarRecuperacion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cerrar sesión.
         /// </summary>
@@ -2633,7 +2903,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CerrarSesion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cerrar sesión..
         /// </summary>
@@ -2642,7 +2912,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CerrarSesion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cliente.
         /// </summary>
@@ -2651,7 +2921,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Cliente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Clientes corporativos.
         /// </summary>
@@ -2660,7 +2930,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ClientesCorporativos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Clientes corporativos..
         /// </summary>
@@ -2669,7 +2939,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ClientesCorporativos2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Columna.
         /// </summary>
@@ -2678,7 +2948,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Columna", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Configure una cuenta de emergencia antes de necesitarla. Sólo permite restaurar el sistema cuando falta un WebMaster confiable o hay fallas de integridad..
         /// </summary>
@@ -2687,7 +2957,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfigureUnaCuentaDeEmergenciaAntesDeNecesitarla", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ¿Confirma la creación de un backup completo de la base de datos?.
         /// </summary>
@@ -2696,7 +2966,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmaLaCreacionDeUnBackupCompletoDe", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar.
         /// </summary>
@@ -2705,7 +2975,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Confirmar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar bloqueo.
         /// </summary>
@@ -2714,7 +2984,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarBloqueo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar bloqueo..
         /// </summary>
@@ -2723,7 +2993,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarBloqueo2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar desbloqueo.
         /// </summary>
@@ -2732,7 +3002,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarDesbloqueo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar desbloqueo..
         /// </summary>
@@ -2741,7 +3011,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarDesbloqueo2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar nueva contraseña.
         /// </summary>
@@ -2750,7 +3020,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarNuevaContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar nueva contraseña..
         /// </summary>
@@ -2759,7 +3029,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarNuevaContrasena2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar operación.
         /// </summary>
@@ -2768,7 +3038,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarOperacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar operación..
         /// </summary>
@@ -2777,7 +3047,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarOperacion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar restauración.
         /// </summary>
@@ -2786,7 +3056,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarRestauracion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirmar restauración..
         /// </summary>
@@ -2795,7 +3065,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmarRestauracion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ¿Confirmás que querés bloquear al siguiente usuario?.
         /// </summary>
@@ -2804,7 +3074,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmasQueQueresBloquearAlSiguienteUsuario", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ¿Confirmás que querés desbloquear al siguiente usuario?.
         /// </summary>
@@ -2813,7 +3083,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConfirmasQueQueresDesbloquearAlSiguienteUsuario", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de bitácora.
         /// </summary>
@@ -2822,7 +3092,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConsultaDeBitacora", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de bitácora..
         /// </summary>
@@ -2831,7 +3101,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConsultaDeBitacora2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de usuario.
         /// </summary>
@@ -2840,7 +3110,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConsultaDeUsuario", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de usuario..
         /// </summary>
@@ -2849,7 +3119,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConsultaDeUsuario2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de usuarios.
         /// </summary>
@@ -2858,7 +3128,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConsultaDeUsuarios", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consulta de usuarios..
         /// </summary>
@@ -2867,7 +3137,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConsultaDeUsuarios2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consultá los eventos del sistema por fecha y criticidad. Sin filtros se muestran todos los registros..
         /// </summary>
@@ -2876,7 +3146,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ConsultaLosEventosDelSistemaPorFechaY", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Consultar.
         /// </summary>
@@ -2885,7 +3155,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Consultar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contacto.
         /// </summary>
@@ -2894,7 +3164,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Contacto", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Continuar.
         /// </summary>
@@ -2903,7 +3173,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Continuar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contraseña.
         /// </summary>
@@ -2912,7 +3182,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Contrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contraseña de emergencia.
         /// </summary>
@@ -2921,7 +3191,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ContrasenaDeEmergencia", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contraseña de emergencia..
         /// </summary>
@@ -2930,7 +3200,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ContrasenaDeEmergencia2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contraseña restablecida.
         /// </summary>
@@ -2939,7 +3209,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ContrasenaRestablecida", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contraseña restablecida..
         /// </summary>
@@ -2948,7 +3218,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ContrasenaRestablecida2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo de emergencia.
         /// </summary>
@@ -2957,7 +3227,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CorreoDeEmergencia", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo de emergencia..
         /// </summary>
@@ -2966,7 +3236,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CorreoDeEmergencia2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo electrónico.
         /// </summary>
@@ -2975,7 +3245,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CorreoElectronico", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo electrónico..
         /// </summary>
@@ -2984,7 +3254,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CorreoElectronico2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo electrónico o respuesta incorrectos.
         /// </summary>
@@ -2993,7 +3263,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CorreoElectronicoORespuestaIncorrectos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo electrónico o respuesta incorrectos..
         /// </summary>
@@ -3002,7 +3272,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CorreoElectronicoORespuestaIncorrectos2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo ya registrado.
         /// </summary>
@@ -3011,7 +3281,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CorreoYaRegistrado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Correo ya registrado..
         /// </summary>
@@ -3020,7 +3290,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CorreoYaRegistrado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Crear backup.
         /// </summary>
@@ -3029,7 +3299,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CrearBackup", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Crear backup..
         /// </summary>
@@ -3038,7 +3308,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CrearBackup2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Crear respaldo XML de contingencia.
         /// </summary>
@@ -3047,7 +3317,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CrearRespaldoXmlDeContingencia", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Crear respaldo XML de contingencia..
         /// </summary>
@@ -3056,7 +3326,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CrearRespaldoXmlDeContingencia2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Crear una cuenta.
         /// </summary>
@@ -3065,7 +3335,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CrearUnaCuenta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Crear una cuenta..
         /// </summary>
@@ -3074,7 +3344,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CrearUnaCuenta2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Credenciales incorrectas.
         /// </summary>
@@ -3083,7 +3353,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CredencialesIncorrectas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Credenciales incorrectas..
         /// </summary>
@@ -3092,7 +3362,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CredencialesIncorrectas2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Crítica.
         /// </summary>
@@ -3101,7 +3371,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Critica", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Criticidad.
         /// </summary>
@@ -3110,7 +3380,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Criticidad", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Crítico.
         /// </summary>
@@ -3119,7 +3389,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Critico", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cual es su facultad favorita.
         /// </summary>
@@ -3128,7 +3398,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CualEsSuFacultadFavorita", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cual es su facultad favorita..
         /// </summary>
@@ -3137,7 +3407,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_CualEsSuFacultadFavorita2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos incompletos.
         /// </summary>
@@ -3146,7 +3416,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DatosIncompletos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos incompletos..
         /// </summary>
@@ -3155,7 +3425,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DatosIncompletos2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos inválidos.
         /// </summary>
@@ -3164,7 +3434,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DatosInvalidos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos inválidos..
         /// </summary>
@@ -3173,7 +3443,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DatosInvalidos2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos inválidos. Revisá el nombre, correo, rol y estado..
         /// </summary>
@@ -3182,7 +3452,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DatosInvalidosRevisaElNombreCorreoRolY", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Datos inválidos. Revisá las fechas y la criticidad..
         /// </summary>
@@ -3191,7 +3461,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DatosInvalidosRevisaLasFechasYLaCriticidad", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Debe confirmar la nueva contraseña..
         /// </summary>
@@ -3200,7 +3470,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DebeConfirmarLaNuevaContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Debe ingresar la nueva contraseña..
         /// </summary>
@@ -3209,7 +3479,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DebeIngresarLaNuevaContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Debe ingresar la respuesta..
         /// </summary>
@@ -3218,7 +3488,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DebeIngresarLaRespuesta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Debe ingresar su contraseña..
         /// </summary>
@@ -3227,7 +3497,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DebeIngresarSuContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Debe ingresar su correo electrónico..
         /// </summary>
@@ -3236,7 +3506,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DebeIngresarSuCorreoElectronico", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Desbloqueado.
         /// </summary>
@@ -3245,7 +3515,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Desbloqueado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Desbloqueado..
         /// </summary>
@@ -3254,7 +3524,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Desbloqueado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Desbloquear.
         /// </summary>
@@ -3263,7 +3533,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Desbloquear", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Desbloquear..
         /// </summary>
@@ -3272,7 +3542,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Desbloquear2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Desbloqueo de usuario.
         /// </summary>
@@ -3281,7 +3551,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DesbloqueoDeUsuario", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Desbloqueo de usuario..
         /// </summary>
@@ -3290,7 +3560,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DesbloqueoDeUsuario2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Descripción de la aplicación..
         /// </summary>
@@ -3299,7 +3569,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DescripcionDeLaAplicacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ¿Desea cerrar su sesión en VitaPet?.
         /// </summary>
@@ -3308,7 +3578,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DeseaCerrarSuSesionEnVitapet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Escritorio.
         /// </summary>
@@ -3317,7 +3587,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Desktop", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Detalle.
         /// </summary>
@@ -3326,7 +3596,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Detalle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Durante la operación, espere la respuesta sin volver a enviar el formulario. Al finalizar una restauración deberá iniciar sesión nuevamente..
         /// </summary>
@@ -3335,7 +3605,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_DuranteLaOperacionEspereLaRespuestaSinVolver", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El catálogo de errores está vacío..
         /// </summary>
@@ -3344,7 +3614,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElCatalogoDeErroresEstaVacio", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El cliente posee un plan incompatible con la contratación solicitada.
         /// </summary>
@@ -3353,7 +3623,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElClientePoseeUnPlanIncompatibleConLa", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El cliente posee un plan incompatible con la contratación solicitada..
         /// </summary>
@@ -3362,7 +3632,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElClientePoseeUnPlanIncompatibleConLa2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El estado actual del usuario no permite realizar la operación..
         /// </summary>
@@ -3371,7 +3641,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElEstadoActualDelUsuarioNoPermiteRealizar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El estado actual del usuario no permite realizar la operación.
         /// </summary>
@@ -3380,7 +3650,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElEstadoActualDelUsuarioNoPermiteRealizar2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El formato del correo electrónico no es válido..
         /// </summary>
@@ -3389,7 +3659,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElFormatoDelCorreoElectronicoNoEsValido", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El turno ya no se encuentra disponible.
         /// </summary>
@@ -3398,7 +3668,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElTurnoYaNoSeEncuentraDisponible", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El turno ya no se encuentra disponible..
         /// </summary>
@@ -3407,7 +3677,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElTurnoYaNoSeEncuentraDisponible2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El usuario se bloqueó correctamente..
         /// </summary>
@@ -3416,7 +3686,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElUsuarioSeBloqueoCorrectamente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El usuario se desbloqueó correctamente..
         /// </summary>
@@ -3425,7 +3695,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElUsuarioSeDesbloqueoCorrectamente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El usuario seleccionado ya no existe..
         /// </summary>
@@ -3434,7 +3704,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElUsuarioSeleccionadoYaNoExiste", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El usuario seleccionado ya no existe.
         /// </summary>
@@ -3443,7 +3713,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElUsuarioSeleccionadoYaNoExiste2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El usuario seleccionado ya no existe o la selección venció. Volvé a seleccionarlo en Gestión de usuarios..
         /// </summary>
@@ -3452,7 +3722,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElUsuarioSeleccionadoYaNoExisteOLa", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to El usuario se modificó correctamente..
         /// </summary>
@@ -3461,7 +3731,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ElUsuarioSeModificoCorrectamente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Empresas.
         /// </summary>
@@ -3470,7 +3740,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Empresas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to EN · English.
         /// </summary>
@@ -3479,7 +3749,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_EnEnglish", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to EN · English..
         /// </summary>
@@ -3488,7 +3758,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_EnEnglish2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ER003 - Fallo de conexión. No se pudo cargar el catálogo..
         /// </summary>
@@ -3497,7 +3767,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Er003FalloDeConexionNoSePudoCargar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error al obtener los archivos de respaldo.
         /// </summary>
@@ -3506,7 +3776,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ErrorAlObtenerLosArchivosDeRespaldo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error al obtener los archivos de respaldo..
         /// </summary>
@@ -3515,7 +3785,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ErrorAlObtenerLosArchivosDeRespaldo2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error en la carga de la lista de planes.
         /// </summary>
@@ -3524,7 +3794,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ErrorEnLaCargaDeLaListaDe", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error en la carga de la lista de planes..
         /// </summary>
@@ -3533,7 +3803,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ErrorEnLaCargaDeLaListaDe2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Errores.
         /// </summary>
@@ -3542,7 +3812,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Errores", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Errores del sistema.
         /// </summary>
@@ -3551,7 +3821,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ErroresDelSistema", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Errores del sistema..
         /// </summary>
@@ -3560,7 +3830,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ErroresDelSistema2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Errores del sistema - VitaPet.
         /// </summary>
@@ -3569,7 +3839,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ErroresDelSistemaVitapet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Errores del sistema - VitaPet..
         /// </summary>
@@ -3578,7 +3848,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ErroresDelSistemaVitapet2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ES · Español.
         /// </summary>
@@ -3587,7 +3857,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_EsEspanol", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ES · Español..
         /// </summary>
@@ -3596,7 +3866,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_EsEspanol2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Estado.
         /// </summary>
@@ -3605,7 +3875,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Estado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Evento.
         /// </summary>
@@ -3614,7 +3884,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Evento", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Exportar a XML.
         /// </summary>
@@ -3623,7 +3893,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ExportarAXml", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Exportar a XML..
         /// </summary>
@@ -3632,7 +3902,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ExportarAXml2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fallo de conexión.
         /// </summary>
@@ -3641,7 +3911,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FalloDeConexion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fallo de conexión..
         /// </summary>
@@ -3650,7 +3920,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FalloDeConexion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fallo de conexión o configuración. Reintentá la operación..
         /// </summary>
@@ -3659,7 +3929,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FalloDeConexionOConfiguracionReintentaLaOperacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fallo de configuración.
         /// </summary>
@@ -3668,7 +3938,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FalloDeConfiguracion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fallo de configuración..
         /// </summary>
@@ -3677,7 +3947,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FalloDeConfiguracion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha desde.
         /// </summary>
@@ -3686,7 +3956,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FechaDesde", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha desde..
         /// </summary>
@@ -3695,7 +3965,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FechaDesde2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha hasta.
         /// </summary>
@@ -3704,7 +3974,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FechaHasta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha hasta..
         /// </summary>
@@ -3713,7 +3983,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FechaHasta2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha y hora.
         /// </summary>
@@ -3722,7 +3992,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FechaYHora", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fecha y hora..
         /// </summary>
@@ -3731,7 +4001,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FechaYHora2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fila (clave).
         /// </summary>
@@ -3740,7 +4010,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FilaClave", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fila (clave)..
         /// </summary>
@@ -3749,7 +4019,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FilaClave2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Funcionalidades disponibles.
         /// </summary>
@@ -3758,7 +4028,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FuncionalidadesDisponibles", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Funcionalidades disponibles..
         /// </summary>
@@ -3767,7 +4037,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_FuncionalidadesDisponibles2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Gestión de usuarios.
         /// </summary>
@@ -3776,7 +4046,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_GestionDeUsuarios", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Gestión de usuarios..
         /// </summary>
@@ -3785,7 +4055,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_GestionDeUsuarios2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Grave.
         /// </summary>
@@ -3794,7 +4064,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Grave", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Guardar.
         /// </summary>
@@ -3803,7 +4073,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Guardar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Guardar cuenta y respaldo inicial.
         /// </summary>
@@ -3812,7 +4082,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_GuardarCuentaYRespaldoInicial", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Guardar cuenta y respaldo inicial..
         /// </summary>
@@ -3821,7 +4091,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_GuardarCuentaYRespaldoInicial2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Identificador.
         /// </summary>
@@ -3830,7 +4100,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Identificador", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Identificador..
         /// </summary>
@@ -3839,7 +4109,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Identificador2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Identificador de backup inválido..
         /// </summary>
@@ -3848,7 +4118,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_IdentificadorDeBackupInvalido", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Idioma.
         /// </summary>
@@ -3857,7 +4127,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Idioma", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Inactivo.
         /// </summary>
@@ -3866,7 +4136,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Inactivo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Inconsistencia en la verificación de integridad..
         /// </summary>
@@ -3875,7 +4145,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_InconsistenciaEnLaVerificacionDeIntegridad", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Inconsistencia en la verificación de integridad.
         /// </summary>
@@ -3884,7 +4154,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_InconsistenciaEnLaVerificacionDeIntegridad2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Informativa.
         /// </summary>
@@ -3893,7 +4163,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Informativa", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Informativa..
         /// </summary>
@@ -3902,7 +4172,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Informativa2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ingresá a VitaPet con tu correo electrónico y contraseña..
         /// </summary>
@@ -3911,7 +4181,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_IngresaAVitapetConTuCorreoElectronicoY", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ingresar.
         /// </summary>
@@ -3920,7 +4190,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Ingresar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ingresá tu correo electrónico y respondé la pregunta de seguridad..
         /// </summary>
@@ -3929,7 +4199,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_IngresaTuCorreoElectronicoYRespondeLaPregunta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ingresá y confirmá tu nueva contraseña..
         /// </summary>
@@ -3938,7 +4208,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_IngresaYConfirmaTuNuevaContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ingrese un correo válido y una contraseña de 12 a 100 caracteres, con mayúscula, número y símbolo..
         /// </summary>
@@ -3947,7 +4217,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_IngreseUnCorreoValidoYUnaContrasenaDe", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Iniciar sesión.
         /// </summary>
@@ -3956,7 +4226,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_IniciarSesion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Iniciar sesión..
         /// </summary>
@@ -3965,7 +4235,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_IniciarSesion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Inicio.
         /// </summary>
@@ -3974,7 +4244,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Inicio", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Inicio.
         /// </summary>
@@ -3983,7 +4253,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Inicio2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Integridad.
         /// </summary>
@@ -3992,7 +4262,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Integridad", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ir al inicio.
         /// </summary>
@@ -4001,7 +4271,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_IrAlInicio", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ir al inicio..
         /// </summary>
@@ -4010,7 +4280,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_IrAlInicio2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La confirmación venció. Seleccione nuevamente el respaldo..
         /// </summary>
@@ -4019,7 +4289,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LaConfirmacionVencioSeleccioneNuevamenteElRespaldo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La confirmación venció. Seleccione nuevamente la operación..
         /// </summary>
@@ -4028,7 +4298,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LaConfirmacionVencioSeleccioneNuevamenteLaOperacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial..
         /// </summary>
@@ -4037,7 +4307,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LaContrasenaDebeTenerAlMenos8Caracteres", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La fecha desde es posterior a la fecha hasta..
         /// </summary>
@@ -4046,7 +4316,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LaFechaDesdeEsPosteriorALaFecha", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La fecha desde es posterior a la fecha hasta.
         /// </summary>
@@ -4055,7 +4325,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LaFechaDesdeEsPosteriorALaFecha2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La integridad fue verificada. Inicie sesión nuevamente..
         /// </summary>
@@ -4064,7 +4334,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LaIntegridadFueVerificadaInicieSesionNuevamente", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to La operación no pudo completarse. Seleccione un respaldo válido y vuelva a intentarlo..
         /// </summary>
@@ -4073,7 +4343,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LaOperacionNoPudoCompletarseSeleccioneUnRespaldo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Las contraseñas no coinciden.
         /// </summary>
@@ -4082,7 +4352,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LasContrasenasNoCoinciden", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Las contraseñas no coinciden..
         /// </summary>
@@ -4091,7 +4361,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LasContrasenasNoCoinciden2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Login exitoso.
         /// </summary>
@@ -4100,7 +4370,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LoginExitoso", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Login exitoso..
         /// </summary>
@@ -4109,7 +4379,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LoginExitoso2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Login fallido.
         /// </summary>
@@ -4118,7 +4388,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LoginFallido", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Login fallido..
         /// </summary>
@@ -4127,7 +4397,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LoginFallido2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
@@ -4136,7 +4406,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Logout", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Los backups se verifican antes de ofrecerlos para restauración. No se pueden generar puntos sanos mientras haya corrupción..
         /// </summary>
@@ -4145,7 +4415,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LosBackupsSeVerificanAntesDeOfrecerlosPara", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Los datos del usuario cambiaron desde su consulta. Volvé a cargar los datos antes de editar..
         /// </summary>
@@ -4154,7 +4424,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LosDatosDelUsuarioCambiaronDesdeSuConsulta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Los datos del usuario cambiaron desde su consulta.
         /// </summary>
@@ -4163,7 +4433,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LosDatosDelUsuarioCambiaronDesdeSuConsulta2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Los datos del usuario cambiaron desde su consulta..
         /// </summary>
@@ -4172,7 +4442,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LosDatosDelUsuarioCambiaronDesdeSuConsulta3", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Los datos de recuperación no son válidos..
         /// </summary>
@@ -4181,7 +4451,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_LosDatosDeRecuperacionNoSonValidos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Marketing:.
         /// </summary>
@@ -4190,7 +4460,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Marketing", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Mascotas.
         /// </summary>
@@ -4199,7 +4469,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Mascotas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Más información ».
         /// </summary>
@@ -4208,7 +4478,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_MasInformacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Mi perfil.
         /// </summary>
@@ -4217,7 +4487,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_MiPerfil", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Móvil.
         /// </summary>
@@ -4226,7 +4496,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Mobile", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Modificación de usuario.
         /// </summary>
@@ -4235,7 +4505,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ModificacionDeUsuario", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Modificación de usuario..
         /// </summary>
@@ -4244,7 +4514,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ModificacionDeUsuario2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Modificar.
         /// </summary>
@@ -4253,7 +4523,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Modificar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Módulo.
         /// </summary>
@@ -4262,7 +4532,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Modulo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen archivos de respaldo.
         /// </summary>
@@ -4271,7 +4541,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenArchivosDeRespaldo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen archivos de respaldo..
         /// </summary>
@@ -4280,7 +4550,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenArchivosDeRespaldo2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen datos asociados.
         /// </summary>
@@ -4289,7 +4559,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenDatosAsociados", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen datos asociados..
         /// </summary>
@@ -4298,7 +4568,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenDatosAsociados2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen empresas registradas.
         /// </summary>
@@ -4307,7 +4577,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenEmpresasRegistradas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen empresas registradas..
         /// </summary>
@@ -4316,7 +4586,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenEmpresasRegistradas2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen mascotas registradas.
         /// </summary>
@@ -4325,7 +4595,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenMascotasRegistradas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen mascotas registradas..
         /// </summary>
@@ -4334,7 +4604,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenMascotasRegistradas2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen planes registrados en el sistema.
         /// </summary>
@@ -4343,7 +4613,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenPlanesRegistradosEnElSistema", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen planes registrados en el sistema..
         /// </summary>
@@ -4352,7 +4622,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenPlanesRegistradosEnElSistema2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen registros de bitácora.
         /// </summary>
@@ -4361,7 +4631,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenRegistrosDeBitacora", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen registros de bitácora..
         /// </summary>
@@ -4370,7 +4640,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenRegistrosDeBitacora2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen reintegros asociados.
         /// </summary>
@@ -4379,7 +4649,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenReintegrosAsociados", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen reintegros asociados..
         /// </summary>
@@ -4388,7 +4658,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenReintegrosAsociados2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen turnos asociados.
         /// </summary>
@@ -4397,7 +4667,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenTurnosAsociados", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen turnos asociados..
         /// </summary>
@@ -4406,7 +4676,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenTurnosAsociados2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen turnos disponibles.
         /// </summary>
@@ -4415,7 +4685,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenTurnosDisponibles", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen turnos disponibles..
         /// </summary>
@@ -4424,7 +4694,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenTurnosDisponibles2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen usuarios registrados.
         /// </summary>
@@ -4433,7 +4703,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenUsuariosRegistrados", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existen usuarios registrados..
         /// </summary>
@@ -4442,7 +4712,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExistenUsuariosRegistrados2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existe una cobertura asociada.
         /// </summary>
@@ -4451,7 +4721,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExisteUnaCoberturaAsociada", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No existe una cobertura asociada..
         /// </summary>
@@ -4460,7 +4730,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoExisteUnaCoberturaAsociada2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No fue posible registrar la contratación del plan.
         /// </summary>
@@ -4469,7 +4739,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoFuePosibleRegistrarLaContratacionDelPlan", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No fue posible registrar la contratación del plan..
         /// </summary>
@@ -4478,7 +4748,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoFuePosibleRegistrarLaContratacionDelPlan2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No hay respaldos XML válidos disponibles..
         /// </summary>
@@ -4487,7 +4757,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoHayRespaldosXmlValidosDisponibles", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
@@ -4496,7 +4766,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Nombre", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Nombre de usuario.
         /// </summary>
@@ -4505,7 +4775,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NombreDeUsuario", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Nombre de usuario..
         /// </summary>
@@ -4514,7 +4784,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NombreDeUsuario2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No posee autorización para restablecer la contraseña.
         /// </summary>
@@ -4523,7 +4793,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoPoseeAutorizacionParaRestablecerLaContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No posee autorización para restablecer la contraseña..
         /// </summary>
@@ -4532,7 +4802,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoPoseeAutorizacionParaRestablecerLaContrasena2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se detectaron errores de integridad..
         /// </summary>
@@ -4541,7 +4811,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSeDetectaronErroresDeIntegridad", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se encontraron eventos para la consulta..
         /// </summary>
@@ -4550,7 +4820,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSeEncontraronEventosParaLaConsulta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se encontraron eventos para los filtros indicados..
         /// </summary>
@@ -4559,7 +4829,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSeEncontraronEventosParaLosFiltrosIndicados", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se encontraron usuarios para la consulta..
         /// </summary>
@@ -4568,7 +4838,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSeEncontraronUsuariosParaLaConsulta", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se encontraron usuarios que coincidan con los parámetros de filtrado..
         /// </summary>
@@ -4577,7 +4847,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSeEncontraronUsuariosQueCoincidanConLos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo acceder a un respaldo válido. La recuperación no se completó..
         /// </summary>
@@ -4586,7 +4856,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoAccederAUnRespaldoValido", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo actualizar el usuario..
         /// </summary>
@@ -4595,7 +4865,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoActualizarElUsuario", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo actualizar el usuario.
         /// </summary>
@@ -4604,7 +4874,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoActualizarElUsuario2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo autorizar el acceso. Revise sus credenciales o espere si hubo intentos fallidos..
         /// </summary>
@@ -4613,7 +4883,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoAutorizarElAccesoReviseSus", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar el cierre de sesión.
         /// </summary>
@@ -4622,7 +4892,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoCompletarElCierreDeSesion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar el cierre de sesión..
         /// </summary>
@@ -4631,7 +4901,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoCompletarElCierreDeSesion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la consulta de bitácora..
         /// </summary>
@@ -4640,7 +4910,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoCompletarLaConsultaDeBitacora", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la consulta de bitácora.
         /// </summary>
@@ -4649,7 +4919,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoCompletarLaConsultaDeBitacora2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la operación..
         /// </summary>
@@ -4658,7 +4928,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoCompletarLaOperacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la operación de respaldo o restauración.
         /// </summary>
@@ -4667,7 +4937,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoCompletarLaOperacionDeRespaldo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la operación de respaldo o restauración..
         /// </summary>
@@ -4676,7 +4946,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoCompletarLaOperacionDeRespaldo2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la recuperación en SQL Server. Verifique su disponibilidad y reintente..
         /// </summary>
@@ -4685,7 +4955,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoCompletarLaRecuperacionEnSql", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo generar la salida XML..
         /// </summary>
@@ -4694,7 +4964,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoGenerarLaSalidaXml", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo generar la salida XML.
         /// </summary>
@@ -4703,7 +4973,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoGenerarLaSalidaXml2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo leer el histórico XML de bitácora..
         /// </summary>
@@ -4712,7 +4982,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoLeerElHistoricoXmlDe", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo leer el histórico XML de bitácora.
         /// </summary>
@@ -4721,7 +4991,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoLeerElHistoricoXmlDe2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar la consulta en bitácora..
         /// </summary>
@@ -4730,7 +5000,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoRegistrarLaConsultaEnBitacora", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar la consulta en bitácora.
         /// </summary>
@@ -4739,7 +5009,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoRegistrarLaConsultaEnBitacora2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar la operación en bitácora..
         /// </summary>
@@ -4748,7 +5018,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoRegistrarLaOperacionEnBitacora", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar la operación en bitácora.
         /// </summary>
@@ -4757,7 +5027,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoRegistrarLaOperacionEnBitacora2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se pudo verificar el material criptográfico de la cuenta de emergencia..
         /// </summary>
@@ -4766,7 +5036,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePudoVerificarElMaterialCriptograficoDe", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No se puede configurar durante una restauración..
         /// </summary>
@@ -4775,7 +5045,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoSePuedeConfigurarDuranteUnaRestauracion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No tenés permisos para acceder a esta página con el rol de tu sesión..
         /// </summary>
@@ -4784,7 +5054,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoTenesPermisosParaAccederAEstaPagina", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No verificado.
         /// </summary>
@@ -4793,7 +5063,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoVerificado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No verificado..
         /// </summary>
@@ -4802,7 +5072,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NoVerificado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Nueva contraseña.
         /// </summary>
@@ -4811,7 +5081,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NuevaContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Nueva contraseña..
         /// </summary>
@@ -4820,7 +5090,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NuevaContrasena2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to NuGet es una extensión gratuita que facilita agregar, quitar y actualizar bibliotecas y herramientas en proyectos de Visual Studio..
         /// </summary>
@@ -4829,7 +5099,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_NugetEsUnaExtensionGratuitaQueFacilitaAgregar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Obtener más bibliotecas.
         /// </summary>
@@ -4838,7 +5108,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_ObtenerMasBibliotecas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Olvidé mi contraseña.
         /// </summary>
@@ -4847,7 +5117,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_OlvideMiContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Olvidé mi contraseña..
         /// </summary>
@@ -4856,7 +5126,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_OlvideMiContrasena2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Opciones de acceso.
         /// </summary>
@@ -4865,7 +5135,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_OpcionesDeAcceso", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Opciones de acceso..
         /// </summary>
@@ -4874,7 +5144,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_OpcionesDeAcceso2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Opciones de cierre de sesión.
         /// </summary>
@@ -4883,7 +5153,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_OpcionesDeCierreDeSesion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Opciones de cierre de sesión..
         /// </summary>
@@ -4892,7 +5162,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_OpcionesDeCierreDeSesion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Opciones de recuperación.
         /// </summary>
@@ -4901,7 +5171,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_OpcionesDeRecuperacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Opciones de recuperación..
         /// </summary>
@@ -4910,7 +5180,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_OpcionesDeRecuperacion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Operación inválida..
         /// </summary>
@@ -4919,7 +5189,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_OperacionInvalida", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Página de contacto..
         /// </summary>
@@ -4928,7 +5198,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_PaginaDeContacto", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Página maestra móvil.
         /// </summary>
@@ -4937,7 +5207,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_PaginaMaestraMovil", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Pago rechazado.
         /// </summary>
@@ -4946,7 +5216,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_PagoRechazado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Pago rechazado..
         /// </summary>
@@ -4955,7 +5225,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_PagoRechazado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Planes.
         /// </summary>
@@ -4964,7 +5234,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Planes", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Podés elegir un proveedor de alojamiento web con las funciones y el precio adecuados para tus aplicaciones..
         /// </summary>
@@ -4973,7 +5243,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_PodesElegirUnProveedorDeAlojamientoWebCon", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Primera.
         /// </summary>
@@ -4982,7 +5252,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Primera", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Primeros pasos.
         /// </summary>
@@ -4991,7 +5261,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_PrimerosPasos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Punto de recuperación.
         /// </summary>
@@ -5000,7 +5270,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_PuntoDeRecuperacion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Punto de recuperación..
         /// </summary>
@@ -5009,7 +5279,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_PuntoDeRecuperacion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recuperación del WebMaster.
         /// </summary>
@@ -5018,7 +5288,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RecuperacionDelWebmaster", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recuperación del WebMaster..
         /// </summary>
@@ -5027,7 +5297,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RecuperacionDelWebmaster2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recuperar acceso WebMaster.
         /// </summary>
@@ -5036,7 +5306,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RecuperarAccesoWebmaster", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recuperar acceso WebMaster..
         /// </summary>
@@ -5045,7 +5315,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RecuperarAccesoWebmaster2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recuperar contraseña.
         /// </summary>
@@ -5054,7 +5324,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RecuperarContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recuperar contraseña..
         /// </summary>
@@ -5063,7 +5333,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RecuperarContrasena2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Reintegros.
         /// </summary>
@@ -5072,7 +5342,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Reintegros", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restablecer contraseña.
         /// </summary>
@@ -5081,7 +5351,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestablecerContrasena", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restablecer contraseña..
         /// </summary>
@@ -5090,7 +5360,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestablecerContrasena2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restauración completada.
         /// </summary>
@@ -5099,7 +5369,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestauracionCompletada", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restauración completada..
         /// </summary>
@@ -5108,7 +5378,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestauracionCompletada2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restauración en curso..
         /// </summary>
@@ -5117,7 +5387,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestauracionEnCurso", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restauración pendiente: no se puede crear un backup sano..
         /// </summary>
@@ -5126,7 +5396,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestauracionPendienteNoSePuedeCrearUnBackup", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restaurar backup seleccionado.
         /// </summary>
@@ -5135,7 +5405,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestaurarBackupSeleccionado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restaurar backup seleccionado..
         /// </summary>
@@ -5144,7 +5414,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestaurarBackupSeleccionado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restaurar punto seleccionado.
         /// </summary>
@@ -5153,7 +5423,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestaurarPuntoSeleccionado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restaurar punto seleccionado..
         /// </summary>
@@ -5162,7 +5432,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestaurarPuntoSeleccionado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restaurar un backup.
         /// </summary>
@@ -5171,7 +5441,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestaurarUnBackup", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restaurar un backup..
         /// </summary>
@@ -5180,7 +5450,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RestaurarUnBackup2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Revisá el nombre y el estado de la búsqueda..
         /// </summary>
@@ -5189,7 +5459,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RevisaElNombreYElEstadoDeLa", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Revisá los siguientes datos:.
         /// </summary>
@@ -5198,7 +5468,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_RevisaLosSiguientesDatos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Rol.
         /// </summary>
@@ -5207,7 +5477,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Rol", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Seleccionar.
         /// </summary>
@@ -5216,7 +5486,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Seleccionar", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Seleccionar..
         /// </summary>
@@ -5225,7 +5495,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Seleccionar2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Seleccionar idioma.
         /// </summary>
@@ -5234,7 +5504,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_SeleccionarIdioma", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Seleccionar idioma..
         /// </summary>
@@ -5243,7 +5513,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_SeleccionarIdioma2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Se reiniciarán los intentos fallidos. El estado Activo o Inactivo se conservará..
         /// </summary>
@@ -5252,7 +5522,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_SeReiniciaranLosIntentosFallidosElEstadoActivo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Se requiere un WebMaster activo y confiable en el respaldo..
         /// </summary>
@@ -5261,7 +5531,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_SeRequiereUnWebmasterActivoYConfiableEn", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Se verifican todas las tablas, sus DVH/DVV y las referencias protegidas por campo. Los respaldos abarcan toda la base de datos..
         /// </summary>
@@ -5270,7 +5540,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_SeVerificanUsuarioYBitacoraSusDvhDvv", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Sin usuario asociado.
         /// </summary>
@@ -5279,7 +5549,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_SinUsuarioAsociado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Sin usuario asociado..
         /// </summary>
@@ -5288,7 +5558,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_SinUsuarioAsociado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Soporte:.
         /// </summary>
@@ -5297,7 +5567,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Soporte", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tabla.
         /// </summary>
@@ -5306,7 +5576,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Tabla", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Teléfono.
         /// </summary>
@@ -5315,7 +5585,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Telefono", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Todas.
         /// </summary>
@@ -5324,7 +5594,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Todas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Todos.
         /// </summary>
@@ -5333,7 +5603,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Todos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Turnos.
         /// </summary>
@@ -5342,7 +5612,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Turnos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Última.
         /// </summary>
@@ -5351,7 +5621,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Ultima", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Use de 12 a 100 caracteres, con mayúscula, número y símbolo. Guarde estas credenciales en un lugar seguro..
         /// </summary>
@@ -5360,7 +5630,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_UseDe12A100CaracteresConMayuscula", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuario.
         /// </summary>
@@ -5369,7 +5639,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Usuario", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuario bloqueado.
         /// </summary>
@@ -5378,7 +5648,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_UsuarioBloqueado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuario bloqueado..
         /// </summary>
@@ -5387,7 +5657,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_UsuarioBloqueado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuario inactivo o bloqueado.
         /// </summary>
@@ -5396,7 +5666,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_UsuarioInactivoOBloqueado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuario inactivo o bloqueado..
         /// </summary>
@@ -5405,7 +5675,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_UsuarioInactivoOBloqueado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuarios.
         /// </summary>
@@ -5414,7 +5684,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Usuarios", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuario seleccionado.
         /// </summary>
@@ -5423,7 +5693,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_UsuarioSeleccionado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuario seleccionado..
         /// </summary>
@@ -5432,7 +5702,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_UsuarioSeleccionado2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Utilizá esta sección para incluir información adicional..
         /// </summary>
@@ -5441,7 +5711,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_UtilizaEstaSeccionParaIncluirInformacionAdicional", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Verificado.
         /// </summary>
@@ -5450,7 +5720,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Verificado", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Verificar integridad.
         /// </summary>
@@ -5459,7 +5729,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VerificarIntegridad", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Verificar integridad..
         /// </summary>
@@ -5468,7 +5738,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VerificarIntegridad2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ver mensajes de error para capturas.
         /// </summary>
@@ -5477,7 +5747,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VerMensajesDeErrorParaCapturas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ver mensajes de error para capturas..
         /// </summary>
@@ -5486,7 +5756,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VerMensajesDeErrorParaCapturas2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Vista.
         /// </summary>
@@ -5495,7 +5765,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Vista", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volvé al inicio para utilizar las funciones habilitadas para tu perfil..
         /// </summary>
@@ -5504,7 +5774,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VolveAlInicioParaUtilizarLasFuncionesHabilitadas", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volver.
         /// </summary>
@@ -5513,7 +5783,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Volver", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volver a cargar los datos.
         /// </summary>
@@ -5522,7 +5792,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VolverACargarLosDatos", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volver a cargar los datos..
         /// </summary>
@@ -5531,7 +5801,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VolverACargarLosDatos2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volver al inicio.
         /// </summary>
@@ -5540,7 +5810,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VolverAlInicio", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volver al inicio..
         /// </summary>
@@ -5549,7 +5819,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VolverAlInicio2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volver al inicio de sesión.
         /// </summary>
@@ -5558,7 +5828,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VolverAlInicioDeSesion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volver al inicio de sesión..
         /// </summary>
@@ -5567,7 +5837,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VolverAlInicioDeSesion2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volver al Login.
         /// </summary>
@@ -5576,7 +5846,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VolverAlLogin", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Volver al Login..
         /// </summary>
@@ -5585,7 +5855,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_VolverAlLogin2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Webmaster.
         /// </summary>
@@ -5594,7 +5864,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UI_Webmaster", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Usuario {0}.
         /// </summary>
@@ -5603,7 +5873,7 @@ namespace VitaPet.GUI.Resources {
                 return ResourceManager.GetString("UsuarioNumero", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Respaldo XML de contingencia creado: {0}.
         /// </summary>

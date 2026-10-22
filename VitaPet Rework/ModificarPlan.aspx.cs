@@ -13,7 +13,9 @@ public partial class ModificarPlanPage:PaginaPlan
     protected void Guardar(object sender,EventArgs e)
     {
         EjecutarPlan(()=>{
-            if(!pnlDatos.Visible||!pnlDatos.Enabled)throw new PlanException("ER011");new PlanBLL().Actualizar(IdPlan,editorPlan.Datos());
+            if(!pnlDatos.Visible||!pnlDatos.Enabled)throw new PlanException("ER011");
+            if(!ValidacionAlta.Validar(this,"ModificarPlan"))return;
+            new PlanBLL().Actualizar(IdPlan,editorPlan.Datos());
             Response.Redirect(ResolveUrl("~/ModificarPlan.aspx")+"?id="+IdPlan.ToString(CultureInfo.InvariantCulture),false);Context.ApplicationInstance.CompleteRequest();
         });
     }

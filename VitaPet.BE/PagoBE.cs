@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace VitaPet.BE
 {
@@ -14,6 +14,8 @@ namespace VitaPet.BE
 
     public sealed class PagoBE
     {
+        public FacturaBE Factura {get;set;}
+        public string CodigoErrorFactura {get;set;}
         public int IdPago { get; set; }
         public int IdSuscripcion { get; set; }
         public string NombrePlan { get; set; }

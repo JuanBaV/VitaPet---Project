@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using VitaPet.BE;
@@ -27,11 +27,11 @@ namespace VitaPet.DAL
             return new ResumenPagoBE{IdSuscripcion=(int)r["idSuscripcion"],IdPlan=(int)r["idPlan"],NombrePlan=(string)r["nombre"],
                 PrecioMascota=(decimal)r["precio"],CantidadMascotas=(int)r["cantidadMascotas"],Importe=(decimal)r["importe"]};
         }
-        public int Registrar(int usuario,int suscripcion,decimal importe,string medio)
+        public int Registrar(int usuario,int suscripcion,decimal importe,string medio,string titular)
         {
             var t=Leer("dbo.sp_Pago_Registrar",usuario,suscripcion,
                 new SqlParameter("@importe",SqlDbType.Decimal){Precision=10,Scale=2,Value=importe},
-                new SqlParameter("@medioPago",SqlDbType.VarChar,40){Value=medio});
+                new SqlParameter("@medioPago",SqlDbType.VarChar,40){Value=medio},new SqlParameter("@titular",SqlDbType.NVarChar,100){Value=titular.Trim()});
             return (int)t.Rows[0][0];
         }
         public PagoBE Comprobante(int usuario,int suscripcion)

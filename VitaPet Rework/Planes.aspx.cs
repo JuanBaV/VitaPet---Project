@@ -5,6 +5,7 @@ using VitaPet.GUI.Presentacion;
 public partial class PlanesPage : PaginaClientePlanes
 {
     protected override void EjecutarFuncionalidad(){if(!IsPostBack)EjecutarPlan(()=>{
+        ucFacturas.Vincular(new FacturaBLL().ListarPropias());
         ucPlanes.Vincular(new ContratacionPlanBLL().ConsultarPlanes());
         if(Session["PlanContratado"] as bool? == true){
             Session.Remove("PlanContratado");pnlMensaje.Visible=true;

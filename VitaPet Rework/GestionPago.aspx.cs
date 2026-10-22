@@ -6,9 +6,11 @@ using VitaPet.GUI.Presentacion;
 
 public partial class GestionPagoPage : PaginaClientePlanes
 {
+    private bool descarga;
     private int IdSuscripcion { get {int id;return int.TryParse(Request.QueryString["contratacion"],out id)&&id>0?id:0;} }
     protected override void EjecutarFuncionalidad()
     {
+        if(!IsPostBack && Request.QueryString["descargar"]=="1"){DescargarFactura_Click(this,EventArgs.Empty);return;}
         pnlDummy.Visible=GestionPagoBLL.EsPruebaLocal && pnlPendiente.Visible;
         if(!IsPostBack)EjecutarPlan(()=>{
             if(IdSuscripcion==0)throw new GestionPagoException("ER054");
@@ -41,6 +43,10 @@ public partial class GestionPagoPage : PaginaClientePlanes
         lblImportePagado.Text=USD(p.Importe);
         lblMedioPagado.Text=TextosUI.Obtener(p.MedioPago==GestionPagoBLL.Credito?"Pago_Credito":"Pago_Debito");
         lblFechaPago.Text=p.FechaPago.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture);
+        pnlMensaje.Visible=false;
+        lblNumeroFactura.Text=p.Factura==null?TextosUI.Obtener("Factura_Pendiente"):Server.HtmlEncode(p.Factura.Numero);
+        btnDescargarFactura.Visible=p.Factura!=null;btnReintentarFactura.Visible=p.Factura==null;
+        if(p.CodigoErrorFactura!=null)MostrarErrorPlan(p.CodigoErrorFactura);
     }
     private void ValidarContexto()
     {
@@ -69,5 +75,18 @@ public partial class GestionPagoPage : PaginaClientePlanes
             Response.Redirect(ResolveUrl("~/Planes.aspx"),false);Context.ApplicationInstance.CompleteRequest();
         });
     }
+    protected void ReintentarFactura_Click(object sender,EventArgs e)
+    {EjecutarPlan(()=>{ValidarContexto();new FacturaBLL().Emitir(IdSuscripcion);MostrarComprobante();});}
+    protected void DescargarFactura_Click(object sender,EventArgs e)
+    {
+        EjecutarPlan(()=>{
+            byte[] pdf=new FacturaBLL().Descargar(IdSuscripcion);Response.Clear();Response.ContentType="application/pdf";
+            Response.AddHeader("Content-Disposition","attachment; filename=Factura-VitaPet-"+IdSuscripcion+".pdf");
+            Response.AddHeader("Content-Length",pdf.Length.ToString(CultureInfo.InvariantCulture));
+            Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);Response.Cache.SetNoStore();
+            Response.BinaryWrite(pdf);descarga=true;Context.ApplicationInstance.CompleteRequest();
+        });
+    }
+    protected override void Render(System.Web.UI.HtmlTextWriter writer){if(!descarga)base.Render(writer);}
     private static string USD(decimal value){return "USD "+value.ToString("N2",CultureInfo.InvariantCulture);}
 }

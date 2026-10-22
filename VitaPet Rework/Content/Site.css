@@ -561,3 +561,34 @@ textarea {
     .navbar-role-menu { width: 100%; justify-content: flex-start; }
     .navbar-role-links { flex-wrap: wrap; }
 }
+
+/* Seleccion de especialidad, fecha y horario */
+.turnos-ayuda { color:#526763; line-height:1.6; }
+.turnos-reserva { display:grid; grid-template-columns:minmax(280px,1fr) minmax(240px,1fr); gap:24px; margin:24px 0; }
+.turnos-fechas, .turnos-horas { min-width:0; padding:20px; border:1px solid #d5e5e1; border-radius:12px; background:#fbfdfc; }
+.turnos-reserva .turnos-subtitulo { margin-top:0; }
+.turnos-calendario { width:100%; border:0 !important; border-collapse:separate; border-spacing:4px; text-align:center; }
+.turnos-calendario td { padding:2px; height:40px; }
+.turnos-calendario .turnos-calendario-titulo { background:#e4f3ef; font-size:16px; font-weight:600; }
+.turnos-calendario-titulo a { color:#145c55 !important; padding:8px; }
+.turnos-calendario-semana { color:#526763; font-size:12px; text-align:center; padding:10px 0; }
+.turnos-calendario .turnos-dia-disponible { background:#e4f3ef; border-radius:6px; }
+.turnos-dia-disponible a { display:block; color:#145c55 !important; padding:8px 2px; border-radius:6px; font-weight:600; }
+.turnos-dia-disponible a:hover, .turnos-dia-disponible a:focus-visible { background:#c5e7dd; outline:2px solid #0f766e; }
+.turnos-calendario .turnos-dia-seleccionado { background:#0f766e !important; color:white !important; }
+.turnos-dia-seleccionado a { color:white !important; }
+.turnos-calendario .turnos-dia-no-disponible { color:#788883; background:transparent; }
+.turnos-otro-mes { opacity:.6; }
+.turnos-horarios { display:flex; flex-wrap:wrap; gap:10px; padding:0; margin:18px 0 0; list-style:none; }
+.turnos-horarios li { display:flex; align-items:center; gap:6px; border:1px solid #c5dcd5; border-radius:8px; background:white; padding:10px 12px; }
+.turnos-horarios label { margin:0; cursor:pointer; font-weight:600; }
+.turnos-horarios input { margin:0; accent-color:#0f766e; }
+.turnos-horarios li:has(input:checked) { background:#e4f3ef; border-color:#0f766e; }
+.turnos-horarios li:focus-within { outline:2px solid #0f766e; outline-offset:2px; }
+@media(max-width:760px) { .turnos-reserva { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:400px) { .turnos-fechas, .turnos-horas { padding:12px; } .turnos-calendario { border-spacing:2px; } }
+
+.facturas-seccion { margin-top: 28px; }
+.factura-item { margin: 16px 0; padding: 20px; border: 1px solid #dbe7e5; border-radius: 8px; }
+.factura-item h3 { margin-top: 0; }
+.factura-item dd { overflow-wrap: anywhere; }

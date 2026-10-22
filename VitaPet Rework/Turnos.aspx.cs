@@ -1,5 +1,7 @@
 using System;
 using System.Globalization;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Services.Protocols;
@@ -12,6 +14,8 @@ using VitaPet.GUI.WebServices;
 public partial class TurnosPage : PaginaClientePlanes
 {
     private bool descargando;
+    private List<DisponibilidadTurnoBE> disponibilidad;
+    private readonly HashSet<DateTime> diasDisponibles = new HashSet<DateTime>();
     private bool Consulta {get{return string.Equals(Request.QueryString["vista"],"consulta",StringComparison.Ordinal);}}
     private int Mascota {get{return ucSelectorMascota.IdMascotaSeleccionada;}}
     private int Agenda {get{return ViewState["TurnoAgenda"]==null?0:(int)ViewState["TurnoAgenda"];}set{ViewState["TurnoAgenda"]=value;}}
@@ -24,7 +28,7 @@ public partial class TurnosPage : PaginaClientePlanes
         (Consulta?lnkConsultar:lnkSolicitar).CssClass="btn btn-primary";
         if(!IsPostBack)EjecutarPlan(()=>{
             ucSelectorMascota.Vincular(new MascotaBLL().Listar());
-            if(!Consulta)ucFiltroZona.Vincular(new SolicitudTurnoBLL().Zonas());
+            if(!Consulta){ucFiltroZona.Vincular(new SolicitudTurnoBLL().Zonas());LimpiarEspecialidades();}
         });
     }
     private static T Servicio<T>(Func<T> llamada) where T:class
@@ -35,39 +39,99 @@ public partial class TurnosPage : PaginaClientePlanes
         catch(WebException ex){throw new TurnoException("ER065",ex);}
     }
     private static void Validar(string codigo){if(!string.IsNullOrEmpty(codigo))throw new TurnoException(codigo);}
-    private void LimpiarSolicitud(bool listado=true)
+    private void LimpiarSolicitud(bool horarios=true)
     {
         Agenda=0;Fecha=default(DateTime);Horario=string.Empty;btnConfirmarSolicitud.Enabled=false;
-        lblTurnoSeleccionado.Visible=false;lblConfirmacion.Visible=false;gvDisponibilidad.SelectedIndex=-1;
-        if(listado){gvDisponibilidad.DataSource=null;gvDisponibilidad.DataBind();}
+        lblTurnoSeleccionado.Visible=false;lblConfirmacion.Visible=false;
+        if(horarios)rblHorarios.Items.Clear();
+    }
+    private void LimpiarCalendario()
+    {
+        LimpiarSolicitud();pnlCalendario.Visible=false;calDisponibilidad.SelectedDates.Clear();diasDisponibles.Clear();
+    }
+    private void LimpiarEspecialidades()
+    {
+        ddlEspecialidad.Items.Clear();
+        ddlEspecialidad.Items.Add(new ListItem(TextosUI.Obtener("Turno_SeleccionarEspecialidad"),string.Empty));
+        ddlEspecialidad.Enabled=false;
     }
     private void LimpiarConsulta(){gvTurnos.DataSource=null;gvTurnos.DataBind();btnExportarXml.Enabled=false;}
     protected void SeleccionarMascota(object sender,EventArgs e)
     {
-        LimpiarSolicitud();LimpiarConsulta();
+        disponibilidad=null;LimpiarCalendario();LimpiarEspecialidades();LimpiarConsulta();
         EjecutarPlan(()=>{
             var propia=new MascotaBLL().Seleccionar(Mascota);ViewState["TurnoMascotaNombre"]=propia.Nombre;
             if(Consulta)CargarConsulta();
-            else {ucFiltroZona.LimpiarSeleccion();ucFiltroZona.Habilitado=true;btnBuscarDisponibilidad.Enabled=true;}
+            else {ucFiltroZona.LimpiarSeleccion();ucFiltroZona.Habilitado=true;}
         });
     }
-    protected void CambiarZona(object sender,EventArgs e){LimpiarSolicitud();}
-    private void CargarDisponibilidad(int pagina)
+    private List<DisponibilidadTurnoBE> ObtenerDisponibilidad()
     {
-        var r=Servicio(()=>new TurnoService().ObtenerDisponibilidadPorZona(Mascota,ucFiltroZona.ZonaSeleccionada));Validar(r.CodigoError);
-        if(r.Turnos==null)throw new TurnoException("ER065");
-        gvDisponibilidad.PageIndex=Math.Max(0,Math.Min(pagina,(r.Turnos.Count-1)/gvDisponibilidad.PageSize));
-        gvDisponibilidad.DataSource=r.Turnos;gvDisponibilidad.DataBind();
+        if(disponibilidad==null)
+        {
+            var r=Servicio(()=>new TurnoService().ObtenerDisponibilidadPorZona(Mascota,ucFiltroZona.ZonaSeleccionada));
+            Validar(r.CodigoError);if(r.Turnos==null)throw new TurnoException("ER065");
+            disponibilidad=r.Turnos;
+        }
+        return disponibilidad;
     }
-    protected void BuscarDisponibilidad(object sender,EventArgs e){LimpiarSolicitud();EjecutarPlan(()=>CargarDisponibilidad(0));}
-    protected void PaginarDisponibilidad(object sender,GridViewPageEventArgs e){LimpiarSolicitud();EjecutarPlan(()=>CargarDisponibilidad(e.NewPageIndex));}
-    protected void SeleccionarTurno(object sender,EventArgs e)
+    private List<DisponibilidadTurnoBE> DisponibilidadEspecialidad()
     {
-        // Leer la clave protegida por ViewState antes de limpiar la selección anterior.
-        var clave=gvDisponibilidad.SelectedDataKey;LimpiarSolicitud(false);
+        return ObtenerDisponibilidad().Where(t=>string.Equals(t.Prestacion,ddlEspecialidad.SelectedValue,StringComparison.Ordinal)).ToList();
+    }
+    protected void CambiarZona(object sender,EventArgs e)
+    {
+        disponibilidad=null;LimpiarCalendario();LimpiarEspecialidades();
+        if(string.IsNullOrEmpty(ucFiltroZona.ZonaSeleccionada))return;
         EjecutarPlan(()=>{
-            if(clave==null)throw new TurnoException("ER002");
-            var r=Servicio(()=>new TurnoService().VerificarDisponibilidadTurno(Mascota,(int)clave.Values["IdAgendaTurno"],(DateTime)clave.Values["Fecha"],(string)clave.Values["Horario"]));
+            foreach(string especialidad in ObtenerDisponibilidad().Select(t=>t.Prestacion).Distinct().OrderBy(p=>p))
+                ddlEspecialidad.Items.Add(new ListItem(especialidad,especialidad));
+            ddlEspecialidad.Enabled=ddlEspecialidad.Items.Count>1;
+        });
+    }
+    protected void CambiarEspecialidad(object sender,EventArgs e)
+    {
+        LimpiarCalendario();
+        if(string.IsNullOrEmpty(ddlEspecialidad.SelectedValue))return;
+        EjecutarPlan(()=>{
+            var turnos=DisponibilidadEspecialidad();
+            pnlCalendario.Visible=true;
+            lblDisponibilidad.Text=TextosUI.Obtener(turnos.Count==0?"Turno_SinHorarios":"Turno_SeleccionarFecha");
+            if(turnos.Count>0)calDisponibilidad.VisibleDate=turnos.Min(t=>t.Fecha).Date;
+        });
+    }
+    protected void MostrarDia(object sender,DayRenderEventArgs e)
+    {
+        bool disponible=diasDisponibles.Contains(e.Day.Date.Date);
+        e.Day.IsSelectable=disponible;
+        e.Cell.CssClass+=(disponible?" turnos-dia-disponible":" turnos-dia-no-disponible");
+        e.Cell.ToolTip=TextosUI.Obtener(disponible?"Turno_DiaDisponible":"Turno_DiaSinDisponibilidad");
+    }
+    protected void CambiarMes(object sender,MonthChangedEventArgs e)
+    {
+        LimpiarSolicitud();calDisponibilidad.SelectedDates.Clear();
+        lblDisponibilidad.Text=TextosUI.Obtener("Turno_SeleccionarFecha");
+    }
+    private static string ClaveHorario(DisponibilidadTurnoBE turno)
+    {return turno.IdAgendaTurno.ToString(CultureInfo.InvariantCulture)+"|"+turno.Horario;}
+    private void CargarHorarios()
+    {
+        var turnos=DisponibilidadEspecialidad().Where(t=>t.Fecha.Date==calDisponibilidad.SelectedDate.Date).OrderBy(t=>t.Horario).ToList();
+        rblHorarios.Items.Clear();
+        foreach(var turno in turnos)rblHorarios.Items.Add(new ListItem(turno.Horario,ClaveHorario(turno)));
+        lblDisponibilidad.Text=turnos.Count==0?TextosUI.Obtener("Turno_SinHorarios"):calDisponibilidad.SelectedDate.ToString("D",CultureInfo.CurrentCulture);
+    }
+    protected void SeleccionarFecha(object sender,EventArgs e)
+    {
+        LimpiarSolicitud();EjecutarPlan(CargarHorarios);
+    }
+    protected void SeleccionarHorario(object sender,EventArgs e)
+    {
+        string clave=rblHorarios.SelectedValue;LimpiarSolicitud(false);
+        EjecutarPlan(()=>{
+            var elegido=DisponibilidadEspecialidad().SingleOrDefault(t=>t.Fecha.Date==calDisponibilidad.SelectedDate.Date&&ClaveHorario(t)==clave);
+            if(elegido==null)throw new TurnoException("ER013");
+            var r=Servicio(()=>new TurnoService().VerificarDisponibilidadTurno(Mascota,elegido.IdAgendaTurno,elegido.Fecha,elegido.Horario));
             Validar(r.CodigoError);if(r.Turno==null)throw new TurnoException("ER065");
             Agenda=r.Turno.IdAgendaTurno;Fecha=r.Turno.Fecha;Horario=r.Turno.Horario;
             lblTurnoSeleccionado.Text=Server.HtmlEncode(r.Turno.Prestacion+" · "+Fecha.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture)+" · "+Horario+" · "+r.Turno.Zona);
@@ -80,7 +144,7 @@ public partial class TurnosPage : PaginaClientePlanes
             if(Agenda<=0)throw new TurnoException("ER002");
             var r=Servicio(()=>new TurnoService().RegistrarTurno(Mascota,Agenda,Fecha,Horario));Validar(r.CodigoError);
             if(r.Turno==null)throw new TurnoException("ER065");
-            var t=r.Turno;LimpiarSolicitud();
+            var t=r.Turno;LimpiarCalendario();ddlEspecialidad.SelectedIndex=0;disponibilidad=null;
             lblConfirmacion.Text=Server.HtmlEncode(string.Format(CultureInfo.CurrentCulture,TextosUI.Obtener("Turno_Confirmacion"),
                 t.IdTurno,(string)ViewState["TurnoMascotaNombre"],t.Prestacion,t.Fecha.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture),t.Horario,t.Zona));
             lblConfirmacion.Visible=true;
@@ -107,7 +171,11 @@ public partial class TurnosPage : PaginaClientePlanes
     protected override void OnPreRender(EventArgs e)
     {
         if(pnlMensaje.Visible&&!litMensaje.Text.StartsWith("ER015",StringComparison.Ordinal)){LimpiarSolicitud();LimpiarConsulta();}
-        foreach(var grid in new[]{gvDisponibilidad,gvTurnos})if(grid.HeaderRow!=null)grid.HeaderRow.TableSection=TableRowSection.TableHeader;
+        if(!Consulta&&pnlCalendario.Visible&&!pnlMensaje.Visible)EjecutarPlan(()=>{
+            diasDisponibles.UnionWith(DisponibilidadEspecialidad().Select(t=>t.Fecha.Date));
+        });
+        if(pnlMensaje.Visible&&!litMensaje.Text.StartsWith("ER015",StringComparison.Ordinal)){LimpiarSolicitud();diasDisponibles.Clear();}
+        if(gvTurnos.HeaderRow!=null)gvTurnos.HeaderRow.TableSection=TableRowSection.TableHeader;
         base.OnPreRender(e);
     }
     protected override void Render(HtmlTextWriter writer){if(!descargando)base.Render(writer);}

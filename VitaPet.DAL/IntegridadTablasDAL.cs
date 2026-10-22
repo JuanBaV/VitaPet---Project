@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,7 +12,7 @@ namespace VitaPet.DAL
                 {"Empresa", "idEmpresa"}, {"Cliente", "idCliente"}, {"Plan", "idPlan"},
                 {"Cobertura", "idCobertura"}, {"Suscripcion", "idSuscripcion"}, {"Pago", "idPago"},
                 {"Mascota", "idMascota"}, {"Turno", "idTurno"}, {"HistorialClinico", "idHistorial"},
-                {"Reintegro", "idReintegro"}, {"ErrorSistema", "codigo"}, {"DatosClinicos", "idDatoClinico"}, {"AgendaTurno", "idAgendaTurno"}
+                {"Reintegro", "idReintegro"}, {"ErrorSistema", "codigo"}, {"DatosClinicos", "idDatoClinico"}, {"AgendaTurno", "idAgendaTurno"}, {"DetallePago", "idPago"}, {"Factura", "idFactura"}
             });
         public IReadOnlyDictionary<string,string> ClavesEsquema
         {
@@ -21,7 +21,7 @@ namespace VitaPet.DAL
                 // Únicamente un respaldo temporal anterior a la migración puede omitir su tabla nueva y vacía.
                 var claves=Claves.ToDictionary(k=>k.Key,k=>k.Value);
                 if(ConexionDAL.EnBaseTemporal)
-                foreach(var ampliacion in new[]{new[]{"DatosClinicos","021_GestionMascotas.sql"},new[]{"AgendaTurno","022_Turnos.sql"}})
+                foreach(var ampliacion in new[]{new[]{"DatosClinicos","021_GestionMascotas.sql"},new[]{"AgendaTurno","022_Turnos.sql"},new[]{"DetallePago","027_Facturacion.sql"},new[]{"Factura","027_Facturacion.sql"}})
                 {
                     using(var cn=new ConexionDAL().CrearConexion())
                     using(var cmd=new SqlCommand("SELECT CASE WHEN OBJECT_ID(@tabla,'U') IS NULL AND NOT EXISTS(SELECT 1 FROM dbo.__SchemaMigrations WHERE migrationId=@migracion) AND NOT EXISTS(SELECT 1 FROM dbo.DVV WHERE nombreTabla=@nombre) THEN 1 ELSE 0 END",cn))

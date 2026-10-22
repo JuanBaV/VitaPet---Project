@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 namespace VitaPet.GUI.Presentacion
 {
     // Native browser calendar selector; unlike TextBox, its value is always handled as an optional date.
+    [ValidationProperty("Value")]
     public sealed class DateTimePicker : WebControl, IPostBackDataHandler
     {
         public string Value

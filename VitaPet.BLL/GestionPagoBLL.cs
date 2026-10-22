@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
@@ -49,21 +49,23 @@ namespace VitaPet.BLL
         {return Ejecutar((s,u,d)=>d.ConsultarPendiente(u.IdUsuario,suscripcion));}
 
         public PagoBE ObtenerComprobante(int suscripcion)
-        {return Ejecutar((s,u,d)=>{var p=d.Comprobante(u.IdUsuario,suscripcion);if(p==null)throw new GestionPagoException("ER054");return p;});}
+        {return CompletarFactura(Ejecutar((s,u,d)=>{var p=d.Comprobante(u.IdUsuario,suscripcion);if(p==null)throw new GestionPagoException("ER054");return p;}));}
 
         public PagoBE Pagar(int suscripcion,decimal importeConfirmado,DatosPagoBE datos)
         {
             try
             {
-                return Ejecutar((s,u,d)=>{
+                return CompletarFactura(Ejecutar((s,u,d)=>{
+                    var anterior=d.Comprobante(u.IdUsuario,suscripcion);if(anterior!=null)return anterior;
                     var resumen=d.ConsultarPendiente(u.IdUsuario,suscripcion);
                     Validar(datos);
                     // Nunca aceptar el importe del navegador ni cobrar un resumen anterior.
                     if(importeConfirmado!=resumen.Importe)throw new GestionPagoException("ER025");
                     ProcesarPrueba(datos);
-                    d.Registrar(u.IdUsuario,suscripcion,resumen.Importe,datos.MedioPago);
+                    d.Registrar(u.IdUsuario,suscripcion,resumen.Importe,datos.MedioPago,datos.Titular);
                     var pago=d.Comprobante(u.IdUsuario,suscripcion);
                     IntegridadRegistroBLL.Actualizar("Pago",pago.IdPago);
+                    IntegridadRegistroBLL.Actualizar("DetallePago",pago.IdPago);
                     try
                     {
                         s.RegistrarBitacora(new BitacoraBE{IdUsuario=u.IdUsuario,Fecha=DateTime.Now,
@@ -72,9 +74,16 @@ namespace VitaPet.BLL
                     catch(Exception ex) when(ex is SqlException||ex is IOException||ex is XmlException||ex is UnauthorizedAccessException||ex is TransactionException)
                     {throw new GestionPagoException("ER040",ex);}
                     s.ExigirIntegridad();return pago;
-                });
+                }));
             }
             finally {if(datos!=null)datos.Limpiar();}
+        }
+
+        private static PagoBE CompletarFactura(PagoBE pago)
+        {
+            try{pago.Factura=new FacturaBLL().Emitir(pago.IdSuscripcion);}
+            catch(GestionPagoException ex){if(ex.Codigo=="ER023")throw;pago.CodigoErrorFactura=ex.Codigo;}
+            return pago;
         }
 
         private static void Validar(DatosPagoBE d)

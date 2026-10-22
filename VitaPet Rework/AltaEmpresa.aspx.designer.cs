@@ -14,4 +14,14 @@ public partial class AltaEmpresaPage
     protected global::System.Web.UI.WebControls.TextBox txtTelefono;
     protected global::System.Web.UI.WebControls.Button btnRegistrarEmpresa;
     protected global::System.Web.UI.WebControls.Label lblConfirmacion;
+    protected global::System.Web.UI.WebControls.ValidationSummary vsAltaEmpresa;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRazonSocial;
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator revRazonSocial;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCuit;
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator revCuit;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDireccion;
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator revDireccion;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTelefono;
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator revTelefono;
+    protected global::System.Web.UI.WebControls.CustomValidator cvDatosEmpresa;
 }

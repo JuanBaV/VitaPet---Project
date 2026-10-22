@@ -23,6 +23,7 @@ namespace VitaPet.GUI
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresRegistroCliente();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresPlanes();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresPago();
+                        new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresFacturacion();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresCobertura();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresReintegros();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresRegistroMascota();
@@ -77,6 +78,7 @@ namespace VitaPet.GUI
                     string.Equals(pagina,"ConsultaPlan.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ModificarPlan.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"Planes.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"Cliente.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ContratarPlan.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"GestionPago.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ConsultaCobertura.aspx",StringComparison.OrdinalIgnoreCase) ||

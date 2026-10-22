@@ -1507,4 +1507,34 @@
 <data name="Error_ER076" xml:space="preserve"><value>The plan could not be created</value></data>
 <data name="Error_ER077" xml:space="preserve"><value>The plan could not be updated</value></data>
 <data name="Error_ER078" xml:space="preserve"><value>The plan name is already registered</value></data>
+  <data name="Turno_AyudaCalendario" xml:space="preserve"><value>Highlighted days have appointments available for the selected specialty.</value></data>
+  <data name="Turno_DiaDisponible" xml:space="preserve"><value>Appointments available</value></data>
+  <data name="Turno_DiaSinDisponibilidad" xml:space="preserve"><value>No appointments available</value></data>
+  <data name="Turno_ElegirFecha" xml:space="preserve"><value>Choose a date</value></data>
+  <data name="Turno_Especialidad" xml:space="preserve"><value>Specialty</value></data>
+  <data name="Turno_HorariosDisponibles" xml:space="preserve"><value>Available times</value></data>
+  <data name="Turno_Instrucciones" xml:space="preserve"><value>Choose your pet, area and specialty. Then select an available date and time.</value></data>
+  <data name="Turno_SeleccionarEspecialidad" xml:space="preserve"><value>Select a specialty</value></data>
+  <data name="Turno_SeleccionarFecha" xml:space="preserve"><value>Select a day on the calendar to see available times.</value></data>
+  <data name="Turno_SinHorarios" xml:space="preserve"><value>No times are available. Choose another date or specialty.</value></data>
+  <data name="Alta_ContrasenaInvalida" xml:space="preserve"><value>ER025 - The password must have 8 to 100 characters, including an uppercase letter, a number and a symbol.</value></data>
+  <data name="Alta_CuitInvalido" xml:space="preserve"><value>ER025 - Enter an 11-digit CUIT, with or without hyphens.</value></data>
+  <data name="Alta_DatosInvalidos" xml:space="preserve"><value>ER025 - Check the entered details before continuing.</value></data>
+  <data name="Alta_EstadoInvalido" xml:space="preserve"><value>ER025 - Select a valid status.</value></data>
+  <data name="Alta_FechaNacimientoInvalida" xml:space="preserve"><value>ER025 - Enter a valid birth date that is not in the future.</value></data>
+  <data name="Alta_Obligatorio" xml:space="preserve"><value>ER002 - This field is required.</value></data>
+  <data name="Alta_PrecioInvalido" xml:space="preserve"><value>ER025 - Enter a positive price up to 99999999.99 with no more than two decimal places.</value></data>
+  <data name="Alta_TelefonoInvalido" xml:space="preserve"><value>ER025 - Enter a valid phone number.</value></data>
+  <data name="Alta_TextoInvalido" xml:space="preserve"><value>ER025 - Check the format and length of this field.</value></data>
+  <data name="Factura_MisFacturas" xml:space="preserve"><value>My invoices</value></data>
+  <data name="Factura_Numero" xml:space="preserve"><value>Invoice number</value></data>
+  <data name="Factura_Descargar" xml:space="preserve"><value>Download invoice</value></data>
+  <data name="Factura_Reintentar" xml:space="preserve"><value>Retry invoice</value></data>
+  <data name="Factura_Pendiente" xml:space="preserve"><value>Pending issuance</value></data>
+  <data name="Factura_Consultar" xml:space="preserve"><value>View payment and invoice</value></data>
+  <data name="Factura_Vacio" xml:space="preserve"><value>You have no recorded payments or invoices yet.</value></data>
+  <data name="Factura_Descuento" xml:space="preserve"><value>The first pet pays the full price. Each additional pet receives a 20% discount.</value></data>
+  <data name="Error_ER079" xml:space="preserve"><value>The invoice could not be prepared or issued</value></data>
+  <data name="Error_ER080" xml:space="preserve"><value>The invoice or its integrity checks could not be saved</value></data>
+  <data name="Error_ER081" xml:space="preserve"><value>The invoice file could not be generated or delivered</value></data>
 </root>

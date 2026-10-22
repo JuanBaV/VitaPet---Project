@@ -32,4 +32,5 @@
         CssClass="login-validation"
         ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
         ErrorMessage="<%$ Resources:Textos, UI_ElFormatoDelCorreoElectronicoNoEsValido %>" />
+<asp:RegularExpressionValidator ID="revLongitudCorreo" runat="server" ControlToValidate="txtCorreo" ValidationGroup="" Display="Dynamic" CssClass="login-validation" ValidationExpression="^[\s\S]{1,150}$" ErrorMessage="<%$ Resources:Textos, Alta_TextoInvalido %>" />
 </div>

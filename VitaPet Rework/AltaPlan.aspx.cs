@@ -18,6 +18,7 @@ public partial class AltaPlanPage:PaginaPlan
     {
         EjecutarPlan(()=>{
             if(!pnlDatos.Enabled)throw new PlanException("ER025");
+            if(!ValidacionAlta.Validar(this,"AltaPlan"))return;
             int id=new PlanBLL().Registrar(editorPlan.Datos());string token=Guid.NewGuid().ToString("N");Session["AltaPlanRegistrado"]=id;Session["AltaPlanToken"]=token;
             Response.Redirect(ResolveUrl("~/AltaPlan.aspx")+"?resultado="+token,false);Context.ApplicationInstance.CompleteRequest();
         });

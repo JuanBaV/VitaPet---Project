@@ -1,4 +1,5 @@
 using System;
+using System.Web.UI.WebControls;
 using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.GUI.Presentacion;
@@ -30,12 +31,16 @@ public partial class AltaEmpresaPage : PaginaEmpresa
     {
         EjecutarEmpresa(()=>{
             if (!pnlDatos.Enabled) throw new EmpresaException("ER068");
-            var empresa=new EmpresaBLL().Registrar(new DatosEmpresaBE { RazonSocial=txtRazonSocial.Text,
-                Cuit=txtCuit.Text, Direccion=txtDireccion.Text, Telefono=txtTelefono.Text });
+            if (!ValidacionAlta.Validar(this, "AltaEmpresa")) return;
+            var empresa=new EmpresaBLL().Registrar(Datos());
             string token=Guid.NewGuid().ToString("N");Session[Clave(token)]=empresa;
             Response.Redirect(ResolveUrl("~/AltaEmpresa.aspx")+"?resultado="+token,false);Context.ApplicationInstance.CompleteRequest();
         });
     }
+    private DatosEmpresaBE Datos()
+    { return new DatosEmpresaBE { RazonSocial=txtRazonSocial.Text, Cuit=txtCuit.Text, Direccion=txtDireccion.Text, Telefono=txtTelefono.Text }; }
+    protected void ValidarDatos(object sender, ServerValidateEventArgs e)
+    { ValidacionAlta.Comprobar((CustomValidator)sender, e, () => EmpresaBLL.Validar(Datos())); }
     protected override void AlFallarEmpresa(string codigo)
     { if (codigo!="ER002"&&codigo!="ER025"&&codigo!="ER068") pnlDatos.Enabled=false; }
 }

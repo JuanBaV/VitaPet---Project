@@ -5,4 +5,5 @@
         protected global::System.Web.UI.WebControls.TextBox txtCorreo;
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCorreo;
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revCorreo;
-    }
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revLongitudCorreo;
+}

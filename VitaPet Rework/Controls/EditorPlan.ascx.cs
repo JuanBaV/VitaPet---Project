@@ -6,13 +6,31 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VitaPet.BE;
 using VitaPet.BLL;
+using VitaPet.GUI.Presentacion;
 
 public partial class Controls_EditorPlan:UserControl
 {
     public event EventHandler<ErrorPlanEventArgs> ErrorPlan;
+    public string ValidationGroup
+    { get { return (string)ViewState["ValidationGroup"] ?? string.Empty; } set { ViewState["ValidationGroup"]=value; } }
+    protected override void OnLoad(EventArgs e)
+    { base.OnLoad(e); ConfigurarValidaciones(this); }
+    private void ConfigurarValidaciones(Control raiz)
+    {
+        foreach(Control control in raiz.Controls)
+        {
+            var validador=control as BaseValidator;
+            if(validador!=null)validador.ValidationGroup=ValidationGroup;
+            var resumen=control as ValidationSummary;
+            if(resumen!=null)resumen.ValidationGroup=ValidationGroup;
+            ConfigurarValidaciones(control);
+        }
+    }
+    protected void ValidarDatos(object sender, ServerValidateEventArgs e)
+    { ValidacionAlta.Comprobar((CustomValidator)sender, e, () => PlanBLL.Validar(Datos())); }
     private static DataTable Tabla()
     {var t=new DataTable();t.Columns.Add("idCobertura",typeof(int));t.Columns.Add("prestacion");t.Columns.Add("detalle");t.Columns.Add("estado");return t;}
-    private void Vincular(DataTable t){gvCoberturas.DataSource=t;gvCoberturas.DataBind();}
+    private void Vincular(DataTable t){gvCoberturas.DataSource=t;gvCoberturas.DataBind();ConfigurarValidaciones(this);}
     public void Cargar(PlanAdministracionBE plan=null)
     {
         txtNombrePlan.Text=plan==null?"":plan.Nombre;txtDescripcionPlan.Text=plan==null?"":plan.Descripcion;

@@ -28,13 +28,13 @@ public partial class Controls_ValidacionEmail : System.Web.UI.UserControl
     public int MaxLength
     {
         get { return txtCorreo.MaxLength; }
-        set { txtCorreo.MaxLength = value; }
+        set { txtCorreo.MaxLength = value; revLongitudCorreo.ValidationExpression=value>0?@"^[\s\S]{1,"+value+@"}$":@"^[\s\S]*$"; }
     }
 
     public bool EnableClientValidation
     {
         get { return rfvCorreo.EnableClientScript; }
-        set { rfvCorreo.EnableClientScript=value;revCorreo.EnableClientScript=value; }
+        set { rfvCorreo.EnableClientScript=value;revCorreo.EnableClientScript=value;revLongitudCorreo.EnableClientScript=value; }
     }
 
     public string ValidationGroup
@@ -47,6 +47,7 @@ public partial class Controls_ValidacionEmail : System.Web.UI.UserControl
         {
             rfvCorreo.ValidationGroup = value;
             revCorreo.ValidationGroup = value;
+            revLongitudCorreo.ValidationGroup = value;
         }
     }
 

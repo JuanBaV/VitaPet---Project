@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.GUI.Presentacion;
@@ -58,18 +59,23 @@ public partial class RegistroClienteCorporativoPage:PaginaEmpresa
     protected void ValidarCorreo(object sender,EventArgs e)
     {
         ViewState.Remove("CorreoValidado");pnlDatos.Enabled=false;btnRegistrarCliente.Enabled=false;
-        Ejecutar(()=>{EmpresaActual();ViewState["CorreoValidado"]=new ClienteCorporativoBLL().ValidarCorreo(IdEmpresa,ucCorreo.Correo);pnlDatos.Enabled=true;btnRegistrarCliente.Enabled=true;});
+        Ejecutar(()=>{EmpresaActual();if(!ValidacionAlta.Validar(this,"CorporativoCorreo"))return;ViewState["CorreoValidado"]=new ClienteCorporativoBLL().ValidarCorreo(IdEmpresa,ucCorreo.Correo);pnlDatos.Enabled=true;btnRegistrarCliente.Enabled=true;});
     }
     protected void Registrar(object sender,EventArgs e)
     {
         Ejecutar(()=>{
             EmpresaActual();
             if(string.IsNullOrEmpty(ViewState["CorreoValidado"] as string)||!string.Equals(ucCorreo.Correo,ViewState["CorreoValidado"] as string,StringComparison.Ordinal))throw new ClienteCorporativoException("ER025");
-            var r=new ClienteCorporativoBLL().Registrar(new DatosClienteCorporativoBE{IdEmpresa=IdEmpresa,Correo=ucCorreo.Correo,Nombre=txtNombre.Text,Apellido=txtApellido.Text,Telefono=txtTelefono.Text});
+            if(!ValidacionAlta.Validar(this,"CorporativoCorreo","CorporativoAlta"))return;
+            var r=new ClienteCorporativoBLL().Registrar(Datos());
             string token=Guid.NewGuid().ToString("N");Session[Clave(token)]=r;
             Response.Redirect(ResolveUrl("~/RegistroClienteCorporativo.aspx")+"?resultado="+token,false);Context.ApplicationInstance.CompleteRequest();
         });
     }
+    private DatosClienteCorporativoBE Datos()
+    { return new DatosClienteCorporativoBE { IdEmpresa=IdEmpresa, Correo=ucCorreo.Correo, Nombre=txtNombre.Text, Apellido=txtApellido.Text, Telefono=txtTelefono.Text }; }
+    protected void ValidarDatos(object sender, ServerValidateEventArgs e)
+    { ValidacionAlta.Comprobar((CustomValidator)sender, e, () => ClienteCorporativoBLL.Validar(Datos())); }
     protected override void OnPreRender(EventArgs e)
     {
         pnlFormulario.Attributes["data-correo"]=ViewState["CorreoValidado"] as string??string.Empty;

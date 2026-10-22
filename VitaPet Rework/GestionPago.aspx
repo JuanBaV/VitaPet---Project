@@ -5,6 +5,7 @@
         <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
         <asp:Panel ID="pnlPendiente" runat="server" Visible="false" DefaultButton="btnPagar">
             <h2><asp:Label ID="lblNombrePlan" runat="server" /></h2>
+            <p class="planes-nota"><%: VitaPet.GUI.Resources.Textos.Factura_Descuento %></p>
             <dl class="planes-resumen"><dt><%: VitaPet.GUI.Resources.Textos.Pago_PrecioMascota %></dt><dd><asp:Label ID="lblPrecioMascota" runat="server" /></dd>
 <dt><%: VitaPet.GUI.Resources.Textos.Planes_MascotasActivas %></dt><dd><asp:Label ID="lblCantidadMascotas" runat="server" /></dd>
 <dt><%: VitaPet.GUI.Resources.Textos.Planes_TotalMensual %></dt><dd><asp:Label ID="lblImporte" runat="server" /></dd></dl>
@@ -46,6 +47,9 @@
 <dt><%: VitaPet.GUI.Resources.Textos.Pago_Importe %></dt><dd><asp:Label ID="lblImportePagado" runat="server" /></dd>
 <dt><%: VitaPet.GUI.Resources.Textos.Pago_Medio %></dt><dd><asp:Label ID="lblMedioPagado" runat="server" /></dd>
 <dt><%: VitaPet.GUI.Resources.Textos.Pago_Fecha %></dt><dd><asp:Label ID="lblFechaPago" runat="server" /></dd></dl>
+            <p><%: VitaPet.GUI.Resources.Textos.Factura_Numero %>: <asp:Label ID="lblNumeroFactura" runat="server" /></p>
+            <asp:Button ID="btnDescargarFactura" runat="server" OnClick="DescargarFactura_Click" CausesValidation="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Factura_Descargar %>" Visible="false" />
+            <asp:Button ID="btnReintentarFactura" runat="server" OnClick="ReintentarFactura_Click" CausesValidation="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Factura_Reintentar %>" Visible="false" />
             <asp:Button ID="btnContinuar" runat="server" Text="<%$ Resources:Textos, Pago_Continuar %>" CausesValidation="false" OnClick="Continuar_Click" CssClass="btn btn-primary" />
         </asp:Panel>
     </section></main>

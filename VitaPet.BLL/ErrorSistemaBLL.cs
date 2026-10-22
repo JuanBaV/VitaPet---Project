@@ -61,6 +61,14 @@ namespace VitaPet.BLL
                 new ErrorSistemaBE{Codigo="ER057",Descripcion="No se pudo registrar el pago. No vuelvas a pagar.",Criticidad="Grave"}
             });
         }
+        public void AsegurarErroresFacturacion()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE {Codigo="ER079",Descripcion="No se pudo preparar o emitir la factura",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER080",Descripcion="No se pudo registrar la factura o sus verificadores",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER081",Descripcion="No se pudo generar o entregar el archivo de la factura",Criticidad="Grave"}
+            });
+        }
         public void AsegurarErroresCobertura()
         {
             AsegurarErrores(new[] {

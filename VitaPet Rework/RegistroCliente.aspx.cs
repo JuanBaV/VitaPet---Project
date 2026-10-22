@@ -1,4 +1,5 @@
 using System;
+using System.Web.UI.WebControls;
 using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.GUI.Presentacion;
@@ -38,11 +39,8 @@ public partial class RegistroClientePage : PaginaConIdioma
     {
         try
         {
-            new ClienteBLL().RegistrarCliente(new RegistroClienteBE {
-                Nombre = txtNombre.Text, Apellido = txtApellido.Text,
-                CorreoElectronico = ucCorreo.Correo, Contrasena = txtContrasena.Text,
-                Telefono = txtTelefono.Text
-            });
+            if (!ValidacionAlta.Validar(this, "RegistroCliente")) return;
+            new ClienteBLL().RegistrarCliente(Datos());
             // PRG: recargar el resultado no vuelve a enviar el alta. No autentica.
             Session[ClaveResultado] = true;
             Response.Redirect(ResolveUrl("~/RegistroCliente.aspx"), false);
@@ -57,6 +55,15 @@ public partial class RegistroClientePage : PaginaConIdioma
         finally { txtContrasena.Text = string.Empty; }
     }
 
+    private RegistroClienteBE Datos()
+    {
+        return new RegistroClienteBE { Nombre=txtNombre.Text, Apellido=txtApellido.Text,
+            CorreoElectronico=ucCorreo.Correo, Contrasena=txtContrasena.Text, Telefono=txtTelefono.Text };
+    }
+    protected void ValidarDatos(object sender, ServerValidateEventArgs e)
+    {
+        ValidacionAlta.Comprobar((CustomValidator)sender, e, () => ClienteBLL.ValidarDatosRegistro(Datos()));
+    }
     private static string Mensaje(string codigo)
     {
         switch (codigo)

@@ -15,4 +15,14 @@
         protected global::System.Web.UI.WebControls.TextBox txtTelefono;
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
         protected global::System.Web.UI.WebControls.HyperLink lnkLogin;
-    }
+        protected global::System.Web.UI.WebControls.ValidationSummary vsRegistroCliente;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNombre;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvApellido;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revApellido;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvContrasena;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revContrasena;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTelefono;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTelefono;
+        protected global::System.Web.UI.WebControls.CustomValidator cvDatosRegistro;
+}

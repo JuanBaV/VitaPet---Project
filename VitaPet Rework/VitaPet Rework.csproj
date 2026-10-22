@@ -494,10 +494,18 @@
       <DependentUpon>Planes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\DateTimePicker.cs" />
-    <Compile Include="Presentacion\OperacionUsuarioPage.cs" />
-    <Compile Include="Presentacion\PaginaBase.cs" />
-    <Compile Include="Presentacion\PaginaClientePlanes.cs" />
-    <Compile Include="Presentacion\PaginaConIdioma.cs" />
+    <Compile Include="Presentacion\OperacionUsuarioPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\PaginaBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\PaginaClientePlanes.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\PaginaConIdioma.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Presentacion\TextosUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="RecuperacionWebMaster.aspx" />
@@ -593,14 +601,29 @@
     <Content Include="Web.Debug.config" />
     <Content Include="Web.Release.config" />
     <Content Include="RegistroMascota.aspx" />
-    <Compile Include="RegistroMascota.aspx.cs"><DependentUpon>RegistroMascota.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="RegistroMascota.aspx.designer.cs"><DependentUpon>RegistroMascota.aspx</DependentUpon></Compile>
+    <Compile Include="RegistroMascota.aspx.cs">
+      <DependentUpon>RegistroMascota.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroMascota.aspx.designer.cs">
+      <DependentUpon>RegistroMascota.aspx</DependentUpon>
+    </Compile>
     <Content Include="Mascotas.aspx" />
-    <Compile Include="Mascotas.aspx.cs"><DependentUpon>Mascotas.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="Mascotas.aspx.designer.cs"><DependentUpon>Mascotas.aspx</DependentUpon></Compile>
+    <Compile Include="Mascotas.aspx.cs">
+      <DependentUpon>Mascotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mascotas.aspx.designer.cs">
+      <DependentUpon>Mascotas.aspx</DependentUpon>
+    </Compile>
     <Content Include="Reintegros.aspx" />
-    <Compile Include="Reintegros.aspx.cs"><DependentUpon>Reintegros.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="Reintegros.aspx.designer.cs"><DependentUpon>Reintegros.aspx</DependentUpon></Compile>
+    <Compile Include="Reintegros.aspx.cs">
+      <DependentUpon>Reintegros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reintegros.aspx.designer.cs">
+      <DependentUpon>Reintegros.aspx</DependentUpon>
+    </Compile>
     <Content Include="ConsultaCobertura.aspx" />
     <Compile Include="ConsultaCobertura.aspx.cs">
       <DependentUpon>ConsultaCobertura.aspx</DependentUpon>
@@ -638,71 +661,180 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ActualizarMascota.aspx" />
-    <Compile Include="ActualizarMascota.aspx.cs"><DependentUpon>ActualizarMascota.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="ActualizarMascota.aspx.designer.cs"><DependentUpon>ActualizarMascota.aspx</DependentUpon></Compile>
+    <Compile Include="ActualizarMascota.aspx.cs">
+      <DependentUpon>ActualizarMascota.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarMascota.aspx.designer.cs">
+      <DependentUpon>ActualizarMascota.aspx</DependentUpon>
+    </Compile>
     <Content Include="ConsultaMascota.aspx" />
-    <Compile Include="ConsultaMascota.aspx.cs"><DependentUpon>ConsultaMascota.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="ConsultaMascota.aspx.designer.cs"><DependentUpon>ConsultaMascota.aspx</DependentUpon></Compile>
+    <Compile Include="ConsultaMascota.aspx.cs">
+      <DependentUpon>ConsultaMascota.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultaMascota.aspx.designer.cs">
+      <DependentUpon>ConsultaMascota.aspx</DependentUpon>
+    </Compile>
     <Content Include="HistorialClinico.aspx" />
-    <Compile Include="HistorialClinico.aspx.cs"><DependentUpon>HistorialClinico.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="HistorialClinico.aspx.designer.cs"><DependentUpon>HistorialClinico.aspx</DependentUpon></Compile>
+    <Compile Include="HistorialClinico.aspx.cs">
+      <DependentUpon>HistorialClinico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistorialClinico.aspx.designer.cs">
+      <DependentUpon>HistorialClinico.aspx</DependentUpon>
+    </Compile>
     <Content Include="DatosClinicos.aspx" />
-    <Compile Include="DatosClinicos.aspx.cs"><DependentUpon>DatosClinicos.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="DatosClinicos.aspx.designer.cs"><DependentUpon>DatosClinicos.aspx</DependentUpon></Compile>
+    <Compile Include="DatosClinicos.aspx.cs">
+      <DependentUpon>DatosClinicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DatosClinicos.aspx.designer.cs">
+      <DependentUpon>DatosClinicos.aspx</DependentUpon>
+    </Compile>
     <Content Include="Controls\SelectorMascota.ascx" />
-    <Compile Include="Controls\SelectorMascota.ascx.cs"><DependentUpon>SelectorMascota.ascx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="Controls\SelectorMascota.ascx.designer.cs"><DependentUpon>SelectorMascota.ascx</DependentUpon></Compile>
+    <Compile Include="Controls\SelectorMascota.ascx.cs">
+      <DependentUpon>SelectorMascota.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\SelectorMascota.ascx.designer.cs">
+      <DependentUpon>SelectorMascota.ascx</DependentUpon>
+    </Compile>
     <Content Include="WebServices\HistorialClínicoService.asmx" />
-    <Compile Include="WebServices\HistorialClínicoService.asmx.cs"><DependentUpon>HistorialClínicoService.asmx</DependentUpon><SubType>Component</SubType></Compile>
-    <Compile Include="Presentacion\PaginaMascota.cs" />
+    <Compile Include="WebServices\HistorialClínicoService.asmx.cs">
+      <DependentUpon>HistorialClínicoService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presentacion\PaginaMascota.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\ListadoFacturas.ascx" />
+    <Compile Include="Controls\ListadoFacturas.ascx.cs">
+      <DependentUpon>ListadoFacturas.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ListadoFacturas.ascx.designer.cs">
+      <DependentUpon>ListadoFacturas.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Target Name="GenerarRecursosTipados" BeforeTargets="CoreCompile" Inputs="$(MSBuildProjectDirectory)\Resources\Textos.resx" Outputs="$(MSBuildProjectDirectory)\Resources\Textos.Designer.cs">
     <GenerateResource Sources="Resources\Textos.resx" SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)" OutputResources="$(IntermediateOutputPath)VitaPet.GUI.Resources.Textos.resources" StronglyTypedLanguage="C#" StronglyTypedNamespace="VitaPet.GUI.Resources" StronglyTypedManifestPrefix="VitaPet.GUI.Resources" StronglyTypedClassName="Textos" StronglyTypedFileName="Resources\Textos.Designer.cs" PublicClass="true" />
   </Target>
   <ItemGroup>
     <Content Include="Turnos.aspx" />
-    <Compile Include="Turnos.aspx.cs"><DependentUpon>Turnos.aspx</DependentUpon><SubType>Code</SubType></Compile>
-    <Compile Include="Turnos.aspx.designer.cs"><DependentUpon>Turnos.aspx</DependentUpon><SubType>Code</SubType></Compile>
+    <Compile Include="Turnos.aspx.cs">
+      <DependentUpon>Turnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Turnos.aspx.designer.cs">
+      <DependentUpon>Turnos.aspx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="Controls\FiltroZona.ascx" />
-    <Compile Include="Controls\FiltroZona.ascx.cs"><DependentUpon>FiltroZona.ascx</DependentUpon><SubType>Code</SubType></Compile>
-    <Compile Include="Controls\FiltroZona.ascx.designer.cs"><DependentUpon>FiltroZona.ascx</DependentUpon><SubType>Code</SubType></Compile>
+    <Compile Include="Controls\FiltroZona.ascx.cs">
+      <DependentUpon>FiltroZona.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\FiltroZona.ascx.designer.cs">
+      <DependentUpon>FiltroZona.ascx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="WebServices\TurnoService.asmx" />
-    <Compile Include="WebServices\TurnoService.asmx.cs"><DependentUpon>TurnoService.asmx</DependentUpon><SubType>Code</SubType></Compile>
+    <Compile Include="WebServices\TurnoService.asmx.cs">
+      <DependentUpon>TurnoService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Presentacion\PaginaEmpresa.cs" />
+    <Compile Include="Presentacion\PaginaEmpresa.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Content Include="Empresas.aspx" />
-    <Compile Include="Empresas.aspx.cs"><DependentUpon>Empresas.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="Empresas.aspx.designer.cs"><DependentUpon>Empresas.aspx</DependentUpon></Compile>
+    <Compile Include="Empresas.aspx.cs">
+      <DependentUpon>Empresas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empresas.aspx.designer.cs">
+      <DependentUpon>Empresas.aspx</DependentUpon>
+    </Compile>
     <Content Include="AltaEmpresa.aspx" />
-    <Compile Include="AltaEmpresa.aspx.cs"><DependentUpon>AltaEmpresa.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="AltaEmpresa.aspx.designer.cs"><DependentUpon>AltaEmpresa.aspx</DependentUpon></Compile>
+    <Compile Include="AltaEmpresa.aspx.cs">
+      <DependentUpon>AltaEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaEmpresa.aspx.designer.cs">
+      <DependentUpon>AltaEmpresa.aspx</DependentUpon>
+    </Compile>
     <Content Include="ConsultaEmpresa.aspx" />
-    <Compile Include="ConsultaEmpresa.aspx.cs"><DependentUpon>ConsultaEmpresa.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="ConsultaEmpresa.aspx.designer.cs"><DependentUpon>ConsultaEmpresa.aspx</DependentUpon></Compile>
+    <Compile Include="ConsultaEmpresa.aspx.cs">
+      <DependentUpon>ConsultaEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultaEmpresa.aspx.designer.cs">
+      <DependentUpon>ConsultaEmpresa.aspx</DependentUpon>
+    </Compile>
     <Content Include="ModificarEmpresa.aspx" />
-    <Compile Include="ModificarEmpresa.aspx.cs"><DependentUpon>ModificarEmpresa.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="ModificarEmpresa.aspx.designer.cs"><DependentUpon>ModificarEmpresa.aspx</DependentUpon></Compile>
+    <Compile Include="ModificarEmpresa.aspx.cs">
+      <DependentUpon>ModificarEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarEmpresa.aspx.designer.cs">
+      <DependentUpon>ModificarEmpresa.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="RegistroClienteCorporativo.aspx" />
-    <Compile Include="RegistroClienteCorporativo.aspx.cs"><DependentUpon>RegistroClienteCorporativo.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
-    <Compile Include="RegistroClienteCorporativo.aspx.designer.cs"><DependentUpon>RegistroClienteCorporativo.aspx</DependentUpon></Compile>
+    <Compile Include="RegistroClienteCorporativo.aspx.cs">
+      <DependentUpon>RegistroClienteCorporativo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroClienteCorporativo.aspx.designer.cs">
+      <DependentUpon>RegistroClienteCorporativo.aspx</DependentUpon>
+    </Compile>
     <Content Include="Scripts\cliente-corporativo.js" />
   </ItemGroup>
-
   <ItemGroup>
-    <Compile Include="Presentacion\PaginaPlan.cs" />
-    <Compile Include="Controls\EditorPlan.ascx.cs"><DependentUpon>EditorPlan.ascx</DependentUpon></Compile>
-    <Compile Include="Controls\EditorPlan.ascx.designer.cs"><DependentUpon>EditorPlan.ascx</DependentUpon></Compile>
-    <Compile Include="AltaPlan.aspx.cs"><DependentUpon>AltaPlan.aspx</DependentUpon></Compile>
-    <Compile Include="AltaPlan.aspx.designer.cs"><DependentUpon>AltaPlan.aspx</DependentUpon></Compile>
-    <Compile Include="GestionPlanes.aspx.cs"><DependentUpon>GestionPlanes.aspx</DependentUpon></Compile>
-    <Compile Include="GestionPlanes.aspx.designer.cs"><DependentUpon>GestionPlanes.aspx</DependentUpon></Compile>
-    <Compile Include="ConsultaPlan.aspx.cs"><DependentUpon>ConsultaPlan.aspx</DependentUpon></Compile>
-    <Compile Include="ConsultaPlan.aspx.designer.cs"><DependentUpon>ConsultaPlan.aspx</DependentUpon></Compile>
-    <Compile Include="ModificarPlan.aspx.cs"><DependentUpon>ModificarPlan.aspx</DependentUpon></Compile>
-    <Compile Include="ModificarPlan.aspx.designer.cs"><DependentUpon>ModificarPlan.aspx</DependentUpon></Compile>
+    <Compile Include="Presentacion\PaginaPlan.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\ValidacionAlta.cs" />
+    <Compile Include="Controls\EditorPlan.ascx.cs">
+      <DependentUpon>EditorPlan.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\EditorPlan.ascx.designer.cs">
+      <DependentUpon>EditorPlan.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaPlan.aspx.cs">
+      <DependentUpon>AltaPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaPlan.aspx.designer.cs">
+      <DependentUpon>AltaPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionPlanes.aspx.cs">
+      <DependentUpon>GestionPlanes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionPlanes.aspx.designer.cs">
+      <DependentUpon>GestionPlanes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaPlan.aspx.cs">
+      <DependentUpon>ConsultaPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultaPlan.aspx.designer.cs">
+      <DependentUpon>ConsultaPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarPlan.aspx.cs">
+      <DependentUpon>ModificarPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarPlan.aspx.designer.cs">
+      <DependentUpon>ModificarPlan.aspx</DependentUpon>
+    </Compile>
     <Content Include="Controls\EditorPlan.ascx" />
     <Content Include="AltaPlan.aspx" />
     <Content Include="GestionPlanes.aspx" />

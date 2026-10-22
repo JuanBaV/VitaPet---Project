@@ -12,17 +12,29 @@
   <h2 class="turnos-subtitulo"><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Turno_Mascota") %></h2>
   <uc:SelectorMascota ID="ucSelectorMascota" runat="server" OnMascotaSeleccionada="SeleccionarMascota" />
   <asp:Panel ID="pnlSolicitud" runat="server">
-   <div class="turnos-filtros"><div class="turnos-zona"><uc:FiltroZona ID="ucFiltroZona" runat="server" OnZonaCambiada="CambiarZona" /></div>
-    <asp:Button ID="btnBuscarDisponibilidad" runat="server" Enabled="false" CssClass="btn btn-primary" Text="<%$ Resources:Textos, Turno_Buscar %>" OnClick="BuscarDisponibilidad" />
+   <p class="turnos-ayuda"><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Turno_Instrucciones") %></p>
+   <div class="turnos-filtros">
+    <div class="turnos-zona"><uc:FiltroZona ID="ucFiltroZona" runat="server" OnZonaCambiada="CambiarZona" /></div>
+    <div class="turnos-zona">
+     <asp:Label ID="lblEspecialidad" runat="server" AssociatedControlID="ddlEspecialidad" Text="<%$ Resources:Textos, Turno_Especialidad %>" />
+     <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-control" Enabled="false" AutoPostBack="true" OnSelectedIndexChanged="CambiarEspecialidad" />
+    </div>
    </div>
-   <div class="table-responsive"><asp:GridView ID="gvDisponibilidad" runat="server" AutoGenerateColumns="false" DataKeyNames="IdAgendaTurno,Fecha,Horario" CssClass="table table-bordered planes-grilla" AllowPaging="true" PageSize="12" OnPageIndexChanging="PaginarDisponibilidad" OnSelectedIndexChanged="SeleccionarTurno">
-    <SelectedRowStyle CssClass="mascota-seleccionada" /><Columns>
-     <asp:BoundField DataField="Prestacion" HeaderText="<%$ Resources:Textos, Turno_Prestacion %>" HtmlEncode="true" />
-     <asp:BoundField DataField="Fecha" HeaderText="<%$ Resources:Textos, Turno_Fecha %>" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="true" />
-     <asp:BoundField DataField="Horario" HeaderText="<%$ Resources:Textos, Turno_Horario %>" HtmlEncode="true" />
-     <asp:BoundField DataField="Zona" HeaderText="<%$ Resources:Textos, Turno_Zona %>" HtmlEncode="true" />
-     <asp:TemplateField><ItemTemplate><asp:LinkButton ID="lnkSeleccionarTurno" runat="server" CommandName="Select" CausesValidation="false" CssClass="btn btn-primary" Text="<%$ Resources:Textos, Mascota_Seleccionar %>" /></ItemTemplate></asp:TemplateField>
-    </Columns><PagerStyle CssClass="turnos-paginador" /></asp:GridView></div>
+   <asp:Panel ID="pnlCalendario" runat="server" Visible="false" CssClass="turnos-reserva">
+    <section class="turnos-fechas">
+     <h2 class="turnos-subtitulo"><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Turno_ElegirFecha") %></h2>
+     <p class="turnos-ayuda"><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Turno_AyudaCalendario") %></p>
+     <asp:Calendar ID="calDisponibilidad" runat="server" CssClass="turnos-calendario" SelectionMode="Day" FirstDayOfWeek="Monday" DayNameFormat="Shortest" TitleFormat="MonthYear" ShowGridLines="false" OnDayRender="MostrarDia" OnSelectionChanged="SeleccionarFecha" OnVisibleMonthChanged="CambiarMes">
+      <TitleStyle CssClass="turnos-calendario-titulo" /><DayHeaderStyle CssClass="turnos-calendario-semana" />
+      <SelectedDayStyle CssClass="turnos-dia-seleccionado" /><OtherMonthDayStyle CssClass="turnos-otro-mes" />
+     </asp:Calendar>
+    </section>
+    <section class="turnos-horas">
+     <h2 class="turnos-subtitulo"><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Turno_HorariosDisponibles") %></h2>
+     <asp:Label ID="lblDisponibilidad" runat="server" CssClass="turnos-ayuda" role="status" />
+     <asp:RadioButtonList ID="rblHorarios" runat="server" CssClass="turnos-horarios" RepeatLayout="UnorderedList" AutoPostBack="true" OnSelectedIndexChanged="SeleccionarHorario" />
+    </section>
+   </asp:Panel>
    <div class="turnos-acciones">
     <asp:Label ID="lblTurnoSeleccionado" runat="server" Visible="false" CssClass="turnos-seleccion" />
     <asp:Button ID="btnConfirmarSolicitud" runat="server" Enabled="false" CssClass="btn btn-primary" Text="<%$ Resources:Textos, Turno_Confirmar %>" OnClick="ConfirmarSolicitud" />

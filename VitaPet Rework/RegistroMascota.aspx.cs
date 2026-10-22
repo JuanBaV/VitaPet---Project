@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Globalization;
+using System.Web.UI.WebControls;
 using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.GUI.Presentacion;
@@ -26,17 +27,29 @@ public partial class RegistroMascotaPage : PaginaClientePlanes
     protected void Registrar(object sender,EventArgs e)
     {
         EjecutarPlan(()=>{
-            DateTime fecha;DateTime? nacimiento=null;
-            if(!string.IsNullOrWhiteSpace(dtpFechaNacimiento.Value))
-            {
-                if(!DateTime.TryParseExact(dtpFechaNacimiento.Value,"yyyy-MM-dd",CultureInfo.InvariantCulture,DateTimeStyles.None,out fecha))
-                    throw new RegistroMascotaException("ER025");
-                nacimiento=fecha;
-            }
-            var d=new RegistroMascotaBE {Nombre=txtNombre.Text,Especie=txtEspecie.Text,Raza=txtRaza.Text,FechaNacimiento=nacimiento};
+            if(!ValidacionAlta.Validar(this,"RegistroMascota"))return;
+            var d=Datos();
             new RegistroMascotaBLL().Registrar(d);Session[ClaveResultado]=RegistroMascotaBLL.Validar(d);
             // PRG: recargar la confirmación no repite el alta.
             Response.Redirect(ResolveUrl("~/RegistroMascota.aspx"),false);Context.ApplicationInstance.CompleteRequest();
         });
     }
+    private RegistroMascotaBE Datos()
+    {
+        DateTime fecha; DateTime? nacimiento=null;
+        if(!string.IsNullOrWhiteSpace(dtpFechaNacimiento.Value))
+        {
+            if(!DateTime.TryParseExact(dtpFechaNacimiento.Value,"yyyy-MM-dd",CultureInfo.InvariantCulture,DateTimeStyles.None,out fecha))
+                throw new RegistroMascotaException("ER025");
+            nacimiento=fecha;
+        }
+        return new RegistroMascotaBE { Nombre=txtNombre.Text, Especie=txtEspecie.Text, Raza=txtRaza.Text, FechaNacimiento=nacimiento };
+    }
+    protected void ValidarFechaNacimiento(object sender, ServerValidateEventArgs e)
+    {
+        DateTime fecha;
+        e.IsValid=DateTime.TryParseExact(e.Value,"yyyy-MM-dd",CultureInfo.InvariantCulture,DateTimeStyles.None,out fecha)&&fecha.Date<=DateTime.Today;
+    }
+    protected void ValidarDatos(object sender, ServerValidateEventArgs e)
+    { ValidacionAlta.Comprobar((CustomValidator)sender, e, () => RegistroMascotaBLL.Validar(Datos())); }
 }

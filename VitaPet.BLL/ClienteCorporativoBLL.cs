@@ -94,7 +94,7 @@ namespace VitaPet.BLL
         {
             if(Consulta(()=>new ClienteCorporativoDAL().CorreoRegistrado(actor,correo),"ER074"))throw new ClienteCorporativoException("ER001");
         }
-        private static DatosClienteCorporativoBE Validar(DatosClienteCorporativoBE d)
+        public static DatosClienteCorporativoBE Validar(DatosClienteCorporativoBE d)
         {
             if(d==null)throw new ClienteCorporativoException("ER002");
             try

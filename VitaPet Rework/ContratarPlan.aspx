@@ -1,4 +1,4 @@
-<%@ Page Title="<%$ Resources:Textos, Planes_Contratar %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ContratarPlan.aspx.cs" Inherits="ContratarPlanPage" %>
+﻿<%@ Page Title="<%$ Resources:Textos, Planes_Contratar %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ContratarPlan.aspx.cs" Inherits="ContratarPlanPage" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="planes-page"><section class="planes-card planes-detalle">
         <header class="login-header"><h1><%: VitaPet.GUI.Resources.Textos.Planes_Contratar %></h1></header>
@@ -6,6 +6,7 @@
         <asp:Panel ID="pnlDetalle" runat="server" Visible="false">
             <h2><asp:Label ID="lblNombrePlan" runat="server" /></h2>
             <p><asp:Label ID="lblDescripcionPlan" runat="server" /></p>
+            <p class="planes-nota"><%: VitaPet.GUI.Resources.Textos.Factura_Descuento %></p>
             <dl class="planes-resumen">
                 <dt><%: VitaPet.GUI.Resources.Textos.Planes_PrecioMascota %></dt><dd><asp:Label ID="lblPrecioPlan" runat="server" /></dd>
                 <dt><%: VitaPet.GUI.Resources.Textos.Planes_MascotasActivas %></dt><dd><asp:Label ID="lblCantidadMascotas" runat="server" /></dd>

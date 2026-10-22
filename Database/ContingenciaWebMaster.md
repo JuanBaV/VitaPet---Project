@@ -34,3 +34,19 @@ Para trasladar la recuperación, conservar y copiar juntos `cuenta.xml` y los ar
 SQL Server necesita los mismos permisos de backup/restore y creación de bases temporales que la recuperación existente, más acceso de escritura a `RutaBackups`. La identidad del sitio también debe poder leer/escribir esa carpeta y el histórico XML. Una caída del servicio SQL permite autenticar en emergencia, pero la restauración requiere que el servicio vuelva a estar disponible.
 
 Los respaldos son puntos explícitos: no se sobrescribe automáticamente un punto sano al detectar corrupción. Las contraseñas de los usuarios normales conservan el mecanismo ya existente del proyecto.
+
+## Permisos de la carpeta de backups
+
+El archivo `.bak` lo escribe el servicio de SQL Server, no el usuario WebMaster ni el navegador. Un error SQL 3201 con error del sistema operativo 5 (acceso denegado) requiere dar acceso a la cuenta del servicio sobre `RutaBackups`. Los permisos SQL de backup/restore no sustituyen los permisos de Windows.
+
+En este equipo, con la instancia local predeterminada, ejecutar desde la raíz del proyecto:
+
+```powershell
+.\Database\ConfigurarPermisosBackups.ps1
+```
+
+El script obtiene la cuenta real del servicio `MSSQLSERVER`, resuelve `RutaBackups` desde `Web.config` y agrega permiso **Modificar** heredable únicamente a esa carpeta. Conserva los demás permisos. Se puede repetir después de copiar el proyecto o recrear la carpeta; los permisos de Windows no se versionan en Git. La cuenta que ejecuta el script debe poder modificar la ACL de la carpeta; si Windows lo exige, usar PowerShell como administrador.
+
+Para una instancia nombrada, indicar el servicio correspondiente, por ejemplo `-ServicioSql 'MSSQL$SQLEXPRESS'`. Si se aloja en IIS y la identidad del sitio todavía no tiene acceso, agregar `-IdentidadSitio 'IIS AppPool\VitaPet'`, reemplazando el nombre por el pool real. En IIS Express se utiliza la cuenta de Windows que ejecuta el sitio. Este procedimiento supone que el sitio y SQL Server están en el mismo equipo; con SQL remoto se necesita una ruta compartida accesible desde ambos servidores y permisos de recurso compartido y NTFS.
+
+Validación realizada: creación de un backup `COPY_ONLY` con `CHECKSUM` en la carpeta configurada, `RESTORE VERIFYONLY`, restauración en una base temporal, `DBCC CHECKDB` y lectura del archivo desde Windows. Los artefactos de prueba se eliminaron al finalizar.
