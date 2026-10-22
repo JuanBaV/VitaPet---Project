@@ -210,7 +210,7 @@ class Program
         {
             DatabaseMigrator.Migrate();
             Sql("INSERT dbo.Cliente(idUsuario,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(1,'Cliente','Prueba','55555555','Individual',1,'');");
-            new ReferenciaIntegridadBLL().Inicializar();new ContratacionPlanBLL().AsegurarCatalogo();
+            new ReferenciaIntegridadBLL().Inicializar();new PerfilBLL().AsegurarIniciales();new ContratacionPlanBLL().AsegurarCatalogo();
             Check(seguridad.VerificarIntegridad(),"Base aislada inicializada");
             if(args.Contains("--integridad-todas") || args.Contains("--integridad-login"))
             {

@@ -72,6 +72,15 @@ namespace VitaPet.DAL
                     var fila=datos.Tables["DVV"].NewRow();fila["idDVV"]=datos.Tables["DVV"].Rows.Cast<DataRow>().Select(r=>(int)r["idDVV"]).DefaultIfEmpty(0).Max()+1;
                     fila["nombreTabla"]=tablaNueva;fila["valorDVV"]="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";datos.Tables["DVV"].Rows.Add(fila);
                 }
+                if(ampliarIntegridad && datos.Tables.Contains("DVV") && datos.Tables.Contains("__SchemaMigrations") &&
+                    !datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>().Any(r=>(string)r["migrationId"]=="030_PerfilesComposite.sql"))
+                foreach(string tablaNueva in new[]{"PermisoComponente","PermisoRelacion"})
+                {
+                    if(datos.Tables.Contains(tablaNueva)||datos.Tables["DVV"].Rows.Cast<DataRow>().Any(r=>(string)r["nombreTabla"]==tablaNueva)) continue;
+                    using(var a=new SqlDataAdapter("SELECT TOP(0) * FROM dbo.["+tablaNueva+"]",c))a.Fill(datos,tablaNueva);
+                    var fila=datos.Tables["DVV"].NewRow();fila["idDVV"]=datos.Tables["DVV"].Rows.Cast<DataRow>().Select(r=>(int)r["idDVV"]).DefaultIfEmpty(0).Max()+1;
+                    fila["nombreTabla"]=tablaNueva;fila["valorDVV"]="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";datos.Tables["DVV"].Rows.Add(fila);
+                }
                 if (!tablas.OrderBy(n => n, StringComparer.Ordinal).SequenceEqual(datos.Tables.Cast<DataTable>().Select(t => t.TableName).OrderBy(n => n, StringComparer.Ordinal)))
                     throw new InvalidDataException("Las tablas del XML no corresponden al esquema actual.");
                 using (var tx = c.BeginTransaction())

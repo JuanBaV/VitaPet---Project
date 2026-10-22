@@ -23,17 +23,54 @@ namespace VitaPet.BLL
                 {"GestionPerfiles","Webmaster"},{"AltaUsuario","Webmaster"},{"ConsultarPerfiles","Administrador"}
             });
         private readonly PerfilDAL dal = new PerfilDAL();
+        public static string NombrePantalla(string pantalla)
+        {
+            switch(pantalla)
+            {
+                case "Cliente": return "Mi perfil";
+                case "GestionPago": return "Pago y factura";
+                case "ConsultaCobertura": return "Consulta de cobertura";
+                case "RegistroMascota": return "Registro de mascotas";
+                case "ActualizarMascota": return "Modificar mascota";
+                case "ConsultaMascota": return "Consultar mascota";
+                case "HistorialClinico": return "Historial clínico";
+                case "DatosClinicos": return "Datos clínicos";
+                case "AltaEmpresa": return "Alta de empresas";
+                case "ConsultaEmpresa": return "Consultar empresa";
+                case "ModificarEmpresa": return "Modificar empresa";
+                case "RegistroClienteCorporativo": return "Alta de clientes corporativos";
+                case "GestionPlanes": return "Gestión de planes";
+                case "AltaPlan": return "Alta de planes";
+                case "ConsultaPlan": return "Consultar plan";
+                case "ModificarPlan": return "Modificar plan";
+                case "ConsultaBitacora": return "Bitácora";
+                case "BaseDatos": return "Base de datos";
+                case "GestionUsuarios": return "Gestión de usuarios";
+                case "ConsultarUsuario": return "Consultar usuario";
+                case "ModificarUsuario": return "Modificar usuario";
+                case "BloquearUsuario": return "Bloquear usuario";
+                case "DesbloquearUsuario": return "Desbloquear usuario";
+                case "GestionPerfiles": return "Gestión de perfiles";
+                case "AltaUsuario": return "Alta de usuarios";
+                case "ConsultarPerfiles": return "Consultar perfiles";
+                case "ContratarPlan": return "Contratar plan";
+                default: return pantalla;
+            }
+        }
         internal List<PermisoComponenteBE> Leer()
         {
             var todos = dal.Componentes().Rows.Cast<DataRow>().ToDictionary(r => (int)r["idComponente"], r =>
                 (string)r["tipo"] == "Perfil" ? (PermisoComponenteBE)new PerfilBE { Id=(int)r["idComponente"], Nombre=(string)r["nombre"], Sistema=(bool)r["sistema"], Version=(string)r["dvh"] }
                     : new PermisoPantallaBE { Id=(int)r["idComponente"], Nombre=(string)r["nombre"], Pantalla=(string)r["pantalla"] });
-            foreach (DataRow r in dal.Relaciones().Rows)
+            var relaciones=dal.Relaciones();
+            foreach (DataRow r in relaciones.Rows)
             {
                 var padre = todos[(int)r["idPadre"]] as PerfilBE;
                 if (padre == null) throw new InvalidOperationException("Un permiso de pantalla no puede contener hijos.");
                 padre.Agregar(todos[(int)r["idHijo"]]);
             }
+            foreach(var perfil in todos.Values.OfType<PerfilBE>())
+                perfil.Version=new IntegridadBLL().CalcularHash(perfil.Version+string.Concat(relaciones.Rows.Cast<DataRow>().Where(r => (int)r["idPadre"]==perfil.Id).Select(r => (string)r["dvh"])));
             return todos.Values.ToList();
         }
         public List<PermisoComponenteBE> Consultar()
@@ -61,6 +98,9 @@ namespace VitaPet.BLL
             if (sesion.HaySesionContingencia || sesion.UsuarioActual == null) return Enumerable.Empty<string>();
             var u = new UsuarioDAL().ObtenerPorId(sesion.UsuarioActual.IdUsuario);
             if (u == null || !new Estados.UsuarioStateBLL(u).PuedeIniciarSesion()) return Enumerable.Empty<string>();
+            var seguridad=new SecurityManager();
+            if(!seguridad.VerificarIntegridad())
+                return seguridad.EsWebmasterConfiable(u) ? new[]{"BaseDatos"} : Enumerable.Empty<string>();
             var perfil = Leer().OfType<PerfilBE>().SingleOrDefault(p => p.Nombre == u.Rol);
             if (perfil==null) return Enumerable.Empty<string>();
             return perfil.Pantallas().Concat(new[]{"Home","Default","Logout"}).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();

@@ -73,7 +73,7 @@ END;");
             foreach(DataRow row in rows.Rows)
             {
                 using(var c=new SqlConnection(connection))using(var cmd=new SqlCommand("UPDATE dbo.["+table+"] SET ["+field+"]=@value WHERE ["+key+"]=@id",c))
-                {cmd.Parameters.AddWithValue("@value","ALTERADO_P4");cmd.Parameters.AddWithValue("@id",row[0]);c.Open();Check(cmd.ExecuteNonQuery()==1,table+": fila alterada "+row[0]);}
+                {cmd.Parameters.AddWithValue("@value","ALTERADO_P4_"+row[0]);cmd.Parameters.AddWithValue("@id",row[0]);c.Open();Check(cmd.ExecuteNonQuery()==1,table+": fila alterada "+row[0]);}
             }
             var result=security.DiagnosticarIntegridad();
             Check(!result.EsValida,table+": rechaza los datos alterados");
@@ -81,6 +81,8 @@ END;");
                 Check(result.Detalles.Any(d=>d.Tabla==table&&d.Fila==Convert.ToString(row[0])&&d.Columna==field),table+": identifica fila "+row[0]+" y campo "+field);
             if(audit)
             {
+                if(table=="PermisoComponente" || table=="PermisoRelacion")
+                    Check(new PerfilBLL().PantallasActuales().SequenceEqual(new[]{"BaseDatos"}),table+": menú de recuperación sigue disponible sin recorrer el Composite alterado");
                 var snapshot=new ContingenciaDatosDAL().ExportarXml();
                 var saved=new BitacoraBLL().RegistrarErroresIntegridad();
                 var consulta=new ConsultaBitacoraBLL();
@@ -135,11 +137,11 @@ END;");
             {"Suscripcion","estado"},{"Pago","medioPago"},{"Mascota","nombre"},{"Turno","prestacion"},
             {"HistorialClinico","observaciones"},{"Reintegro","detalle"},{"ErrorSistema","descripcion"},
             {"DatosClinicos","observaciones"},{"AgendaTurno","prestacion"},{"DetallePago","titular"},{"Factura","concepto"},
-            {"Usuario","nombre"},{"Bitacora","accion"}};
+            {"Usuario","nombre"},{"Bitacora","accion"},{"PermisoComponente","nombre"},{"PermisoRelacion","dvh"}};
         var keys=IntegridadTablasDAL.Claves.ToDictionary(p=>p.Key,p=>p.Value);keys.Add("Usuario","idUsuario");keys.Add("Bitacora","idBitacora");
         var controls=new[]{"DVV","ReferenciaIntegridad","__FormatoIntegridad","__SchemaMigrations"};
         var actual=Read("SELECT name FROM sys.tables WHERE schema_id=SCHEMA_ID('dbo')").Rows.Cast<DataRow>().Select(r=>(string)r[0]).OrderBy(n=>n).ToArray();
-        Check(actual.SequenceEqual(keys.Keys.Concat(controls).OrderBy(n=>n)),"Inventario SQL completo: 17 tablas de datos y 4 de control");
+        Check(actual.SequenceEqual(keys.Keys.Concat(controls).OrderBy(n=>n)),"Inventario SQL completo: "+keys.Count+" tablas de datos y 4 de control");
         foreach(var table in keys.Keys)CorruptThree(table,keys[table],fields[table]);
         using(var transaction=new OperacionIntegridadDAL())
         {

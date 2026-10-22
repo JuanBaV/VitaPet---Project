@@ -181,6 +181,7 @@ namespace VitaPet.BLL
                     using (ConexionDAL.UsarBaseTemporal(temporal))
                     {
                         if (ampliar) new ReferenciaIntegridadBLL().Inicializar();
+                        new PerfilBLL().AsegurarIniciales();
                         seguridad.ExigirIntegridad();
                         if (!HayWebmasterConfiable()) throw new InvalidDataException("El XML no recupera un WebMaster válido.");
                     }

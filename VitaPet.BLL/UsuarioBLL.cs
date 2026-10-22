@@ -26,7 +26,7 @@ namespace VitaPet.BLL
             filtro = NormalizarFiltro(filtro);
             using (var operacion = new OperacionIntegridadDAL())
             {
-                var webmaster = _seguridad.ExigirWebmaster();
+                var webmaster = _seguridad.ExigirPermiso("GestionUsuarios");
                 ExigirIntegridadConsulta();
                 var resultado = _usuarioDAL.ListarUsuarios(filtro);
                 // Audit even an empty result; publish data only after the audit commits.
@@ -51,7 +51,7 @@ namespace VitaPet.BLL
             filtro = NormalizarFiltro(filtro);
             using (var operacion = new OperacionIntegridadDAL())
             {
-                _seguridad.ExigirWebmaster();
+                _seguridad.ExigirPermiso("GestionUsuarios");
                 ExigirIntegridadConsulta();
                 // Revalidate the current state before offering actions; no mutation or new query event.
                 var usuario = _usuarioDAL.ListarUsuarios(filtro).Usuarios.SingleOrDefault(u => u.IdUsuario == idUsuario);

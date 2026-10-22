@@ -21,7 +21,7 @@ namespace VitaPet.BLL
             return EjecutarOperacionUsuario(() => {
                 using (var tx = new OperacionIntegridadDAL())
                 {
-                    var actor = _seguridad.ExigirPermiso("ConsultarUsuario", "ModificarUsuario", "BloquearUsuario", "DesbloquearUsuario");
+                    var actor = _seguridad.ExigirPermiso(operacion == OperacionUsuario.Consultar ? "ConsultarUsuario" : operacion == OperacionUsuario.Modificar ? "ModificarUsuario" : operacion == OperacionUsuario.Bloquear ? "BloquearUsuario" : "DesbloquearUsuario");
                     ExigirIntegridadConsulta();
                     var usuario = ExigirUsuario(id);
                     ValidarEstadoOperacion(usuario, operacion);

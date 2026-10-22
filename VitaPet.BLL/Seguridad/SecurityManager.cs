@@ -132,11 +132,15 @@ namespace VitaPet.BLL.Seguridad
             return ExigirGrupo("Administrador");
         }
 
-        public UsuarioBE ExigirWebmaster()
+        public UsuarioBE ExigirWebmaster(string pantalla = null)
         {
             var actual=VitaPet.SECURITY.SessionManager.Instancia.UsuarioActual;
             if(actual==null) throw new UnauthorizedAccessException("Se requiere una sesión.");
-            if(actual.Rol!="Webmaster") { ExigirIntegridad(); return ExigirGrupo("Webmaster"); }
+            if(actual.Rol!="Webmaster")
+            {
+                if(pantalla!=null) return ExigirPermiso(pantalla);
+                throw new UnauthorizedAccessException("Acceso exclusivo para Webmaster.");
+            }
             var vigente=_usuarioDAL.ObtenerPorCorreo(actual.CorreoElectronico);
             if(vigente==null || vigente.IdUsuario!=actual.IdUsuario || !EsWebmasterConfiable(vigente))
                 throw new UnauthorizedAccessException("No se pudo verificar la identidad del Webmaster.");

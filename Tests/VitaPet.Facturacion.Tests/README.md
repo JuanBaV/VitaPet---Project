@@ -1,5 +1,11 @@
 # Facturación de VitaPet Rework
 
+Los puntos 12–14 se verifican ejecutando el mismo programa con `--perfiles`.
+Comprueba el Composite de perfiles/pantallas, herencia, ciclos, versiones,
+altas del Webmaster, restricciones del Administrador y registro público con
+rol Cliente fijo. El alta pública no admite un perfil enviado por el cliente.
+Las pruebas crean y eliminan su propia base SQL temporal.
+
 Compilar VitaPet.Facturacion.Tests.csproj con MSBuild de Visual Studio y ejecutar
 bin/Debug/net48/VitaPet.Facturacion.Tests.exe. La suite usa y elimina su propia
 base VitaPet_Verificacion_Rework_<guid>; no modifica VitaPet.

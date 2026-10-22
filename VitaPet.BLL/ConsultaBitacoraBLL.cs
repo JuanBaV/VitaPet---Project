@@ -22,7 +22,7 @@ namespace VitaPet.BLL
             // Lock shared with writers: a row cannot move to XML between the two reads.
             using (var operacion = new OperacionIntegridadDAL())
             {
-                var usuario = seguridad.ExigirWebmaster();
+                var usuario = seguridad.ExigirWebmaster("ConsultaBitacora");
                 ValidarFiltro(filtro);
                 SoloHistoricoIntegridad = !seguridad.VerificarIntegridad();
                 var activos = SoloHistoricoIntegridad ? new List<BitacoraBE>() : new BitacoraDAL().ObtenerParaIntegridad();
@@ -63,7 +63,7 @@ namespace VitaPet.BLL
         {
             using (var operacion = new OperacionIntegridadDAL())
             {
-                seguridad.ExigirWebmaster();
+                seguridad.ExigirWebmaster("ConsultaBitacora");
                 ExigirIntegridad();
                 if (registros == null) throw new ArgumentNullException(nameof(registros));
                 var lista = registros.ToList();

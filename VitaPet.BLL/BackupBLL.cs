@@ -39,7 +39,8 @@ namespace VitaPet.BLL
             // 013-015 cambian SP; 016 admite precio NULL sin alterar filas existentes.
             var admitidas = new[] { "012_IntegridadTodasLasTablas.sql", "013_ProcedimientosSimples.sql",
                 "014_IdiomaUsuario.sql", "015_RegistroCliente.sql", "016_ContratacionPlanes.sql", "017_GestionPago.sql", "018_ConsultaCobertura.sql", "019_ConsultaReintegros.sql", "020_RegistroMascota.sql", "021_GestionMascotas.sql", "022_Turnos.sql",
-                "026_SimplificacionProcedimientos.sql", "027_Facturacion.sql", "028_OptimizarLecturas.sql" };
+                "026_SimplificacionProcedimientos.sql", "027_Facturacion.sql", "028_OptimizarLecturas.sql",
+                "029_CorreoFactura.sql", "030_PerfilesComposite.sql", "031_AutorizacionPorPantallas.sql" };
             return pendientes.Length > 0 && pendientes.All(p =>
                 admitidas.Any(id => p.StartsWith(id + ":", StringComparison.Ordinal)));
         }
@@ -75,7 +76,7 @@ namespace VitaPet.BLL
         }
         public List<BackupBE> Listar()
         {
-            seguridad.ExigirWebmaster();
+            seguridad.ExigirWebmaster("BaseDatos");
             return Directory.GetFiles(Catalogo,"*.xml").Select(f=>Leer(Path.GetFileNameWithoutExtension(f))).OrderByDescending(b=>b.FechaUtc).ToList();
         }
         private void ValidarContenido(string file,string esquema)
@@ -96,7 +97,7 @@ namespace VitaPet.BLL
                 {
                     DatabaseMigrator.MigrarTemporalExistente(temporal);
                     using (ConexionDAL.UsarBaseTemporal(temporal))
-                    { new ReferenciaIntegridadBLL().Inicializar(); seguridad.ExigirIntegridad(); }
+                    { new ReferenciaIntegridadBLL().Inicializar(); new PerfilBLL().AsegurarIniciales(); seguridad.ExigirIntegridad(); }
                 }
             }
             finally { dal.EliminarTemporal(temporal); }
@@ -105,7 +106,7 @@ namespace VitaPet.BLL
         {
             using(EstadoAplicacion.BloquearOperacion())
             {
-                var actor=seguridad.ExigirWebmaster();
+                var actor=seguridad.ExigirWebmaster("BaseDatos");
                 if(EstadoAplicacion.Mantenimiento) throw new InvalidOperationException("Restauración pendiente: no se puede crear un backup sano.");
                 seguridad.ExigirIntegridad();
                 var b=new BackupBE { Id=Guid.NewGuid().ToString("N"),BaseDatos=dal.BaseDatos,FechaUtc=DateTime.UtcNow,IdOperador=actor.IdUsuario,Esquema=dal.Esquema() };
@@ -128,7 +129,7 @@ namespace VitaPet.BLL
         {
             using(EstadoAplicacion.BloquearOperacion())
             {
-                var actor=seguridad.ExigirWebmaster(); var b=Leer(id); string file=Archivo(id);
+                var actor=seguridad.ExigirWebmaster("BaseDatos"); var b=Leer(id); string file=Archivo(id);
                 if(!b.Verificado || Hash(file)!=b.HashArchivo || !EsquemaCompatible(b.Esquema,dal.Esquema())) throw new InvalidDataException("El respaldo no es válido o compatible.");
                 ValidarContenido(file,b.Esquema);
                 AuditarExterno("Restore iniciado",actor.IdUsuario,id);
@@ -141,6 +142,7 @@ namespace VitaPet.BLL
                     dal.Restaurar(file);
                     DatabaseMigrator.Migrate();
                     new ReferenciaIntegridadBLL().Inicializar();
+                    new PerfilBLL().AsegurarIniciales();
                     seguridad.ExigirIntegridad();
                     // El operador puede no existir en un backup antiguo: conservar identidad en el evento externo.
                     var usuario=new UsuarioDAL().ObtenerPorCorreo(actor.CorreoElectronico);

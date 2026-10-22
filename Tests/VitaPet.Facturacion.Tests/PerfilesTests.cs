@@ -55,13 +55,22 @@ static class PerfilesTests
         Sesion(3);padre=b.Consultar().OfType<PerfilBE>().Single(p => p.Id==padre.Id);
         int empresas=b.Consultar().OfType<PermisoPantallaBE>().Single(p => p.Pantalla=="Empresas").Id;
         b.Guardar(padre.Id,padre.Version,padre.Nombre,new[]{empresas});
+        Rechaza<ArgumentException>(() => b.Guardar(padre.Id,padre.Version,padre.Nombre,new[]{consulta}),"Rechaza una edición con versión anterior al cambio de permisos");
         Sesion(id);Check(!b.PuedeAcceder("ConsultaPlan") && b.PuedeAcceder("Empresas"),"Cambiar el perfil padre actualiza permisos heredados sin reloguearse");
         Sesion(2);Check(b.Consultar().OfType<PerfilBE>().Any(),"Administrador puede visualizar el Composite");
         Rechaza<UnauthorizedAccessException>(() => b.Guardar(0,null,"No permitido",new[]{consulta}),"Administrador no crea perfiles por BLL");
         Rechaza<UnauthorizedAccessException>(() => new AltaUsuarioBLL().Registrar(datos,"Cliente"),"Administrador no da de alta usuarios por BLL");
+        var u=new UsuarioDAL().ObtenerPorId(id);
+        Rechaza<UnauthorizedAccessException>(() => new UsuarioBLL().ModificarUsuario(id,u.DVH,new CambiosUsuarioBE {Nombre=u.Nombre,CorreoElectronico=u.CorreoElectronico,Rol="Webmaster",Estado=true}),"Administrador no cambia el perfil de un usuario por BLL");
         Sesion(3);b.Guardar(0,null,"Temporal",new[]{consulta});var temporal=b.Consultar().OfType<PerfilBE>().Single(p => p.Nombre=="Temporal");
         b.Eliminar(temporal.Id,temporal.Version);Check(!b.Consultar().OfType<PerfilBE>().Any(p => p.Nombre=="Temporal"),"Elimina un perfil adicional sin asignaciones");
         Check(new SecurityManager().VerificarIntegridad(),"Operaciones de perfiles y alta conservan DVH, DVV y referencias");
+        Sesion(0);
+        int registroPublico=new ClienteBLL().RegistrarCliente(new RegistroClienteBE {Nombre="Registro",Apellido="Publico",CorreoElectronico="publico.perfiles@test.local",Contrasena="Prueba2026!",Telefono="55555555"});
+        Check(new UsuarioDAL().ObtenerPorId(registroPublico).Rol=="Cliente","Registro público sin sesión asigna Cliente automáticamente");
+        Check(typeof(RegistroClienteBE).GetProperty("Rol")==null,"El contrato del registro público no acepta un rol enviado por el navegador");
+        var compatible=typeof(BackupBLL).GetMethod("EsquemaCompatible",System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.NonPublic);
+        Check((bool)compatible.Invoke(null,new object[]{"029_CorreoFactura.sql:hash;","029_CorreoFactura.sql:hash;030_PerfilesComposite.sql:hash;031_AutorizacionPorPantallas.sql:hash;"}),"Compatibilidad de respaldos admite las migraciones nuevas de perfiles");
         Console.WriteLine("TOTAL PERFILES: "+checks+" comprobaciones");
     }
 }
