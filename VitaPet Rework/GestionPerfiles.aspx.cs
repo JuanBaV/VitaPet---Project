@@ -48,8 +48,10 @@ public partial class GestionPerfilesPage : PaginaBase
     protected void Nuevo(object sender,EventArgs e) { Ejecutar(() => {ExigirEdicion();CerrarConfirmacion();Id=0;Version=null;txtNombre.Text="";txtNombre.ReadOnly=false;pnlDetalle.Visible=false;Cargar();}); }
     protected void Guardar(object sender,EventArgs e)
     {
-        Ejecutar(() => {ExigirEdicion();CerrarConfirmacion();new PerfilBLL().Guardar(Id,Version,txtNombre.Text,chkComponentes.Items.Cast<ListItem>().Where(i => i.Selected).Select(i => int.Parse(i.Value)));Id=0;Version=null;txtNombre.Text="";txtNombre.ReadOnly=false;pnlDetalle.Visible=false;Cargar();Mensaje("El perfil se guardó correctamente.");});
+        Ejecutar(() => {ExigirEdicion();if(!ValidacionAlta.Validar(this,"Perfil"))return;CerrarConfirmacion();new PerfilBLL().Guardar(Id,Version,txtNombre.Text,chkComponentes.Items.Cast<ListItem>().Where(i => i.Selected).Select(i => int.Parse(i.Value)));Id=0;Version=null;txtNombre.Text="";txtNombre.ReadOnly=false;pnlDetalle.Visible=false;Cargar();Mensaje("El perfil se guardó correctamente.");});
     }
+    protected void ValidarComponentes(object sender,ServerValidateEventArgs e)
+    {e.IsValid=chkComponentes.Items.Cast<ListItem>().Any(i=>i.Selected);}
     protected void Eliminar(object sender,CommandEventArgs e)
     {
         Ejecutar(() => {

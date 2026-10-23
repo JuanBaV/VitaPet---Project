@@ -18,4 +18,8 @@ public partial class GestionPerfilesPage
     protected global::System.Web.UI.WebControls.Literal litConfirmar;
     protected global::System.Web.UI.WebControls.Button btnConfirmar;
     protected global::System.Web.UI.WebControls.Button btnCancelar;
+    protected global::System.Web.UI.WebControls.ValidationSummary vsPerfil;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator revNombre;
+    protected global::System.Web.UI.WebControls.CustomValidator cvComponentes;
 }
