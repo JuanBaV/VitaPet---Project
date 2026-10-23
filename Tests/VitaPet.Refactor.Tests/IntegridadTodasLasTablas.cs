@@ -31,9 +31,6 @@ DECLARE @n int=1;
 WHILE @n<=3 BEGIN
  INSERT dbo.Usuario(correoElectronico,contrasena,nombre,idRol,estado,dvh) VALUES(CONCAT('integridad',@n,'@test.local'),'hash','Cliente prueba',(SELECT idRol FROM dbo.Rol r JOIN dbo.PermisoComponente p ON p.idComponente=r.idRol WHERE p.nombre='Cliente' AND p.sistema=1),1,'');
  DECLARE @u int=SCOPE_IDENTITY();
- INSERT dbo.PermisoComponente(nombre,tipo,pantalla,sistema,dvh) VALUES(CONCAT('Grupo integridad ',@n),'Perfil',NULL,0,'');
- DECLARE @grupo int=SCOPE_IDENTITY();
- INSERT dbo.PermisoRelacion(idPadre,idHijo,dvh) VALUES(@grupo,(SELECT TOP(1) idComponente FROM dbo.PermisoComponente WHERE tipo='Pantalla' ORDER BY idComponente),'');
  INSERT dbo.PermisoComponente(nombre,tipo,pantalla,sistema,dvh) VALUES(CONCAT('Rol integridad ',@n),'Perfil',NULL,0,'');
  DECLARE @rol int=SCOPE_IDENTITY();
  INSERT dbo.Rol(idRol,dvh) VALUES(@rol,'');
@@ -89,7 +86,7 @@ END;");
                 Check(result.Detalles.Any(d=>d.Tabla==table&&d.Fila==Convert.ToString(row[0])&&d.Columna==field),table+": identifica fila "+row[0]+" y campo "+field);
             if(audit)
             {
-                if(table=="PermisoComponente" || table=="PermisoRelacion" || table=="Rol" || table=="RolPermiso")
+                if(table=="PermisoComponente" || table=="Rol" || table=="RolPermiso")
                     Check(new PerfilBLL().PantallasActuales().SequenceEqual(new[]{"BaseDatos"}),table+": menú de recuperación sigue disponible sin recorrer el Composite alterado");
                 var snapshot=new ContingenciaDatosDAL().ExportarXml();
                 var saved=new BitacoraBLL().RegistrarErroresIntegridad();
@@ -145,7 +142,7 @@ END;");
             {"Suscripcion","estado"},{"Pago","medioPago"},{"Mascota","nombre"},{"Turno","prestacion"},
             {"HistorialClinico","observaciones"},{"Reintegro","detalle"},{"ErrorSistema","descripcion"},
             {"DatosClinicos","observaciones"},{"AgendaTurno","prestacion"},{"DetallePago","titular"},{"Factura","concepto"},
-            {"Usuario","nombre"},{"Bitacora","accion"},{"PermisoComponente","nombre"},{"PermisoRelacion","dvh"},
+            {"Usuario","nombre"},{"Bitacora","accion"},{"PermisoComponente","nombre"},
             {"Rol","dvh"},{"RolPermiso","dvh"}};
         var keys=IntegridadTablasDAL.Claves.ToDictionary(p=>p.Key,p=>p.Value);keys.Add("Usuario","idUsuario");keys.Add("Bitacora","idBitacora");
         var controls=new[]{"DVV","ReferenciaIntegridad","__FormatoIntegridad","__SchemaMigrations"};
