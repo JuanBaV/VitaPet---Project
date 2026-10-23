@@ -1312,7 +1312,7 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to El cuidado de tus mascotas, en un solo lugar..
+        ///   Looks up a localized string similar to El bienestar de tus mascotas es nuestro propósito..
         /// </summary>
         public static string Home_Bajada {
             get {
@@ -1321,7 +1321,7 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to VitaPet es una plataforma para gestionar planes de cobertura para perros y gatos y acompañar su cuidado..
+        ///   Looks up a localized string similar to En VitaPet buscamos facilitar el acceso a la atención veterinaria y promover la prevención, para acompañar a tus mascotas en cada etapa de su vida..
         /// </summary>
         public static string Home_Descripcion {
             get {
@@ -1339,7 +1339,7 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Reúne el registro de mascotas, su historial clínico, la solicitud de turnos y el seguimiento de reintegros. Las prestaciones y condiciones de cobertura dependen del plan contratado..
+        ///   Looks up a localized string similar to Queremos que cuidar su salud sea más simple. Por eso, combinamos planes de cobertura y herramientas digitales que te ayudan a organizar sus controles, conocer su historial clínico y dar continuidad a su cuidado..
         /// </summary>
         public static string Home_Gestiones {
             get {
