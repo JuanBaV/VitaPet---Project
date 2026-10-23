@@ -15,12 +15,13 @@ SET dvh = LOWER(CONVERT(VARCHAR(64), HASHBYTES(
             LEN(CONVERT(VARCHAR(20), idUsuario)), ':', idUsuario,
             LEN(correoElectronico), ':', correoElectronico,
             LEN(contrasena), ':', contrasena,
-            LEN(rol), ':', rol,
+            LEN(CONVERT(VARCHAR(20), idRol)), ':', idRol,
             1, ':', CASE WHEN estado = 1 THEN '1' ELSE '0' END,
             LEN(nombre), ':', nombre,
             LEN(CONVERT(VARCHAR(3), intentosFallidos)), ':', intentosFallidos,
             1, ':', CASE WHEN bloqueado = 1 THEN '1' ELSE '0' END,
-            LEN(idioma), ':', idioma
+            LEN(idioma), ':', idioma,
+            CASE WHEN requiereRestablecerContrasena=1 THEN '29:requiereRestablecerContrasena1:1' ELSE '' END
         ) COLLATE Latin1_General_100_BIN2_UTF8
     )
 ), 2));

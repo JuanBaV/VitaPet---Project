@@ -72,7 +72,7 @@ BEGIN TRY
     BEGIN
         IF OBJECT_ID(N'dbo.' + QUOTENAME(@tabla), N'U') IS NULL
             THROW 51003, 'Falta una tabla del esquema esperado de VitaPet.', 1;
-        SET @filtro = CASE WHEN @tabla='Usuario' THEN N' WHERE rol<>''Webmaster''' ELSE N'' END;
+        SET @filtro = CASE WHEN @tabla='Usuario' THEN N' WHERE idRol NOT IN(SELECT idComponente FROM dbo.PermisoComponente WHERE nombre=''Webmaster'' AND sistema=1)' ELSE N'' END;
         SET @sql = N'SELECT @total=COUNT(*) FROM dbo.'+QUOTENAME(@tabla)+
             N' WITH (UPDLOCK,HOLDLOCK)'+@filtro+N';';
         EXEC sys.sp_executesql @sql, N'@total INT OUTPUT', @total=@cantidad OUTPUT;
@@ -92,7 +92,7 @@ BEGIN TRY
     WHILE @@FETCH_STATUS = 0
     BEGIN
         DELETE FROM #Filas;
-        SET @filtro = CASE WHEN @tabla='Usuario' THEN N' WHERE rol<>''Webmaster''' ELSE N'' END;
+        SET @filtro = CASE WHEN @tabla='Usuario' THEN N' WHERE idRol NOT IN(SELECT idComponente FROM dbo.PermisoComponente WHERE nombre=''Webmaster'' AND sistema=1)' ELSE N'' END;
         SET @sql = N'INSERT #Filas(Clave) SELECT TOP(3) CONVERT(NVARCHAR(255),'+QUOTENAME(@clave)+
             N') FROM dbo.'+QUOTENAME(@tabla)+N' WITH (UPDLOCK,HOLDLOCK)'+@filtro+N' ORDER BY NEWID();
             UPDATE t SET '+QUOTENAME(@campo)+N'=@marca+''_''+CONVERT(VARCHAR(20),t.'+QUOTENAME(@clave)+N')

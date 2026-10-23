@@ -1,10 +1,28 @@
--- Simplificacion de procedimientos sin cambios de contrato.
--- Conserva permisos, transacciones, bloqueos, errores y controles de integridad.
-SET ANSI_NULLS ON;
-SET QUOTED_IDENTIFIER ON;
+USE [VitaPet]
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_AgendaTurno_Inicializar
+CREATE OR ALTER FUNCTION dbo.fn_RolPermite(@idRol INT,@pantallas VARCHAR(1000))
+RETURNS BIT
+AS
+BEGIN
+    DECLARE @permitido BIT=0;
+    WITH relaciones AS (
+        SELECT idRol AS idPadre,idComponente AS idHijo FROM dbo.RolPermiso
+        UNION ALL SELECT idPadre,idHijo FROM dbo.PermisoRelacion
+    ), componentes AS (
+        SELECT c.idComponente,c.pantalla FROM dbo.Rol r JOIN dbo.PermisoComponente c ON c.idComponente=r.idRol WHERE r.idRol=@idRol
+        UNION ALL
+        SELECT hijo.idComponente,hijo.pantalla FROM componentes padre
+        JOIN relaciones r ON r.idPadre=padre.idComponente
+        JOIN dbo.PermisoComponente hijo ON hijo.idComponente=r.idHijo
+    )
+    SELECT TOP(1) @permitido=1 FROM componentes
+    WHERE CHARINDEX(','+pantalla+',',','+@pantallas+',')>0;
+    RETURN @permitido;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_AgendaTurno_Inicializar]
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
@@ -19,19 +37,19 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_AgendaTurno_ListarZonas @idUsuario INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_AgendaTurno_ListarZonas] @idUsuario INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50065, 'Se requiere una transaccion de integridad.', 1;
     IF NOT EXISTS(SELECT 1 FROM dbo.Cliente c JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
-        WHERE c.idUsuario=@idUsuario AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0)
+        WHERE c.idUsuario=@idUsuario AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'Turnos')=1 AND u.estado=1 AND u.bloqueado=0)
         THROW 50011, 'No existen datos asociados.', 1;
     SELECT DISTINCT zona FROM dbo.AgendaTurno WHERE estado=1 ORDER BY zona;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Bitacora_ActualizarDVH
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_ActualizarDVH]
     @idBitacora INT,
     @dvh VARCHAR(64)
 AS
@@ -47,7 +65,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Bitacora_Eliminar
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_Eliminar]
     @idBitacora INT
 AS
 BEGIN
@@ -61,7 +79,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Bitacora_ObtenerDvhs
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_ObtenerDvhs]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -72,7 +90,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Bitacora_ObtenerExcedentes
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_ObtenerExcedentes]
     @mantener INT
 AS
 BEGIN
@@ -91,7 +109,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Bitacora_ObtenerParaIntegridad
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_ObtenerParaIntegridad]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -102,7 +120,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Bitacora_Registrar
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_Registrar]
     @idUsuario INT = NULL,
     @fecha DATETIME,
     @accion VARCHAR(100),
@@ -120,90 +138,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_ClienteCorporativo_AsignarPlan @idAdministrador INT,@idCliente INT,@idPlan INT
-AS
-BEGIN
-    SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idAdministrador AND rol='Administrador' AND estado=1 AND bloqueado=0)
-        THROW 50024,'Acceso exclusivo para Administrador.',1;
-    IF @@TRANCOUNT=0 THROW 50007,'Se requiere una transaccion de integridad.',1;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Cliente c JOIN dbo.Empresa e ON e.idEmpresa=c.idEmpresa WHERE c.idCliente=@idCliente AND c.tipoCliente='Corporativo' AND c.estado=1 AND e.estado=1)
-        THROW 50072,'Empresa o cliente no disponible.',1;
-    IF NOT EXISTS(SELECT 1 FROM dbo.[Plan] WHERE idPlan=@idPlan AND esCorporativo=1 AND estado=1) THROW 50073,'No se encuentra disponible el plan Corporativo.',1;
-    IF EXISTS(SELECT 1 FROM dbo.Suscripcion WHERE idCliente=@idCliente) THROW 50007,'El cliente ya posee una suscripcion.',1;
-    DECLARE @hoy DATE=CONVERT(DATE,GETDATE());
-    INSERT dbo.Suscripcion(idCliente,idPlan,fechaAlta,fechaVencimiento,estado,dvh)
-    OUTPUT inserted.idSuscripcion VALUES(@idCliente,@idPlan,@hoy,DATEADD(MONTH,1,@hoy),'Activa','');
-END;
-GO
-
-CREATE OR ALTER PROCEDURE dbo.sp_ClienteCorporativo_ConsultarPlan @idUsuario INT
-AS
-BEGIN
-    SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
-        THROW 50024,'Acceso exclusivo para Administrador.',1;
-    IF @@TRANCOUNT=0 THROW 50074,'Se requiere una transaccion de integridad.',1;
-    SELECT TOP(1) idPlan,nombre,precio FROM dbo.[Plan] WHERE esCorporativo=1 AND estado=1 ORDER BY idPlan;
-END;
-GO
-
-CREATE OR ALTER PROCEDURE dbo.sp_ClienteCorporativo_CorreoRegistrado @idUsuario INT,@correo VARCHAR(100)
-AS
-BEGIN
-    SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
-        THROW 50024,'Acceso exclusivo para Administrador.',1;
-    IF @@TRANCOUNT=0 THROW 50074,'Se requiere una transaccion de integridad.',1;
-    SELECT CONVERT(BIT,CASE WHEN EXISTS(SELECT 1 FROM dbo.Usuario WITH(UPDLOCK,HOLDLOCK) WHERE correoElectronico=@correo) THEN 1 ELSE 0 END);
-END;
-GO
-
-CREATE OR ALTER PROCEDURE dbo.sp_ClienteCorporativo_RegistrarCliente
-    @idAdministrador INT,@idUsuario INT,@idEmpresa INT,@nombre NVARCHAR(MAX),@apellido NVARCHAR(MAX),@telefono NVARCHAR(MAX)
-AS
-BEGIN
-    SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idAdministrador AND rol='Administrador' AND estado=1 AND bloqueado=0)
-        THROW 50024,'Acceso exclusivo para Administrador.',1;
-    IF @@TRANCOUNT=0 THROW 50049,'Se requiere una transaccion de integridad.',1;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Empresa WHERE idEmpresa=@idEmpresa) THROW 50011,'No existen datos asociados.',1;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Empresa WHERE idEmpresa=@idEmpresa AND estado=1) THROW 50072,'La empresa seleccionada se encuentra inactiva.',1;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Cliente' AND estado=1 AND requiereRestablecerContrasena=1)
-       OR EXISTS(SELECT 1 FROM dbo.Cliente WHERE idUsuario=@idUsuario) THROW 50049,'Cuenta no disponible para el alta corporativa.',1;
-    IF NULLIF(LTRIM(RTRIM(@nombre)),N'') IS NULL OR NULLIF(LTRIM(RTRIM(@apellido)),N'') IS NULL OR NULLIF(LTRIM(RTRIM(@telefono)),N'') IS NULL THROW 50002,'Datos incompletos.',1;
-    IF LEN(@nombre)>60 OR LEN(@apellido)>60 OR LEN(@nombre+N' '+@apellido)>100 OR LEN(@telefono)>30 THROW 50025,'Datos invalidos.',1;
-    INSERT dbo.Cliente(idUsuario,idEmpresa,nombre,apellido,telefono,tipoCliente,estado,dvh)
-    OUTPUT inserted.idCliente VALUES(@idUsuario,@idEmpresa,@nombre,@apellido,@telefono,'Corporativo',1,'');
-END;
-GO
-
-CREATE OR ALTER PROCEDURE dbo.sp_ClienteCorporativo_RegistrarUsuario
-    @idAdministrador INT,@nombre NVARCHAR(MAX),@correo NVARCHAR(MAX),@hash VARCHAR(64)
-AS
-BEGIN
-    SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idAdministrador AND rol='Administrador' AND estado=1 AND bloqueado=0)
-        THROW 50024,'Acceso exclusivo para Administrador.',1;
-    IF @@TRANCOUNT=0 THROW 50049,'Se requiere una transaccion de integridad.',1;
-    IF NULLIF(LTRIM(RTRIM(@nombre)),N'') IS NULL OR NULLIF(LTRIM(RTRIM(@correo)),N'') IS NULL THROW 50002,'Datos incompletos.',1;
-    IF LEN(@nombre)>100 OR LEN(@correo)>100 OR LEN(@hash)<>64 OR @hash IS NULL OR @hash COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9a-f]%'
-       OR @nombre COLLATE Latin1_General_100_BIN2<>CONVERT(NVARCHAR(MAX),CONVERT(VARCHAR(MAX),@nombre)) COLLATE Latin1_General_100_BIN2
-       OR @correo COLLATE Latin1_General_100_BIN2<>CONVERT(NVARCHAR(MAX),CONVERT(VARCHAR(MAX),@correo)) COLLATE Latin1_General_100_BIN2
-        THROW 50025,'Datos invalidos.',1;
-    IF EXISTS(SELECT 1 FROM dbo.Usuario WITH(UPDLOCK,HOLDLOCK) WHERE correoElectronico=@correo) THROW 50001,'Correo ya registrado.',1;
-    BEGIN TRY
-        INSERT dbo.Usuario(nombre,correoElectronico,contrasena,rol,estado,intentosFallidos,bloqueado,idioma,requiereRestablecerContrasena,dvh)
-        OUTPUT inserted.idUsuario VALUES(@nombre,@correo,@hash,'Cliente',1,0,0,'es',1,'');
-    END TRY
-    BEGIN CATCH
-        IF ERROR_NUMBER() IN(2601,2627) THROW 50001,'Correo ya registrado.',1;
-        THROW;
-    END CATCH;
-END;
-GO
-
-CREATE OR ALTER PROCEDURE dbo.sp_Cliente_CotizarPlan @idUsuario INT, @idPlan INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Cliente_CotizarPlan] @idUsuario INT, @idPlan INT
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -211,26 +146,25 @@ BEGIN
         (SELECT COUNT(*) FROM dbo.Mascota m WHERE m.idCliente=c.idCliente AND m.estado=1) cantidadMascotas
     FROM dbo.Cliente c INNER JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
     CROSS JOIN dbo.[Plan] p
-    WHERE c.idUsuario=@idUsuario AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0
+    WHERE c.idUsuario=@idUsuario AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'Planes,ContratarPlan')=1 AND u.estado=1 AND u.bloqueado=0
       AND p.idPlan=@idPlan AND p.estado=1 AND p.precio>0
       AND p.esCorporativo=0;
 END;
 GO
 
--- CU-002-001. Reutiliza Cliente, Mascota y los controles de integridad existentes.
-CREATE OR ALTER PROCEDURE dbo.sp_Cliente_ObtenerActivoUsuario @idUsuario INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Cliente_ObtenerActivoUsuario] @idUsuario INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50060, 'Se requiere una transaccion de integridad.', 1;
     DECLARE @cliente INT=(SELECT c.idCliente FROM dbo.Cliente c INNER JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
-      WHERE c.idUsuario=@idUsuario AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0);
+      WHERE c.idUsuario=@idUsuario AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'Cliente,Planes,ContratarPlan,GestionPago,RegistroMascota,Mascotas,ActualizarMascota,ConsultaMascota,HistorialClinico,DatosClinicos,Turnos,ConsultaCobertura,Reintegros')=1 AND u.estado=1 AND u.bloqueado=0);
     IF @cliente IS NULL THROW 50011, 'No existen datos asociados.', 1;
     SELECT @cliente idCliente;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Cliente_Registrar
+CREATE OR ALTER PROCEDURE [dbo].[sp_Cliente_Registrar]
     @idUsuario INT, @nombre VARCHAR(60), @apellido VARCHAR(60), @telefono VARCHAR(30)
 AS
 BEGIN
@@ -243,7 +177,90 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Cobertura_AsegurarCatalogo
+CREATE OR ALTER PROCEDURE [dbo].[sp_ClienteCorporativo_AsignarPlan] @idAdministrador INT,@idCliente INT,@idPlan INT
+AS
+BEGIN
+    SET NOCOUNT ON; SET XACT_ABORT ON;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idAdministrador AND dbo.fn_RolPermite(idRol,'RegistroClienteCorporativo')=1 AND estado=1 AND bloqueado=0)
+        THROW 50024,'Acceso exclusivo para Administrador.',1;
+    IF @@TRANCOUNT=0 THROW 50007,'Se requiere una transaccion de integridad.',1;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Cliente c JOIN dbo.Empresa e ON e.idEmpresa=c.idEmpresa WHERE c.idCliente=@idCliente AND c.tipoCliente='Corporativo' AND c.estado=1 AND e.estado=1)
+        THROW 50072,'Empresa o cliente no disponible.',1;
+    IF NOT EXISTS(SELECT 1 FROM dbo.[Plan] WHERE idPlan=@idPlan AND esCorporativo=1 AND estado=1) THROW 50073,'No se encuentra disponible el plan Corporativo.',1;
+    IF EXISTS(SELECT 1 FROM dbo.Suscripcion WHERE idCliente=@idCliente) THROW 50007,'El cliente ya posee una suscripcion.',1;
+    DECLARE @hoy DATE=CONVERT(DATE,GETDATE());
+    INSERT dbo.Suscripcion(idCliente,idPlan,fechaAlta,fechaVencimiento,estado,dvh)
+    OUTPUT inserted.idSuscripcion VALUES(@idCliente,@idPlan,@hoy,DATEADD(MONTH,1,@hoy),'Activa','');
+END;
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_ClienteCorporativo_ConsultarPlan] @idUsuario INT
+AS
+BEGIN
+    SET NOCOUNT ON; SET XACT_ABORT ON;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'RegistroClienteCorporativo')=1 AND estado=1 AND bloqueado=0)
+        THROW 50024,'Acceso exclusivo para Administrador.',1;
+    IF @@TRANCOUNT=0 THROW 50074,'Se requiere una transaccion de integridad.',1;
+    SELECT TOP(1) idPlan,nombre,precio FROM dbo.[Plan] WHERE esCorporativo=1 AND estado=1 ORDER BY idPlan;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_ClienteCorporativo_CorreoRegistrado] @idUsuario INT,@correo VARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON; SET XACT_ABORT ON;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'RegistroClienteCorporativo')=1 AND estado=1 AND bloqueado=0)
+        THROW 50024,'Acceso exclusivo para Administrador.',1;
+    IF @@TRANCOUNT=0 THROW 50074,'Se requiere una transaccion de integridad.',1;
+    SELECT CONVERT(BIT,CASE WHEN EXISTS(SELECT 1 FROM dbo.Usuario WITH(UPDLOCK,HOLDLOCK) WHERE correoElectronico=@correo) THEN 1 ELSE 0 END);
+END;
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_ClienteCorporativo_RegistrarCliente]
+    @idAdministrador INT,@idUsuario INT,@idEmpresa INT,@nombre NVARCHAR(MAX),@apellido NVARCHAR(MAX),@telefono NVARCHAR(MAX)
+AS
+BEGIN
+    SET NOCOUNT ON; SET XACT_ABORT ON;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idAdministrador AND dbo.fn_RolPermite(idRol,'RegistroClienteCorporativo')=1 AND estado=1 AND bloqueado=0)
+        THROW 50024,'Acceso exclusivo para Administrador.',1;
+    IF @@TRANCOUNT=0 THROW 50049,'Se requiere una transaccion de integridad.',1;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Empresa WHERE idEmpresa=@idEmpresa) THROW 50011,'No existen datos asociados.',1;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Empresa WHERE idEmpresa=@idEmpresa AND estado=1) THROW 50072,'La empresa seleccionada se encuentra inactiva.',1;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND idRol=(SELECT idComponente FROM dbo.PermisoComponente WHERE nombre='Cliente' AND tipo='Perfil' AND sistema=1) AND estado=1 AND requiereRestablecerContrasena=1)
+       OR EXISTS(SELECT 1 FROM dbo.Cliente WHERE idUsuario=@idUsuario) THROW 50049,'Cuenta no disponible para el alta corporativa.',1;
+    IF NULLIF(LTRIM(RTRIM(@nombre)),N'') IS NULL OR NULLIF(LTRIM(RTRIM(@apellido)),N'') IS NULL OR NULLIF(LTRIM(RTRIM(@telefono)),N'') IS NULL THROW 50002,'Datos incompletos.',1;
+    IF LEN(@nombre)>60 OR LEN(@apellido)>60 OR LEN(@nombre+N' '+@apellido)>100 OR LEN(@telefono)>30 THROW 50025,'Datos invalidos.',1;
+    INSERT dbo.Cliente(idUsuario,idEmpresa,nombre,apellido,telefono,tipoCliente,estado,dvh)
+    OUTPUT inserted.idCliente VALUES(@idUsuario,@idEmpresa,@nombre,@apellido,@telefono,'Corporativo',1,'');
+END;
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_ClienteCorporativo_RegistrarUsuario]
+    @idAdministrador INT,@nombre NVARCHAR(MAX),@correo NVARCHAR(MAX),@hash VARCHAR(64)
+AS
+BEGIN
+    SET NOCOUNT ON; SET XACT_ABORT ON;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idAdministrador AND dbo.fn_RolPermite(idRol,'RegistroClienteCorporativo')=1 AND estado=1 AND bloqueado=0)
+        THROW 50024,'Acceso exclusivo para Administrador.',1;
+    IF @@TRANCOUNT=0 THROW 50049,'Se requiere una transaccion de integridad.',1;
+    IF NULLIF(LTRIM(RTRIM(@nombre)),N'') IS NULL OR NULLIF(LTRIM(RTRIM(@correo)),N'') IS NULL THROW 50002,'Datos incompletos.',1;
+    IF LEN(@nombre)>100 OR LEN(@correo)>100 OR LEN(@hash)<>64 OR @hash IS NULL OR @hash COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9a-f]%'
+       OR @nombre COLLATE Latin1_General_100_BIN2<>CONVERT(NVARCHAR(MAX),CONVERT(VARCHAR(MAX),@nombre)) COLLATE Latin1_General_100_BIN2
+       OR @correo COLLATE Latin1_General_100_BIN2<>CONVERT(NVARCHAR(MAX),CONVERT(VARCHAR(MAX),@correo)) COLLATE Latin1_General_100_BIN2
+        THROW 50025,'Datos invalidos.',1;
+    IF EXISTS(SELECT 1 FROM dbo.Usuario WITH(UPDLOCK,HOLDLOCK) WHERE correoElectronico=@correo) THROW 50001,'Correo ya registrado.',1;
+    BEGIN TRY
+        INSERT dbo.Usuario(nombre,correoElectronico,contrasena,idRol,estado,intentosFallidos,bloqueado,idioma,requiereRestablecerContrasena,dvh)
+        OUTPUT inserted.idUsuario VALUES(@nombre,@correo,@hash,(SELECT idRol FROM dbo.Rol r JOIN dbo.PermisoComponente p ON p.idComponente=r.idRol WHERE p.nombre='Cliente' AND p.sistema=1),1,0,0,'es',1,'');
+    END TRY
+    BEGIN CATCH
+        IF ERROR_NUMBER() IN(2601,2627) THROW 50001,'Correo ya registrado.',1;
+        THROW;
+    END CATCH;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_Cobertura_AsegurarCatalogo]
     @idPlan INT, @prestacion VARCHAR(100), @detalle VARCHAR(255)
 AS
 BEGIN
@@ -260,7 +277,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Cobertura_ConsultarCuenta @idUsuario INT,@idSuscripcion INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Cobertura_ConsultarCuenta] @idUsuario INT,@idSuscripcion INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
@@ -275,11 +292,11 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Cobertura_GuardarAdministracion @idUsuario INT,@idPlan INT,@idCobertura INT,@prestacion NVARCHAR(MAX),@detalle NVARCHAR(MAX),@estado BIT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Cobertura_GuardarAdministracion] @idUsuario INT,@idPlan INT,@idCobertura INT,@prestacion NVARCHAR(MAX),@detalle NVARCHAR(MAX),@estado BIT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'AltaPlan,ModificarPlan')=1 AND estado=1 AND bloqueado=0)
         THROW 50024,'Acceso exclusivo para Administrador.',1;
     IF @@TRANCOUNT=0 THROW 50075,'Se requiere una transaccion de integridad.',1;
     IF NOT EXISTS(SELECT 1 FROM dbo.[Plan] WHERE idPlan=@idPlan) THROW 50011,'No existen datos asociados.',1;
@@ -302,7 +319,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Cobertura_ObtenerPorPlan @idPlan INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Cobertura_ObtenerPorPlan] @idPlan INT
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -310,7 +327,21 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_DVV_Guardar
+CREATE OR ALTER PROCEDURE [dbo].[sp_DatosClinicos_ConsultarMascota] @idUsuario INT,@idMascota INT
+AS
+BEGIN
+    SET NOCOUNT ON; SET XACT_ABORT ON;
+    IF @@TRANCOUNT=0 THROW 50063, 'Se requiere una transaccion de integridad.', 1;
+    IF NOT EXISTS(SELECT 1 FROM dbo.Mascota m JOIN dbo.Cliente c ON c.idCliente=m.idCliente
+      JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario
+      AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'DatosClinicos')=1 AND u.estado=1 AND u.bloqueado=0)
+      THROW 50011, 'No existen datos asociados.', 1;
+    SELECT idDatoClinico,peso,temperatura,frecuenciaCardiaca,observaciones
+    FROM dbo.DatosClinicos WHERE idMascota=@idMascota ORDER BY idDatoClinico DESC;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_DVV_Guardar]
     @nombreTabla VARCHAR(60),
     @valorDVV VARCHAR(255)
 AS
@@ -327,7 +358,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_DVV_ObtenerPorTabla
+CREATE OR ALTER PROCEDURE [dbo].[sp_DVV_ObtenerPorTabla]
     @nombreTabla VARCHAR(60)
 AS
 BEGIN
@@ -339,25 +370,11 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_DatosClinicos_ConsultarMascota @idUsuario INT,@idMascota INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Empresa_Actualizar] @idUsuario INT,@razonSocial NVARCHAR(MAX),@cuit NVARCHAR(MAX),@direccion NVARCHAR(MAX),@telefono NVARCHAR(MAX),@idEmpresa INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF @@TRANCOUNT=0 THROW 50063, 'Se requiere una transaccion de integridad.', 1;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Mascota m JOIN dbo.Cliente c ON c.idCliente=m.idCliente
-      JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario
-      AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0)
-      THROW 50011, 'No existen datos asociados.', 1;
-    SELECT idDatoClinico,peso,temperatura,frecuenciaCardiaca,observaciones
-    FROM dbo.DatosClinicos WHERE idMascota=@idMascota ORDER BY idDatoClinico DESC;
-END;
-GO
-
-CREATE OR ALTER PROCEDURE dbo.sp_Empresa_Actualizar @idUsuario INT,@razonSocial NVARCHAR(MAX),@cuit NVARCHAR(MAX),@direccion NVARCHAR(MAX),@telefono NVARCHAR(MAX),@idEmpresa INT
-AS
-BEGIN
-    SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'ModificarEmpresa')=1 AND estado=1 AND bloqueado=0)
         THROW 50024, 'Acceso exclusivo para Administrador.', 1;
     IF @@TRANCOUNT=0 THROW 50070, 'Se requiere una transaccion de integridad.', 1;
     SELECT @razonSocial=LTRIM(RTRIM(@razonSocial)),@cuit=LTRIM(RTRIM(@cuit)),@direccion=LTRIM(RTRIM(@direccion)),@telefono=LTRIM(RTRIM(@telefono));
@@ -390,11 +407,11 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Empresa_Consultar @idUsuario INT,@idEmpresa INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Empresa_Consultar] @idUsuario INT,@idEmpresa INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'Empresas,ConsultaEmpresa,ModificarEmpresa,RegistroClienteCorporativo')=1 AND estado=1 AND bloqueado=0)
         THROW 50024, 'Acceso exclusivo para Administrador.', 1;
     IF @@TRANCOUNT=0 THROW 50067, 'Se requiere una transaccion de integridad.', 1;
     IF NOT EXISTS(SELECT 1 FROM dbo.Empresa WHERE idEmpresa=@idEmpresa) THROW 50011, 'No existen datos asociados.', 1;
@@ -402,11 +419,11 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Empresa_CuitRegistrado @idUsuario INT,@cuit VARCHAR(20),@idEmpresa INT=0
+CREATE OR ALTER PROCEDURE [dbo].[sp_Empresa_CuitRegistrado] @idUsuario INT,@cuit VARCHAR(20),@idEmpresa INT=0
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'AltaEmpresa,ModificarEmpresa')=1 AND estado=1 AND bloqueado=0)
         THROW 50024, 'Acceso exclusivo para Administrador.', 1;
     IF @@TRANCOUNT=0 THROW 50067, 'Se requiere una transaccion de integridad.', 1;
     IF @cuit IS NULL OR LEN(@cuit)<>11 OR @cuit COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9]%' THROW 50025, 'Datos invalidos.', 1;
@@ -414,24 +431,23 @@ BEGIN
 END;
 GO
 
--- CU-005-001 a CU-005-004. Reutiliza Empresa y su clave unica CUIT existentes.
 -- La BLL guarda DVH, DVV, referencias y auditoria dentro de la transaccion ambiente.
-CREATE OR ALTER PROCEDURE dbo.sp_Empresa_Listar @idUsuario INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Empresa_Listar] @idUsuario INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'Empresas,RegistroClienteCorporativo')=1 AND estado=1 AND bloqueado=0)
         THROW 50024, 'Acceso exclusivo para Administrador.', 1;
     IF @@TRANCOUNT=0 THROW 50067, 'Se requiere una transaccion de integridad.', 1;
     SELECT idEmpresa,razonSocial,cuit,direccion,telefono,estado FROM dbo.Empresa ORDER BY razonSocial,idEmpresa;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Empresa_Registrar @idUsuario INT,@razonSocial NVARCHAR(MAX),@cuit NVARCHAR(MAX),@direccion NVARCHAR(MAX),@telefono NVARCHAR(MAX)
+CREATE OR ALTER PROCEDURE [dbo].[sp_Empresa_Registrar] @idUsuario INT,@razonSocial NVARCHAR(MAX),@cuit NVARCHAR(MAX),@direccion NVARCHAR(MAX),@telefono NVARCHAR(MAX)
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'AltaEmpresa')=1 AND estado=1 AND bloqueado=0)
         THROW 50024, 'Acceso exclusivo para Administrador.', 1;
     IF @@TRANCOUNT=0 THROW 50069, 'Se requiere una transaccion de integridad.', 1;
     SELECT @razonSocial=LTRIM(RTRIM(@razonSocial)),@cuit=LTRIM(RTRIM(@cuit)),@direccion=LTRIM(RTRIM(@direccion)),@telefono=LTRIM(RTRIM(@telefono));
@@ -462,7 +478,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_ErrorSistema_ObtenerPorCodigo
+CREATE OR ALTER PROCEDURE [dbo].[sp_ErrorSistema_ObtenerPorCodigo]
     @codigo VARCHAR(10)
 AS
 BEGIN
@@ -474,14 +490,59 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_HistorialClinico_ConsultarMascota @idUsuario INT,@idMascota INT
+CREATE OR ALTER PROCEDURE dbo.sp_Factura_Emitir @idUsuario INT,@idSuscripcion INT
+AS
+BEGIN
+    SET NOCOUNT ON;SET XACT_ABORT ON;
+    IF @@TRANCOUNT=0 THROW 50080,'Se requiere una transaccion de integridad.',1;
+    DECLARE @pago INT=(SELECT TOP(1) p.idPago FROM dbo.Pago p WITH(UPDLOCK,HOLDLOCK)
+    INNER JOIN dbo.Suscripcion s ON s.idSuscripcion=p.idSuscripcion INNER JOIN dbo.Cliente c ON c.idCliente=s.idCliente
+    WHERE c.idUsuario=@idUsuario AND c.estado=1 AND s.idSuscripcion=@idSuscripcion AND p.estado='Aprobado' ORDER BY p.idPago);
+    IF @pago IS NULL THROW 50054,'No existe un pago aprobado propio.',1;
+    DECLARE @factura INT=(SELECT idFactura FROM dbo.Factura WITH(UPDLOCK,HOLDLOCK) WHERE idPago=@pago);
+    IF @factura IS NOT NULL
+    BEGIN SELECT @factura id,CONVERT(BIT,0) nuevo;RETURN;END;
+    DECLARE @numero BIGINT=(SELECT ISNULL(MAX(CONVERT(BIGINT,RIGHT(numeroFactura,10))),0)+1 FROM dbo.Factura WITH(UPDLOCK,HOLDLOCK));
+    IF @numero>9999999999 THROW 50080,'Numeracion agotada.',1;
+    INSERT dbo.Factura(numeroFactura,idPago,idCliente,idSuscripcion,idPlan,clienteNombre,clienteCorreo,planNombre,concepto,periodoDesde,periodoHasta,fechaEmision,precioMascota,precioMascotaAdicional,cantidadMascotas,titular,importe,moneda,medioPago,estado,dvh)
+    SELECT '0001-'+RIGHT('0000000000'+CONVERT(VARCHAR(10),@numero),10),p.idPago,c.idCliente,s.idSuscripcion,s.idPlan,c.nombre+' '+c.apellido,u.correoElectronico,pl.nombre,
+        N'Suscripción mensual - '+pl.nombre,p.fechaPago,DATEADD(DAY,-1,DATEADD(MONTH,1,p.fechaPago)),SYSDATETIME(),d.precioMascota,d.precioMascotaAdicional,d.cantidadMascotas,d.titular,p.importe,'USD',p.medioPago,'Emitida',''
+    FROM dbo.Pago p INNER JOIN dbo.Suscripcion s ON s.idSuscripcion=p.idSuscripcion INNER JOIN dbo.Cliente c ON c.idCliente=s.idCliente
+    INNER JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario INNER JOIN dbo.[Plan] pl ON pl.idPlan=s.idPlan LEFT JOIN dbo.DetallePago d ON d.idPago=p.idPago WHERE p.idPago=@pago;
+    IF @@ROWCOUNT<>1 THROW 50079,'No se pudo preparar la factura.',1;
+    SELECT CONVERT(INT,SCOPE_IDENTITY()) id,CONVERT(BIT,1) nuevo;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_Factura_ListarPropias] @idUsuario INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT s.idSuscripcion,pl.nombre planNombre,p.importe,p.fechaPago,f.numeroFactura
+    FROM dbo.Pago p INNER JOIN dbo.Suscripcion s ON s.idSuscripcion=p.idSuscripcion
+    INNER JOIN dbo.Cliente c ON c.idCliente=s.idCliente INNER JOIN dbo.[Plan] pl ON pl.idPlan=s.idPlan LEFT JOIN dbo.Factura f ON f.idPago=p.idPago
+    WHERE c.idUsuario=@idUsuario AND c.estado=1 AND p.estado='Aprobado' ORDER BY p.fechaPago DESC,p.idPago DESC;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE dbo.sp_Factura_Obtener @idUsuario INT,@idSuscripcion INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT f.*,d.correoFactura FROM dbo.Factura f INNER JOIN dbo.Cliente c ON c.idCliente=f.idCliente
+    LEFT JOIN dbo.DetallePago d ON d.idPago=f.idPago
+    WHERE c.idUsuario=@idUsuario AND c.estado=1 AND f.idSuscripcion=@idSuscripcion;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_HistorialClinico_ConsultarMascota] @idUsuario INT,@idMascota INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50063, 'Se requiere una transaccion de integridad.', 1;
     IF NOT EXISTS(SELECT 1 FROM dbo.Mascota m JOIN dbo.Cliente c ON c.idCliente=m.idCliente
       JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario
-      AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0)
+      AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'HistorialClinico')=1 AND u.estado=1 AND u.bloqueado=0)
       THROW 50011, 'No existen datos asociados.', 1;
     SELECT idHistorial,fechaRegistro,diagnostico,tratamiento,observaciones
     FROM dbo.HistorialClinico WHERE idMascota=@idMascota ORDER BY fechaRegistro DESC,idHistorial DESC;
@@ -495,57 +556,59 @@ AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50062, 'Se requiere una transaccion de integridad.', 1;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Mascota m JOIN dbo.Cliente c ON c.idCliente=m.idCliente
+    DECLARE @dvhActual VARCHAR(64);
+    SELECT @dvhActual=m.dvh
+    FROM dbo.Mascota m JOIN dbo.Cliente c ON c.idCliente=m.idCliente
       JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario
-      AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0)
-      THROW 50011, 'No existen datos asociados.', 1;
+      AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'ActualizarMascota')=1 AND u.estado=1 AND u.bloqueado=0;
+    IF @@ROWCOUNT=0 THROW 50011, 'No existen datos asociados.', 1;
     SELECT @nombre=LTRIM(RTRIM(@nombre)),@especie=LTRIM(RTRIM(@especie)),@raza=LTRIM(RTRIM(@raza));
     IF NULLIF(@nombre,'') IS NULL OR NULLIF(@especie,'') IS NULL
       OR NULLIF(@raza,'') IS NULL OR @fechaNacimiento IS NULL
       THROW 50002, 'Datos incompletos.', 1;
     IF @fechaNacimiento>CONVERT(DATE,GETDATE()) THROW 50025, 'Datos invalidos.', 1;
-    IF @dvhOriginal IS NULL OR NOT EXISTS(SELECT 1 FROM dbo.Mascota WHERE idMascota=@idMascota AND dvh=@dvhOriginal)
+    IF @dvhOriginal IS NULL OR @dvhActual IS NULL OR @dvhActual<>@dvhOriginal
       THROW 50064, 'Los datos de la mascota cambiaron desde su consulta.', 1;
     UPDATE dbo.Mascota SET nombre=@nombre,especie=@especie,
       raza=@raza,fechaNacimiento=@fechaNacimiento WHERE idMascota=@idMascota;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Mascota_ConsultarUsuario @idUsuario INT,@idMascota INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Mascota_ConsultarUsuario] @idUsuario INT,@idMascota INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50061, 'Se requiere una transaccion de integridad.', 1;
     IF NOT EXISTS(SELECT 1 FROM dbo.Mascota m JOIN dbo.Cliente c ON c.idCliente=m.idCliente
       JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario
-      AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0)
+      AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'Mascotas,ActualizarMascota,ConsultaMascota,HistorialClinico,DatosClinicos,Turnos')=1 AND u.estado=1 AND u.bloqueado=0)
       THROW 50011, 'No existen datos asociados.', 1;
     SELECT idMascota,idCliente,nombre,especie,raza,fechaNacimiento,estado,dvh
     FROM dbo.Mascota WHERE idMascota=@idMascota;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Mascota_ListarUsuario @idUsuario INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Mascota_ListarUsuario] @idUsuario INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50061, 'Se requiere una transaccion de integridad.', 1;
     DECLARE @cliente INT=(SELECT c.idCliente FROM dbo.Cliente c JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
-      WHERE c.idUsuario=@idUsuario AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0);
+      WHERE c.idUsuario=@idUsuario AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'Mascotas,Turnos')=1 AND u.estado=1 AND u.bloqueado=0);
     IF @cliente IS NULL THROW 50011, 'No existen datos asociados.', 1;
     SELECT idMascota,idCliente,nombre,especie,raza,fechaNacimiento,estado,dvh
     FROM dbo.Mascota WHERE idCliente=@cliente ORDER BY nombre,idMascota;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Mascota_Registrar
+CREATE OR ALTER PROCEDURE [dbo].[sp_Mascota_Registrar]
     @idUsuario INT,@nombre VARCHAR(60),@especie VARCHAR(40),@raza VARCHAR(60),@fechaNacimiento DATE
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50060, 'Se requiere una transaccion de integridad.', 1;
     DECLARE @cliente INT=(SELECT c.idCliente FROM dbo.Cliente c INNER JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
-      WHERE c.idUsuario=@idUsuario AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0);
+      WHERE c.idUsuario=@idUsuario AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'RegistroMascota')=1 AND u.estado=1 AND u.bloqueado=0);
     IF @cliente IS NULL THROW 50011, 'No existen datos asociados.', 1;
     SELECT @nombre=LTRIM(RTRIM(@nombre)),@especie=LTRIM(RTRIM(@especie)),@raza=LTRIM(RTRIM(@raza));
     IF NULLIF(@nombre,'') IS NULL OR NULLIF(@especie,'') IS NULL
@@ -558,36 +621,28 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Pago_ConsultarPendiente @idUsuario INT, @idSuscripcion INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Pago_ConsultarPendiente] @idUsuario INT,@idSuscripcion INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF @@TRANCOUNT=0 THROW 50057, 'Se requiere una transaccion de integridad.', 1;
-    DECLARE @cliente INT, @plan INT;
+    DECLARE @cliente INT,@plan INT;
     SELECT @cliente=c.idCliente,@plan=s.idPlan FROM dbo.Suscripcion s WITH(UPDLOCK,HOLDLOCK)
-      INNER JOIN dbo.Cliente c ON c.idCliente=s.idCliente
-      INNER JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
-      WHERE s.idSuscripcion=@idSuscripcion AND c.idUsuario=@idUsuario AND c.estado=1
-        AND u.estado=1 AND u.bloqueado=0 AND u.rol='Cliente' AND s.estado='Pendiente';
-    IF @cliente IS NULL OR EXISTS(SELECT 1 FROM dbo.Pago WITH(UPDLOCK,HOLDLOCK)
-      WHERE idSuscripcion=@idSuscripcion AND estado='Aprobado')
-        THROW 50054, 'La suscripcion no admite un nuevo pago.', 1;
+    INNER JOIN dbo.Cliente c ON c.idCliente=s.idCliente
+    WHERE s.idSuscripcion=@idSuscripcion AND c.idUsuario=@idUsuario AND c.estado=1 AND s.estado='Pendiente';
+    IF @cliente IS NULL OR EXISTS(SELECT 1 FROM dbo.Pago WITH(UPDLOCK,HOLDLOCK) WHERE idSuscripcion=@idSuscripcion AND estado='Aprobado') THROW 50054,'La suscripcion no admite un nuevo pago.',1;
     DECLARE @precio DECIMAL(10,2),@nombre VARCHAR(80);
     SELECT @precio=precio,@nombre=nombre FROM dbo.[Plan] WITH(UPDLOCK,HOLDLOCK)
-      WHERE idPlan=@plan AND estado=1 AND precio>0
-        AND esCorporativo=0;
-    IF @precio IS NULL THROW 50050, 'Plan no disponible.', 1;
-    DECLARE @cantidad INT=(SELECT COUNT(*) FROM dbo.Mascota WITH(UPDLOCK,HOLDLOCK)
-      WHERE idCliente=@cliente AND estado=1);
-    IF @cantidad=0 THROW 50052, 'No existen mascotas activas.', 1;
-    DECLARE @importe DECIMAL(38,2)=CONVERT(DECIMAL(20,2),@precio)*@cantidad;
-    IF @importe<=0 OR @importe>99999999.99 THROW 50025, 'Importe invalido.', 1;
-    SELECT @idSuscripcion idSuscripcion,@plan idPlan,@nombre nombre,@precio precio,
-      @cantidad cantidadMascotas,CONVERT(DECIMAL(10,2),@importe) importe;
+    WHERE idPlan=@plan AND estado=1 AND precio>0 AND nombre IN ('Plan Esencial','Plan Preventivo','Plan Integral');
+    IF @precio IS NULL THROW 50050,'Plan no disponible.',1;
+    DECLARE @cantidad INT=(SELECT COUNT(*) FROM dbo.Mascota WITH(UPDLOCK,HOLDLOCK) WHERE idCliente=@cliente AND estado=1);
+    IF @cantidad=0 THROW 50052,'No existen mascotas activas.',1;
+    DECLARE @importe DECIMAL(38,2)=CONVERT(DECIMAL(20,2),@precio)+CONVERT(DECIMAL(20,2),ROUND(@precio*0.8,2))*(@cantidad-1);
+    IF @importe<=0 OR @importe>99999999.99 THROW 50025,'Importe invalido.',1;
+    SELECT @idSuscripcion idSuscripcion,@plan idPlan,@nombre nombre,@precio precio,@cantidad cantidadMascotas,CONVERT(DECIMAL(10,2),@importe) importe;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Pago_ObtenerComprobante @idUsuario INT,@idSuscripcion INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Pago_ObtenerComprobante] @idUsuario INT,@idSuscripcion INT
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -600,26 +655,29 @@ END;
 GO
 
 CREATE OR ALTER PROCEDURE dbo.sp_Pago_Registrar
-    @idUsuario INT,@idSuscripcion INT,@importe DECIMAL(10,2),@medioPago VARCHAR(40)
+    @idUsuario INT,@idSuscripcion INT,@importe DECIMAL(10,2),@medioPago VARCHAR(40),
+    @titular NVARCHAR(100)=NULL,@correoFactura VARCHAR(100)=NULL
 AS
 BEGIN
-    SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF @@TRANCOUNT=0 THROW 50057, 'Se requiere una transaccion de integridad.', 1;
+    SET NOCOUNT ON;SET XACT_ABORT ON;
+    IF @@TRANCOUNT=0 THROW 50057,'Se requiere una transaccion de integridad.',1;
+    IF @correoFactura IS NULL OR LEN(LTRIM(RTRIM(@correoFactura)))=0 THROW 50025,'Correo de factura requerido.',1;
     DECLARE @resumen TABLE(idSuscripcion INT,idPlan INT,nombre VARCHAR(80),precio DECIMAL(10,2),cantidadMascotas INT,importe DECIMAL(10,2));
     INSERT @resumen EXEC dbo.sp_Pago_ConsultarPendiente @idUsuario,@idSuscripcion;
-    IF @importe<>(SELECT importe FROM @resumen) OR @medioPago NOT IN ('Tarjeta de credito','Tarjeta de debito')
-      THROW 50025, 'Datos invalidos.', 1;
-    INSERT dbo.Pago(idSuscripcion,importe,medioPago,fechaPago,estado,dvh)
-      OUTPUT INSERTED.idPago
-      VALUES(@idSuscripcion,@importe,@medioPago,CONVERT(DATE,GETDATE()),'Aprobado','');
+    IF @importe<>(SELECT importe FROM @resumen) OR @medioPago NOT IN ('Tarjeta de credito','Tarjeta de debito') THROW 50025,'Datos invalidos.',1;
+    INSERT dbo.Pago(idSuscripcion,importe,medioPago,fechaPago,estado,dvh) VALUES(@idSuscripcion,@importe,@medioPago,CONVERT(DATE,GETDATE()),'Aprobado','');
+    DECLARE @pago INT=SCOPE_IDENTITY();
+    INSERT dbo.DetallePago(idPago,precioMascota,precioMascotaAdicional,cantidadMascotas,titular,correoFactura,dvh)
+    SELECT @pago,precio,ROUND(precio*0.8,2),cantidadMascotas,@titular,@correoFactura,'' FROM @resumen;
+    SELECT @pago;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Plan_Actualizar @idUsuario INT,@nombre NVARCHAR(MAX),@descripcion NVARCHAR(MAX),@precio DECIMAL(28,10),@estado BIT,@idPlan INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Plan_Actualizar] @idUsuario INT,@nombre NVARCHAR(MAX),@descripcion NVARCHAR(MAX),@precio DECIMAL(28,10),@estado BIT,@idPlan INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'ModificarPlan')=1 AND estado=1 AND bloqueado=0)
         THROW 50024,'Acceso exclusivo para Administrador.',1;
     IF @@TRANCOUNT=0 THROW 50075,'Se requiere una transaccion de integridad.',1;
     IF NOT EXISTS(SELECT 1 FROM dbo.[Plan] WITH(UPDLOCK,HOLDLOCK) WHERE idPlan=@idPlan) THROW 50011,'No existen datos asociados.',1;
@@ -636,7 +694,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Plan_AsegurarCatalogo
+CREATE OR ALTER PROCEDURE [dbo].[sp_Plan_AsegurarCatalogo]
     @nombre VARCHAR(80), @descripcion VARCHAR(255), @precio DECIMAL(10,2) = NULL
 AS
 BEGIN
@@ -653,11 +711,11 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Plan_ConsultarAdministracion @idUsuario INT,@idPlan INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Plan_ConsultarAdministracion] @idUsuario INT,@idPlan INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'GestionPlanes,ConsultaPlan,ModificarPlan')=1 AND estado=1 AND bloqueado=0)
         THROW 50024,'Acceso exclusivo para Administrador.',1;
     IF @@TRANCOUNT=0 THROW 50075,'Se requiere una transaccion de integridad.',1;
     IF NOT EXISTS(SELECT 1 FROM dbo.[Plan] WHERE idPlan=@idPlan) THROW 50011,'No existen datos asociados.',1;
@@ -666,7 +724,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Plan_InicializarCorporativo
+CREATE OR ALTER PROCEDURE [dbo].[sp_Plan_InicializarCorporativo]
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
@@ -677,18 +735,18 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Plan_ListarAdministracion @idUsuario INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Plan_ListarAdministracion] @idUsuario INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'GestionPlanes')=1 AND estado=1 AND bloqueado=0)
         THROW 50024,'Acceso exclusivo para Administrador.',1;
     IF @@TRANCOUNT=0 THROW 50075,'Se requiere una transaccion de integridad.',1;
     SELECT idPlan,nombre,descripcion,precio,estado,esCorporativo FROM dbo.[Plan] ORDER BY nombre,idPlan;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Plan_ListarContratables
+CREATE OR ALTER PROCEDURE [dbo].[sp_Plan_ListarContratables]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -698,7 +756,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Plan_NecesitaCatalogo
+CREATE OR ALTER PROCEDURE [dbo].[sp_Plan_NecesitaCatalogo]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -707,7 +765,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Plan_ObtenerContratable @idPlan INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Plan_ObtenerContratable] @idPlan INT
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -717,11 +775,11 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Plan_Registrar @idUsuario INT,@nombre NVARCHAR(MAX),@descripcion NVARCHAR(MAX),@precio DECIMAL(28,10),@estado BIT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Plan_Registrar] @idUsuario INT,@nombre NVARCHAR(MAX),@descripcion NVARCHAR(MAX),@precio DECIMAL(28,10),@estado BIT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
-    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND rol='Administrador' AND estado=1 AND bloqueado=0)
+    IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE idUsuario=@idUsuario AND dbo.fn_RolPermite(idRol,'AltaPlan')=1 AND estado=1 AND bloqueado=0)
         THROW 50024,'Acceso exclusivo para Administrador.',1;
     IF @@TRANCOUNT=0 THROW 50075,'Se requiere una transaccion de integridad.',1;
     SELECT @nombre=LTRIM(RTRIM(@nombre)),@descripcion=LTRIM(RTRIM(@descripcion));
@@ -738,7 +796,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_ReferenciaIntegridad_EliminarFila
+CREATE OR ALTER PROCEDURE [dbo].[sp_ReferenciaIntegridad_EliminarFila]
     @tabla VARCHAR(60),
     @fila VARCHAR(30)
 AS
@@ -750,7 +808,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_ReferenciaIntegridad_Guardar
+CREATE OR ALTER PROCEDURE [dbo].[sp_ReferenciaIntegridad_Guardar]
     @tabla VARCHAR(60),
     @fila VARCHAR(30),
     @columna VARCHAR(60),
@@ -769,7 +827,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_ReferenciaIntegridad_Obtener
+CREATE OR ALTER PROCEDURE [dbo].[sp_ReferenciaIntegridad_Obtener]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -780,7 +838,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Reintegro_ConsultarCliente @idUsuario INT,@idReintegro INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Reintegro_ConsultarCliente] @idUsuario INT,@idReintegro INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
@@ -794,7 +852,7 @@ END;
 GO
 
 -- CU-001-005. Consulta de solo lectura; reutiliza Cliente y Reintegro.
-CREATE OR ALTER PROCEDURE dbo.sp_Reintegro_ListarCliente @idUsuario INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Reintegro_ListarCliente] @idUsuario INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
@@ -806,7 +864,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Suscripcion_ActivarPagada @idUsuario INT,@idSuscripcion INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Suscripcion_ActivarPagada] @idUsuario INT,@idSuscripcion INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
@@ -829,7 +887,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Suscripcion_ObtenerPendiente @idUsuario INT,@idSuscripcion INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Suscripcion_ObtenerPendiente] @idUsuario INT,@idSuscripcion INT
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -840,7 +898,7 @@ END;
 GO
 
 -- CU-001-004. Reutiliza Cliente, Suscripcion, Plan, Cobertura y la auditoria existente.
-CREATE OR ALTER PROCEDURE dbo.sp_Suscripcion_ObtenerVigenteCliente @idUsuario INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Suscripcion_ObtenerVigenteCliente] @idUsuario INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
@@ -858,7 +916,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Suscripcion_PrepararContratacion
+CREATE OR ALTER PROCEDURE [dbo].[sp_Suscripcion_PrepararContratacion]
     @idUsuario INT, @idPlan INT, @versionPlan VARCHAR(64), @cantidadEsperada INT
 AS
 BEGIN
@@ -866,7 +924,7 @@ BEGIN
     IF @@TRANCOUNT=0 THROW 50007, 'Se requiere una transaccion.', 1;
     DECLARE @cliente INT=(SELECT c.idCliente FROM dbo.Cliente c WITH(UPDLOCK,HOLDLOCK)
         INNER JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
-        WHERE c.idUsuario=@idUsuario AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0);
+        WHERE c.idUsuario=@idUsuario AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'ContratarPlan')=1 AND u.estado=1 AND u.bloqueado=0);
     IF @cliente IS NULL THROW 50011, 'No existen datos asociados.', 1;
     DECLARE @version VARCHAR(64)=(SELECT dvh FROM dbo.[Plan] WITH(UPDLOCK,HOLDLOCK)
         WHERE idPlan=@idPlan AND estado=1 AND precio>0 AND esCorporativo=0);
@@ -892,13 +950,13 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Turno_ConsultarDisponibilidad @idUsuario INT,@idMascota INT,@zona VARCHAR(60)
+CREATE OR ALTER PROCEDURE [dbo].[sp_Turno_ConsultarDisponibilidad] @idUsuario INT,@idMascota INT,@zona VARCHAR(60)
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50065, 'Se requiere una transaccion de integridad.', 1;
     IF NOT EXISTS(SELECT 1 FROM dbo.Mascota m JOIN dbo.Cliente c ON c.idCliente=m.idCliente JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
-        WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0)
+        WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'Turnos')=1 AND u.estado=1 AND u.bloqueado=0)
         THROW 50011, 'No existen datos asociados.', 1;
     IF NULLIF(LTRIM(RTRIM(@zona)),'') IS NULL THROW 50002, 'Datos incompletos.', 1;
     IF NOT EXISTS(SELECT 1 FROM dbo.AgendaTurno WHERE zona=@zona AND estado=1) THROW 50025, 'Datos invalidos.', 1;
@@ -919,20 +977,20 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Turno_ConsultarMascota @idUsuario INT,@idMascota INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Turno_ConsultarMascota] @idUsuario INT,@idMascota INT
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50065, 'Se requiere una transaccion de integridad.', 1;
     IF NOT EXISTS(SELECT 1 FROM dbo.Mascota m JOIN dbo.Cliente c ON c.idCliente=m.idCliente JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
-        WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0)
+        WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'Turnos')=1 AND u.estado=1 AND u.bloqueado=0)
         THROW 50011, 'No existen datos asociados.', 1;
     SELECT idTurno,idMascota,fecha,horario,prestacion,zona,estado FROM dbo.Turno WHERE idMascota=@idMascota
     ORDER BY fecha DESC,horario DESC,idTurno DESC;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Turno_Registrar
+CREATE OR ALTER PROCEDURE [dbo].[sp_Turno_Registrar]
     @idUsuario INT,@idMascota INT,@idAgendaTurno INT,@fecha DATE,@horario VARCHAR(20)
 AS
 BEGIN
@@ -951,14 +1009,14 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Turno_VerificarDisponibilidad
+CREATE OR ALTER PROCEDURE [dbo].[sp_Turno_VerificarDisponibilidad]
     @idUsuario INT,@idMascota INT,@idAgendaTurno INT,@fecha DATE,@horario VARCHAR(20),@devolver BIT=1
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
     IF @@TRANCOUNT=0 THROW 50065, 'Se requiere una transaccion de integridad.', 1;
     IF NOT EXISTS(SELECT 1 FROM dbo.Mascota m JOIN dbo.Cliente c ON c.idCliente=m.idCliente JOIN dbo.Usuario u ON u.idUsuario=c.idUsuario
-        WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario AND c.estado=1 AND u.rol='Cliente' AND u.estado=1 AND u.bloqueado=0)
+        WHERE m.idMascota=@idMascota AND c.idUsuario=@idUsuario AND c.estado=1 AND dbo.fn_RolPermite(u.idRol,'Turnos')=1 AND u.estado=1 AND u.bloqueado=0)
         THROW 50011, 'No existen datos asociados.', 1;
     IF @idAgendaTurno IS NULL OR @fecha IS NULL OR NULLIF(@horario,'') IS NULL THROW 50002, 'Datos incompletos.', 1;
     DECLARE @hora TIME(0)=TRY_CONVERT(TIME(0),@horario),@ahora DATETIME=GETDATE(),@hoy DATE=CONVERT(DATE,GETDATE());
@@ -980,7 +1038,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_ActualizarContrasena @idUsuario INT,@contrasena VARCHAR(255),@dvh VARCHAR(64)
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ActualizarContrasena] @idUsuario INT,@contrasena VARCHAR(255),@dvh VARCHAR(64)
 AS
 BEGIN
     SET NOCOUNT ON; SET XACT_ABORT ON;
@@ -990,7 +1048,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_ActualizarDVH
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ActualizarDVH]
     @idUsuario INT,
     @dvh VARCHAR(64)
 AS
@@ -1006,7 +1064,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_ActualizarEstadoSeguridad
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ActualizarEstadoSeguridad]
     @idUsuario INT,
     @intentosFallidos TINYINT,
     @bloqueado BIT,
@@ -1028,7 +1086,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_ActualizarIdioma
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ActualizarIdioma]
     @idUsuario INT,
     @idioma VARCHAR(2),
     @dvh VARCHAR(64)
@@ -1048,12 +1106,12 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_GuardarAdministracion
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_GuardarAdministracion]
     @idUsuario INT,
     @version VARCHAR(64),
     @nombre VARCHAR(100),
     @correo VARCHAR(100),
-    @rol VARCHAR(30),
+    @idRol INT,
     @estado BIT,
     @bloqueado BIT,
     @intentos TINYINT,
@@ -1085,7 +1143,7 @@ BEGIN
     UPDATE dbo.Usuario
     SET nombre = @nombre,
         correoElectronico = @correo,
-        rol = @rol,
+        idRol = @idRol,
         estado = @estado,
         bloqueado = @bloqueado,
         intentosFallidos = @intentos,
@@ -1097,7 +1155,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_Listar
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_Listar]
     @nombre NVARCHAR(100) = N'',
     @estado INT = 0,
     @hayUsuarios BIT OUTPUT
@@ -1113,20 +1171,20 @@ BEGIN
     SET @hayUsuarios = CONVERT(BIT, CASE WHEN EXISTS
         (SELECT 1 FROM dbo.Usuario) THEN 1 ELSE 0 END);
 
-    SELECT idUsuario, nombre, correoElectronico, rol, estado, bloqueado
-    FROM dbo.Usuario
+    SELECT u.idUsuario,u.nombre,u.correoElectronico,u.idRol,p.nombre AS rol,u.estado,u.bloqueado
+    FROM dbo.Usuario u JOIN dbo.Rol r ON r.idRol=u.idRol JOIN dbo.PermisoComponente p ON p.idComponente=r.idRol
     WHERE (@nombre = N'' OR CHARINDEX(@nombre,
-           nombre COLLATE Latin1_General_CI_AI) > 0)
+           u.nombre COLLATE Latin1_General_CI_AI) > 0)
       AND (@estado = 0
            OR (@estado = 1 AND estado = 1)
            OR (@estado = 2 AND estado = 0)
            OR (@estado = 3 AND bloqueado = 1)
            OR (@estado = 4 AND bloqueado = 0))
-    ORDER BY nombre, idUsuario;
+    ORDER BY u.nombre, idUsuario;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_ObtenerDvhs
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ObtenerDvhs]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -1137,34 +1195,33 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_ObtenerParaIntegridad
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ObtenerParaIntegridad]
 AS
 BEGIN
     SET NOCOUNT ON;
-    SELECT * FROM dbo.Usuario ORDER BY idUsuario;
+    SELECT u.*,p.nombre AS rol FROM dbo.Usuario u JOIN dbo.Rol r ON r.idRol=u.idRol JOIN dbo.PermisoComponente p ON p.idComponente=r.idRol ORDER BY idUsuario;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_ObtenerPorCorreo @correoElectronico VARCHAR(100)
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ObtenerPorCorreo] @correoElectronico VARCHAR(100)
 AS
 BEGIN
     SET NOCOUNT ON;
-    SELECT * FROM dbo.Usuario WHERE correoElectronico=@correoElectronico;
+    SELECT u.*,p.nombre AS rol FROM dbo.Usuario u JOIN dbo.Rol r ON r.idRol=u.idRol JOIN dbo.PermisoComponente p ON p.idComponente=r.idRol WHERE correoElectronico=@correoElectronico;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_ObtenerPorId @idUsuario INT
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ObtenerPorId] @idUsuario INT
 AS
 BEGIN
     SET NOCOUNT ON;
-    SELECT * FROM dbo.Usuario WHERE idUsuario=@idUsuario;
+    SELECT u.*,p.nombre AS rol FROM dbo.Usuario u JOIN dbo.Rol r ON r.idRol=u.idRol JOIN dbo.PermisoComponente p ON p.idComponente=r.idRol WHERE idUsuario=@idUsuario;
 END;
 GO
 
--- CU-001-001. ER049 se incorpora desde ErrorSistemaBLL después de verificar
 -- la integridad; una migración SQL no debe insertar filas sin sus referencias.
-CREATE OR ALTER PROCEDURE dbo.sp_Usuario_RegistrarCliente
-    @nombre VARCHAR(100), @correo VARCHAR(100), @contrasena VARCHAR(255)
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_RegistrarCliente]
+    @nombre VARCHAR(100), @correo VARCHAR(100), @contrasena VARCHAR(255), @idRol INT
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -1172,9 +1229,9 @@ BEGIN
     IF @@TRANCOUNT = 0 THROW 50049, 'Se requiere una transaccion de integridad.', 1;
     IF EXISTS (SELECT 1 FROM dbo.Usuario WITH (UPDLOCK, HOLDLOCK) WHERE correoElectronico=@correo)
         THROW 50001, 'Correo ya registrado.', 1;
-    INSERT dbo.Usuario(nombre, correoElectronico, contrasena, rol, estado,
+    INSERT dbo.Usuario(nombre, correoElectronico, contrasena, idRol, estado,
         intentosFallidos, bloqueado, idioma, dvh)
     OUTPUT INSERTED.idUsuario
-    VALUES(@nombre, @correo, @contrasena, 'Cliente', 1, 0, 0, 'es', '');
+    VALUES(@nombre, @correo, @contrasena, @idRol, 1, 0, 0, 'es', '');
 END;
 GO

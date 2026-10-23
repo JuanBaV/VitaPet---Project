@@ -1,12 +1,11 @@
 USE [VitaPet]
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE dbo.sp_Bitacora_Eliminar
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_Eliminar]
     @idBitacora INT
 AS
 BEGIN
@@ -19,13 +18,12 @@ BEGIN
         THROW 50003, 'No se encontró el registro de bitácora a eliminar.', 1;
 END;
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE dbo.sp_Bitacora_ObtenerDvhs
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_ObtenerDvhs]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -35,13 +33,12 @@ BEGIN
     ORDER BY idBitacora;
 END;
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE dbo.sp_Bitacora_ObtenerExcedentes
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_ObtenerExcedentes]
     @mantener INT
 AS
 BEGIN
@@ -59,13 +56,12 @@ BEGIN
     ORDER BY fecha ASC, idBitacora ASC;
 END;
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE dbo.sp_Bitacora_Registrar
+CREATE OR ALTER PROCEDURE [dbo].[sp_Bitacora_Registrar]
     @idUsuario INT = NULL,
     @fecha DATETIME,
     @accion VARCHAR(100),
@@ -82,13 +78,12 @@ BEGIN
     SELECT CAST(SCOPE_IDENTITY() AS INT) AS idBitacora;
 END;
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE dbo.sp_DVV_Guardar
+CREATE OR ALTER PROCEDURE [dbo].[sp_DVV_Guardar]
     @nombreTabla VARCHAR(60),
     @valorDVV VARCHAR(255)
 AS
@@ -100,19 +95,16 @@ BEGIN
     WHERE nombreTabla = @nombreTabla;
 
     IF @@ROWCOUNT = 0
-    BEGIN
         INSERT INTO dbo.DVV (nombreTabla, valorDVV)
         VALUES (@nombreTabla, @valorDVV);
-    END;
 END;
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE dbo.sp_ErrorSistema_ObtenerPorCodigo
+CREATE OR ALTER PROCEDURE [dbo].[sp_ErrorSistema_ObtenerPorCodigo]
     @codigo VARCHAR(10)
 AS
 BEGIN
@@ -123,38 +115,26 @@ BEGIN
     WHERE codigo = @codigo;
 END;
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER OFF
 GO
 
-CREATE PROCEDURE dbo.sp_Usuario_ActualizarContrasena
-    @idUsuario INT,
-    @contrasena VARCHAR(255),
-    @dvh VARCHAR(64)
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ActualizarContrasena] @idUsuario INT,@contrasena VARCHAR(255),@dvh VARCHAR(64)
 AS
 BEGIN
-    SET NOCOUNT ON;
-
-    UPDATE dbo.Usuario
-    SET contrasena = @contrasena,
-        dvh = @dvh
-    WHERE idUsuario = @idUsuario;
-
-    IF @@ROWCOUNT = 0
-    BEGIN
-        THROW 50002, 'No existe el usuario indicado.', 1;
-    END;
+    SET NOCOUNT ON; SET XACT_ABORT ON;
+    IF @@TRANCOUNT=0 THROW 50049,'Se requiere una transaccion de integridad.',1;
+    UPDATE dbo.Usuario SET contrasena=@contrasena,requiereRestablecerContrasena=0,dvh=@dvh WHERE idUsuario=@idUsuario;
+    IF @@ROWCOUNT<>1 THROW 50002,'No existe el usuario indicado.',1;
 END;
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE dbo.sp_Usuario_ActualizarEstadoSeguridad
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ActualizarEstadoSeguridad]
     @idUsuario INT,
     @intentosFallidos TINYINT,
     @bloqueado BIT,
@@ -175,13 +155,12 @@ BEGIN
         THROW 50002, 'No se encontró el usuario a actualizar.', 1;
 END;
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE dbo.sp_Usuario_ObtenerDvhs
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ObtenerDvhs]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -191,21 +170,15 @@ BEGIN
     ORDER BY idUsuario;
 END;
 GO
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE dbo.sp_Usuario_ObtenerPorCorreo
-    @correoElectronico VARCHAR(100)
+CREATE OR ALTER PROCEDURE [dbo].[sp_Usuario_ObtenerPorCorreo] @correoElectronico VARCHAR(100)
 AS
 BEGIN
     SET NOCOUNT ON;
-
-    SELECT idUsuario, correoElectronico, contrasena, nombre, rol, estado,
-           intentosFallidos, bloqueado, idioma, dvh
-    FROM dbo.Usuario
-    WHERE correoElectronico = @correoElectronico;
+    SELECT u.*,p.nombre AS rol FROM dbo.Usuario u JOIN dbo.Rol r ON r.idRol=u.idRol JOIN dbo.PermisoComponente p ON p.idComponente=r.idRol WHERE correoElectronico=@correoElectronico;
 END;
 GO
