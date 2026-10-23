@@ -5,6 +5,7 @@ Para el punto 17:
 ```powershell
 & Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 'Navegacion-Web.cjs' '..\..\artifacts\punto17-navegacion'
 & Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 'Interfaz-Web.cjs' '..\..\artifacts\punto17-interfaz'
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 'Backup-Confirmacion-Web.cjs' '..\..\artifacts\punto17-confirmacion-backup'
 ```
 
 El primer recorrido verifica los regresos, el teclado, los filtros conservados
@@ -15,6 +16,11 @@ Incluye cancelar y confirmar el cierre de sesión con teclado. Guarda capturas
 y `interfaz-resultados.json`; falla si una opción del menú queda fuera de la
 pantalla, aunque el documento no muestre una barra horizontal. Ambos usan
 una base temporal y conservan el recorrido de facturación existente.
+
+El recorrido de confirmaciones comprueba que cada panel aparezca debajo de
+su botón, que solo haya uno visible y que pueda cancelarse o cambiarse de
+operación, en 1440, 768 y 390 píxeles. Usa metadatos sintéticos de un respaldo
+solo para abrir el diálogo: no ejecuta backups ni restauraciones.
 
 Para el punto 16, después de compilar la solución, ejecutar:
 
