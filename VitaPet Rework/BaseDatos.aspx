@@ -17,6 +17,12 @@
     <h2><%: VitaPet.GUI.Resources.Textos.UI_Backups %></h2>
     <p><%: VitaPet.GUI.Resources.Textos.UI_LosBackupsSeVerificanAntesDeOfrecerlosPara %></p>
     <asp:Button ID="btnCrear" runat="server" Text="<%$ Resources:Textos, UI_CrearBackup %>" OnClick="Crear_Click" CssClass="btn btn-primary" CausesValidation="false" />
+    <asp:Panel ID="pnlConfirmacionCrear" runat="server" Visible="false" CssClass="alert alert-warning">
+        <h3><%: VitaPet.GUI.Resources.Textos.UI_ConfirmarOperacion %></h3>
+        <p><asp:Literal ID="litConfirmacionCrear" runat="server" /></p>
+        <asp:Button ID="btnConfirmarCrear" runat="server" Text="<%$ Resources:Textos, UI_Confirmar %>" OnClick="Confirmar_Click" CssClass="btn btn-danger" CausesValidation="false" />
+        <asp:Button ID="btnCancelarCrear" runat="server" Text="<%$ Resources:Textos, UI_Cancelar %>" OnClick="Cancelar_Click" CssClass="btn btn-default" CausesValidation="false" />
+    </asp:Panel>
     <h2><%: VitaPet.GUI.Resources.Textos.UI_RestaurarUnBackup %></h2>
     <asp:Label ID="lblBackup" runat="server" AssociatedControlID="ddlBackups" Text="<%$ Resources:Textos, UI_BackupDisponible %>" />
     <asp:DropDownList ID="ddlBackups" runat="server" CssClass="form-control" />

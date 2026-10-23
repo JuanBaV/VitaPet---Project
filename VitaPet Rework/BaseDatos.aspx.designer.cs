@@ -6,6 +6,10 @@
         protected global::System.Web.UI.WebControls.Button btnVerificar;
         protected global::System.Web.UI.WebControls.GridView grdIntegridad;
         protected global::System.Web.UI.WebControls.Button btnCrear;
+        protected global::System.Web.UI.WebControls.Panel pnlConfirmacionCrear;
+        protected global::System.Web.UI.WebControls.Literal litConfirmacionCrear;
+        protected global::System.Web.UI.WebControls.Button btnConfirmarCrear;
+        protected global::System.Web.UI.WebControls.Button btnCancelarCrear;
         protected global::System.Web.UI.WebControls.Label lblBackup;
         protected global::System.Web.UI.WebControls.DropDownList ddlBackups;
         protected global::System.Web.UI.WebControls.Button btnRestaurar;

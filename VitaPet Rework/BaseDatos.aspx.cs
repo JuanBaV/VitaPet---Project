@@ -56,16 +56,17 @@ public partial class BaseDatosPage : PaginaBase
         string token=Guid.NewGuid().ToString("N");
         Session["ConfirmacionBD"]=token; ViewState["TokenBD"]=token;
         ViewState["AccionBD"]=accion; ViewState["BackupBD"]=backup;
-        litConfirmacion.Text=Server.HtmlEncode(TextosUI.Traducir(texto)); pnlConfirmacion.Visible=true;
+        litConfirmacion.Text=litConfirmacionCrear.Text=Server.HtmlEncode(TextosUI.Traducir(texto));
+        pnlConfirmacionCrear.Visible=accion=="backup"; pnlConfirmacion.Visible=accion=="restore";
     }
-    protected void Cancelar_Click(object sender,EventArgs e) { Session.Remove("ConfirmacionBD"); pnlConfirmacion.Visible=false; }
+    protected void Cancelar_Click(object sender,EventArgs e) { Session.Remove("ConfirmacionBD"); pnlConfirmacionCrear.Visible=pnlConfirmacion.Visible=false; }
     protected void Confirmar_Click(object sender,EventArgs e)
     {
         Ejecutar(()=>
         {
             string token=ViewState["TokenBD"] as string;
             if(token==null || token!=(Session["ConfirmacionBD"] as string)) throw new InvalidOperationException("La confirmación venció. Seleccione nuevamente la operación.");
-            Session.Remove("ConfirmacionBD"); pnlConfirmacion.Visible=false;
+            Session.Remove("ConfirmacionBD"); pnlConfirmacionCrear.Visible=pnlConfirmacion.Visible=false;
             if((string)ViewState["AccionBD"]=="backup")
             {
                 var backup=new BackupBLL().Crear(); Cargar(); Mensaje(TextosUI.Formato("BackupCreado", backup.Id));
