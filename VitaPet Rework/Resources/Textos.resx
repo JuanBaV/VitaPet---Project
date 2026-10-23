@@ -1554,4 +1554,9 @@
   <data name="Factura_CorreoPendiente" xml:space="preserve"><value>No se pudo confirmar el envío de la factura. Revisá tu correo antes de reintentar.</value></data>
   <data name="Factura_ReintentarCorreo" xml:space="preserve"><value>Reintentar envío de factura</value></data>
   <data name="Pago_CorreoFactura" xml:space="preserve"><value>correo al que se enviara la factura</value></data>
+  <data name="Home_Titulo" xml:space="preserve"><value>Conocé VitaPet</value></data>
+  <data name="Home_Bajada" xml:space="preserve"><value>El cuidado de tus mascotas, en un solo lugar.</value></data>
+  <data name="Home_Descripcion" xml:space="preserve"><value>VitaPet es una plataforma para gestionar planes de cobertura para perros y gatos y acompañar su cuidado.</value></data>
+  <data name="Home_Gestiones" xml:space="preserve"><value>Reúne el registro de mascotas, su historial clínico, la solicitud de turnos y el seguimiento de reintegros. Las prestaciones y condiciones de cobertura dependen del plan contratado.</value></data>
+  <data name="Home_FotoDescripcion" xml:space="preserve"><value>Una perra beagle y una gata blanca y negra descansan juntas en el jardín.</value></data>
 </root>

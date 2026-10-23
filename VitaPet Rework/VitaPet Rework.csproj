@@ -384,6 +384,7 @@
     <Content Include="Content\Idioma.css" />
     <Content Include="Content\Images\VitaPetFavicon.png" />
     <Content Include="Content\Images\VitaPetLogo.png" />
+    <Content Include="Content\Images\HomeMascotas.png" />
     <Content Include="Content\Site.css" />
     <Content Include="ContratarPlan.aspx" />
     <Compile Include="ContratarPlan.aspx.cs">

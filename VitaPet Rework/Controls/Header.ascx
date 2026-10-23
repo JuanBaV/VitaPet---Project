@@ -6,7 +6,7 @@
             <a
                 class="navbar-brand"
                 runat="server"
-                href="~/Login.aspx"
+                href="~/Home.aspx"
                 aria-label="VitaPet">
                 <asp:Image
                     ID="imgLogoVitaPet"
@@ -16,6 +16,24 @@
                     CssClass="navbar-logo" />
             </a>
         </div>
+
+        <asp:Panel ID="pnlAccesoPublico" runat="server" CssClass="navbar-acceso-publico" Visible="false">
+            <asp:HyperLink ID="lnkIniciarSesion" runat="server" NavigateUrl="~/Login.aspx" Text="<%$ Resources:Textos, UI_IniciarSesion %>" CssClass="btn btn-default navbar-login" />
+            <div class="dropdown language-selector">
+                <button type="button" id="btnSelectorIdiomaPublico" class="language-toggle dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" aria-label="<%: TextosUI.Obtener("UI_SeleccionarIdioma") %>">
+                    <svg class="language-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M3 5h12M9 3v2m-4 3c1 4 4 6 7 8m1-11c-1 6-4 9-9 12M14 21l4-10 4 10m-6-4h4" />
+                    </svg>
+                    <span class="language-code"><asp:Literal ID="litIdiomaPublico" runat="server" /></span>
+                    <span class="language-caret" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right language-options">
+                    <li><asp:LinkButton ID="btnIdiomaPublicoEs" runat="server" Text="ES · Español" CausesValidation="false" OnClick="btnIdiomaEs_Click" /></li>
+                    <li><asp:LinkButton ID="btnIdiomaPublicoEn" runat="server" Text="EN · English" CausesValidation="false" OnClick="btnIdiomaEn_Click" /></li>
+                </ul>
+            </div>
+        </asp:Panel>
 
         <asp:Panel
             ID="pnlSesion"

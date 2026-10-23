@@ -1,29 +1,15 @@
+using System;
 using VitaPet.GUI.Presentacion;
 using VitaPet.SECURITY;
 
-public partial class HomePage : PaginaBase
+public partial class HomePage : PaginaConIdioma
 {
-    protected override string[] RolesPermitidos
+    protected override void OnLoad(EventArgs e)
     {
-        get
-        {
-            return new[]
-            {
-                "Cliente",
-                "Administrador",
-                "Webmaster"
-            };
-        }
-    }
-
-    protected override void CargarEncabezado()
-    {
-        litSaludo.Text = Server.HtmlEncode(
-            VitaPet.GUI.Resources.Textos.Saludo +
-            SessionManager.Instancia.UsuarioActual.Nombre);
-    }
-
-    protected override void EjecutarFuncionalidad()
-    {
+        base.OnLoad(e);
+        var usuario = SessionManager.Instancia.UsuarioActual;
+        pnlSaludo.Visible = usuario != null;
+        if (usuario != null)
+            litSaludo.Text = Server.HtmlEncode(VitaPet.GUI.Resources.Textos.Saludo + usuario.Nombre);
     }
 }

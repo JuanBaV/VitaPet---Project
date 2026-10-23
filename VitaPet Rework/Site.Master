@@ -15,7 +15,7 @@
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Site.css") %>?v=20261022-perfiles" />
+    <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Site.css") %>?v=20261023-home" />
     <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Idioma.css") %>?v=20261005-2" />
 
     <link href="~/Content/Images/VitaPetFavicon.png" rel="icon" type="image/png" />
@@ -41,7 +41,7 @@
 
         <uc:Header ID="ucHeader" runat="server" />
 
-        <div class="container body-content">
+        <div class="container body-content<%: Page is HomePage ? " home-layout" : "" %>">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
 
             <hr />

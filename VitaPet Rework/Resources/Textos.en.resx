@@ -1554,4 +1554,9 @@
   <data name="Factura_CorreoPendiente" xml:space="preserve"><value>Invoice delivery could not be confirmed. Check your email before retrying.</value></data>
   <data name="Factura_ReintentarCorreo" xml:space="preserve"><value>Retry invoice email</value></data>
   <data name="Pago_CorreoFactura" xml:space="preserve"><value>Email address where the invoice will be sent</value></data>
+  <data name="Home_Titulo" xml:space="preserve"><value>Get to know VitaPet</value></data>
+  <data name="Home_Bajada" xml:space="preserve"><value>Your pets' care, all in one place.</value></data>
+  <data name="Home_Descripcion" xml:space="preserve"><value>VitaPet is a platform for managing coverage plans for dogs and cats and supporting their care.</value></data>
+  <data name="Home_Gestiones" xml:space="preserve"><value>It brings together pet registration, clinical history, appointment requests and reimbursement tracking. Benefits and coverage conditions depend on the selected plan.</value></data>
+  <data name="Home_FotoDescripcion" xml:space="preserve"><value>A female beagle and a black-and-white cat rest together in the garden.</value></data>
 </root>

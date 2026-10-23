@@ -1,22 +1,11 @@
+using System;
 using VitaPet.GUI.Presentacion;
 
-public partial class _Default : PaginaBase
+public partial class _Default : PaginaConIdioma
 {
-    protected override string[] RolesPermitidos
+    protected override void OnLoad(EventArgs e)
     {
-        get
-        {
-            return new[]
-            {
-                "Cliente",
-                "Administrador",
-                "Webmaster"
-            };
-        }
-    }
-
-    protected override void EjecutarFuncionalidad()
-    {
+        base.OnLoad(e);
         Response.Redirect(ResolveUrl("~/Home.aspx"), false);
         Context.ApplicationInstance.CompleteRequest();
     }

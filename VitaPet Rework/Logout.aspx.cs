@@ -63,7 +63,7 @@ public partial class LogoutPage : PaginaBase
             SessionManager.Instancia.CerrarSesion();
         });
         if (!completado) return;
-        Response.Redirect(ResolveUrl("~/Login.aspx"), false);
+        Response.Redirect(ResolveUrl("~/Home.aspx"), false);
         Context.ApplicationInstance.CompleteRequest();
     }
 

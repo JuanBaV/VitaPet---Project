@@ -115,7 +115,7 @@ namespace VitaPet.SECURITY
 
         public string ObtenerIdiomaUsuario()
         {
-            string idioma = UsuarioActual?.Idioma;
+            string idioma = UsuarioActual?.Idioma ?? ObtenerSesion()["IdiomaPublico"] as string;
             return idioma == "en" ? "en" : "es";
         }
 
@@ -125,7 +125,10 @@ namespace VitaPet.SECURITY
                 throw new ArgumentException("Idioma no admitido.", nameof(nuevoIdioma));
             var usuario = UsuarioActual;
             if (usuario == null)
-                throw new InvalidOperationException("No hay un usuario autenticado.");
+            {
+                ObtenerSesion()["IdiomaPublico"] = nuevoIdioma;
+                return;
+            }
             usuario.Idioma = nuevoIdioma;
             // Reasignar también para proveedores de sesión fuera de proceso.
             ObtenerSesion()[ClaveUsuario] = usuario;

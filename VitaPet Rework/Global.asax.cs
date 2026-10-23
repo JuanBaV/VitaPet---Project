@@ -72,6 +72,8 @@ namespace VitaPet.GUI
                     catch (System.Data.SqlClient.SqlException) { /* La página muestra el error de conexión. */ }
                 }
                 if (string.Equals(pagina, "Login.aspx", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina, "Home.aspx", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina, "Default.aspx", StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina, "RegistroCliente.aspx", StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina, "AccesoDenegado.aspx", StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina, "CatalogoErrores.aspx", StringComparison.OrdinalIgnoreCase)) return;

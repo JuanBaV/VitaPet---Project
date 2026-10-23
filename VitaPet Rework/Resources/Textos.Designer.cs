@@ -1312,6 +1312,51 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to El cuidado de tus mascotas, en un solo lugar..
+        /// </summary>
+        public static string Home_Bajada {
+            get {
+                return ResourceManager.GetString("Home_Bajada", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VitaPet es una plataforma para gestionar planes de cobertura para perros y gatos y acompañar su cuidado..
+        /// </summary>
+        public static string Home_Descripcion {
+            get {
+                return ResourceManager.GetString("Home_Descripcion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Una perra beagle y una gata blanca y negra descansan juntas en el jardín..
+        /// </summary>
+        public static string Home_FotoDescripcion {
+            get {
+                return ResourceManager.GetString("Home_FotoDescripcion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Reúne el registro de mascotas, su historial clínico, la solicitud de turnos y el seguimiento de reintegros. Las prestaciones y condiciones de cobertura dependen del plan contratado..
+        /// </summary>
+        public static string Home_Gestiones {
+            get {
+                return ResourceManager.GetString("Home_Gestiones", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Conocé VitaPet.
+        /// </summary>
+        public static string Home_Titulo {
+            get {
+                return ResourceManager.GetString("Home_Titulo", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to El campo o su referencia protegida fue alterado..
         /// </summary>
         public static string IntegridadCampoAlterado {

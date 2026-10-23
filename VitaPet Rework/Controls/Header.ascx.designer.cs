@@ -2,6 +2,11 @@
     public partial class Controls_Header
     {
         protected global::System.Web.UI.WebControls.Image imgLogoVitaPet;
+        protected global::System.Web.UI.WebControls.HyperLink lnkIniciarSesion;
+        protected global::System.Web.UI.WebControls.Panel pnlAccesoPublico;
+        protected global::System.Web.UI.WebControls.Literal litIdiomaPublico;
+        protected global::System.Web.UI.WebControls.LinkButton btnIdiomaPublicoEs;
+        protected global::System.Web.UI.WebControls.LinkButton btnIdiomaPublicoEn;
         protected global::System.Web.UI.WebControls.Panel pnlSesion;
         protected global::System.Web.UI.WebControls.Literal litSaludo;
         protected global::System.Web.UI.WebControls.Literal litNombreUsuario;

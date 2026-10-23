@@ -17,6 +17,11 @@ public partial class Controls_Header : UserControl
 
     private void CargarSesion()
     {
+        pnlAccesoPublico.Visible = true;
+        string idioma = SessionManager.Instancia.ObtenerIdiomaUsuario();
+        litIdiomaActual.Text = litIdiomaPublico.Text = idioma.ToUpperInvariant();
+        btnIdiomaEs.Attributes["aria-current"] = btnIdiomaPublicoEs.Attributes["aria-current"] = (idioma == "es").ToString().ToLowerInvariant();
+        btnIdiomaEn.Attributes["aria-current"] = btnIdiomaPublicoEn.Attributes["aria-current"] = (idioma == "en").ToString().ToLowerInvariant();
         if (!SessionManager.Instancia.HaySesionActiva)
         {
             pnlSesion.Visible = false;
@@ -38,14 +43,10 @@ public partial class Controls_Header : UserControl
         litRolUsuario.Text =
             Server.HtmlEncode(TextosUI.Traducir(usuario.Rol));
 
-        string idioma = SessionManager.Instancia.ObtenerIdiomaUsuario();
-        litIdiomaActual.Text = idioma.ToUpperInvariant();
-        btnIdiomaEs.Attributes["aria-current"] = (idioma == "es").ToString().ToLowerInvariant();
-        btnIdiomaEn.Attributes["aria-current"] = (idioma == "en").ToString().ToLowerInvariant();
-
         CargarMenu(usuario.Rol);
 
         pnlSesion.Visible = true;
+        pnlAccesoPublico.Visible = false;
     }
 
     private void CargarMenu(string rol)
@@ -78,10 +79,10 @@ public partial class Controls_Header : UserControl
     private void CambiarIdioma(string idioma)
     {
         var usuario = SessionManager.Instancia.UsuarioActual;
-        if (usuario == null) return;
         try
         {
-            new UsuarioBLL().ActualizarIdioma(usuario.IdUsuario, idioma);
+            if (usuario != null)
+                new UsuarioBLL().ActualizarIdioma(usuario.IdUsuario, idioma);
             SessionManager.Instancia.ActualizarIdiomaUsuario(idioma);
         }
         catch (Exception ex) when (ex is System.Data.SqlClient.SqlException
