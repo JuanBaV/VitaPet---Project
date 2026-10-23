@@ -3,6 +3,11 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using VitaPet.BE;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace VitaPet.DAL
 {
@@ -10,6 +15,44 @@ namespace VitaPet.DAL
     {
         public const string Migracion = "034_CifradoDatosPersonales.sql";
         public static readonly string[] Tablas = { "Usuario", "Cliente", "Empresa", "DetallePago", "Factura" };
+        public static void PrepararTemporal(string nombre)
+        {
+            ContingenciaDatosDAL.ValidarTemporal(nombre);
+            using (ConexionDAL.UsarBaseTemporal(nombre))
+            using (var operacion = new OperacionIntegridadDAL())
+            { DatabaseMigrator.AplicarCifrado(); operacion.Complete(); }
+        }
+        private static readonly Dictionary<string,string[]> Campos = new Dictionary<string,string[]> {
+            { "Usuario", new[] { "correoElectronico", "nombre" } },
+            { "Cliente", new[] { "nombre", "apellido", "telefono" } },
+            { "Empresa", new[] { "razonSocial", "cuit", "direccion", "telefono" } },
+            { "DetallePago", new[] { "titular", "correoFactura" } },
+            { "Factura", new[] { "clienteNombre", "clienteCorreo", "titular" } }
+        };
+
+        public static List<DetalleIntegridadBE> Diagnosticar()
+        {
+            var errores = new List<DetalleIntegridadBE>();
+            using (var c = new ConexionDAL().CrearConexion())
+            using (var cmd = c.CreateCommand())
+            {
+                c.Open();
+                cmd.CommandText = "SELECT COUNT(*) FROM sys.symmetric_keys WHERE name='VitaPet_DatosV1'";
+                bool tieneClave = (int)cmd.ExecuteScalar() == 1;
+                cmd.CommandText = "SELECT COUNT(*) FROM dbo.__SchemaMigrations WHERE migrationId=@id";
+                cmd.Parameters.AddWithValue("@id", Migracion);
+                bool migrada = (int)cmd.ExecuteScalar() == 1;
+                if (migrada != tieneClave)
+                    errores.Add(new DetalleIntegridadBE { Tabla="__SchemaMigrations", Fila=Migracion, Columna="migrationId", Motivo="El cifrado no coincide con el historial de migraciones." });
+                if (!tieneClave) return errores;
+                cmd.Parameters.Clear();
+                cmd.CommandText = string.Join(" UNION ALL ", Campos.SelectMany(t => t.Value.Select(campo =>
+                    "SELECT N'"+t.Key+"',N'"+campo+"' WHERE EXISTS(SELECT 1 FROM dbo.["+t.Key+"] WHERE ["+campo+"] IS NOT NULL AND dbo.fn_DescifrarDato(["+campo+"],N'"+t.Key+"."+campo+"') IS NULL)")));
+                using (var r = cmd.ExecuteReader()) while (r.Read())
+                    errores.Add(new DetalleIntegridadBE { Tabla=r.GetString(0), Fila="—", Columna=r.GetString(1), Motivo="Dato no cifrado o ciphertext inválido." });
+            }
+            return errores;
+        }
 
         private static string Clave()
         {
@@ -38,7 +81,9 @@ namespace VitaPet.DAL
                 if (!cifrada && !migrando) return;
                 string clave = Clave();
                 cmd.Parameters.Add("@clave", SqlDbType.NVarChar, 128).Value = clave;
-                cmd.CommandText = "EXEC sys.sp_set_session_context @key=N'VitaPetClave', @value=@clave;";
+                using (var hmac = new HMACSHA256(Convert.FromBase64String(clave)))
+                    cmd.Parameters.Add("@mac", SqlDbType.VarBinary, 32).Value = hmac.ComputeHash(Encoding.UTF8.GetBytes("VitaPet.Datos.MAC.v1"));
+                cmd.CommandText = "EXEC sys.sp_set_session_context @key=N'VitaPetClave', @value=@clave; EXEC sys.sp_set_session_context @key=N'VitaPetMAC', @value=@mac;";
                 if (cifrada)
                     cmd.CommandText += " IF EXISTS(SELECT 1 FROM sys.openkeys WHERE key_name='VitaPet_DatosV1') CLOSE SYMMETRIC KEY VitaPet_DatosV1; DECLARE @sql nvarchar(max)=N'OPEN SYMMETRIC KEY VitaPet_DatosV1 DECRYPTION BY PASSWORD = '+QUOTENAME(@clave,''''); EXEC sys.sp_executesql @sql;";
                 try { cmd.ExecuteNonQuery(); }

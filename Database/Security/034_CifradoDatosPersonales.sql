@@ -9,11 +9,32 @@ SET @sql=N'OPEN SYMMETRIC KEY VitaPet_DatosV1 DECRYPTION BY PASSWORD='+QUOTENAME
 EXEC sys.sp_executesql @sql;
 EXEC sys.sp_set_session_context @key=N'VitaPetClave',@value=NULL;
 GO
-CREATE OR ALTER FUNCTION dbo.fn_CifrarDato(@texto nvarchar(1000),@campo sysname)
-RETURNS varchar(2048)
+-- HMAC-SHA256 según RFC 2104. La clave MAC se deriva en .NET con un contexto independiente.
+CREATE OR ALTER FUNCTION dbo.fn_HmacDatos(@mensaje varbinary(8000),@clave varbinary(64))
+RETURNS varbinary(32)
 AS
 BEGIN
-    RETURN 'VP1:'+CONVERT(varchar(2044),EncryptByKey(Key_GUID('VitaPet_DatosV1'),@texto,1,@campo),2);
+    IF @clave IS NULL OR @mensaje IS NULL RETURN NULL;
+    DECLARE @ipad varbinary(max)=0x,@opad varbinary(max)=0x,@i int=1,@byte int;
+    WHILE @i<=64
+    BEGIN
+        SET @byte=CASE WHEN @i<=DATALENGTH(@clave) THEN CONVERT(int,SUBSTRING(@clave,@i,1)) ELSE 0 END;
+        SET @ipad=@ipad+CONVERT(binary(1),@byte ^ 54);
+        SET @opad=@opad+CONVERT(binary(1),@byte ^ 92);
+        SET @i+=1;
+    END;
+    RETURN HASHBYTES('SHA2_256',@opad+HASHBYTES('SHA2_256',@ipad+@mensaje));
+END;
+GO
+CREATE OR ALTER FUNCTION dbo.fn_CifrarDato(@texto nvarchar(1000),@campo sysname)
+RETURNS varchar(2048)
+-- Evita que el optimizador evalúe EncryptByKey dos veces con IV distintos para el MAC y el contenido.
+WITH INLINE = OFF
+AS
+BEGIN
+    DECLARE @cifrado varbinary(990)=EncryptByKey(Key_GUID('VitaPet_DatosV1'),@texto,1,@campo);
+    DECLARE @mac varbinary(32)=dbo.fn_HmacDatos(CONVERT(varbinary(256),@campo)+@cifrado,CONVERT(varbinary(32),SESSION_CONTEXT(N'VitaPetMAC')));
+    RETURN 'VP1:'+CONVERT(varchar(64),@mac,2)+CONVERT(varchar(1980),@cifrado,2);
 END;
 GO
 CREATE OR ALTER FUNCTION dbo.fn_DescifrarDato(@texto varchar(2048),@campo sysname)
@@ -21,7 +42,11 @@ RETURNS nvarchar(1000)
 AS
 BEGIN
     IF LEFT(@texto,4)<>'VP1:' RETURN NULL;
-    RETURN CONVERT(nvarchar(1000),DecryptByKey(TRY_CONVERT(varbinary(1022),SUBSTRING(@texto,5,2044),2),1,@campo));
+    DECLARE @cifrado varbinary(990)=TRY_CONVERT(varbinary(990),SUBSTRING(@texto,69,1980),2);
+    DECLARE @guardado varbinary(32)=TRY_CONVERT(varbinary(32),SUBSTRING(@texto,5,64),2);
+    DECLARE @mac varbinary(32)=dbo.fn_HmacDatos(CONVERT(varbinary(256),@campo)+@cifrado,CONVERT(varbinary(32),SESSION_CONTEXT(N'VitaPetMAC')));
+    IF @mac IS NULL OR @guardado IS NULL OR @mac<>@guardado RETURN NULL;
+    RETURN CONVERT(nvarchar(1000),DecryptByKey(@cifrado,1,@campo));
 END;
 GO
 ALTER TABLE dbo.Usuario DROP CONSTRAINT UQ_Usuario_correoElectronico;

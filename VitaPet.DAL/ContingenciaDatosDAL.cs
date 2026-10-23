@@ -34,6 +34,11 @@ namespace VitaPet.DAL
             using (var s = new StringReader(xml))
             using (var r = XmlReader.Create(s, new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit,
                 XmlResolver = null, MaxCharactersInDocument = 128L * 1024 * 1024 })) datos.ReadXml(r, XmlReadMode.ReadSchema);
+            // Sólo prepara el esquema de la base temporal recién creada. No cifra ni reescribe las filas del XML.
+            // Un XML anterior al cifrado sigue importándose con su esquema anterior.
+            if (datos.Tables.Contains("__SchemaMigrations") && datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>()
+                .Any(r => (string)r["migrationId"] == CifradoDatosDAL.Migracion))
+                CifradoDatosDAL.PrepararTemporal(nombre);
             using (ConexionDAL.UsarBaseTemporal(nombre))
             using (var c = new ConexionDAL().CrearConexion())
             {

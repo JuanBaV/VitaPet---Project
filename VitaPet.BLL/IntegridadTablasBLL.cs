@@ -48,6 +48,7 @@ namespace VitaPet.BLL
         {
             try { dal.ValidarCobertura(); }
             catch (InvalidOperationException ex) { ReferenciaIntegridadBLL.Error(resultado,"Esquema","—","tabla",ex.Message); return; }
+            resultado.Detalles.AddRange(CifradoDatosDAL.Diagnosticar());
             var claves=dal.ClavesEsquema;
             foreach (var migration in DatabaseMigrator.MigracionesInconsistentes(!permitirMigracionesPendientes))
                 ReferenciaIntegridadBLL.Error(resultado,"__SchemaMigrations",migration,"checksum","Historial de migraciones ausente o alterado.");
