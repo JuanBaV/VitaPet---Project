@@ -18,5 +18,6 @@
       <Link>Migrations\%(Filename)%(Extension)</Link>
       <LogicalName>VitaPet.DAL.Migrations.%(Filename)%(Extension)</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\Database\Security\034_CifradoDatosPersonales.sql" LogicalName="VitaPet.DAL.Cifrado.034_CifradoDatosPersonales.sql" />
   </ItemGroup>
 </Project>

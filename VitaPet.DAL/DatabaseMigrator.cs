@@ -42,13 +42,13 @@ namespace VitaPet.DAL
             {
                 connection.Open();
                 var applied = LoadAppliedMigrations(connection);
-                var expected = LoadMigrations().ToDictionary(m => m.Id, m => m.Checksum, StringComparer.OrdinalIgnoreCase);
+                var expected = LoadMigrations().Concat(new[] { LoadCifrado() }).ToDictionary(m => m.Id, m => m.Checksum, StringComparer.OrdinalIgnoreCase);
                 var errors = applied.Where(m => !expected.ContainsKey(m.Key) ||
                     !string.Equals(m.Value, expected[m.Key], StringComparison.OrdinalIgnoreCase))
                     .Select(m => m.Key).ToList();
                 // Los respaldos anteriores se verifican antes de aplicar sus migraciones pendientes.
                 if (incluirPendientes && !ConexionDAL.EnBaseTemporal)
-                    errors.AddRange(expected.Keys.Where(id => !applied.ContainsKey(id)));
+                    errors.AddRange(expected.Keys.Where(id => id != CifradoDatosDAL.Migracion && !applied.ContainsKey(id)));
                 return errors;
             }
         }
@@ -378,6 +378,36 @@ VALUES (@migrationId, @checksum);", connection, transaction))
                 }
 
                 return result.ToString();
+            }
+        }
+
+        private static Migration LoadCifrado()
+        {
+            using (var stream = typeof(DatabaseMigrator).Assembly.GetManifestResourceStream("VitaPet.DAL.Cifrado." + CifradoDatosDAL.Migracion))
+            using (var reader = new StreamReader(stream, Encoding.UTF8, true))
+            {
+                string script = reader.ReadToEnd().Replace("\r\n", "\n").Replace("\r", "\n");
+                return new Migration(CifradoDatosDAL.Migracion, script, CalculateChecksum(script));
+            }
+        }
+
+        // Paso explícito: no pertenece a las migraciones automáticas del inicio.
+        // La BLL exige integridad antes/después y la herramienta exige un respaldo restaurable.
+        public static void AplicarCifrado()
+        {
+            if (System.Transactions.Transaction.Current == null)
+                throw new InvalidOperationException("El cifrado requiere una transacción de integridad.");
+            using (var connection = new ConexionDAL().CrearConexion())
+            {
+                connection.Open();
+                AcquireMigrationLock(connection);
+                try
+                {
+                    if (LoadAppliedMigrations(connection).ContainsKey(CifradoDatosDAL.Migracion)) return;
+                    CifradoDatosDAL.Preparar(connection, true);
+                    ApplyMigration(connection, LoadCifrado());
+                }
+                finally { ReleaseMigrationLock(connection); }
             }
         }
 

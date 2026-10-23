@@ -68,6 +68,7 @@ class Program
             Check(!sec.DiagnosticarIntegridad(true).EsValida,"La validación previa a migrar sigue rechazando un checksum aplicado alterado");
             Sql("UPDATE dbo.__SchemaMigrations SET checksum='"+checksumCorreo+"' WHERE migrationId='029_CorreoFactura.sql'");
             Check(sec.VerificarIntegridad(),"Historial de migraciones restituido sin modificar datos ni verificadores");
+            if(args.Contains("--cifrado")){CifradoTests.Run(runtime);return;}
             if(args.Contains("--web")){File.WriteAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"web-environment.txt"),new[]{cs.InitialCatalog,runtime});keep=true;return;}
             if(args.Contains("--perfiles")){PerfilesTests.Run();return;}
             if(args.Contains("--contrasenas")){ContrasenasTests.Run();return;}

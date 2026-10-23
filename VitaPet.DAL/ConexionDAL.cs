@@ -40,7 +40,12 @@ namespace VitaPet.DAL
         {
             var builder=new SqlConnectionStringBuilder(_cadenaConexion);
             if(baseTemporal!=null) builder.InitialCatalog=baseTemporal;
-            return new SqlConnection(builder.ConnectionString);
+            var conexion = new SqlConnection(builder.ConnectionString);
+            conexion.StateChange += (sender, e) => {
+                if (e.CurrentState == System.Data.ConnectionState.Open)
+                    CifradoDatosDAL.Preparar((SqlConnection)sender);
+            };
+            return conexion;
         }
     }
 }

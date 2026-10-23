@@ -57,9 +57,12 @@ namespace VitaPet.DAL
         {
             string clave=Clave(tabla);
             using (var cn = new ConexionDAL().CrearConexion())
-            using (var cmd = new SqlCommand("SELECT * FROM dbo.[" + tabla + "] ORDER BY [" + clave + "]", cn))
-            using (var a = new SqlDataAdapter(cmd))
-            { var datos = new DataTable(tabla); a.Fill(datos); return datos; }
+            {
+                cn.Open();
+                using (var cmd = new SqlCommand("SELECT * FROM " + CifradoDatosDAL.TablaLectura(tabla, cn) + " ORDER BY [" + clave + "]", cn))
+                using (var a = new SqlDataAdapter(cmd))
+                { var datos = new DataTable(tabla); a.Fill(datos); return datos; }
+            }
         }
         public void GuardarDvh(string tabla, object id, string dvh)
         {
