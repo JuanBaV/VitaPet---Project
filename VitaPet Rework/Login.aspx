@@ -8,6 +8,7 @@
         Text="<%$ Resources:Textos, UI_Errores %>" ToolTip="<%$ Resources:Textos, UI_VerMensajesDeErrorParaCapturas %>" />
     <main class="login-page">
         <section class="login-card" aria-labelledby="tituloLogin">
+            <a runat="server" href="~/Home.aspx" class="btn btn-default formulario-volver">&larr; <%: VitaPet.GUI.Resources.Textos.UI_VolverAlInicio %></a>
             <header class="login-header">
                 <h1 id="tituloLogin"><%: VitaPet.GUI.Resources.Textos.UI_IniciarSesion %></h1>
                 <p><%: VitaPet.GUI.Resources.Textos.UI_IngresaAVitapetConTuCorreoElectronicoY %></p>
