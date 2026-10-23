@@ -17,5 +17,7 @@ public partial class _Default : PaginaBase
 
     protected override void EjecutarFuncionalidad()
     {
+        Response.Redirect(ResolveUrl("~/Home.aspx"), false);
+        Context.ApplicationInstance.CompleteRequest();
     }
 }
