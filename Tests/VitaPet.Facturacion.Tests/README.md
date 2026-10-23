@@ -1,5 +1,23 @@
 # Facturación de VitaPet Rework
 
+Para el punto 18, compilar el proyecto de pruebas y ejecutar:
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/bin/Debug/net48/VitaPet.Facturacion.Tests.exe --accesos
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 'Accesos-Web.cjs' '..\..\artifacts\punto18-accesos'
+```
+
+La primera prueba comprueba la matriz de permisos del catálogo para los tres
+perfiles iniciales y usuarios sin sesión. Verifica el rechazo desde la BLL de
+altas de usuarios y perfiles, backups, restauraciones y altas de planes sin
+permiso, conserva los conteos de registros y comprueba la integridad.
+El recorrido web intenta las URL prohibidas por GET, con y sin `.aspx`, y
+por POST directo antes de validar el formulario. Comprueba el acceso propio,
+la consulta de perfiles compartida con Webmaster, las pantallas de rechazo,
+el regreso al inicio y el acceso después de cerrar sesión. La matriz debe
+coincidir con las 32 pantallas del catálogo; una incorporación exige ampliar
+la cobertura. Ambas pruebas crean y eliminan su propia base temporal.
+
 Para el punto 17:
 
 ```powershell
