@@ -34,7 +34,11 @@ public partial class AltaUsuarioPage : PaginaBase
         catch(RegistroClienteException ex) {Mensaje(ex.Codigo+" - "+TextosUI.Error(ex.Codigo,"Revisá los datos ingresados, la contraseña y el correo."));}
         catch(ArgumentException ex) {Mensaje(ex.Message);}
         catch(UnauthorizedAccessException) {Response.Redirect(ResolveUrl("~/AccesoDenegado.aspx"),true);}
-        catch(System.Data.SqlClient.SqlException) {Mensaje("No se pudo crear el usuario. Revisá la conexión y el correo ingresado.");}
-        catch(InvalidOperationException) {Mensaje("No se pudo completar la operación. Verificá la integridad.");}
+        catch(System.Data.SqlClient.SqlException) {Mensaje("ER092 - "+TextosUI.Error("ER092","No se pudo completar la operación. Revisá la conexión e intentá nuevamente."));}
+        catch(InvalidOperationException ex)
+        {
+            string codigo=ex.Message.StartsWith("ER023",StringComparison.Ordinal)?"ER023":"ER092";
+            Mensaje(codigo+" - "+TextosUI.Error(codigo,codigo=="ER023"?"Inconsistencia en la verificación de integridad":"No se pudo completar la operación. Revisá la conexión e intentá nuevamente."));
+        }
     }
 }

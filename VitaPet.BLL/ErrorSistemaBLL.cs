@@ -127,7 +127,24 @@ namespace VitaPet.BLL
                 new ErrorSistemaBE {Codigo="ER074",Descripcion="No se pudo consultar el correo o el plan Corporativo",Criticidad="Grave"}
             });
         }
-        private void AsegurarErrores(IEnumerable<ErrorSistemaBE> errores)
+        public void AsegurarErroresPerfilesUsuarios()
+        {
+            AsegurarErrores(new[] {
+                new ErrorSistemaBE {Codigo="ER082",Descripcion="Ingresá un nombre de perfil de hasta 30 caracteres, usando letras, números, espacios o guiones.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER083",Descripcion="Ya existe ese nombre.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER084",Descripcion="Seleccioná al menos una pantalla o perfil.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER085",Descripcion="La combinación de perfiles contiene un ciclo o una selección inválida.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER086",Descripcion="La gestión de perfiles y el alta de usuarios son exclusivas del Webmaster.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER087",Descripcion="El Webmaster debe conservar sus accesos de gestión y recuperación.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER088",Descripcion="El perfil cambió. Volvé a seleccionarlo.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER089",Descripcion="No se puede renombrar un perfil asignado a usuarios.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER090",Descripcion="El perfil está asignado a usuarios o incluido en otro perfil.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER091",Descripcion="Seleccioná un perfil vigente.",Criticidad="Advertencia"},
+                new ErrorSistemaBE {Codigo="ER092",Descripcion="No se pudo completar la operación. Revisá la conexión e intentá nuevamente.",Criticidad="Grave"},
+                new ErrorSistemaBE {Codigo="ER093",Descripcion="No se pudo completar la operación. Verificá la integridad o recargá los perfiles.",Criticidad="Grave"}
+            }, "ER094", "ER095");
+        }
+        private void AsegurarErrores(IEnumerable<ErrorSistemaBE> errores, params string[] codigosRetirados)
         {
             using (var operacion = new OperacionIntegridadDAL())
             {
@@ -151,6 +168,8 @@ namespace VitaPet.BLL
                     tablas.GuardarDvh("ErrorSistema", error.Codigo, integridad.CalcularDVH(fila));
                     cambios = true;
                 }
+                foreach (var codigo in codigosRetirados)
+                    cambios |= _errorSistemaDAL.Eliminar(codigo);
                 if (cambios)
                 {
                     new DVVDAL().Guardar(new DVVBE {

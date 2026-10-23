@@ -34,6 +34,7 @@ namespace VitaPet.GUI
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresEmpresas();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresClienteCorporativo();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresAdministracionPlanes();
+                        new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresPerfilesUsuarios();
                         new VitaPet.BLL.SolicitudTurnoBLL().AsegurarAgendaPrueba();
                         new VitaPet.BLL.ContratacionPlanBLL().AsegurarCatalogo();
                     }

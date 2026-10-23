@@ -29,6 +29,17 @@ namespace VitaPet.DAL
             }
         }
 
+        public bool Eliminar(string codigo)
+        {
+            using (SqlConnection conexion = _conexionDAL.CrearConexion())
+            using (SqlCommand comando = new SqlCommand("DELETE dbo.ErrorSistema WHERE codigo=@codigo", conexion))
+            {
+                comando.Parameters.Add("@codigo", SqlDbType.VarChar, 10).Value = codigo;
+                conexion.Open();
+                return comando.ExecuteNonQuery() > 0;
+            }
+        }
+
         public List<ErrorSistemaBE> ObtenerTodos()
         {
             var errores = new List<ErrorSistemaBE>();
