@@ -230,3 +230,21 @@ transiciones de estado, persistencia y fachada de seguridad; reutiliza las prueb
 de perfiles para el Composite. La segunda repite los accesos web protegidos,
 incluyendo páginas que heredan de PaginaBase. Se revisa además el método OnLoad
 sellado y sus pasos de extensión en el código de la clase base.
+
+El punto 25 verifica tres XML de negocio: Reintegros.xml, Turnos.xml y
+Cobertura.xml. La Bitácora se conserva como auditoría y no se cuenta en este punto.
+Se agregó la exportación del plan contratado en ConsultaCobertura, con permisos
+del cliente y una nueva lectura autorizada al descargar. El detalle y la prueba
+manual están en [Punto-25.md](Punto-25.md).
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/bin/Debug/net48/VitaPet.Facturacion.Tests.exe --xml
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 Xml-Web.cjs '..\..\artifacts\punto25-xml' 1 cifrado --xml
+```
+
+La preparación XML agrega reintegros y turnos sintéticos de dos clientes y
+caracteres especiales en una prestación del catálogo. La variante BLL prepara
+además una contratación por el flujo existente. Se comprueban UTF-8, escape,
+formato de fechas e importes, selección, contenido completo, idiomas, cabeceras
+de descarga y aislamiento entre clientes. La variante web cifra la base temporal
+y conserva las verificaciones de facturación del recorrido anterior.

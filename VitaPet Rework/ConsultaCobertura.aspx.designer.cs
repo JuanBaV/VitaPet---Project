@@ -10,5 +10,6 @@ public partial class ConsultaCoberturaPage
     protected global::System.Web.UI.WebControls.Label lblFechaAlta;
     protected global::System.Web.UI.WebControls.Label lblFechaVencimiento;
     protected global::System.Web.UI.WebControls.GridView gvCoberturas;
+    protected global::System.Web.UI.WebControls.Button btnExportarXml;
     protected global::System.Web.UI.WebControls.HyperLink lnkVolver;
 }

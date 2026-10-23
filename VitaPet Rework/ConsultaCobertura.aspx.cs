@@ -3,12 +3,14 @@ using System.Globalization;
 using System.Net;
 using System.Web;
 using System.Web.Services.Protocols;
+using System.Web.UI;
 using VitaPet.BLL;
 using VitaPet.GUI.Presentacion;
 using VitaPet.GUI.WebServices;
 
 public partial class ConsultaCoberturaPage : PaginaClientePlanes
 {
+    private bool descargando;
     protected override void EjecutarFuncionalidad()
     {
         pnlCobertura.Visible=false;pnlMensaje.Visible=false;
@@ -37,4 +39,16 @@ public partial class ConsultaCoberturaPage : PaginaClientePlanes
         catch(HttpException ex){throw new ConsultaCoberturaException("ER058",ex);}
         catch(WebException ex){throw new ConsultaCoberturaException("ER058",ex);}
     }
+    protected void ExportarXml(object sender,EventArgs e)
+    {
+        EjecutarPlan(()=>{
+            byte[] contenido=new ConsultaCoberturaBLL().ExportarXml();
+            Response.Clear();Response.ContentType="application/xml";Response.ContentEncoding=System.Text.Encoding.UTF8;
+            Response.Charset="utf-8";Response.AddHeader("Content-Disposition","attachment; filename=Cobertura.xml");
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);Response.Cache.SetNoStore();
+            Response.AddHeader("X-Content-Type-Options","nosniff");
+            Response.BinaryWrite(contenido);descargando=true;Context.ApplicationInstance.CompleteRequest();
+        });
+    }
+    protected override void Render(HtmlTextWriter writer){if(!descargando)base.Render(writer);}
 }

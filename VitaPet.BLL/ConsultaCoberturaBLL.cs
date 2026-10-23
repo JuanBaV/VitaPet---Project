@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Transactions;
 using System.Xml;
 using VitaPet.BE;
@@ -21,6 +22,41 @@ namespace VitaPet.BLL
     {
         private static bool Conexion(SqlException ex)
         {return ex.Class>=20||new[]{-2,2,20,53,64,233,4060,18456,10053,10054,10060}.Contains(ex.Number);}
+
+        public byte[] ExportarXml()
+        {
+            // Consultar vuelve a autorizar y obtiene la cobertura de la cuenta vigente.
+            var cobertura=Consultar();
+            try
+            {
+                using(var memoria=new MemoryStream())
+                {
+                    using(var xml=XmlWriter.Create(memoria,new XmlWriterSettings {Encoding=new UTF8Encoding(false),Indent=true,CloseOutput=false}))
+                    {
+                        xml.WriteStartDocument();xml.WriteStartElement("Cobertura");
+                        xml.WriteElementString("idSuscripcion",XmlConvert.ToString(cobertura.IdSuscripcion));
+                        xml.WriteElementString("idPlan",XmlConvert.ToString(cobertura.IdPlan));
+                        xml.WriteElementString("nombrePlan",cobertura.NombrePlan);
+                        xml.WriteElementString("descripcionPlan",cobertura.DescripcionPlan);
+                        xml.WriteElementString("estadoSuscripcion",cobertura.EstadoSuscripcion);
+                        xml.WriteElementString("fechaAlta",XmlConvert.ToString(cobertura.FechaAlta,XmlDateTimeSerializationMode.Unspecified));
+                        xml.WriteElementString("fechaVencimiento",XmlConvert.ToString(cobertura.FechaVencimiento,XmlDateTimeSerializationMode.Unspecified));
+                        xml.WriteStartElement("Prestaciones");
+                        foreach(var prestacion in cobertura.Coberturas)
+                        {
+                            xml.WriteStartElement("Prestacion");
+                            xml.WriteElementString("nombre",prestacion.Prestacion);
+                            xml.WriteElementString("detalle",prestacion.Detalle);
+                            xml.WriteEndElement();
+                        }
+                        xml.WriteEndElement();xml.WriteEndElement();xml.WriteEndDocument();
+                    }
+                    return memoria.ToArray();
+                }
+            }
+            catch(Exception ex) when(ex is XmlException||ex is ArgumentException||ex is IOException)
+            {throw new ConsultaCoberturaException("ER015",ex);}
+        }
 
         public ConsultaCoberturaBE Consultar()
         {

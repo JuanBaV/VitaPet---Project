@@ -21,6 +21,7 @@
                     </Columns>
                 </asp:GridView>
             </div>
+            <asp:Button ID="btnExportarXml" runat="server" Text="<%$ Resources:Textos, UI_ExportarAXml %>" CssClass="btn btn-default" OnClick="ExportarXml" CausesValidation="false" />
         </asp:Panel>
     </section></main>
 </asp:Content>
