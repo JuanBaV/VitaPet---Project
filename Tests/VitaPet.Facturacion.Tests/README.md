@@ -1,5 +1,11 @@
 # Facturación de VitaPet Rework
 
+El punto 15 se verifica con `--contrasenas`. Prueba el rechazo de claves
+vacías y de 1 a 7 caracteres en registro público, alta del Webmaster,
+restablecimiento y configuración de emergencia. Comprueba altas y cambios
+válidos de 8 y 100 caracteres, complejidad, hash e integridad en la misma
+base temporal aislada. La emergencia conserva su mínimo de 12 caracteres.
+
 Los puntos 12–14 se verifican ejecutando el mismo programa con `--perfiles`.
 Comprueba el Composite de perfiles/pantallas, herencia, ciclos, versiones,
 altas del Webmaster, restricciones del Administrador y registro público con
