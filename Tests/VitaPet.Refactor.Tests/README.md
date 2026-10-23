@@ -34,12 +34,20 @@ Para comprobar la cobertura de corrupción del checklist:
 & Tests/VitaPet.Refactor.Tests/bin/Debug/net48/VitaPet.Refactor.Tests.exe --integridad-todas
 ```
 
-Esta variante prepara tres registros por cada una de las 17 tablas de datos,
+Esta variante prepara tres registros por cada una de las 20 tablas de datos,
 altera un campo sin recalcular sus verificadores y exige que el diagnóstico
 identifique cada fila y columna. También prueba nueve alteraciones simultáneas,
 los cuatro controles de integridad y una tabla nueva sin cobertura. Cada caso
 revierte sus cambios y comprueba que la base vuelva a estar íntegra. Usa y
 elimina su propia base; no toca la base VitaPet ni la base del checklist manual.
+
+Las 20 tablas de datos tienen DVH por fila y un DVV por tabla. Los cuatro
+controles son `DVV`, `ReferenciaIntegridad`, `__FormatoIntegridad` y
+`__SchemaMigrations`; se comprueban mediante referencias, formato y checksums
+de migraciones. La suite también exige que el inventario SQL coincida con esas
+24 tablas. `Database/VerificarCoberturaIntegridad.sql` permite consultar la
+cobertura y el formato de los hashes sin modificar la base seleccionada;
+la comparación de hashes con los datos se realiza desde la aplicación.
 
 La variante `--integridad-login` también registra y consulta los errores de
 cada tabla en el histórico XML, verifica que no se alteren datos ni controles
