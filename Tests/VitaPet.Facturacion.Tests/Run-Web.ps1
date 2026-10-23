@@ -2,6 +2,7 @@
 $browserScript = if ($args.Count -gt 0) { $args[0] } else { 'Web.cjs' }
 $outputDirectory = if ($args.Count -gt 1) { $args[1] } else { 'web-output' }
 $expectedActiveSubscriptions = if ($args.Count -gt 2) { [int]$args[2] } else { 1 }
+$probarCifrado = $args.Count -gt 3 -and $args[3] -eq 'cifrado'
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 Set-Location -LiteralPath $repo
 $node = 'C:\Users\juanb\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe'
@@ -14,7 +15,20 @@ if ($fixture[0] -notmatch '^VitaPet_Verificacion_Rework_[a-f0-9]{32}$') { throw 
 $web = Join-Path ([IO.Path]::GetTempPath()) ('VitaPet-rework-site-' + [guid]::NewGuid().ToString('N'))
 $output = Join-Path $PSScriptRoot $outputDirectory
 $proc = $null
+$claveAnterior = $env:VITAPET_CLAVE_ARCHIVO
+$respaldoCifrado = $null
 try {
+    if ($probarCifrado) {
+        $env:VITAPET_CLAVE_ARCHIVO = Join-Path $fixture[1] 'cifrado.key'
+        & (Join-Path $repo 'Scripts\ConfigurarClaveCifrado.ps1') -Archivo $env:VITAPET_CLAVE_ARCHIVO
+        $herramienta = Join-Path $repo 'Tools\VitaPet.Cifrado\bin\Debug\net48\VitaPet.Cifrado.exe'
+        if (-not (Test-Path -LiteralPath $herramienta)) { throw 'Compilar Tools/VitaPet.Cifrado antes de probar el cifrado web.' }
+        Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'bin\Debug\net48\VitaPet.Facturacion.Tests.exe.config') -Destination ($herramienta+'.config') -Force
+        # Carpeta del proyecto ya habilitada para backups SQL y accesible para limpiar el archivo de prueba.
+        $respaldoCifrado=Join-Path (Join-Path $repo 'VitaPet Rework\App_Data\Backups') ($fixture[0]+'_previo.bak')
+        & $herramienta --aplicar $respaldoCifrado
+        if ($LASTEXITCODE -ne 0) { throw 'La migración cifrada de la base temporal falló.' }
+    }
     New-Item -ItemType Directory -Path $web | Out-Null
     & robocopy (Join-Path $repo 'VitaPet Rework') $web /E /XD App_Data obj /NFL /NDL /NJH /NJS /NP | Out-Null
     if ($LASTEXITCODE -ge 8) { throw 'Site copy failed' }
@@ -48,6 +62,7 @@ try {
         Write-Output ('PASS Base del recorrido web: '+$expectedActiveSubscriptions+' suscripciones activas, un pago y una factura')
     } finally { $verification.Dispose() }
 } finally {
+    $env:VITAPET_CLAVE_ARCHIVO = $claveAnterior
     if ($proc -and -not $proc.HasExited) { Stop-Process -Id $proc.Id }
     [System.Data.SqlClient.SqlConnection]::ClearAllPools()
     $connection = New-Object System.Data.SqlClient.SqlConnection('Data Source=localhost;Initial Catalog=master;Integrated Security=True;')
@@ -56,4 +71,5 @@ try {
         $command.CommandText='IF DB_ID(N'''+$fixture[0]+''') IS NOT NULL BEGIN ALTER DATABASE ['+$fixture[0]+'] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE ['+$fixture[0]+']; END'
         $command.ExecuteNonQuery() | Out-Null
     } finally { $connection.Dispose() }
+    if ($respaldoCifrado -and (Test-Path -LiteralPath $respaldoCifrado)) { Remove-Item -LiteralPath $respaldoCifrado }
 }

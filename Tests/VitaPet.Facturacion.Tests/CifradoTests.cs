@@ -143,7 +143,7 @@ static class CifradoTests
                     Check(seguridad.VerificarIntegridad()&&!DatabaseMigrator.EstaAplicada(CifradoDatosDAL.Migracion),"El XML antiguo conserva su formato sin cifrado automático");
             }
             finally {backup.EliminarTemporal(temporal);}
-            string carpeta=(string)Scalar("SELECT CONVERT(nvarchar(4000),SERVERPROPERTY('InstanceDefaultBackupPath'))");
+            string carpeta=Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"..","..","..","..","..","VitaPet Rework","App_Data","Backups"));
             string bak=Path.Combine(carpeta,nombre+".bak");
             try
             {

@@ -330,3 +330,4 @@ VitaPet Rework/App_Data/CertificadosPago/
 VitaPet Rework/App_Data/CorreoFacturas/
 VitaPet Rework/Correo.local.config
 *.bak
+Tests/VitaPet.Facturacion.Tests/cifrado-web-output/

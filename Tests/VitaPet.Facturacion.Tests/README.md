@@ -145,3 +145,20 @@ Los detalles anteriores, con correo NULL, conservan sus dígitos originales.
 El envío y sus reintentos usan siempre el correo elegido en ese pago; el
 correo del perfil se mantiene como dato del cliente. Las facturas anteriores
 sin destinatario elegido no generan nuevos envíos automáticos.
+
+El punto 20 incorpora cifrado AES-256 y HMAC-SHA256 de los 14 campos personales
+de Usuario, Cliente, Empresa, DetallePago y Factura. La migración es explícita;
+no se aplica al iniciar el sitio. La clave portable y la configuración en otra
+PC se describen en `GUIA_CIFRADO.md`.
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/bin/Debug/net48/VitaPet.Facturacion.Tests.exe --cifrado
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 Web.cjs cifrado-web-output 1 cifrado
+```
+
+La primera variante prueba el almacenamiento, las escrituras, el rechazo de
+claves incorrectas, la autenticación del cifrado y la restauración SQL/XML.
+La segunda requiere compilar `Tools/VitaPet.Cifrado/VitaPet.Cifrado.csproj` y
+ejecuta esa herramienta sobre la base temporal antes del recorrido en Edge:
+incluye backup previo, restauración de validación y migración transaccional.
+Usa una clave de prueba propia y no modifica la clave ni la base del sitio real.
