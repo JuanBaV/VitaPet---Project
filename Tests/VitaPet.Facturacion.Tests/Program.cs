@@ -69,7 +69,16 @@ class Program
             Sql("UPDATE dbo.__SchemaMigrations SET checksum='"+checksumCorreo+"' WHERE migrationId='029_CorreoFactura.sql'");
             Check(sec.VerificarIntegridad(),"Historial de migraciones restituido sin modificar datos ni verificadores");
             if(args.Contains("--cifrado")){CifradoTests.Run(runtime);return;}
-            if(args.Contains("--web")){File.WriteAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"web-environment.txt"),new[]{cs.InitialCatalog,runtime});keep=true;return;}
+            if(args.Contains("--web"))
+            {
+                if(args.Contains("--clinica"))
+                {
+                    Sql("INSERT dbo.HistorialClinico(idMascota,fechaRegistro,diagnostico,tratamiento,observaciones,dvh) VALUES(1,GETDATE(),'Control SOAP Luna','Seguimiento de prueba','Historia propia',''),(4,GETDATE(),'Historia reservada Ajena','Otro tratamiento','No divulgar','');INSERT dbo.DatosClinicos(idMascota,peso,temperatura,frecuenciaCardiaca,observaciones,dvh) VALUES(1,12.50,38.20,80,'Dato SOAP Luna',''),(4,7,38,90,'Dato reservado Ajena','');");
+                    Refrescar("HistorialClinico");Refrescar("DatosClinicos");
+                    Check(sec.VerificarIntegridad(),"Datos clínicos sintéticos protegidos para probar los webservices");
+                }
+                File.WriteAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"web-environment.txt"),new[]{cs.InitialCatalog,runtime});keep=true;return;
+            }
             if(args.Contains("--perfiles")){PerfilesTests.Run();return;}
             if(args.Contains("--contrasenas")){ContrasenasTests.Run();return;}
             if(args.Contains("--accesos")){AccesosTests.Run();return;}

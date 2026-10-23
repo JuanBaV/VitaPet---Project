@@ -3,10 +3,11 @@ $browserScript = if ($args.Count -gt 0) { $args[0] } else { 'Web.cjs' }
 $outputDirectory = if ($args.Count -gt 1) { $args[1] } else { 'web-output' }
 $expectedActiveSubscriptions = if ($args.Count -gt 2) { [int]$args[2] } else { 1 }
 $probarCifrado = $args.Count -gt 3 -and $args[3] -eq 'cifrado'
+[string[]]$fixtureArguments = if ($args.Count -gt 4) { $args[4..($args.Count-1)] } else { @() }
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 Set-Location -LiteralPath $repo
 $node = 'C:\Users\juanb\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe'
-& (Join-Path $PSScriptRoot 'bin\Debug\net48\VitaPet.Facturacion.Tests.exe') --web
+& (Join-Path $PSScriptRoot 'bin\Debug\net48\VitaPet.Facturacion.Tests.exe') --web @fixtureArguments
 if ($LASTEXITCODE -ne 0) { throw 'Fixture failed' }
 $fixture = Get-Content (Join-Path $PSScriptRoot 'bin\Debug\net48\web-environment.txt')
 if ($fixture[0] -notmatch '^VitaPet_Verificacion_Rework_[a-f0-9]{32}$') { throw 'Unsafe fixture name' }
@@ -56,6 +57,18 @@ try {
     }
     $config.Save($configPath)
     $proc = Start-Process -FilePath 'C:\Program Files\IIS Express\iisexpress.exe' -ArgumentList ('/path:"'+$web+'"'),'/port:60336','/systray:false' -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $fixture[1] 'iis.out') -RedirectStandardError (Join-Path $fixture[1] 'iis.err')
+    # La primera compilación ASP.NET puede superar el timeout del navegador.
+    $inicioSitio=[Diagnostics.Stopwatch]::StartNew()
+    while ($true) {
+        try {
+            $respuestaInicio=Invoke-WebRequest -Uri 'http://localhost:60336/Login' -UseBasicParsing -TimeoutSec 30
+            if ($respuestaInicio.StatusCode -ne 200) { throw 'El inicio de sesión no responde correctamente.' }
+            break
+        } catch {
+            if ($proc.HasExited -or $inicioSitio.Elapsed.TotalSeconds -ge 120) { throw }
+            Start-Sleep -Milliseconds 250
+        }
+    }
     New-Item -ItemType Directory -Force $output | Out-Null
     @{Url='http://localhost:60336/';Database=$fixture[0];Runtime=$fixture[1];Web=$web;Pid=$proc.Id} | ConvertTo-Json | Set-Content -Encoding utf8 (Join-Path $output 'environment.json')
     & $node (Join-Path $PSScriptRoot $browserScript) (Join-Path $output 'environment.json')

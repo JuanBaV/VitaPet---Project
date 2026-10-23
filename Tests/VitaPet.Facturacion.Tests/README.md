@@ -180,7 +180,7 @@ misma herramienta de cifrado compilada que el recorrido del punto 20.
 La preparación web captura los correos en una carpeta local de la base
 temporal y excluye la configuración privada de correo del sitio real.
 
-El punto 22 comprueba los cinco controles de la sección 12.4:
+La suite de controles del punto 22 comprueba cinco de los ocho .ascx de Controls:
 ValidacionEmail, ValidacionNumerica, SelectorMascota, FiltroZona y
 ListadoPlanes. El validador numérico se reutiliza en el alta y la
 modificación de planes; acepta coma o punto decimal y conserva la
@@ -197,3 +197,20 @@ planes y la integridad final de la base temporal cifrada. La segunda
 verifica los siete formularios de alta tras integrar el nuevo control.
 Ese recorrido deja tres suscripciones activas: la contratación particular
 inicial y las dos altas corporativas de prueba, con y sin JavaScript.
+
+El punto 23 prueba los tres endpoints ASMX con solicitudes SOAP 1.1 y los
+formularios que los consumen. Comprueba sus ocho operaciones publicadas en
+WSDL, sesiones, permisos, aislamiento entre clientes, cobertura contratada,
+datos clínicos y registro y consulta de turnos. Repetir la reserva debe
+devolver ER013 y conservar un solo turno. Al finalizar se verifica la integridad.
+El procedimiento manual y las operaciones están en [Punto-23.md](Punto-23.md).
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 Servicios-Web.cjs '..\..\artifacts\punto23-servicios' 1 cifrado --clinica
+```
+
+Compilar primero la solución, el proyecto de pruebas y Tools/VitaPet.Cifrado.
+El argumento opcional `--clinica` agrega registros clínicos sintéticos de
+dos clientes a la base temporal antes de cifrarla. Los recorridos anteriores
+conservan su preparación habitual. No se modifican la base ni la clave del
+sitio real, y los correos de la compra de preparación se capturan localmente.
