@@ -88,7 +88,7 @@ namespace VitaPet.GUI.Presentacion
                         throw new ConsultaUsuariosException("ER025", "Estado inválido.");
                     bll.ModificarUsuario(operacion.Id, operacion.Datos.Version, new CambiosUsuarioBE {
                         Nombre=Control<TextBox>("txtNombre").Text, CorreoElectronico=Control<TextBox>("txtCorreo").Text,
-                        Rol=Control<DropDownList>("ddlRol").SelectedValue, Estado=estado
+                        IdRol=int.Parse(Control<DropDownList>("ddlRol").SelectedValue), Estado=estado
                     });
                 }
                 else if (Operacion == OperacionUsuario.Bloquear) bll.BloquearUsuarioAdministrado(operacion.Id);
@@ -130,10 +130,10 @@ namespace VitaPet.GUI.Presentacion
             if (Operacion == OperacionUsuario.Modificar)
             {
                 var roles=Control<DropDownList>("ddlRol");roles.Items.Clear();
-                foreach(var perfil in new PerfilBLL().Consultar().OfType<PerfilBE>())roles.Items.Add(new ListItem(perfil.Nombre,perfil.Nombre));
+                foreach(var perfil in new PerfilBLL().Consultar().OfType<RolBE>())roles.Items.Add(new ListItem(perfil.Nombre,perfil.Id.ToString()));
                 roles.Enabled=SessionManager.Instancia.UsuarioActual.Rol=="Webmaster";
                 Control<TextBox>("txtNombre").Text = u.Nombre; Control<TextBox>("txtCorreo").Text = u.CorreoElectronico;
-                Control<DropDownList>("ddlRol").SelectedValue = u.Rol; Control<DropDownList>("ddlEstado").SelectedValue = u.Estado.ToString();
+                Control<DropDownList>("ddlRol").SelectedValue = u.IdRol.ToString(); Control<DropDownList>("ddlEstado").SelectedValue = u.Estado.ToString();
             }
             else
             {

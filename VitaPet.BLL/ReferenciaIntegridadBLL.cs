@@ -30,7 +30,8 @@ namespace VitaPet.BLL
             Add(r,"Usuario",u.IdUsuario,"idUsuario",u.IdUsuario);
             Add(r,"Usuario",u.IdUsuario,"correoElectronico",u.CorreoElectronico);
             Add(r,"Usuario",u.IdUsuario,"contrasena",u.Contrasena);
-            Add(r,"Usuario",u.IdUsuario,"rol",u.Rol);
+            if (u.IdRol > 0) Add(r,"Usuario",u.IdUsuario,"idRol",u.IdRol);
+            else Add(r,"Usuario",u.IdUsuario,"rol",u.Rol); // Referencias de respaldos anteriores a 032.
             Add(r,"Usuario",u.IdUsuario,"estado",u.Estado);
             Add(r,"Usuario",u.IdUsuario,"nombre",u.Nombre);
             Add(r,"Usuario",u.IdUsuario,"intentosFallidos",u.IntentosFallidos);
@@ -68,6 +69,27 @@ namespace VitaPet.BLL
                 ReferenciaCampoBE anterior;
                 return refs.TryGetValue(c.Clave,out anterior) && anterior.Huella==c.Huella;
             });
+        }
+        public bool RolConfiable(int idRol)
+        {
+            var guardadas=dal.Obtener();
+            var refs=guardadas.Where(c=>c.Tabla!="#").ToDictionary(c=>c.Clave,StringComparer.Ordinal);
+            var sello=guardadas.SingleOrDefault(c=>c.Clave=="#/0/sello");
+            if(sello==null || sello.Huella!=Sello(refs.Values)) return false;
+            foreach(var tabla in new[]{"Rol","PermisoComponente"})
+            {
+                var datos=new IntegridadTablasDAL().Leer(tabla);
+                var fila=datos.Rows.Cast<System.Data.DataRow>().SingleOrDefault(r=>(int)r[IntegridadTablasDAL.Claves[tabla]]==idRol);
+                if(fila==null) return false;
+                foreach(System.Data.DataColumn columna in datos.Columns)
+                {
+                    var clave=tabla+"/"+idRol.ToString(CultureInfo.InvariantCulture)+"/"+columna.ColumnName;
+                    ReferenciaCampoBE anterior;
+                    string huella=new IntegridadBLL().CalcularHash(Pack("campo-v1",tabla,idRol.ToString(CultureInfo.InvariantCulture),columna.ColumnName,IntegridadTablasBLL.Valor(fila[columna])));
+                    if(!refs.TryGetValue(clave,out anterior) || anterior.Huella!=huella) return false;
+                }
+            }
+            return true;
         }
         public void Verificar(ResultadoIntegridadBE resultado, bool ampliar = true)
         {

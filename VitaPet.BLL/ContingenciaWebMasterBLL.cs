@@ -168,7 +168,7 @@ namespace VitaPet.BLL
                 bool iniciado = false;
                 try
                 {
-                    DatabaseMigrator.CrearTemporalContingencia(temporal);
+                    DatabaseMigrator.CrearTemporalContingencia(temporal,b.Esquema.IndexOf("032_RolesRelacionales.sql:",StringComparison.Ordinal)<0 ? "031_AutorizacionPorPantallas.sql" : null);
                     bool ampliar;
                     using (ConexionDAL.UsarBaseTemporal(temporal))
                     {
@@ -181,6 +181,7 @@ namespace VitaPet.BLL
                     using (ConexionDAL.UsarBaseTemporal(temporal))
                     {
                         if (ampliar) new ReferenciaIntegridadBLL().Inicializar();
+                        new MigracionRolesBLL().Ejecutar();
                         new PerfilBLL().AsegurarIniciales();
                         seguridad.ExigirIntegridad();
                         if (!HayWebmasterConfiable()) throw new InvalidDataException("El XML no recupera un WebMaster válido.");

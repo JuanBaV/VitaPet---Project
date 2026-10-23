@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace VitaPet.BE
@@ -19,6 +19,7 @@ namespace VitaPet.BE
         public int IdUsuario { get; set; }
         public string Nombre { get; set; }
         public string CorreoElectronico { get; set; }
+        public int IdRol { get; set; }
         public string Rol { get; set; }
         public bool Estado { get; set; }
         public bool Bloqueado { get; set; }

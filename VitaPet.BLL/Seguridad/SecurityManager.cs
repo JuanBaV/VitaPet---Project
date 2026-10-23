@@ -94,7 +94,8 @@ namespace VitaPet.BLL.Seguridad
         {
             return usuario!=null && string.Equals(usuario.Rol,"Webmaster",StringComparison.OrdinalIgnoreCase)
                 && new Estados.UsuarioStateBLL(usuario).PuedeIniciarSesion()
-                && new ReferenciaIntegridadBLL().UsuarioConfiable(usuario);
+                && new ReferenciaIntegridadBLL().UsuarioConfiable(usuario)
+                && (usuario.IdRol==0 || new ReferenciaIntegridadBLL().RolConfiable(usuario.IdRol));
         }
         public UsuarioBE AutenticarRecuperacion(string correo,string contrasena)
         {

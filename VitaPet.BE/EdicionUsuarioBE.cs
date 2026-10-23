@@ -15,7 +15,7 @@ namespace VitaPet.BE
     {
         public string Nombre { get; set; }
         public string CorreoElectronico { get; set; }
-        public string Rol { get; set; }
+        public int IdRol { get; set; }
         public bool? Estado { get; set; }
     }
 }

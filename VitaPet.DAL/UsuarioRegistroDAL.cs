@@ -13,6 +13,7 @@ namespace VitaPet.DAL
             using (var cmd = new SqlCommand("dbo.sp_Usuario_RegistrarCliente", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@idRol", SqlDbType.Int).Value = usuario.IdRol;
                 cmd.Parameters.Add("@nombre", SqlDbType.VarChar, 100).Value = usuario.Nombre;
                 cmd.Parameters.Add("@correo", SqlDbType.VarChar, 100).Value = usuario.CorreoElectronico;
                 cmd.Parameters.Add("@contrasena", SqlDbType.VarChar, 255).Value = usuario.Contrasena;

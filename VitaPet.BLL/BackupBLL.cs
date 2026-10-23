@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -40,7 +40,7 @@ namespace VitaPet.BLL
             var admitidas = new[] { "012_IntegridadTodasLasTablas.sql", "013_ProcedimientosSimples.sql",
                 "014_IdiomaUsuario.sql", "015_RegistroCliente.sql", "016_ContratacionPlanes.sql", "017_GestionPago.sql", "018_ConsultaCobertura.sql", "019_ConsultaReintegros.sql", "020_RegistroMascota.sql", "021_GestionMascotas.sql", "022_Turnos.sql",
                 "026_SimplificacionProcedimientos.sql", "027_Facturacion.sql", "028_OptimizarLecturas.sql",
-                "029_CorreoFactura.sql", "030_PerfilesComposite.sql", "031_AutorizacionPorPantallas.sql" };
+                "029_CorreoFactura.sql", "030_PerfilesComposite.sql", "031_AutorizacionPorPantallas.sql", "032_RolesRelacionales.sql" };
             return pendientes.Length > 0 && pendientes.All(p =>
                 admitidas.Any(id => p.StartsWith(id + ":", StringComparison.Ordinal)));
         }
@@ -95,9 +95,8 @@ namespace VitaPet.BLL
                 }
                 // Validar también las actualizaciones de procedimientos antes de restaurar.
                 {
-                    DatabaseMigrator.MigrarTemporalExistente(temporal);
                     using (ConexionDAL.UsarBaseTemporal(temporal))
-                    { new ReferenciaIntegridadBLL().Inicializar(); new PerfilBLL().AsegurarIniciales(); seguridad.ExigirIntegridad(); }
+                    { new MigracionRolesBLL().Ejecutar(); new ReferenciaIntegridadBLL().Inicializar(); new PerfilBLL().AsegurarIniciales(); seguridad.ExigirIntegridad(); }
                 }
             }
             finally { dal.EliminarTemporal(temporal); }
@@ -140,7 +139,7 @@ namespace VitaPet.BLL
                     dal.Crear(Path.Combine(Carpeta,"contingencia_"+Guid.NewGuid().ToString("N")+".bak"));
                     EstadoAplicacion.InvalidarSesiones();
                     dal.Restaurar(file);
-                    DatabaseMigrator.Migrate();
+                    new MigracionRolesBLL().Ejecutar();
                     new ReferenciaIntegridadBLL().Inicializar();
                     new PerfilBLL().AsegurarIniciales();
                     seguridad.ExigirIntegridad();

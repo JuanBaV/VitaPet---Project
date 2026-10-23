@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,6 +9,7 @@ namespace VitaPet.DAL
     {
         public static readonly IReadOnlyDictionary<string, string> Claves =
             new System.Collections.ObjectModel.ReadOnlyDictionary<string, string>(new Dictionary<string, string> {
+                {"Rol", "idRol"}, {"RolPermiso", "idRolPermiso"},
                 {"PermisoComponente", "idComponente"}, {"PermisoRelacion", "idRelacion"},
                 {"Empresa", "idEmpresa"}, {"Cliente", "idCliente"}, {"Plan", "idPlan"},
                 {"Cobertura", "idCobertura"}, {"Suscripcion", "idSuscripcion"}, {"Pago", "idPago"},
@@ -22,12 +23,13 @@ namespace VitaPet.DAL
                 // Únicamente un respaldo temporal anterior a la migración puede omitir su tabla nueva y vacía.
                 var claves=Claves.ToDictionary(k=>k.Key,k=>k.Value);
                 // La validación previa a migrar también admite estas tablas aún inexistentes.
-                foreach (var tabla in new[] {"PermisoComponente", "PermisoRelacion"})
+                foreach (var ampliacion in new[] { new[]{"PermisoComponente","030_PerfilesComposite.sql"}, new[]{"PermisoRelacion","030_PerfilesComposite.sql"}, new[]{"Rol","032_RolesRelacionales.sql"}, new[]{"RolPermiso","032_RolesRelacionales.sql"} })
                 using (var cn = new ConexionDAL().CrearConexion())
-                using (var cmd = new SqlCommand("SELECT CASE WHEN OBJECT_ID(@tabla,'U') IS NULL AND NOT EXISTS(SELECT 1 FROM dbo.__SchemaMigrations WHERE migrationId='030_PerfilesComposite.sql') AND NOT EXISTS(SELECT 1 FROM dbo.DVV WHERE nombreTabla=@nombre) THEN 1 ELSE 0 END", cn))
+                using (var cmd = new SqlCommand("SELECT CASE WHEN OBJECT_ID(@tabla,'U') IS NULL AND NOT EXISTS(SELECT 1 FROM dbo.__SchemaMigrations WHERE migrationId=@migracion) AND NOT EXISTS(SELECT 1 FROM dbo.DVV WHERE nombreTabla=@nombre) THEN 1 ELSE 0 END", cn))
                 {
-                    cmd.Parameters.AddWithValue("@tabla", "dbo."+tabla); cmd.Parameters.AddWithValue("@nombre", tabla);
-                    cn.Open(); if ((int)cmd.ExecuteScalar()==1) claves.Remove(tabla);
+                    cmd.Parameters.AddWithValue("@tabla", "dbo."+ampliacion[0]); cmd.Parameters.AddWithValue("@nombre", ampliacion[0]);
+                    cmd.Parameters.AddWithValue("@migracion", ampliacion[1]);
+                    cn.Open(); if ((int)cmd.ExecuteScalar()==1) claves.Remove(ampliacion[0]);
                 }
                 if(ConexionDAL.EnBaseTemporal)
                 foreach(var ampliacion in new[]{new[]{"DatosClinicos","021_GestionMascotas.sql"},new[]{"AgendaTurno","022_Turnos.sql"},new[]{"DetallePago","027_Facturacion.sql"},new[]{"Factura","027_Facturacion.sql"}})

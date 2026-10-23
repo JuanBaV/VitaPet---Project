@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ namespace VitaPet.BE
         public int IdUsuario { get; set; }
         public string CorreoElectronico { get; set; }
         public string Contrasena { get; set; }
+        public int IdRol { get; set; }
         public string Rol { get; set; }
         public bool Estado { get; set; }
         public string Nombre { get; set; }

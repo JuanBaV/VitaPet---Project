@@ -12,6 +12,12 @@ namespace VitaPet.DAL
 
     public partial class UsuarioDAL
     {
+        private static int LeerIdRol(SqlDataReader lector)
+        {
+            for (int i=0;i<lector.FieldCount;i++)
+                if (lector.GetName(i)=="idRol") return lector.GetInt32(i);
+            return 0; // Esquema anterior a 032, validado antes de migrar o restaurar.
+        }
         private static bool LeerRestablecimiento(SqlDataReader lector)
         {
             for(int i=0;i<lector.FieldCount;i++)
@@ -28,7 +34,7 @@ namespace VitaPet.DAL
                 CorreoElectronico = Convert.ToString(lector["correoElectronico"]),
                 Contrasena = Convert.ToString(lector["contrasena"]),
                 Nombre = Convert.ToString(lector["nombre"]),
-                Rol = Convert.ToString(lector["rol"]),
+                IdRol = LeerIdRol(lector), Rol = Convert.ToString(lector["rol"]),
                 Estado = Convert.ToBoolean(lector["estado"]),
                 IntentosFallidos = Convert.ToByte(lector["intentosFallidos"]),
                 Bloqueado = Convert.ToBoolean(lector["bloqueado"]),
@@ -61,7 +67,7 @@ namespace VitaPet.DAL
                             IdUsuario = Convert.ToInt32(lector["idUsuario"]),
                             Nombre = Convert.ToString(lector["nombre"]),
                             CorreoElectronico = Convert.ToString(lector["correoElectronico"]),
-                            Rol = Convert.ToString(lector["rol"]),
+                            IdRol = LeerIdRol(lector), Rol = Convert.ToString(lector["rol"]),
                             Estado = Convert.ToBoolean(lector["estado"]),
                             Bloqueado = Convert.ToBoolean(lector["bloqueado"])
                         });

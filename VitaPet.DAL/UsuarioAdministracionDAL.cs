@@ -36,7 +36,7 @@ namespace VitaPet.DAL
                 cmd.Parameters.Add("@version", SqlDbType.VarChar, 64).Value = version;
                 cmd.Parameters.Add("@nombre", SqlDbType.VarChar, 100).Value = u.Nombre;
                 cmd.Parameters.Add("@correo", SqlDbType.VarChar, 100).Value = u.CorreoElectronico;
-                cmd.Parameters.Add("@rol", SqlDbType.VarChar, 30).Value = u.Rol;
+                cmd.Parameters.Add("@idRol", SqlDbType.Int).Value = u.IdRol;
                 cmd.Parameters.Add("@estado", SqlDbType.Bit).Value = u.Estado;
                 cmd.Parameters.Add("@bloqueado", SqlDbType.Bit).Value = u.Bloqueado;
                 cmd.Parameters.Add("@intentos", SqlDbType.TinyInt).Value = u.IntentosFallidos;

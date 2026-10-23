@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Web;
 using VitaPet2._0;
 using System.Web.Optimization;
@@ -17,7 +17,7 @@ namespace VitaPet.GUI
                     // Antes de migrar se validan los datos y los scripts ya aplicados; los nuevos aún están pendientes.
                     if (!VitaPet.SECURITY.EstadoAplicacion.Mantenimiento && !(contingencia.Configurada && contingencia.Necesaria(true)))
                     {
-                        VitaPet.DAL.DatabaseMigrator.Migrate();
+                        new VitaPet.BLL.MigracionRolesBLL().Ejecutar();
                         new VitaPet.BLL.ReferenciaIntegridadBLL().Inicializar();
                         new VitaPet.BLL.PerfilBLL().AsegurarIniciales();
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresRestauracion();

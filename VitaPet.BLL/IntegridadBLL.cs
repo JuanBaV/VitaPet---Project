@@ -42,7 +42,7 @@ namespace VitaPet.BLL
                 usuario.IdUsuario.ToString(CultureInfo.InvariantCulture),
                 usuario.CorreoElectronico,
                 usuario.Contrasena,
-                usuario.Rol,
+                usuario.IdRol > 0 ? usuario.IdRol.ToString(CultureInfo.InvariantCulture) : usuario.Rol,
                 ConvertirBooleano(usuario.Estado),
                 usuario.Nombre,
                 usuario.IntentosFallidos.ToString(CultureInfo.InvariantCulture),

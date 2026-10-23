@@ -23,9 +23,9 @@ namespace VitaPet.DAL
             @"^\s*GO\s*(?:--.*)?$",
             RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
 
-        public static void Migrate()
+        public static void Migrate(string hasta = null)
         {
-            MigrarConexion(GetConnectionString());
+            using(var cn=new ConexionDAL().CrearConexion()) MigrarConexion(cn.ConnectionString,hasta);
         }
 
         public static IReadOnlyList<string> MigracionesInconsistentes(bool incluirPendientes = true)
@@ -45,21 +45,21 @@ namespace VitaPet.DAL
             }
         }
 
-        public static void CrearTemporalContingencia(string nombre)
+        public static void CrearTemporalContingencia(string nombre, string hasta = null)
         {
             ContingenciaDatosDAL.ValidarTemporal(nombre);
             var builder = new SqlConnectionStringBuilder(GetConnectionString()) { InitialCatalog = nombre };
-            MigrarConexion(builder.ConnectionString);
+            MigrarConexion(builder.ConnectionString,hasta);
         }
 
-        public static void MigrarTemporalExistente(string nombre)
+        public static void MigrarTemporalExistente(string nombre, string hasta = null)
         {
             ContingenciaDatosDAL.ValidarTemporal(nombre);
             var builder = new SqlConnectionStringBuilder(GetConnectionString()) { InitialCatalog = nombre };
-            MigrarConexion(builder.ConnectionString);
+            MigrarConexion(builder.ConnectionString,hasta);
         }
 
-        private static void MigrarConexion(string connectionString)
+        private static void MigrarConexion(string connectionString, string hasta = null)
         {
             SqlConnectionStringBuilder targetBuilder =
                 new SqlConnectionStringBuilder(connectionString);
@@ -72,7 +72,7 @@ namespace VitaPet.DAL
                     "La conexión VitaPetConnection debe indicar Initial Catalog o Database.");
             }
 
-            EnsureDatabaseExists(targetBuilder, databaseName);
+            if (System.Transactions.Transaction.Current==null) EnsureDatabaseExists(targetBuilder, databaseName);
 
             using (SqlConnection connection =
                 new SqlConnection(targetBuilder.ConnectionString))
@@ -83,7 +83,7 @@ namespace VitaPet.DAL
                 try
                 {
                     EnsureMigrationHistoryExists(connection);
-                    ApplyPendingMigrations(connection, LoadMigrations());
+                    ApplyPendingMigrations(connection, LoadMigrations().Where(m => hasta==null || string.CompareOrdinal(m.Id,hasta)<=0));
                 }
                 finally
                 {
@@ -269,7 +269,7 @@ FROM dbo.__SchemaMigrations;";
             SqlConnection connection,
             Migration migration)
         {
-            using (SqlTransaction transaction = connection.BeginTransaction())
+            using (SqlTransaction transaction = System.Transactions.Transaction.Current==null ? connection.BeginTransaction() : null)
             {
                 try
                 {
@@ -295,11 +295,11 @@ VALUES (@migrationId, @checksum);", connection, transaction))
                         command.ExecuteNonQuery();
                     }
 
-                    transaction.Commit();
+                    if(transaction!=null) transaction.Commit();
                 }
                 catch
                 {
-                    transaction.Rollback();
+                    if(transaction!=null) transaction.Rollback();
                     throw;
                 }
             }

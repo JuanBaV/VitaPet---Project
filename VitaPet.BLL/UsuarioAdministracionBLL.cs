@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
@@ -31,7 +31,7 @@ namespace VitaPet.BLL
                         Version = usuario.DVH,
                         Usuario = new UsuarioListadoBE {
                             IdUsuario = usuario.IdUsuario, Nombre = usuario.Nombre,
-                            CorreoElectronico = usuario.CorreoElectronico, Rol = usuario.Rol,
+                            CorreoElectronico = usuario.CorreoElectronico, IdRol = usuario.IdRol, Rol = usuario.Rol,
                             Estado = usuario.Estado, Bloqueado = usuario.Bloqueado
                         }
                     };
@@ -75,9 +75,10 @@ namespace VitaPet.BLL
                         var duplicado = _usuarioDAL.ObtenerPorCorreo(cambios.CorreoElectronico);
                         if (duplicado != null && duplicado.IdUsuario != id) throw ErrorUsuario("ER001");
                         u.Nombre = cambios.Nombre; u.CorreoElectronico = cambios.CorreoElectronico;
-                        if (u.Rol != cambios.Rol && actor.Rol != "Webmaster") throw new UnauthorizedAccessException("Solo el Webmaster puede asignar perfiles.");
-                        if (!new PerfilBLL().Leer().OfType<PerfilBE>().Any(p => p.Nombre==cambios.Rol)) throw ErrorUsuario("ER025");
-                        u.Rol = cambios.Rol; u.Estado = cambios.Estado.Value;
+                        if (u.IdRol != cambios.IdRol && actor.Rol != "Webmaster") throw new UnauthorizedAccessException("Solo el Webmaster puede asignar perfiles.");
+                        var rol=new PerfilBLL().Leer().OfType<RolBE>().SingleOrDefault(p => p.Id==cambios.IdRol);
+                        if (rol==null) throw ErrorUsuario("ER025");
+                        u.IdRol = rol.Id; u.Rol = rol.Nombre; u.Estado = cambios.Estado.Value;
                     }
                     else if (operacion == OperacionUsuario.Bloquear) u.Bloqueado = true;
                     else { u.Bloqueado = false; u.IntentosFallidos = 0; }
@@ -104,10 +105,9 @@ namespace VitaPet.BLL
         public static CambiosUsuarioBE ValidarCambiosUsuario(CambiosUsuarioBE c)
         {
             if (c == null || string.IsNullOrWhiteSpace(c.Nombre) || string.IsNullOrWhiteSpace(c.CorreoElectronico)
-                || string.IsNullOrWhiteSpace(c.Rol) || !c.Estado.HasValue) throw ErrorUsuario("ER002");
+                || c.IdRol<=0 || !c.Estado.HasValue) throw ErrorUsuario("ER002");
             var nombre = c.Nombre.Trim(); var correo = c.CorreoElectronico.Trim();
-            if (nombre.Length > 100 || correo.Length > 100 || nombre.Any(char.IsControl) || correo.Any(char.IsWhiteSpace)
-                || c.Rol.Length>30 || c.Rol.Any(char.IsControl)) throw ErrorUsuario("ER025");
+            if (nombre.Length > 100 || correo.Length > 100 || nombre.Any(char.IsControl) || correo.Any(char.IsWhiteSpace)) throw ErrorUsuario("ER025");
             try
             {
                 if (new MailAddress(correo).Address != correo || !correo.Contains("@")) throw ErrorUsuario("ER025");
@@ -117,7 +117,7 @@ namespace VitaPet.BLL
             }
             catch (FormatException) { throw ErrorUsuario("ER025"); }
             catch (EncoderFallbackException) { throw ErrorUsuario("ER025"); }
-            return new CambiosUsuarioBE { Nombre=nombre, CorreoElectronico=correo, Rol=c.Rol, Estado=c.Estado };
+            return new CambiosUsuarioBE { Nombre=nombre, CorreoElectronico=correo, IdRol=c.IdRol, Estado=c.Estado };
         }
 
         private UsuarioBE ExigirUsuario(int id)

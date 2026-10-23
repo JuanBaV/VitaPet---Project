@@ -17,7 +17,9 @@ namespace VitaPet.BE
         public override IEnumerable<string> Pantallas() { yield return Pantalla; }
     }
 
-    public sealed class PerfilBE : PermisoComponenteBE
+    public sealed class RolBE : PerfilBE { }
+
+    public class PerfilBE : PermisoComponenteBE
     {
         private readonly List<PermisoComponenteBE> hijos = new List<PermisoComponenteBE>();
         public bool Sistema { get; set; }

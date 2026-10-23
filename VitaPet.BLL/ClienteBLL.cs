@@ -33,6 +33,7 @@ namespace VitaPet.BLL
                         Nombre = cliente.Nombre + " " + cliente.Apellido,
                         CorreoElectronico = cliente.CorreoElectronico,
                         Contrasena = seguridad.CalcularHash(cliente.Contrasena),
+                        IdRol = new PerfilBLL().Leer().OfType<RolBE>().Single(p => p.Sistema && p.Nombre=="Cliente").Id,
                         Rol = "Cliente", Estado = true, Bloqueado = false,
                         IntentosFallidos = 0, Idioma = "es"
                     };
