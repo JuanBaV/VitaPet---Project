@@ -42,10 +42,10 @@ static class PerfilesTests
         Rechaza<ArgumentException>(() => b.Guardar(0,null,"Inválido",new[]{wm.Id}),"No hereda funciones exclusivas del Webmaster");
         Rechaza<ArgumentException>(() => b.Guardar(wm.Id,wm.Version,wm.Nombre,new[]{consulta}),"No quita accesos esenciales al Webmaster");
         var datos=new RegistroClienteBE {Nombre="Usuario",Apellido="Perfiles",CorreoElectronico="perfiles@test.local",Contrasena="Prueba2026!",Telefono="55555555"};
-        int id=new AltaUsuarioBLL().Registrar(datos,hijo.Nombre);
+        int id=new AltaUsuarioBLL().Registrar(datos,hijo.Id);
         Check(new UsuarioDAL().ObtenerPorId(id).Rol==hijo.Nombre,"Alta del Webmaster asigna el perfil adicional");
         Check(new UsuarioDAL().ObtenerPorId(id).Contrasena!=datos.Contrasena,"El alta almacena hash y no la contraseña original");
-        Rechaza<RegistroClienteException>(() => new AltaUsuarioBLL().Registrar(datos,hijo.Nombre),"Rechaza correo de usuario duplicado");
+        Rechaza<RegistroClienteException>(() => new AltaUsuarioBLL().Registrar(datos,hijo.Id),"Rechaza correo de usuario duplicado");
         Rechaza<ArgumentException>(() => b.Eliminar(hijo.Id,hijo.Version),"No elimina perfiles asignados a usuarios");
         Sesion(id);Check(b.PuedeAcceder("ConsultaPlan") && !b.PuedeAcceder("ModificarPlan"),"Perfil adicional permite solo sus pantallas");
         Sesion(2);var plan=new PlanBLL().Listar().First();Sesion(id);
@@ -59,9 +59,9 @@ static class PerfilesTests
         Sesion(id);Check(!b.PuedeAcceder("ConsultaPlan") && b.PuedeAcceder("Empresas"),"Cambiar el perfil padre actualiza permisos heredados sin reloguearse");
         Sesion(2);Check(b.Consultar().OfType<PerfilBE>().Any(),"Administrador puede visualizar el Composite");
         Rechaza<UnauthorizedAccessException>(() => b.Guardar(0,null,"No permitido",new[]{consulta}),"Administrador no crea perfiles por BLL");
-        Rechaza<UnauthorizedAccessException>(() => new AltaUsuarioBLL().Registrar(datos,"Cliente"),"Administrador no da de alta usuarios por BLL");
+        Rechaza<UnauthorizedAccessException>(() => new AltaUsuarioBLL().Registrar(datos,cliente.Id),"Administrador no da de alta usuarios por BLL");
         var u=new UsuarioDAL().ObtenerPorId(id);
-        Rechaza<UnauthorizedAccessException>(() => new UsuarioBLL().ModificarUsuario(id,u.DVH,new CambiosUsuarioBE {Nombre=u.Nombre,CorreoElectronico=u.CorreoElectronico,Rol="Webmaster",Estado=true}),"Administrador no cambia el perfil de un usuario por BLL");
+        Rechaza<UnauthorizedAccessException>(() => new UsuarioBLL().ModificarUsuario(id,u.DVH,new CambiosUsuarioBE {Nombre=u.Nombre,CorreoElectronico=u.CorreoElectronico,IdRol=wm.Id,Estado=true}),"Administrador no cambia el perfil de un usuario por BLL");
         Sesion(3);b.Guardar(0,null,"Temporal",new[]{consulta});var temporal=b.Consultar().OfType<PerfilBE>().Single(p => p.Nombre=="Temporal");
         b.Eliminar(temporal.Id,temporal.Version);Check(!b.Consultar().OfType<PerfilBE>().Any(p => p.Nombre=="Temporal"),"Elimina un perfil adicional sin asignaciones");
         Check(new SecurityManager().VerificarIntegridad(),"Operaciones de perfiles y alta conservan DVH, DVV y referencias");

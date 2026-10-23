@@ -29,8 +29,15 @@ static class IntegridadTodasLasTablas
         Sql(@"
 DECLARE @n int=1;
 WHILE @n<=3 BEGIN
- INSERT dbo.Usuario(correoElectronico,contrasena,nombre,rol,estado,dvh) VALUES(CONCAT('integridad',@n,'@test.local'),'hash','Cliente prueba','Cliente',1,'');
+ INSERT dbo.Usuario(correoElectronico,contrasena,nombre,idRol,estado,dvh) VALUES(CONCAT('integridad',@n,'@test.local'),'hash','Cliente prueba',(SELECT idRol FROM dbo.Rol r JOIN dbo.PermisoComponente p ON p.idComponente=r.idRol WHERE p.nombre='Cliente' AND p.sistema=1),1,'');
  DECLARE @u int=SCOPE_IDENTITY();
+ INSERT dbo.PermisoComponente(nombre,tipo,pantalla,sistema,dvh) VALUES(CONCAT('Grupo integridad ',@n),'Perfil',NULL,0,'');
+ DECLARE @grupo int=SCOPE_IDENTITY();
+ INSERT dbo.PermisoRelacion(idPadre,idHijo,dvh) VALUES(@grupo,(SELECT TOP(1) idComponente FROM dbo.PermisoComponente WHERE tipo='Pantalla' ORDER BY idComponente),'');
+ INSERT dbo.PermisoComponente(nombre,tipo,pantalla,sistema,dvh) VALUES(CONCAT('Rol integridad ',@n),'Perfil',NULL,0,'');
+ DECLARE @rol int=SCOPE_IDENTITY();
+ INSERT dbo.Rol(idRol,dvh) VALUES(@rol,'');
+ INSERT dbo.RolPermiso(idRol,idComponente,dvh) VALUES(@rol,(SELECT TOP(1) idComponente FROM dbo.PermisoComponente WHERE tipo='Pantalla' ORDER BY idComponente),'');
  INSERT dbo.Empresa(razonSocial,cuit,direccion,telefono,estado,dvh) VALUES(CONCAT('Empresa ',@n),CONCAT('3000000000',@n),'Calle 123','55555555',1,'');
  DECLARE @e int=SCOPE_IDENTITY();
  INSERT dbo.Cliente(idUsuario,idEmpresa,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(@u,@e,'Cliente','Prueba','55555555','Individual',1,'');
@@ -68,7 +75,8 @@ END;");
     {
         using(var transaction=new OperacionIntegridadDAL())
         {
-            var rows=Read("SELECT TOP(3) ["+key+"] FROM dbo.["+table+"]"+(table=="Usuario"?" WHERE rol<>'Webmaster'":"")+" ORDER BY ["+key+"]");
+            string filtro=table=="Usuario" || table=="Rol" ? " WHERE idRol<>(SELECT idRol FROM dbo.Usuario WHERE idUsuario=3)" : table=="PermisoComponente" ? " WHERE idComponente<>(SELECT idRol FROM dbo.Usuario WHERE idUsuario=3)" : "";
+            var rows=Read("SELECT TOP(3) ["+key+"] FROM dbo.["+table+"]"+filtro+" ORDER BY ["+key+"]");
             Check(rows.Rows.Count==3,table+": tres registros de prueba disponibles");
             foreach(DataRow row in rows.Rows)
             {
@@ -81,7 +89,7 @@ END;");
                 Check(result.Detalles.Any(d=>d.Tabla==table&&d.Fila==Convert.ToString(row[0])&&d.Columna==field),table+": identifica fila "+row[0]+" y campo "+field);
             if(audit)
             {
-                if(table=="PermisoComponente" || table=="PermisoRelacion")
+                if(table=="PermisoComponente" || table=="PermisoRelacion" || table=="Rol" || table=="RolPermiso")
                     Check(new PerfilBLL().PantallasActuales().SequenceEqual(new[]{"BaseDatos"}),table+": menú de recuperación sigue disponible sin recorrer el Composite alterado");
                 var snapshot=new ContingenciaDatosDAL().ExportarXml();
                 var saved=new BitacoraBLL().RegistrarErroresIntegridad();
@@ -137,7 +145,8 @@ END;");
             {"Suscripcion","estado"},{"Pago","medioPago"},{"Mascota","nombre"},{"Turno","prestacion"},
             {"HistorialClinico","observaciones"},{"Reintegro","detalle"},{"ErrorSistema","descripcion"},
             {"DatosClinicos","observaciones"},{"AgendaTurno","prestacion"},{"DetallePago","titular"},{"Factura","concepto"},
-            {"Usuario","nombre"},{"Bitacora","accion"},{"PermisoComponente","nombre"},{"PermisoRelacion","dvh"}};
+            {"Usuario","nombre"},{"Bitacora","accion"},{"PermisoComponente","nombre"},{"PermisoRelacion","dvh"},
+            {"Rol","dvh"},{"RolPermiso","dvh"}};
         var keys=IntegridadTablasDAL.Claves.ToDictionary(p=>p.Key,p=>p.Value);keys.Add("Usuario","idUsuario");keys.Add("Bitacora","idBitacora");
         var controls=new[]{"DVV","ReferenciaIntegridad","__FormatoIntegridad","__SchemaMigrations"};
         var actual=Read("SELECT name FROM sys.tables WHERE schema_id=SCHEMA_ID('dbo')").Rows.Cast<DataRow>().Select(r=>(string)r[0]).OrderBy(n=>n).ToArray();

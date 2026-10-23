@@ -208,9 +208,9 @@ class Program
         seguridad=new SecurityManager();
         try
         {
-            DatabaseMigrator.Migrate();
+            DatabaseMigrator.Migrate("031_AutorizacionPorPantallas.sql");
             Sql("INSERT dbo.Cliente(idUsuario,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(1,'Cliente','Prueba','55555555','Individual',1,'');");
-            new ReferenciaIntegridadBLL().Inicializar();new PerfilBLL().AsegurarIniciales();new ContratacionPlanBLL().AsegurarCatalogo();
+            new MigracionRolesBLL().Ejecutar();new PerfilBLL().AsegurarIniciales();new ContratacionPlanBLL().AsegurarCatalogo();
             Check(seguridad.VerificarIntegridad(),"Base aislada inicializada");
             if(args.Contains("--integridad-todas") || args.Contains("--integridad-login"))
             {
