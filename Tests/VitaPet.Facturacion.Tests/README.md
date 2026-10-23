@@ -1,5 +1,21 @@
 # Facturación de VitaPet Rework
 
+Para el punto 17:
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 'Navegacion-Web.cjs' '..\..\artifacts\punto17-navegacion'
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 'Interfaz-Web.cjs' '..\..\artifacts\punto17-interfaz'
+```
+
+El primer recorrido verifica los regresos, el teclado, los filtros conservados
+y la navegación móvil en español e inglés. El segundo comprueba los enlaces
+de los menús públicos y de los tres perfiles, títulos, etiquetas, imágenes,
+recursos y disposición en anchos de 360, 390, 768, 1024 y 1440 píxeles.
+Incluye cancelar y confirmar el cierre de sesión con teclado. Guarda capturas
+y `interfaz-resultados.json`; falla si una opción del menú queda fuera de la
+pantalla, aunque el documento no muestre una barra horizontal. Ambos usan
+una base temporal y conservan el recorrido de facturación existente.
+
 Para el punto 16, después de compilar la solución, ejecutar:
 
 ```powershell
