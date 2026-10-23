@@ -457,7 +457,17 @@ textarea {
 .perfiles-grilla { table-layout: fixed; width: 100%; }
 .perfiles-grilla td, .perfiles-grilla th { overflow-wrap: anywhere; }
 .perfiles-grilla th:first-child { width: 20%; }
-.perfiles-grilla th:last-child { width: 100px; }
+.perfiles-grilla th:last-child { width: 142px; }
+.perfil-acciones { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.perfil-acciones .btn { max-width: 100%; white-space: normal; }
+.perfil-acciones .btn-danger, .perfil-confirmacion .btn-danger { color: #fff; background-color: #b52b27; border-color: #9f2623; }
+.perfil-acciones .btn-danger:hover, .perfil-confirmacion .btn-danger:hover { background-color: #9f2623; }
+.perfil-acciones .aspNetDisabled { opacity: .65; cursor: not-allowed; }
+.perfil-acciones a:focus, .perfil-acciones .btn:focus { outline: 2px solid #174d48; outline-offset: 2px; }
+.perfil-confirmacion { margin-top: 16px; }
+.perfil-confirmacion:focus { outline: 2px solid #174d48; outline-offset: 2px; }
+.perfil-confirmacion .empresa-acciones { margin-top: 12px; }
+.perfil-nuevo { margin-top: 24px; }
 .perfil-componentes { list-style: none; padding: 0; columns: 2; column-gap: 24px; }
 .perfil-componentes li { break-inside: avoid; margin-bottom: 8px; }
 .perfil-componentes input { margin-right: 8px; }

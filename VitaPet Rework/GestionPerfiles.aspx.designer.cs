@@ -14,7 +14,6 @@ public partial class GestionPerfilesPage
     protected global::System.Web.UI.WebControls.TextBox txtNombre;
     protected global::System.Web.UI.WebControls.CheckBoxList chkComponentes;
     protected global::System.Web.UI.WebControls.Button btnGuardar;
-    protected global::System.Web.UI.WebControls.Button btnEliminar;
     protected global::System.Web.UI.WebControls.Panel pnlConfirmar;
     protected global::System.Web.UI.WebControls.Literal litConfirmar;
     protected global::System.Web.UI.WebControls.Button btnConfirmar;

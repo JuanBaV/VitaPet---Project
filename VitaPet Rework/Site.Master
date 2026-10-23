@@ -15,7 +15,7 @@
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Site.css") %>?v=20261021-turnos" />
+    <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Site.css") %>?v=20261022-perfiles" />
     <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Idioma.css") %>?v=20261005-2" />
 
     <link href="~/Content/Images/VitaPetFavicon.png" rel="icon" type="image/png" />
