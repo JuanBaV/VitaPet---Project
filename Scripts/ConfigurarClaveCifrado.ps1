@@ -1,5 +1,5 @@
 param(
-    [string]$Archivo = (Join-Path $env:LOCALAPPDATA 'VitaPet\cifrado.key'),
+    [string]$Archivo = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.vitapet\cifrado.key'),
     [string]$ImportarDesde
 )
 $ErrorActionPreference = 'Stop'

@@ -43,13 +43,20 @@ Abrir PowerShell en la raíz de `VitaPet Rework` y ejecutar:
 El destino predeterminado es:
 
 ```text
-%LOCALAPPDATA%\VitaPet\cifrado.key
+%USERPROFILE%\.vitapet\cifrado.key
 ```
 
 El script genera una clave criptográficamente aleatoria, restringe el acceso al
 usuario de Windows que lo ejecuta y no muestra su contenido. Rechaza sobrescribir
 un archivo existente. Guardar una copia protegida de este archivo, separada del
 backup de la base. No compartirlo por correo ni agregarlo al repositorio.
+
+Se usa una carpeta del perfil fuera de `AppData` para que Visual Studio y las
+herramientas empaquetadas (MSIX) lean el mismo archivo. Windows puede virtualizar
+`LocalAppData` y mantener dos archivos diferentes bajo una ruta aparente idéntica.
+Si la base ya está cifrada con una versión anterior, importar la clave existente
+que efectivamente la descifra; no generar otra. Conservar las copias anteriores
+hasta comprobar login e integridad desde Visual Studio.
 
 Si se necesita otra ubicación, especificar la ruta del archivo y configurar la
 variable de entorno `VITAPET_CLAVE_ARCHIVO` con esa misma ruta:
@@ -101,7 +108,7 @@ cifrar: protegerlo y conservarlo según la política de respaldos.
    .\Scripts\ConfigurarClaveCifrado.ps1 -ImportarDesde 'E:\TrasladoProtegido\cifrado.key'
    ```
 
-   Se copia al `%LOCALAPPDATA%\VitaPet\cifrado.key` del nuevo usuario de Windows,
+   Se copia al `%USERPROFILE%\.vitapet\cifrado.key` del nuevo usuario de Windows,
    con permisos adecuados para ese usuario. No se genera una clave diferente.
    Si el archivo de destino ya existe, el script se detiene: conservarlo y
    comprobar cuál corresponde a la base antes de reemplazarlo manualmente.

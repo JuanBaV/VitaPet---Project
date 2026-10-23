@@ -58,7 +58,8 @@ namespace VitaPet.DAL
         {
             string ruta = Environment.GetEnvironmentVariable("VITAPET_CLAVE_ARCHIVO");
             if (string.IsNullOrWhiteSpace(ruta))
-                ruta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "VitaPet", "cifrado.key");
+                // LocalAppData puede virtualizarse para aplicaciones MSIX y resolver a archivos distintos.
+                ruta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".vitapet", "cifrado.key");
             try
             {
                 string clave = File.ReadAllText(ruta).Trim();
