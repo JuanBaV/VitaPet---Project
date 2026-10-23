@@ -6,15 +6,12 @@ RETURNS BIT
 AS
 BEGIN
     DECLARE @permitido BIT=0;
-    WITH relaciones AS (
-        SELECT idRol AS idPadre,idComponente AS idHijo FROM dbo.RolPermiso
-        UNION ALL SELECT idPadre,idHijo FROM dbo.PermisoRelacion
-    ), componentes AS (
+    WITH componentes AS (
         SELECT c.idComponente,c.pantalla FROM dbo.Rol r JOIN dbo.PermisoComponente c ON c.idComponente=r.idRol WHERE r.idRol=@idRol
         UNION ALL
         SELECT hijo.idComponente,hijo.pantalla FROM componentes padre
-        JOIN relaciones r ON r.idPadre=padre.idComponente
-        JOIN dbo.PermisoComponente hijo ON hijo.idComponente=r.idHijo
+        JOIN dbo.RolPermiso r ON r.idRol=padre.idComponente
+        JOIN dbo.PermisoComponente hijo ON hijo.idComponente=r.idComponente
     )
     SELECT TOP(1) @permitido=1 FROM componentes
     WHERE CHARINDEX(','+pantalla+',',','+@pantallas+',')>0;

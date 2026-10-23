@@ -10,7 +10,7 @@ namespace VitaPet.DAL
         public static readonly IReadOnlyDictionary<string, string> Claves =
             new System.Collections.ObjectModel.ReadOnlyDictionary<string, string>(new Dictionary<string, string> {
                 {"Rol", "idRol"}, {"RolPermiso", "idRolPermiso"},
-                {"PermisoComponente", "idComponente"}, {"PermisoRelacion", "idRelacion"},
+                {"PermisoComponente", "idComponente"},
                 {"Empresa", "idEmpresa"}, {"Cliente", "idCliente"}, {"Plan", "idPlan"},
                 {"Cobertura", "idCobertura"}, {"Suscripcion", "idSuscripcion"}, {"Pago", "idPago"},
                 {"Mascota", "idMascota"}, {"Turno", "idTurno"}, {"HistorialClinico", "idHistorial"},
@@ -22,6 +22,8 @@ namespace VitaPet.DAL
             {
                 // Únicamente un respaldo temporal anterior a la migración puede omitir su tabla nueva y vacía.
                 var claves=Claves.ToDictionary(k=>k.Key,k=>k.Value);
+                // Sólo para verificar respaldos anteriores a la eliminación de esta tabla.
+                if (!DatabaseMigrator.EstaAplicada("033_EliminarPermisoRelacion.sql")) claves.Add("PermisoRelacion","idRelacion");
                 // La validación previa a migrar también admite estas tablas aún inexistentes.
                 foreach (var ampliacion in new[] { new[]{"PermisoComponente","030_PerfilesComposite.sql"}, new[]{"PermisoRelacion","030_PerfilesComposite.sql"}, new[]{"Rol","032_RolesRelacionales.sql"}, new[]{"RolPermiso","032_RolesRelacionales.sql"} })
                 using (var cn = new ConexionDAL().CrearConexion())
@@ -44,19 +46,26 @@ namespace VitaPet.DAL
                 return new System.Collections.ObjectModel.ReadOnlyDictionary<string,string>(claves);
             }
         }
+        private string Clave(string tabla)
+        {
+            string clave;
+            if (Claves.TryGetValue(tabla,out clave)) return clave;
+            if (tabla=="PermisoRelacion" && ClavesEsquema.TryGetValue(tabla,out clave)) return clave;
+            throw new ArgumentException("Tabla no supervisada.");
+        }
         public DataTable Leer(string tabla)
         {
-            if (!Claves.ContainsKey(tabla)) throw new ArgumentException("Tabla no supervisada.");
+            string clave=Clave(tabla);
             using (var cn = new ConexionDAL().CrearConexion())
-            using (var cmd = new SqlCommand("SELECT * FROM dbo.[" + tabla + "] ORDER BY [" + Claves[tabla] + "]", cn))
+            using (var cmd = new SqlCommand("SELECT * FROM dbo.[" + tabla + "] ORDER BY [" + clave + "]", cn))
             using (var a = new SqlDataAdapter(cmd))
             { var datos = new DataTable(tabla); a.Fill(datos); return datos; }
         }
         public void GuardarDvh(string tabla, object id, string dvh)
         {
-            if (!Claves.ContainsKey(tabla)) throw new ArgumentException("Tabla no supervisada.");
+            string clave=Clave(tabla);
             using (var cn = new ConexionDAL().CrearConexion())
-            using (var cmd = new SqlCommand("UPDATE dbo.[" + tabla + "] SET dvh=@dvh WHERE [" + Claves[tabla] + "]=@id", cn))
+            using (var cmd = new SqlCommand("UPDATE dbo.[" + tabla + "] SET dvh=@dvh WHERE [" + clave + "]=@id", cn))
             {
                 cmd.Parameters.Add("@dvh", SqlDbType.VarChar, 64).Value = dvh;
                 if (tabla == "ErrorSistema") cmd.Parameters.Add("@id", SqlDbType.VarChar, 10).Value = id;

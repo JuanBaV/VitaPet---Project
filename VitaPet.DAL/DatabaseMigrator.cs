@@ -28,6 +28,14 @@ namespace VitaPet.DAL
             using(var cn=new ConexionDAL().CrearConexion()) MigrarConexion(cn.ConnectionString,hasta);
         }
 
+        public static bool EstaAplicada(string migracion)
+        {
+            using (var connection = new ConexionDAL().CrearConexion())
+            {
+                connection.Open(); return LoadAppliedMigrations(connection).ContainsKey(migracion);
+            }
+        }
+
         public static IReadOnlyList<string> MigracionesInconsistentes(bool incluirPendientes = true)
         {
             using (var connection = new ConexionDAL().CrearConexion())

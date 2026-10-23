@@ -63,7 +63,6 @@ namespace VitaPet.BLL
             var todos = dal.Componentes().Rows.Cast<DataRow>().ToDictionary(r => (int)r["idComponente"], r =>
                 (string)r["tipo"] == "Perfil" ? (PermisoComponenteBE)CrearPerfil(r,roles)
                     : new PermisoPantallaBE { Id=(int)r["idComponente"], Nombre=(string)r["nombre"], Pantalla=(string)r["pantalla"] });
-            var relaciones=dal.Relaciones();
             var permisosRoles = dal.PermisosRoles();
             foreach (DataRow r in permisosRoles.Rows)
             {
@@ -71,22 +70,17 @@ namespace VitaPet.BLL
                 if(rol==null) throw new InvalidOperationException("Un rol debe ser un componente compuesto.");
                 rol.Agregar(todos[(int)r["idComponente"]]);
             }
-            foreach (DataRow r in relaciones.Rows)
-            {
-                var padre = todos[(int)r["idPadre"]] as PerfilBE;
-                if (padre == null || padre is RolBE) throw new InvalidOperationException("Un permiso de pantalla no puede contener hijos.");
-                padre.Agregar(todos[(int)r["idHijo"]]);
-            }
             foreach(var perfil in todos.Values.OfType<PerfilBE>())
-                perfil.Version=new IntegridadBLL().CalcularHash(perfil.Version+string.Concat(relaciones.Rows.Cast<DataRow>().Where(r => (int)r["idPadre"]==perfil.Id).Select(r => (string)r["dvh"]))+string.Concat(permisosRoles.Rows.Cast<DataRow>().Where(r => (int)r["idRol"]==perfil.Id).Select(r => (string)r["dvh"])));
+                perfil.Version=new IntegridadBLL().CalcularHash(perfil.Version+string.Concat(permisosRoles.Rows.Cast<DataRow>().Where(r => (int)r["idRol"]==perfil.Id).Select(r => (string)r["dvh"])));
             return todos.Values.ToList();
         }
         private static PerfilBE CrearPerfil(DataRow fila, Dictionary<int,DataRow> roles)
         {
             int id=(int)fila["idComponente"];
-            PerfilBE perfil=roles.ContainsKey(id) ? new RolBE() : new PerfilBE();
+            if (!roles.ContainsKey(id)) throw new InvalidOperationException("Un componente compuesto debe corresponder a un rol.");
+            var perfil=new RolBE();
             perfil.Id=id; perfil.Nombre=(string)fila["nombre"]; perfil.Sistema=(bool)fila["sistema"];
-            perfil.Version=(string)fila["dvh"]+(roles.ContainsKey(id) ? (string)roles[id]["dvh"] : "");
+            perfil.Version=(string)fila["dvh"]+(string)roles[id]["dvh"];
             return perfil;
         }
         public List<PermisoComponenteBE> Consultar()
@@ -142,7 +136,7 @@ namespace VitaPet.BLL
                 var roles = new[] {"Cliente","Administrador","Webmaster"}.ToDictionary(n => n, n => existentes.ContainsKey(n) ? existentes[n] : dal.Insertar(n,null,true));
                 foreach (var p in Catalogo) dal.Vincular(roles[p.Value], dal.Insertar("Pantalla: " + p.Key,p.Key,true));
                 dal.Vincular(roles["Webmaster"], dal.Componentes().Rows.Cast<DataRow>().Where(r => (string)(r["pantalla"] as string ?? "") == "ConsultarPerfiles").Select(r => (int)r["idComponente"]).Single());
-                ActualizarIntegridad("PermisoComponente","PermisoRelacion","Rol","RolPermiso"); sec.ExigirIntegridad(); tx.Complete();
+                ActualizarIntegridad("PermisoComponente","Rol","RolPermiso"); sec.ExigirIntegridad(); tx.Complete();
             }
         }
         private static void ExigirGestion()
@@ -181,7 +175,7 @@ namespace VitaPet.BLL
                     if(f.Nombre!="Webmaster" && accesos.Any(p => p=="GestionPerfiles" || p=="AltaUsuario")) throw new ArgumentException("Los accesos exclusivos del Webmaster no pueden heredarse en otro perfil.");
                     if(f.Nombre=="Webmaster" && new[]{"GestionPerfiles","AltaUsuario","GestionUsuarios","ModificarUsuario","BaseDatos"}.Any(p => !accesos.Contains(p))) throw new ArgumentException("El cambio quitaría accesos de gestión al Webmaster.");
                 }
-                ActualizarIntegridad("PermisoComponente","PermisoRelacion","Rol","RolPermiso"); Auditar("Guardado de perfil: "+nombre); sec.ExigirIntegridad(); tx.Complete();
+                ActualizarIntegridad("PermisoComponente","Rol","RolPermiso"); Auditar("Guardado de perfil: "+nombre); sec.ExigirIntegridad(); tx.Complete();
             }
         }
         private static bool Alcanza(PermisoComponenteBE p,int id) { var f=p as PerfilBE; return p.Id==id || f!=null && f.Hijos.Any(h => Alcanza(h,id)); }
@@ -193,7 +187,7 @@ namespace VitaPet.BLL
                 if(p==null || p.Version!=version) throw new ArgumentException("El perfil cambió. Volvé a seleccionarlo.");
                 if(p.Sistema) throw new ArgumentException("Los tres perfiles iniciales deben conservarse.");
                 if(new UsuarioDAL().ObtenerParaIntegridad().Any(u => u.IdRol==p.Id) || todos.OfType<PerfilBE>().Any(f => f.Hijos.Any(h => h.Id==id))) throw new ArgumentException("El perfil está asignado a usuarios o incluido en otro perfil.");
-                dal.Eliminar(id); ActualizarIntegridad("PermisoComponente","PermisoRelacion","Rol","RolPermiso"); Auditar("Eliminación de perfil: "+p.Nombre); sec.ExigirIntegridad(); tx.Complete();
+                dal.Eliminar(id); ActualizarIntegridad("PermisoComponente","Rol","RolPermiso"); Auditar("Eliminación de perfil: "+p.Nombre); sec.ExigirIntegridad(); tx.Complete();
             }
         }
         private static void Auditar(string accion) { new SecurityManager().RegistrarBitacora(new BitacoraBE { IdUsuario=SessionManager.Instancia.UsuarioActual.IdUsuario, Fecha=DateTime.Now, Accion=accion, Modulo="Perfiles", Criticidad="Informativa" }); }

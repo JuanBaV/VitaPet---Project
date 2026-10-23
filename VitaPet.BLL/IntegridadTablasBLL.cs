@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -32,13 +32,14 @@ namespace VitaPet.BLL
         internal void Inicializar()
         {
             dal.ValidarCobertura();
-            foreach (var tabla in dal.ClavesEsquema.Keys)
+            var claves=dal.ClavesEsquema;
+            foreach (var tabla in claves.Keys)
             {
                 var datos = dal.Leer(tabla); var valores = new List<string>();
                 foreach (DataRow fila in datos.Rows)
                 {
                     string dvh = CalcularDVH(fila); valores.Add(dvh);
-                    dal.GuardarDvh(tabla, fila[IntegridadTablasDAL.Claves[tabla]], dvh);
+                    dal.GuardarDvh(tabla, fila[claves[tabla]], dvh);
                 }
                 new DVVDAL().Guardar(new DVVBE { NombreTabla=tabla, ValorDVV=hash.CalcularDVV(valores) });
             }
@@ -47,16 +48,17 @@ namespace VitaPet.BLL
         {
             try { dal.ValidarCobertura(); }
             catch (InvalidOperationException ex) { ReferenciaIntegridadBLL.Error(resultado,"Esquema","—","tabla",ex.Message); return; }
+            var claves=dal.ClavesEsquema;
             foreach (var migration in DatabaseMigrator.MigracionesInconsistentes(!permitirMigracionesPendientes))
                 ReferenciaIntegridadBLL.Error(resultado,"__SchemaMigrations",migration,"checksum","Historial de migraciones ausente o alterado.");
-            foreach (var tabla in dal.ClavesEsquema.Keys)
+            foreach (var tabla in claves.Keys)
             {
                 var datos=dal.Leer(tabla); var valores=new List<string>();
                 foreach (DataRow fila in datos.Rows)
                 {
                     string guardado=Convert.ToString(fila["dvh"],CultureInfo.InvariantCulture); valores.Add(guardado);
                     if (!string.Equals(CalcularDVH(fila),guardado,StringComparison.OrdinalIgnoreCase))
-                        ReferenciaIntegridadBLL.Error(resultado,tabla,Valor(fila[IntegridadTablasDAL.Claves[tabla]]),"dvh","DVH no coincide.");
+                        ReferenciaIntegridadBLL.Error(resultado,tabla,Valor(fila[claves[tabla]]),"dvh","DVH no coincide.");
                 }
                 var dvv=new DVVDAL().ObtenerPorTabla(tabla);
                 if(dvv==null || !hash.VerificarDVV(valores,dvv.ValorDVV))
@@ -66,14 +68,15 @@ namespace VitaPet.BLL
         internal List<ReferenciaCampoBE> CamposActuales()
         {
             var result=new List<ReferenciaCampoBE>();
-            foreach(var tabla in dal.ClavesEsquema.Keys)
+            var claves=dal.ClavesEsquema;
+            foreach(var tabla in claves.Keys)
             {
                 var datos=dal.Leer(tabla);
                 foreach(DataRow fila in datos.Rows)
                 foreach(DataColumn col in datos.Columns)
                 {
                     if(CampoAnteriorVacio(fila,col)) continue;
-                    string id=Valor(fila[IntegridadTablasDAL.Claves[tabla]]);
+                    string id=Valor(fila[claves[tabla]]);
                     string entrada=Pack("campo-v1")+Pack(tabla)+Pack(id)+Pack(col.ColumnName)+Pack(Valor(fila[col]));
                     result.Add(new ReferenciaCampoBE { Tabla=tabla,Fila=id,Columna=col.ColumnName,Huella=hash.CalcularHash(entrada) });
                 }

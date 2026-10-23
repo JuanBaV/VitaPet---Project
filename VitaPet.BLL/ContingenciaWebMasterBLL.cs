@@ -168,7 +168,7 @@ namespace VitaPet.BLL
                 bool iniciado = false;
                 try
                 {
-                    DatabaseMigrator.CrearTemporalContingencia(temporal,b.Esquema.IndexOf("032_RolesRelacionales.sql:",StringComparison.Ordinal)<0 ? "031_AutorizacionPorPantallas.sql" : null);
+                    DatabaseMigrator.CrearTemporalContingencia(temporal,b.Esquema.IndexOf("032_RolesRelacionales.sql:",StringComparison.Ordinal)<0 ? "031_AutorizacionPorPantallas.sql" : b.Esquema.IndexOf("033_EliminarPermisoRelacion.sql:",StringComparison.Ordinal)<0 ? "032_RolesRelacionales.sql" : null);
                     bool ampliar;
                     using (ConexionDAL.UsarBaseTemporal(temporal))
                     {

@@ -11,7 +11,8 @@ namespace VitaPet.BLL
         public void Ejecutar()
         {
             DatabaseMigrator.Migrate("031_AutorizacionPorPantallas.sql");
-            if (new PerfilDAL().UsaRoles()) { DatabaseMigrator.Migrate(); return; }
+            bool usaRoles=new PerfilDAL().UsaRoles();
+            if (DatabaseMigrator.EstaAplicada("033_EliminarPermisoRelacion.sql")) { DatabaseMigrator.Migrate(); return; }
 
             using (var tx = new OperacionIntegridadDAL())
             {
@@ -22,17 +23,20 @@ namespace VitaPet.BLL
                     throw new InvalidOperationException("ER023: no se migran roles sobre datos inconsistentes.");
 
                 DatabaseMigrator.Migrate();
-                var usuarios = new UsuarioDAL();
-                foreach (var usuario in usuarios.ObtenerParaIntegridad())
+                if (!usaRoles)
                 {
-                    usuarios.ActualizarDVH(usuario.IdUsuario, seguridad.CalcularDVH(usuario));
-                    // La referencia de rol por nombre se sustituye por la FK idRol.
-                    new ReferenciaIntegridadDAL().EliminarFila("Usuario", usuario.IdUsuario.ToString(CultureInfo.InvariantCulture));
+                    var usuarios = new UsuarioDAL();
+                    foreach (var usuario in usuarios.ObtenerParaIntegridad())
+                    {
+                        usuarios.ActualizarDVH(usuario.IdUsuario, seguridad.CalcularDVH(usuario));
+                        // La referencia de rol por nombre se sustituye por la FK idRol.
+                        new ReferenciaIntegridadDAL().EliminarFila("Usuario", usuario.IdUsuario.ToString(CultureInfo.InvariantCulture));
+                    }
+                    new DVVDAL().Guardar(new DVVBE {
+                        NombreTabla = "Usuario", ValorDVV = seguridad.CalcularDVV(usuarios.ObtenerDVHs())
+                    });
                 }
-                new DVVDAL().Guardar(new DVVBE {
-                    NombreTabla = "Usuario", ValorDVV = seguridad.CalcularDVV(usuarios.ObtenerDVHs())
-                });
-                new PerfilBLL().ActualizarIntegridad("PermisoComponente", "PermisoRelacion", "Rol", "RolPermiso");
+                new PerfilBLL().ActualizarIntegridad("PermisoComponente", "Rol", "RolPermiso");
                 seguridad.ExigirIntegridad();
                 tx.Complete();
             }
