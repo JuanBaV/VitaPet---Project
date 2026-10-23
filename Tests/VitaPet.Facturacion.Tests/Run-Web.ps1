@@ -1,6 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop'
 $browserScript = if ($args.Count -gt 0) { $args[0] } else { 'Web.cjs' }
 $outputDirectory = if ($args.Count -gt 1) { $args[1] } else { 'web-output' }
+$expectedActiveSubscriptions = if ($args.Count -gt 2) { [int]$args[2] } else { 1 }
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 Set-Location -LiteralPath $repo
 $node = 'C:\Users\juanb\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe'
@@ -39,12 +40,12 @@ try {
     try {
         $verification.Open(); $query=$verification.CreateCommand()
         $query.CommandText="SELECT COUNT(*) FROM dbo.Suscripcion WHERE estado='Activa'"
-        if ($query.ExecuteScalar() -ne 1) { throw 'Browser flow did not activate exactly one subscription' }
+        if ($query.ExecuteScalar() -ne $expectedActiveSubscriptions) { throw 'Unexpected active subscription count after browser flow' }
         $query.CommandText='SELECT COUNT(*) FROM dbo.Pago'
         if ($query.ExecuteScalar() -ne 1) { throw 'Browser flow duplicated a payment' }
         $query.CommandText='SELECT COUNT(*) FROM dbo.Factura'
         if ($query.ExecuteScalar() -ne 1) { throw 'Browser flow duplicated an invoice' }
-        Write-Output 'PASS Base del recorrido web: una suscripción activa, un pago y una factura'
+        Write-Output ('PASS Base del recorrido web: '+$expectedActiveSubscriptions+' suscripciones activas, un pago y una factura')
     } finally { $verification.Dispose() }
 } finally {
     if ($proc -and -not $proc.HasExited) { Stop-Process -Id $proc.Id }

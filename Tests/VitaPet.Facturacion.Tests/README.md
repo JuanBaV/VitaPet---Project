@@ -1,5 +1,18 @@
 # Facturación de VitaPet Rework
 
+Para el punto 16, después de compilar la solución, ejecutar:
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 'Altas-Web.cjs' '..\..\artifacts\punto16' 3
+```
+
+Comprueba los siete formularios de alta (registro público, usuario, mascota,
+empresa, plan con coberturas, cliente corporativo y perfil) con JavaScript
+activado y desactivado: obligatorios, formatos, longitudes y altas válidas.
+Incluye inglés y móvil en las validaciones nuevas, la selección incompleta
+de turnos y el recorrido de facturación existente. Las tres suscripciones
+esperadas corresponden al pago y a las dos altas corporativas de la prueba.
+
 El punto 15 se verifica con `--contrasenas`. Prueba el rechazo de claves
 vacías y de 1 a 7 caracteres en registro público, alta del Webmaster,
 restablecimiento y configuración de emergencia. Comprueba altas y cambios
