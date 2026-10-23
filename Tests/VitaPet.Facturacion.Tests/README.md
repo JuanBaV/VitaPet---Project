@@ -162,3 +162,20 @@ La segunda requiere compilar `Tools/VitaPet.Cifrado/VitaPet.Cifrado.csproj` y
 ejecuta esa herramienta sobre la base temporal antes del recorrido en Edge:
 incluye backup previo, restauración de validación y migración transaccional.
 Usa una clave de prueba propia y no modifica la clave ni la base del sitio real.
+
+El punto 21 verifica español e inglés, incluyendo páginas públicas, los tres
+perfiles, validaciones, mensajes dinámicos de perfiles, navegación móvil y
+persistencia del idioma al abrir una nueva sesión. Los nombres ingresados
+por los usuarios conservan su contenido original. Ambas suites rechazan
+las bases que no correspondan a la preparación aislada de pruebas.
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/bin/Debug/net48/VitaPet.Facturacion.Tests.exe --idioma
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 Idioma-Web.cjs idioma-web-output 1 cifrado
+```
+
+El recorrido web comprueba también el cambio de idioma después de un error
+de validación y la integridad de la base cifrada al finalizar. Requiere la
+misma herramienta de cifrado compilada que el recorrido del punto 20.
+La preparación web captura los correos en una carpeta local de la base
+temporal y excluye la configuración privada de correo del sitio real.

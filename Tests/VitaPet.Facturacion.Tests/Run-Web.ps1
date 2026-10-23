@@ -30,7 +30,7 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'La migración cifrada de la base temporal falló.' }
     }
     New-Item -ItemType Directory -Path $web | Out-Null
-    & robocopy (Join-Path $repo 'VitaPet Rework') $web /E /XD App_Data obj /NFL /NDL /NJH /NJS /NP | Out-Null
+    & robocopy (Join-Path $repo 'VitaPet Rework') $web /E /XD App_Data obj /XF Correo.local.config /NFL /NDL /NJH /NJS /NP | Out-Null
     if ($LASTEXITCODE -ge 8) { throw 'Site copy failed' }
     foreach ($layer in @('BE','DAL','BLL','SECURITY','SERVICES','Interfaces')) {
         Copy-Item -LiteralPath (Join-Path $repo ('VitaPet.'+$layer+'\bin\Debug\net48\VitaPet.'+$layer+'.dll')) -Destination (Join-Path $web 'Bin') -Force
@@ -38,6 +38,16 @@ try {
     $configPath = Join-Path $web 'Web.config'
     [xml]$config = [IO.File]::ReadAllText($configPath)
     $config.configuration.connectionStrings.add.connectionString = 'Data Source=localhost;Initial Catalog='+$fixture[0]+';Integrated Security=True;'
+    # El recorrido de prueba captura correos localmente y no utiliza credenciales reales.
+    $config.configuration.appSettings.RemoveAttribute('file')
+    $correoCaptura=Join-Path $fixture[1] 'smtp-captura'
+    New-Item -ItemType Directory -Path $correoCaptura -Force | Out-Null
+    $smtp=$config.configuration.'system.net'.mailSettings.smtp
+    $smtp.deliveryMethod='SpecifiedPickupDirectory'
+    $smtp.network.enableSsl='false'
+    $pickup=$config.CreateElement('specifiedPickupDirectory')
+    $pickup.SetAttribute('pickupDirectoryLocation',$correoCaptura)
+    [void]$smtp.AppendChild($pickup)
     foreach ($setting in $config.configuration.appSettings.add) {
         if ($setting.key -eq 'RutaRecuperacion') { $setting.value=Join-Path $fixture[1] 'recuperacion' }
         if ($setting.key -eq 'RutaBackups') { $setting.value=Join-Path $fixture[1] 'backups' }
