@@ -72,6 +72,8 @@ namespace VitaPet.BLL
                 registro.Modulo,
                 registro.Criticidad);
 
+            // Falso conserva los DVH anteriores a la baja lógica.
+            if (registro.Archivado) cadena += ConstruirCadena("archivado", "1");
             return CalcularHash(cadena);
         }
 

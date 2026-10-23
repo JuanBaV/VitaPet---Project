@@ -69,6 +69,11 @@ class Program
             Sql("UPDATE dbo.__SchemaMigrations SET checksum='"+checksumCorreo+"' WHERE migrationId='029_CorreoFactura.sql'");
             Check(sec.VerificarIntegridad(),"Historial de migraciones restituido sin modificar datos ni verificadores");
             if(args.Contains("--cifrado")){CifradoTests.Run(runtime);return;}
+            if(args.Contains("--bitacora"))
+            {
+                if(args.Contains("--web")) BitacoraTests.Semillar();
+                else {BitacoraTests.Run(runtime);return;}
+            }
             if(args.Contains("--xml"))
             {
                 Sql("INSERT dbo.Reintegro(idCliente,idMascota,fechaSolicitud,importe,estado,detalle,dvh) VALUES(1,1,GETDATE(),1234.56,'Pendiente','Revisión & análisis <Luna>',''),(1,2,GETDATE(),22.50,'Aprobado',NULL,''),(2,4,GETDATE(),999,'Pendiente','Ajeno reservado','');INSERT dbo.Turno(idMascota,fecha,horario,prestacion,zona,estado,dvh) VALUES(1,DATEADD(day,2,CONVERT(date,GETDATE())),'10:00','Control & revisión <Luna>','CABA','Confirmado',''),(1,DATEADD(day,3,CONVERT(date,GETDATE())),'11:30','Vacunación','Norte','Confirmado',''),(4,DATEADD(day,2,CONVERT(date,GETDATE())),'12:00','Ajeno reservado','Sur','Confirmado','');");

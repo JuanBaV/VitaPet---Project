@@ -37,10 +37,14 @@ namespace VitaPet.GUI
                         new VitaPet.BLL.ErrorSistemaBLL().AsegurarErroresPerfilesUsuarios();
                         new VitaPet.BLL.SolicitudTurnoBLL().AsegurarAgendaPrueba();
                         new VitaPet.BLL.ContratacionPlanBLL().AsegurarCatalogo();
+                        new VitaPet.BLL.BitacoraBLL().Mantener();
                     }
                 }
                 catch (System.Data.SqlClient.SqlException ex) { System.Diagnostics.Trace.TraceError("Inicio VitaPet: " + ex.GetType().Name); }
                 catch (InvalidOperationException ex) { System.Diagnostics.Trace.TraceError("Inicio VitaPet: " + ex.GetType().Name); }
+                catch (VitaPet.BLL.BitacoraException ex) { System.Diagnostics.Trace.TraceError("Inicio VitaPet: " + ex.Codigo); }
+                catch (System.IO.IOException ex) { System.Diagnostics.Trace.TraceError("Inicio VitaPet: " + ex.GetType().Name); }
+                catch (UnauthorizedAccessException ex) { System.Diagnostics.Trace.TraceError("Inicio VitaPet: " + ex.GetType().Name); }
                 RouteConfig.RegisterRoutes(RouteTable.Routes);
                 BundleConfig.RegisterBundles(BundleTable.Bundles);
             }

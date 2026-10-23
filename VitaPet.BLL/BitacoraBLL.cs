@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml;
 using VitaPet.BE;
 using VitaPet.DAL;
@@ -15,7 +14,7 @@ namespace VitaPet.BLL
 {
     public class BitacoraBLL
     {
-        private const int CantidadRegistrosActivos = 50;
+        private const int DiasActivos = 30;
         private const string TablaBitacora = "Bitacora";
         private readonly BitacoraDAL _bitacoraDAL;
         private readonly IntegridadBLL _integridadBLL;
@@ -81,19 +80,35 @@ namespace VitaPet.BLL
             return idBitacora;
         }
 
-        private void ArchivarExcedentes()
+        public int Mantener()
         {
-            List<BitacoraBE> excedentes =
-                _bitacoraDAL.ObtenerExcedentes(CantidadRegistrosActivos);
+            using (var operacion = new OperacionIntegridadDAL())
+            {
+                new SecurityManager().ExigirIntegridad();
+                int cantidad = ArchivarExcedentes();
+                if (cantidad > 0) new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
+                operacion.Complete();
+                return cantidad;
+            }
+        }
 
+        private int ArchivarExcedentes()
+        {
+            var registros = _bitacoraDAL.ObtenerParaIntegridad();
+            DateTime limite = DateTime.Now.AddDays(-DiasActivos);
+            var excedentes = registros.Where(r => !r.Archivado && r.Fecha < limite).ToList();
             if (excedentes.Count == 0)
             {
-                return;
+                return 0;
             }
 
             string rutaArchivo = ObtenerRutaArchivo();
-            XmlDocument documento = CargarDocumento(rutaArchivo);
+            // Validar todo el histórico antes de reemplazarlo; no tapar evidencia alterada.
+            var historico = new ConsultaBitacoraBLL().LeerHistorico();
+            var documento = new XmlDocument { XmlResolver = null };
+            documento.AppendChild(documento.CreateElement("Bitacora"));
             XmlElement raiz = documento.DocumentElement;
+            foreach (var registro in historico) raiz.AppendChild(CrearRegistroXml(documento, registro));
 
             foreach (BitacoraBE registro in excedentes)
             {
@@ -105,24 +120,22 @@ namespace VitaPet.BLL
 
             GuardarYVerificar(documento, rutaArchivo, excedentes);
 
-            HashSet<int> idsExcedentes = new HashSet<int>(
-                excedentes.Select(registro => registro.IdBitacora));
-
-            IEnumerable<string> dvhsRestantes =
-                _bitacoraDAL.ObtenerParaIntegridad()
-                    .Where(registro =>
-                        !idsExcedentes.Contains(registro.IdBitacora))
-                    .Select(registro => registro.DVH);
+            foreach (var registro in excedentes)
+            {
+                registro.Archivado = true;
+                registro.DVH = _integridadBLL.CalcularDVH(registro);
+            }
 
             DVVBE dvv = new DVVBE
             {
                 NombreTabla = TablaBitacora,
-                ValorDVV = _integridadBLL.CalcularDVV(dvhsRestantes)
+                ValorDVV = _integridadBLL.CalcularDVV(registros.Select(r => r.DVH))
             };
 
-            _bitacoraDAL.EliminarYActualizarDVV(
-                idsExcedentes,
+            _bitacoraDAL.ArchivarYActualizarDVV(
+                excedentes,
                 dvv);
+            return excedentes.Count;
         }
 
         internal string ObtenerRutaArchivo()
@@ -153,34 +166,6 @@ namespace VitaPet.BLL
                 Path.Combine(
                     AppDomain.CurrentDomain.BaseDirectory,
                     rutaRelativa));
-        }
-
-        private XmlDocument CargarDocumento(string rutaArchivo)
-        {
-            XmlDocument documento = new XmlDocument();
-
-            if (File.Exists(rutaArchivo))
-            {
-                documento.Load(rutaArchivo);
-            }
-            else
-            {
-                XmlDeclaration declaracion =
-                    documento.CreateXmlDeclaration("1.0", "utf-8", null);
-
-                documento.AppendChild(declaracion);
-                documento.AppendChild(
-                    documento.CreateElement("Bitacora"));
-            }
-
-            if (documento.DocumentElement == null ||
-                documento.DocumentElement.Name != "Bitacora")
-            {
-                throw new InvalidDataException(
-                    "El archivo de bitácora no posee una raíz válida.");
-            }
-
-            return documento;
         }
 
         internal XmlElement CrearRegistroXml(
@@ -238,6 +223,8 @@ namespace VitaPet.BLL
                 "DVH",
                 registro.DVH);
 
+            if (registro.Archivado) AgregarElemento(documento, elementoRegistro, "Archivado", "true");
+
             return elementoRegistro;
         }
 
@@ -286,35 +273,20 @@ namespace VitaPet.BLL
             string directorio =
                 Path.GetDirectoryName(rutaArchivo);
 
-            if (!Directory.Exists(directorio))
+            try
             {
                 Directory.CreateDirectory(directorio);
+                EstadoAplicacion.EscribirAtomico(rutaArchivo, documento.OuterXml);
             }
-
-            using (XmlTextWriter escritor =
-                new XmlTextWriter(
-                    rutaArchivo,
-                    new UTF8Encoding(false)))
+            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
             {
-                escritor.Formatting = Formatting.Indented;
-                documento.Save(escritor);
+                throw new BitacoraException("ER033", "No se pudo archivar la bitácora; se conservaron los registros activos.", ex);
             }
-
-            XmlDocument verificacion = new XmlDocument();
-            verificacion.Load(rutaArchivo);
-
-            if (verificacion.DocumentElement == null ||
-                verificacion.DocumentElement.Name != "Bitacora")
-            {
-                throw new InvalidDataException(
-                    "No se pudo verificar el archivo histórico.");
-            }
+            var verificacion = new ConsultaBitacoraBLL().LeerHistorico();
 
             foreach (BitacoraBE registro in registros)
             {
-                if (!EstaArchivado(
-                    verificacion.DocumentElement,
-                    registro.IdBitacora, registro.DVH))
+                if (!verificacion.Any(r => r.IdBitacora == registro.IdBitacora && r.DVH == registro.DVH))
                 {
                     throw new InvalidDataException(
                         "No se pudo verificar un registro histórico.");

@@ -13,6 +13,10 @@ namespace VitaPet.DAL
 
         private static BitacoraBE LeerRegistro(SqlDataReader lector)
         {
+            // Durante la validación previa a migrar, el SP todavía puede tener el esquema anterior.
+            bool archivado = false;
+            for (int i = 0; i < lector.FieldCount; i++)
+                if (lector.GetName(i) == "archivado") archivado = Convert.ToBoolean(lector.GetValue(i));
             return new BitacoraBE {
                 IdBitacora = Convert.ToInt32(lector["idBitacora"]),
                 IdUsuario = lector["idUsuario"] == DBNull.Value ? (int?)null : Convert.ToInt32(lector["idUsuario"]),
@@ -20,7 +24,7 @@ namespace VitaPet.DAL
                 Accion = Convert.ToString(lector["accion"]),
                 Modulo = Convert.ToString(lector["modulo"]),
                 Criticidad = Convert.ToString(lector["criticidad"]),
-                DVH = Convert.ToString(lector["dvh"])
+                DVH = Convert.ToString(lector["dvh"]), Archivado = archivado
             };
         }
 
@@ -187,13 +191,13 @@ namespace VitaPet.DAL
             }
         }
 
-        public void EliminarYActualizarDVV(
-            IEnumerable<int> idsBitacora,
+        public void ArchivarYActualizarDVV(
+            IEnumerable<BitacoraBE> registros,
             DVVBE dvv)
         {
-            if (idsBitacora == null)
+            if (registros == null)
             {
-                throw new ArgumentNullException(nameof(idsBitacora));
+                throw new ArgumentNullException(nameof(registros));
             }
 
             if (dvv == null)
@@ -208,7 +212,7 @@ namespace VitaPet.DAL
                     new TransactionScope(TransactionScopeOption.Required))
                 {
                     conexion.Open();
-                    foreach (int idBitacora in idsBitacora)
+                    foreach (BitacoraBE registro in registros)
                     {
                         using (SqlCommand comandoBitacora =
                             new SqlCommand(
@@ -220,7 +224,8 @@ namespace VitaPet.DAL
 
                             comandoBitacora.Parameters.Add(
                                 "@idBitacora",
-                                SqlDbType.Int).Value = idBitacora;
+                                SqlDbType.Int).Value = registro.IdBitacora;
+                            comandoBitacora.Parameters.Add("@dvh", SqlDbType.VarChar, 64).Value = registro.DVH;
 
                             comandoBitacora.ExecuteNonQuery();
                         }

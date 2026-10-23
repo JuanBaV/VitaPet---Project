@@ -194,6 +194,7 @@ namespace VitaPet.BLL.Seguridad
             }
 
             // SQL DATETIME redondea a 1/300 s; calcular el DVH sobre el valor que realmente se persiste.
+            registro.Archivado = false;
             registro.Fecha = new System.Data.SqlTypes.SqlDateTime(registro.Fecha).Value;
             registro.DVH =
                 _integridadBLL.CalcularDVH(registro);

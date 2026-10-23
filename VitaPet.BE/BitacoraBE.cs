@@ -15,6 +15,7 @@ namespace VitaPet.BE
         public string Accion { get; set; }
         public string Modulo { get; set; }
         public string Criticidad { get; set; }
+        public bool Archivado { get; set; }
         public string DVH { get; set; }
 
     }

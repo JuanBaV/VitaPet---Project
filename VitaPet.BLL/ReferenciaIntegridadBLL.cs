@@ -54,6 +54,7 @@ namespace VitaPet.BLL
                 Add(r,"Bitacora",b.IdBitacora,"accion",b.Accion);
                 Add(r,"Bitacora",b.IdBitacora,"modulo",b.Modulo);
                 Add(r,"Bitacora",b.IdBitacora,"criticidad",b.Criticidad);
+                if(b.Archivado) Add(r,"Bitacora",b.IdBitacora,"archivado",true);
                 Add(r,"Bitacora",b.IdBitacora,"dvh",b.DVH);
             }
             if (ampliar && dal.ObtenerFormato() == "sha256-v2") r.AddRange(new IntegridadTablasBLL().CamposActuales());

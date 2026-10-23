@@ -121,7 +121,9 @@ class Program
         foreach(string batch in Regex.Split(reader.ReadToEnd(),@"^\s*GO\s*$",RegexOptions.Multiline|RegexOptions.IgnoreCase))
         {
             var match=Regex.Match(batch,@"CREATE OR ALTER PROCEDURE dbo\.(sp_Mascota_Actualizar|sp_Factura_Emitir)\b");
-            if(match.Success)Sql(batch.Substring(match.Index).Replace("dbo."+match.Groups[1].Value,"dbo."+match.Groups[1].Value+"_Anterior"));
+            if(match.Success)Sql(batch.Substring(match.Index)
+                .Replace("u.rol='Cliente'", "dbo.fn_RolPermite(u.idRol,'ActualizarMascota')=1")
+                .Replace("dbo."+match.Groups[1].Value,"dbo."+match.Groups[1].Value+"_Anterior"));
         }
         foreach(string proc in new[]{"sp_Mascota_Actualizar","sp_Factura_Emitir"})
         {
@@ -142,9 +144,9 @@ class Program
         foreach(int usuario in new[]{1,2,-1})foreach(bool transaccion in new[]{false,true})
             Comparar("sp_Factura_Emitir",usuario+","+cotizacion.IdSuscripcion,transaccion);
         string refs=ContingenciaArchivoDAL.Serializar(new ReferenciaIntegridadDAL().Obtener());
-        Sql("DELETE dbo.__SchemaMigrations WHERE migrationId='028_OptimizarLecturas.sql'");
+        string esquema=new BackupDAL().Esquema();
         DatabaseMigrator.Migrate();DatabaseMigrator.Migrate();
-        Check(refs==ContingenciaArchivoDAL.Serializar(new ReferenciaIntegridadDAL().Obtener())&&seguridad.VerificarIntegridad()&&Valor("SELECT COUNT(*) FROM dbo.__SchemaMigrations WHERE migrationId='028_OptimizarLecturas.sql'")=="1","Migración nueva sobre base poblada es idempotente y conserva referencias");
+        Check(esquema==new BackupDAL().Esquema()&&refs==ContingenciaArchivoDAL.Serializar(new ReferenciaIntegridadDAL().Obtener())&&seguridad.VerificarIntegridad()&&Valor("SELECT COUNT(*) FROM dbo.__SchemaMigrations WHERE migrationId='035_BitacoraBajaLogica.sql'")=="1","Migraciones sobre base poblada son idempotentes y conservan referencias");
         var compatible=typeof(BackupBLL).GetMethod("EsquemaCompatible",BindingFlags.Static|BindingFlags.NonPublic);
         Check((bool)compatible.Invoke(null,new object[]{"027_Facturacion.sql:hash;","027_Facturacion.sql:hash;028_OptimizarLecturas.sql:hash;"}),"Respaldos anteriores admiten la migración de procedimientos");
         Check(!(bool)compatible.Invoke(null,new object[]{"027_Facturacion.sql:hash;","027_Facturacion.sql:hash;999_Desconocida.sql:hash;"}),"Migraciones desconocidas siguen rechazadas al restaurar");
@@ -183,11 +185,11 @@ class Program
     {
         for(int i=0;i<55;i++)seguridad.RegistrarBitacora(new BitacoraBE {IdUsuario=i%2==0?(int?)null:1,Fecha=DateTime.Now,Accion="Evento "+i,Modulo="Prueba",Criticidad="Informativa"});
         var dal=new BitacoraDAL();var registros=dal.ObtenerParaIntegridad();
-        Check(registros.Count==50&&registros.Any(r=>r.IdUsuario==null)&&seguridad.VerificarIntegridad(),"Rotación a XML conserva 50 activos y usuarios nulos");
+        Check(registros.Count>=55&&registros.All(r=>!r.Archivado)&&registros.Any(r=>r.IdUsuario==null)&&seguridad.VerificarIntegridad(),"Conserva todos los eventos recientes y usuarios nulos sin límite de 50");
         var excedentes=dal.ObtenerExcedentes(0);
         Check(registros.All(r=>ContingenciaArchivoDAL.Serializar(r)==ContingenciaArchivoDAL.Serializar(excedentes.Single(e=>e.IdBitacora==r.IdBitacora))),"Ambas lecturas de bitácora preservan todos sus campos");
         Sesion(3);var historico=new ConsultaBitacoraBLL().Consultar(new FiltroBitacoraBE());
-        Check(historico.Count>=55&&seguridad.VerificarIntegridad(),"Consulta reúne histórico y activos tras la poda de referencias");
+        Check(historico.Count>=55&&seguridad.VerificarIntegridad(),"Consulta conserva los eventos recientes sin límite por cantidad");
         using(var tx=new OperacionIntegridadDAL())
         {Sql("UPDATE dbo.Mascota SET nombre='Alterado' WHERE idMascota=(SELECT MIN(idMascota) FROM dbo.Mascota)");Check(!seguridad.VerificarIntegridad(),"Optimización conserva detección de datos alterados");}
         using(var tx=new OperacionIntegridadDAL())

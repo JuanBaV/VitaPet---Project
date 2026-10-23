@@ -25,13 +25,14 @@ namespace VitaPet.BLL
                 var usuario = seguridad.ExigirWebmaster("ConsultaBitacora");
                 ValidarFiltro(filtro);
                 SoloHistoricoIntegridad = !seguridad.VerificarIntegridad();
+                if (!SoloHistoricoIntegridad) new BitacoraBLL().Mantener();
                 var activos = SoloHistoricoIntegridad ? new List<BitacoraBE>() : new BitacoraDAL().ObtenerParaIntegridad();
                 var historicos = LeerHistorico();
                 if (SoloHistoricoIntegridad)
                     historicos = historicos.Where(r => r.Modulo == "Integridad").ToList();
                 var registros = activos.Concat(historicos)
-                    // Restore can reuse IDs: only an identical ID + DVH is the same event.
-                    .GroupBy(r => r.IdBitacora.ToString(CultureInfo.InvariantCulture) + ":" + r.DVH,
+                    // La copia XML precede a la baja lógica: comparar el contenido sin esa marca.
+                    .GroupBy(ClaveEvento,
                         StringComparer.OrdinalIgnoreCase)
                     .Select(g => g.First());
                 if (filtro.FechaDesde.HasValue)
@@ -57,6 +58,13 @@ namespace VitaPet.BLL
                 operacion.Complete();
                 return resultado;
             }
+        }
+
+        private static string ClaveEvento(BitacoraBE registro)
+        {
+            var original = new BitacoraBE { IdUsuario = registro.IdUsuario, Fecha = registro.Fecha,
+                Accion = registro.Accion, Modulo = registro.Modulo, Criticidad = registro.Criticidad };
+            return registro.IdBitacora.ToString(CultureInfo.InvariantCulture) + ":" + new IntegridadBLL().CalcularDVH(original);
         }
 
         public byte[] ExportarXml(IEnumerable<BitacoraBE> registros)
@@ -134,12 +142,16 @@ namespace VitaPet.BLL
                     if (nodo.NodeType != XmlNodeType.Element) continue;
                     if (nodo.Name != "Registro") throw new InvalidDataException("Registro desconocido.");
                     string idUsuario = Campo(nodo, "IdUsuario");
+                    var marcas = nodo.SelectNodes("Archivado");
+                    if (marcas.Count > 1 || (marcas.Count == 1 && marcas[0].InnerText != "true" && marcas[0].InnerText != "false"))
+                        throw new InvalidDataException("Marca de archivo inválida.");
                     var registro = new BitacoraBE {
                         IdBitacora = int.Parse(Campo(nodo, "IdBitacora"), CultureInfo.InvariantCulture),
                         IdUsuario = string.IsNullOrEmpty(idUsuario) ? (int?)null : int.Parse(idUsuario, CultureInfo.InvariantCulture),
                         Fecha = DateTime.ParseExact(Campo(nodo, "Fecha"), "o", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Accion = Campo(nodo, "Accion"), Modulo = Campo(nodo, "Modulo"),
-                        Criticidad = Campo(nodo, "Criticidad"), DVH = Campo(nodo, "DVH")
+                        Criticidad = Campo(nodo, "Criticidad"), DVH = Campo(nodo, "DVH"),
+                        Archivado = marcas.Count == 1 && marcas[0].InnerText == "true"
                     };
                     if (registro.IdBitacora <= 0 || (registro.IdUsuario.HasValue && registro.IdUsuario.Value <= 0) ||
                         !Criticidades.Contains(registro.Criticidad))

@@ -7,9 +7,10 @@ $probarCifrado = $args.Count -gt 3 -and $args[3] -eq 'cifrado'
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 Set-Location -LiteralPath $repo
 $node = 'C:\Users\juanb\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe'
-& (Join-Path $PSScriptRoot 'bin\Debug\net48\VitaPet.Facturacion.Tests.exe') --web @fixtureArguments
+$testBin = if ($env:VITAPET_TEST_BIN) { (Resolve-Path -LiteralPath $env:VITAPET_TEST_BIN).Path } else { Join-Path $PSScriptRoot 'bin\Debug\net48' }
+& (Join-Path $testBin 'VitaPet.Facturacion.Tests.exe') --web @fixtureArguments
 if ($LASTEXITCODE -ne 0) { throw 'Fixture failed' }
-$fixture = Get-Content (Join-Path $PSScriptRoot 'bin\Debug\net48\web-environment.txt')
+$fixture = Get-Content (Join-Path $testBin 'web-environment.txt')
 if ($fixture[0] -notmatch '^VitaPet_Verificacion_Rework_[a-f0-9]{32}$') { throw 'Unsafe fixture name' }
 # Fuera de OneDrive: sus notificaciones de directorio pueden reiniciar App_Code
 # durante los POST y perder la sesión InProc de una copia recién preparada.
@@ -22,9 +23,9 @@ try {
     if ($probarCifrado) {
         $env:VITAPET_CLAVE_ARCHIVO = Join-Path $fixture[1] 'cifrado.key'
         & (Join-Path $repo 'Scripts\ConfigurarClaveCifrado.ps1') -Archivo $env:VITAPET_CLAVE_ARCHIVO
-        $herramienta = Join-Path $repo 'Tools\VitaPet.Cifrado\bin\Debug\net48\VitaPet.Cifrado.exe'
+        $herramienta = if ($env:VITAPET_TEST_BIN) { Join-Path $testBin 'VitaPet.Cifrado.exe' } else { Join-Path $repo 'Tools\VitaPet.Cifrado\bin\Debug\net48\VitaPet.Cifrado.exe' }
         if (-not (Test-Path -LiteralPath $herramienta)) { throw 'Compilar Tools/VitaPet.Cifrado antes de probar el cifrado web.' }
-        Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'bin\Debug\net48\VitaPet.Facturacion.Tests.exe.config') -Destination ($herramienta+'.config') -Force
+        Copy-Item -LiteralPath (Join-Path $testBin 'VitaPet.Facturacion.Tests.exe.config') -Destination ($herramienta+'.config') -Force
         # Carpeta del proyecto ya habilitada para backups SQL y accesible para limpiar el archivo de prueba.
         $respaldoCifrado=Join-Path (Join-Path $repo 'VitaPet Rework\App_Data\Backups') ($fixture[0]+'_previo.bak')
         & $herramienta --aplicar $respaldoCifrado
@@ -34,8 +35,10 @@ try {
     & robocopy (Join-Path $repo 'VitaPet Rework') $web /E /XD App_Data obj /XF Correo.local.config /NFL /NDL /NJH /NJS /NP | Out-Null
     if ($LASTEXITCODE -ge 8) { throw 'Site copy failed' }
     foreach ($layer in @('BE','DAL','BLL','SECURITY','SERVICES','Interfaces')) {
-        Copy-Item -LiteralPath (Join-Path $repo ('VitaPet.'+$layer+'\bin\Debug\net48\VitaPet.'+$layer+'.dll')) -Destination (Join-Path $web 'Bin') -Force
+        $layerDll = if ($env:VITAPET_TEST_BIN) { Join-Path $testBin ('VitaPet.'+$layer+'.dll') } else { Join-Path $repo ('VitaPet.'+$layer+'\bin\Debug\net48\VitaPet.'+$layer+'.dll') }
+        Copy-Item -LiteralPath $layerDll -Destination (Join-Path $web 'Bin') -Force
     }
+    if ($env:VITAPET_TEST_BIN) { Copy-Item -LiteralPath (Join-Path $testBin 'VitaPet.GUI.dll') -Destination (Join-Path $web 'Bin') -Force }
     $configPath = Join-Path $web 'Web.config'
     [xml]$config = [IO.File]::ReadAllText($configPath)
     $config.configuration.connectionStrings.add.connectionString = 'Data Source=localhost;Initial Catalog='+$fixture[0]+';Integrated Security=True;'
@@ -82,6 +85,13 @@ try {
         if ($query.ExecuteScalar() -ne 1) { throw 'Browser flow duplicated a payment' }
         $query.CommandText='SELECT COUNT(*) FROM dbo.Factura'
         if ($query.ExecuteScalar() -ne 1) { throw 'Browser flow duplicated an invoice' }
+        if ($fixtureArguments -contains '--bitacora') {
+            $query.CommandText="SELECT COUNT(*) FROM dbo.Bitacora WHERE modulo='Prueba P26'"
+            if ($query.ExecuteScalar() -ne 65) { throw 'El mantenimiento perdió eventos SQL de prueba' }
+            $query.CommandText='SELECT COUNT(*) FROM dbo.Bitacora WHERE archivado=0 AND fecha<DATEADD(day,-30,GETDATE())'
+            if ($query.ExecuteScalar() -ne 0) { throw 'Quedan eventos vencidos activos' }
+            Write-Output 'PASS Mantenimiento automático web: todos los eventos SQL conservados y bajas por antigüedad aplicadas'
+        }
         Write-Output ('PASS Base del recorrido web: '+$expectedActiveSubscriptions+' suscripciones activas, un pago y una factura')
     } finally { $verification.Dispose() }
 } finally {

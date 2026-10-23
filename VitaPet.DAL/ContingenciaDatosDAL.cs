@@ -99,6 +99,13 @@ namespace VitaPet.DAL
                         var expected = new DataTable();
                         using (var a = new SqlDataAdapter(new SqlCommand("SELECT TOP (0) * FROM dbo." + Q(tabla), c, tx))) a.Fill(expected);
                         var source = datos.Tables[tabla];
+                        if (tabla == "Bitacora" && !source.Columns.Contains("archivado") &&
+                            datos.Tables.Contains("__SchemaMigrations") && !datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>()
+                                .Any(r => (string)r["migrationId"] == "035_BitacoraBajaLogica.sql"))
+                        {
+                            source.Columns.Add("archivado", typeof(bool));
+                            foreach (DataRow row in source.Rows) row["archivado"] = false;
+                        }
                         if (ampliarIntegridad && tabla == "ErrorSistema" && !source.Columns.Contains("dvh"))
                         {
                             source.Columns.Add("dvh", typeof(string));
