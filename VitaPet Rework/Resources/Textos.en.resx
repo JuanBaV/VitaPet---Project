@@ -1618,4 +1618,6 @@
   <data name="Perfil_ModificarEmpresa" xml:space="preserve"><value>Edit company</value></data>
   <data name="Perfil_ConsultarPlan" xml:space="preserve"><value>View plan</value></data>
   <data name="Perfil_ModificarPlan" xml:space="preserve"><value>Edit plan</value></data>
+  <data name="Numerico_Etiqueta" xml:space="preserve"><value>Number</value></data>
+  <data name="Numerico_FormatoInvalido" xml:space="preserve"><value>ER025 - Enter a non-negative number with no more than two decimal places.</value></data>
 </root>

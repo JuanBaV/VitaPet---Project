@@ -1618,4 +1618,6 @@
   <data name="Perfil_ModificarEmpresa" xml:space="preserve"><value>Modificar empresa</value></data>
   <data name="Perfil_ConsultarPlan" xml:space="preserve"><value>Consultar plan</value></data>
   <data name="Perfil_ModificarPlan" xml:space="preserve"><value>Modificar plan</value></data>
+  <data name="Numerico_Etiqueta" xml:space="preserve"><value>Número</value></data>
+  <data name="Numerico_FormatoInvalido" xml:space="preserve"><value>ER025 - Ingresá un número no negativo con un máximo de dos decimales.</value></data>
 </root>

@@ -1,7 +1,6 @@
 using System;
 using System.Data;
 using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VitaPet.BE;
@@ -34,7 +33,7 @@ public partial class Controls_EditorPlan:UserControl
     public void Cargar(PlanAdministracionBE plan=null)
     {
         txtNombrePlan.Text=plan==null?"":plan.Nombre;txtDescripcionPlan.Text=plan==null?"":plan.Descripcion;
-        txtPrecioPlan.Text=plan==null||!plan.Precio.HasValue?"":plan.Precio.Value.ToString("0.00",CultureInfo.CurrentCulture);
+        ucPrecio.Valor=plan==null||!plan.Precio.HasValue?"":plan.Precio.Value.ToString("0.00",CultureInfo.CurrentCulture);
         ddlEstadoPlan.SelectedValue=plan==null||plan.Estado?"1":"0";var t=Tabla();
         if(plan!=null)foreach(var c in plan.Coberturas)t.Rows.Add(c.IdCobertura,c.Prestacion,c.Detalle,c.Estado==true?"1":"0");
         if(t.Rows.Count==0)t.Rows.Add(0,"","","1");Vincular(t);
@@ -48,9 +47,9 @@ public partial class Controls_EditorPlan:UserControl
     private static bool Estado(string value){if(value!="1"&&value!="0")throw new PlanException("ER025");return value=="1";}
     public DatosPlanBE Datos()
     {
-        string text=txtPrecioPlan.Text.Trim();decimal precio;
-        if(text.Length==0)throw new PlanException("ER002");
-        if(!Regex.IsMatch(text,@"\A[0-9]+(?:[.,][0-9]{1,2})?\z")||!decimal.TryParse(text.Replace(',','.'),NumberStyles.AllowDecimalPoint,CultureInfo.InvariantCulture,out precio))throw new PlanException("ER025");
+        decimal precio;
+        if(ucPrecio.Valor.Length==0)throw new PlanException("ER002");
+        if(!ucPrecio.IntentarObtenerValor(out precio))throw new PlanException("ER025");
         var d=new DatosPlanBE {Nombre=txtNombrePlan.Text,Descripcion=txtDescripcionPlan.Text,Precio=precio,Estado=Estado(ddlEstadoPlan.SelectedValue)};
         foreach(DataRow r in Recoger().Rows)d.Coberturas.Add(new DatosCoberturaPlanBE {IdCobertura=(int)r["idCobertura"],Prestacion=(string)r["prestacion"],Detalle=(string)r["detalle"],Estado=Estado((string)r["estado"])});
         return d;

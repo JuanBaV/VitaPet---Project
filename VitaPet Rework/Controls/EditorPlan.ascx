@@ -1,12 +1,11 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EditorPlan.ascx.cs" Inherits="Controls_EditorPlan" %>
+<%@ Register Src="~/Controls/ValidacionNumerica.ascx" TagPrefix="vp" TagName="ValidacionNumerica" %>
 <asp:ValidationSummary ID="vsPlan" runat="server" CssClass="login-validation-summary" HeaderText="<%$ Resources:Textos, UI_RevisaLosSiguientesDatos %>" DisplayMode="BulletList" role="alert" />
 <div class="empresa-campos">
  <div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="txtNombrePlan" CssClass="login-label" Text="<%$ Resources:Textos, UI_Nombre %>" /><asp:TextBox ID="txtNombrePlan" runat="server" MaxLength="80" CssClass="form-control login-input" />
 <asp:RequiredFieldValidator ID="rfvNombrePlan" runat="server" ControlToValidate="txtNombrePlan" ValidationGroup="" Display="Dynamic" CssClass="login-validation" ErrorMessage="<%$ Resources:Textos, Alta_Obligatorio %>" />
 <asp:RegularExpressionValidator ID="revNombrePlan" runat="server" ControlToValidate="txtNombrePlan" ValidationGroup="" Display="Dynamic" CssClass="login-validation" ValidationExpression="^[^\x00-\x1F\x7F]{1,80}$" ErrorMessage="<%$ Resources:Textos, Alta_TextoInvalido %>" /></div>
- <div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="txtPrecioPlan" CssClass="login-label" Text="<%$ Resources:Textos, PlanAdmin_Precio %>" /><asp:TextBox ID="txtPrecioPlan" runat="server" inputmode="decimal" CssClass="form-control login-input" />
-<asp:RequiredFieldValidator ID="rfvPrecioPlan" runat="server" ControlToValidate="txtPrecioPlan" ValidationGroup="" Display="Dynamic" CssClass="login-validation" ErrorMessage="<%$ Resources:Textos, Alta_Obligatorio %>" />
-<asp:RegularExpressionValidator ID="revPrecioPlan" runat="server" ControlToValidate="txtPrecioPlan" ValidationGroup="" Display="Dynamic" CssClass="login-validation" ValidationExpression="^[0-9]+(?:[.,][0-9]{1,2})?$" ErrorMessage="<%$ Resources:Textos, Alta_PrecioInvalido %>" /></div>
+ <vp:ValidacionNumerica ID="ucPrecio" runat="server" TextoEtiqueta="<%$ Resources:Textos, PlanAdmin_Precio %>" />
  <div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="txtDescripcionPlan" CssClass="login-label" Text="<%$ Resources:Textos, PlanAdmin_Descripcion %>" /><asp:TextBox ID="txtDescripcionPlan" runat="server" TextMode="MultiLine" MaxLength="255" Rows="3" CssClass="form-control login-input" />
 <asp:RequiredFieldValidator ID="rfvDescripcionPlan" runat="server" ControlToValidate="txtDescripcionPlan" ValidationGroup="" Display="Dynamic" CssClass="login-validation" ErrorMessage="<%$ Resources:Textos, Alta_Obligatorio %>" />
 <asp:RegularExpressionValidator ID="revDescripcionPlan" runat="server" ControlToValidate="txtDescripcionPlan" ValidationGroup="" Display="Dynamic" CssClass="login-validation" ValidationExpression="^[\s\S]{1,255}$" ErrorMessage="<%$ Resources:Textos, Alta_TextoInvalido %>" /></div>

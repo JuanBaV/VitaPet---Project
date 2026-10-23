@@ -411,6 +411,14 @@
       <DependentUpon>ListadoPlanes.ascx</DependentUpon>
     </Compile>
     <Content Include="Controls\ValidacionEmail.ascx" />
+    <Content Include="Controls\ValidacionNumerica.ascx" />
+    <Compile Include="Controls\ValidacionNumerica.ascx.cs">
+      <DependentUpon>ValidacionNumerica.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ValidacionNumerica.ascx.designer.cs">
+      <DependentUpon>ValidacionNumerica.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ValidacionEmail.ascx.cs">
       <DependentUpon>ValidacionEmail.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

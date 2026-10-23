@@ -1753,6 +1753,24 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Número.
+        /// </summary>
+        public static string Numerico_Etiqueta {
+            get {
+                return ResourceManager.GetString("Numerico_Etiqueta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ER025 - Ingresá un número no negativo con un máximo de dos decimales..
+        /// </summary>
+        public static string Numerico_FormatoInvalido {
+            get {
+                return ResourceManager.GetString("Numerico_FormatoInvalido", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to {0} (idUsuario={1}).
         /// </summary>
         public static string OperacionUsuarioAuditoria {
