@@ -889,6 +889,15 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to No se pudo cambiar el idioma. Intentá nuevamente..
+        /// </summary>
+        public static string Error_ER048 {
+            get {
+                return ResourceManager.GetString("Error_ER048", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to No se pudo registrar el cliente.
         /// </summary>
         public static string Error_ER049 {
@@ -1353,6 +1362,24 @@ namespace VitaPet.GUI.Resources {
         public static string Home_Titulo {
             get {
                 return ResourceManager.GetString("Home_Titulo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Dato no cifrado o ciphertext inválido..
+        /// </summary>
+        public static string Integridad_CifradoInvalido {
+            get {
+                return ResourceManager.GetString("Integridad_CifradoInvalido", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to El cifrado no coincide con el historial de migraciones..
+        /// </summary>
+        public static string Integridad_CifradoMigracion {
+            get {
+                return ResourceManager.GetString("Integridad_CifradoMigracion", resourceCulture);
             }
         }
 
@@ -2010,6 +2037,483 @@ namespace VitaPet.GUI.Resources {
         public static string Pago_VigenciaCertificado {
             get {
                 return ResourceManager.GetString("Pago_VigenciaCertificado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to El Webmaster debe conservar sus accesos de gestión y recuperación..
+        /// </summary>
+        public static string Perfil_AccesosEsenciales {
+            get {
+                return ResourceManager.GetString("Perfil_AccesosEsenciales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Alta de clientes corporativos.
+        /// </summary>
+        public static string Perfil_AltaCorporativos {
+            get {
+                return ResourceManager.GetString("Perfil_AltaCorporativos", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Alta de empresas.
+        /// </summary>
+        public static string Perfil_AltaEmpresas {
+            get {
+                return ResourceManager.GetString("Perfil_AltaEmpresas", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Alta de planes.
+        /// </summary>
+        public static string Perfil_AltaPlanes {
+            get {
+                return ResourceManager.GetString("Perfil_AltaPlanes", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to El perfil está asignado a usuarios o incluido en otro perfil..
+        /// </summary>
+        public static string Perfil_Asignado {
+            get {
+                return ResourceManager.GetString("Perfil_Asignado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Bloquear usuario.
+        /// </summary>
+        public static string Perfil_BloquearUsuario {
+            get {
+                return ResourceManager.GetString("Perfil_BloquearUsuario", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to El perfil cambió. Volvé a seleccionarlo..
+        /// </summary>
+        public static string Perfil_Cambio {
+            get {
+                return ResourceManager.GetString("Perfil_Cambio", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to La combinación de perfiles contiene un ciclo o una selección inválida..
+        /// </summary>
+        public static string Perfil_Ciclo {
+            get {
+                return ResourceManager.GetString("Perfil_Ciclo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pantallas y perfiles incluidos.
+        /// </summary>
+        public static string Perfil_Componentes {
+            get {
+                return ResourceManager.GetString("Perfil_Componentes", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmar eliminación.
+        /// </summary>
+        public static string Perfil_ConfirmarEliminacion {
+            get {
+                return ResourceManager.GetString("Perfil_ConfirmarEliminacion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ¿Confirmás la eliminación del perfil {0}?.
+        /// </summary>
+        public static string Perfil_ConfirmarFormato {
+            get {
+                return ResourceManager.GetString("Perfil_ConfirmarFormato", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Los tres perfiles iniciales deben conservarse..
+        /// </summary>
+        public static string Perfil_ConservarIniciales {
+            get {
+                return ResourceManager.GetString("Perfil_ConservarIniciales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Consultar perfiles.
+        /// </summary>
+        public static string Perfil_Consultar {
+            get {
+                return ResourceManager.GetString("Perfil_Consultar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Consultar empresa.
+        /// </summary>
+        public static string Perfil_ConsultarEmpresa {
+            get {
+                return ResourceManager.GetString("Perfil_ConsultarEmpresa", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Consultar mascota.
+        /// </summary>
+        public static string Perfil_ConsultarMascota {
+            get {
+                return ResourceManager.GetString("Perfil_ConsultarMascota", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Consultar plan.
+        /// </summary>
+        public static string Perfil_ConsultarPlan {
+            get {
+                return ResourceManager.GetString("Perfil_ConsultarPlan", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Consultar usuario.
+        /// </summary>
+        public static string Perfil_ConsultarUsuario {
+            get {
+                return ResourceManager.GetString("Perfil_ConsultarUsuario", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Desbloquear usuario.
+        /// </summary>
+        public static string Perfil_DesbloquearUsuario {
+            get {
+                return ResourceManager.GetString("Perfil_DesbloquearUsuario", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Ya existe ese nombre..
+        /// </summary>
+        public static string Perfil_Duplicado {
+            get {
+                return ResourceManager.GetString("Perfil_Duplicado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to El perfil se eliminó correctamente..
+        /// </summary>
+        public static string Perfil_Eliminado {
+            get {
+                return ResourceManager.GetString("Perfil_Eliminado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Eliminar perfil.
+        /// </summary>
+        public static string Perfil_Eliminar {
+            get {
+                return ResourceManager.GetString("Perfil_Eliminar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo completar la operación. Revisá la conexión e intentá nuevamente..
+        /// </summary>
+        public static string Perfil_ErrorConexion {
+            get {
+                return ResourceManager.GetString("Perfil_ErrorConexion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo completar la operación. Verificá la integridad o recargá los perfiles..
+        /// </summary>
+        public static string Perfil_ErrorIntegridad {
+            get {
+                return ResourceManager.GetString("Perfil_ErrorIntegridad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre del perfil.
+        /// </summary>
+        public static string Perfil_EtiquetaNombre {
+            get {
+                return ResourceManager.GetString("Perfil_EtiquetaNombre", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Eliminación de perfil: {0}.
+        /// </summary>
+        public static string Perfil_EventoEliminado {
+            get {
+                return ResourceManager.GetString("Perfil_EventoEliminado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Guardado de perfil: {0}.
+        /// </summary>
+        public static string Perfil_EventoGuardado {
+            get {
+                return ResourceManager.GetString("Perfil_EventoGuardado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to La gestión de perfiles y el alta de usuarios son exclusivas del Webmaster..
+        /// </summary>
+        public static string Perfil_Exclusivo {
+            get {
+                return ResourceManager.GetString("Perfil_Exclusivo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Gestión de perfiles.
+        /// </summary>
+        public static string Perfil_Gestion {
+            get {
+                return ResourceManager.GetString("Perfil_Gestion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to El perfil se guardó correctamente..
+        /// </summary>
+        public static string Perfil_Guardado {
+            get {
+                return ResourceManager.GetString("Perfil_Guardado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Guardar perfil.
+        /// </summary>
+        public static string Perfil_Guardar {
+            get {
+                return ResourceManager.GetString("Perfil_Guardar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Permisos heredados del perfil y sus componentes.
+        /// </summary>
+        public static string Perfil_Heredados {
+            get {
+                return ResourceManager.GetString("Perfil_Heredados", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Los accesos exclusivos del Webmaster no pueden heredarse en otro perfil..
+        /// </summary>
+        public static string Perfil_HerenciaExclusiva {
+            get {
+                return ResourceManager.GetString("Perfil_HerenciaExclusiva", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Perfiles.
+        /// </summary>
+        public static string Perfil_Menu {
+            get {
+                return ResourceManager.GetString("Perfil_Menu", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Modificar empresa.
+        /// </summary>
+        public static string Perfil_ModificarEmpresa {
+            get {
+                return ResourceManager.GetString("Perfil_ModificarEmpresa", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Modificar mascota.
+        /// </summary>
+        public static string Perfil_ModificarMascota {
+            get {
+                return ResourceManager.GetString("Perfil_ModificarMascota", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Modificar plan.
+        /// </summary>
+        public static string Perfil_ModificarPlan {
+            get {
+                return ResourceManager.GetString("Perfil_ModificarPlan", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Modificar usuario.
+        /// </summary>
+        public static string Perfil_ModificarUsuario {
+            get {
+                return ResourceManager.GetString("Perfil_ModificarUsuario", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Perfil.
+        /// </summary>
+        public static string Perfil_Nombre {
+            get {
+                return ResourceManager.GetString("Perfil_Nombre", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Ingresá un nombre de perfil de hasta 30 caracteres, usando letras, números, espacios o guiones..
+        /// </summary>
+        public static string Perfil_NombreInvalido {
+            get {
+                return ResourceManager.GetString("Perfil_NombreInvalido", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Los nombres de los tres perfiles iniciales se conservan..
+        /// </summary>
+        public static string Perfil_NombresIniciales {
+            get {
+                return ResourceManager.GetString("Perfil_NombresIniciales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Nuevo perfil.
+        /// </summary>
+        public static string Perfil_Nuevo {
+            get {
+                return ResourceManager.GetString("Perfil_Nuevo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pago y factura.
+        /// </summary>
+        public static string Perfil_PagoFactura {
+            get {
+                return ResourceManager.GetString("Perfil_PagoFactura", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pantallas permitidas.
+        /// </summary>
+        public static string Perfil_Pantallas {
+            get {
+                return ResourceManager.GetString("Perfil_Pantallas", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Permisos del perfil.
+        /// </summary>
+        public static string Perfil_Permisos {
+            get {
+                return ResourceManager.GetString("Perfil_Permisos", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to El cambio quitaría accesos de gestión al Webmaster..
+        /// </summary>
+        public static string Perfil_QuitarGestion {
+            get {
+                return ResourceManager.GetString("Perfil_QuitarGestion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Registro de mascotas.
+        /// </summary>
+        public static string Perfil_RegistroMascotas {
+            get {
+                return ResourceManager.GetString("Perfil_RegistroMascotas", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede renombrar un perfil asignado a usuarios..
+        /// </summary>
+        public static string Perfil_RenombrarAsignado {
+            get {
+                return ResourceManager.GetString("Perfil_RenombrarAsignado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Seleccioná un perfil..
+        /// </summary>
+        public static string Perfil_Seleccionar {
+            get {
+                return ResourceManager.GetString("Perfil_Seleccionar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Seleccioná al menos una pantalla o perfil..
+        /// </summary>
+        public static string Perfil_SeleccionVacia {
+            get {
+                return ResourceManager.GetString("Perfil_SeleccionVacia", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Los usuarios reciben los permisos de su perfil; no se asignan permisos individuales..
+        /// </summary>
+        public static string Perfil_SinIndividuales {
+            get {
+                return ResourceManager.GetString("Perfil_SinIndividuales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Perfiles y permisos.
+        /// </summary>
+        public static string Perfil_Titulo {
+            get {
+                return ResourceManager.GetString("Perfil_Titulo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No hay perfiles..
+        /// </summary>
+        public static string Perfil_Vacio {
+            get {
+                return ResourceManager.GetString("Perfil_Vacio", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Ver detalle.
+        /// </summary>
+        public static string Perfil_VerDetalle {
+            get {
+                return ResourceManager.GetString("Perfil_VerDetalle", resourceCulture);
             }
         }
 
@@ -6060,6 +6564,33 @@ namespace VitaPet.GUI.Resources {
         public static string UI_Webmaster {
             get {
                 return ResourceManager.GetString("UI_Webmaster", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Alta de usuarios.
+        /// </summary>
+        public static string Usuario_Alta {
+            get {
+                return ResourceManager.GetString("Usuario_Alta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to El usuario se creó correctamente. ID: {0}.
+        /// </summary>
+        public static string Usuario_CreadoFormato {
+            get {
+                return ResourceManager.GetString("Usuario_CreadoFormato", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Crear usuario.
+        /// </summary>
+        public static string Usuario_Crear {
+            get {
+                return ResourceManager.GetString("Usuario_Crear", resourceCulture);
             }
         }
 

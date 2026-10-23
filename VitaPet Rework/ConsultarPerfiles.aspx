@@ -1,4 +1,4 @@
-<%@ Page Title="Consultar perfiles" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ConsultarPerfiles.aspx.cs" Inherits="ConsultarPerfilesPage" %>
+<%@ Page Title="<%$ Resources:Textos, Perfil_Consultar %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ConsultarPerfiles.aspx.cs" Inherits="ConsultarPerfilesPage" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server"><main class="planes-page"><section class="planes-card">
 <a runat="server" href="~/Home.aspx" class="btn btn-default formulario-volver">&larr; <%: TextosUI.Traducir("Volver") %></a>
 <h1><%: TextosUI.Traducir("Perfiles y permisos") %></h1>

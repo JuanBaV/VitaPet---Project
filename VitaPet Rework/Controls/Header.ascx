@@ -29,8 +29,8 @@
                     <span class="language-caret" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right language-options">
-                    <li><asp:LinkButton ID="btnIdiomaPublicoEs" runat="server" Text="ES · Español" CausesValidation="false" OnClick="btnIdiomaEs_Click" /></li>
-                    <li><asp:LinkButton ID="btnIdiomaPublicoEn" runat="server" Text="EN · English" CausesValidation="false" OnClick="btnIdiomaEn_Click" /></li>
+                    <li><asp:LinkButton ID="btnIdiomaPublicoEs" runat="server" Text="ES · Español" CausesValidation="false" OnClientClick="if (typeof(Page_BlockSubmit) !== 'undefined') { Page_BlockSubmit = false; }" OnClick="btnIdiomaEs_Click" /></li>
+                    <li><asp:LinkButton ID="btnIdiomaPublicoEn" runat="server" Text="EN · English" CausesValidation="false" OnClientClick="if (typeof(Page_BlockSubmit) !== 'undefined') { Page_BlockSubmit = false; }" OnClick="btnIdiomaEn_Click" /></li>
                 </ul>
             </div>
         </asp:Panel>
@@ -97,7 +97,7 @@
                     runat="server"
                     CssClass="navbar-role-links"
                     Visible="false">
-                    <asp:HyperLink ID="lnkConsultarPerfiles" runat="server" NavigateUrl="~/ConsultarPerfiles.aspx" Text="Perfiles" />
+                    <asp:HyperLink ID="lnkConsultarPerfiles" runat="server" NavigateUrl="~/ConsultarPerfiles.aspx" Text="<%$ Resources:Textos, Perfil_Menu %>" />
                     <asp:HyperLink
                         ID="lnkGestionEmpresas"
                         runat="server"
@@ -126,8 +126,8 @@
                     runat="server"
                     CssClass="navbar-role-links"
                     Visible="false">
-                    <asp:HyperLink ID="lnkPerfiles" runat="server" NavigateUrl="~/GestionPerfiles.aspx" Text="Perfiles" />
-                    <asp:HyperLink ID="lnkAltaUsuario" runat="server" NavigateUrl="~/AltaUsuario.aspx" Text="Alta de usuarios" />
+                    <asp:HyperLink ID="lnkPerfiles" runat="server" NavigateUrl="~/GestionPerfiles.aspx" Text="<%$ Resources:Textos, Perfil_Menu %>" />
+                    <asp:HyperLink ID="lnkAltaUsuario" runat="server" NavigateUrl="~/AltaUsuario.aspx" Text="<%$ Resources:Textos, Usuario_Alta %>" />
                     <asp:HyperLink
                         ID="lnkBitacora"
                         runat="server"
@@ -163,8 +163,8 @@
                         <span class="language-caret" aria-hidden="true"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right language-options">
-                        <li><asp:LinkButton ID="btnIdiomaEs" runat="server" Text="ES · Español" CausesValidation="false" OnClick="btnIdiomaEs_Click" /></li>
-                        <li><asp:LinkButton ID="btnIdiomaEn" runat="server" Text="EN · English" CausesValidation="false" OnClick="btnIdiomaEn_Click" /></li>
+                        <li><asp:LinkButton ID="btnIdiomaEs" runat="server" Text="ES · Español" CausesValidation="false" OnClientClick="if (typeof(Page_BlockSubmit) !== 'undefined') { Page_BlockSubmit = false; }" OnClick="btnIdiomaEs_Click" /></li>
+                        <li><asp:LinkButton ID="btnIdiomaEn" runat="server" Text="EN · English" CausesValidation="false" OnClientClick="if (typeof(Page_BlockSubmit) !== 'undefined') { Page_BlockSubmit = false; }" OnClick="btnIdiomaEn_Click" /></li>
                     </ul>
                 </div>
             </nav>

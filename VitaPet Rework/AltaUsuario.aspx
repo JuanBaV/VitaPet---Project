@@ -1,4 +1,4 @@
-<%@ Page Title="Alta de usuarios" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AltaUsuario.aspx.cs" Inherits="AltaUsuarioPage" %>
+<%@ Page Title="<%$ Resources:Textos, Usuario_Alta %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AltaUsuario.aspx.cs" Inherits="AltaUsuarioPage" %>
 <%@ Register Src="~/Controls/ValidacionEmail.ascx" TagPrefix="vp" TagName="ValidacionEmail" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server"><main class="login-page registro-page"><section class="login-card registro-card">
 <a runat="server" href="~/GestionUsuarios.aspx" class="btn btn-default formulario-volver">&larr; <%: TextosUI.Traducir("Volver") %></a>
@@ -20,8 +20,8 @@
 <div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="txtTelefono" Text="<%$ Resources:Textos, UI_Telefono %>" /><asp:TextBox ID="txtTelefono" runat="server" MaxLength="30" CssClass="form-control" />
 <asp:RequiredFieldValidator ID="rfvTelefono" runat="server" ControlToValidate="txtTelefono" ValidationGroup="AltaUsuario" Display="Dynamic" CssClass="login-validation" ErrorMessage="<%$ Resources:Textos, Alta_Obligatorio %>" />
 <asp:RegularExpressionValidator ID="revTelefono" runat="server" ControlToValidate="txtTelefono" ValidationGroup="AltaUsuario" Display="Dynamic" CssClass="login-validation" ValidationExpression="^(?=.{1,30}$)\+?(?=(?:[^0-9]*[0-9]){6})[0-9 ()\-.]+$" ErrorMessage="<%$ Resources:Textos, Alta_TelefonoInvalido %>" /></div>
-<div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="ddlPerfil" Text="Perfil" /><asp:DropDownList ID="ddlPerfil" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="VerPermisos" /></div>
+<div class="form-group login-field"><asp:Label runat="server" AssociatedControlID="ddlPerfil" Text="<%$ Resources:Textos, Perfil_Nombre %>" /><asp:DropDownList ID="ddlPerfil" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="VerPermisos" /></div>
 <h2><%: TextosUI.Traducir("Permisos del perfil") %></h2><asp:BulletedList ID="listaPermisos" runat="server" /><p><%: TextosUI.Traducir("Los usuarios reciben los permisos de su perfil; no se asignan permisos individuales.") %></p>
 <asp:CustomValidator ID="cvDatosUsuario" runat="server" ValidationGroup="AltaUsuario" ValidateEmptyText="true" EnableClientScript="false" OnServerValidate="ValidarDatos" Display="Dynamic" CssClass="login-validation" ErrorMessage="<%$ Resources:Textos, Alta_DatosInvalidos %>" />
-<asp:Button ID="btnCrear" runat="server" Text="Crear usuario" OnClick="Crear" CssClass="btn btn-primary" CausesValidation="true" ValidationGroup="AltaUsuario" />
+<asp:Button ID="btnCrear" runat="server" Text="<%$ Resources:Textos, Usuario_Crear %>" OnClick="Crear" CssClass="btn btn-primary" CausesValidation="true" ValidationGroup="AltaUsuario" />
 </asp:Panel></section></main></asp:Content>

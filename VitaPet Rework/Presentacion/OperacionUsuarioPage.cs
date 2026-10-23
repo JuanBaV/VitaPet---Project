@@ -130,7 +130,7 @@ namespace VitaPet.GUI.Presentacion
             if (Operacion == OperacionUsuario.Modificar)
             {
                 var roles=Control<DropDownList>("ddlRol");roles.Items.Clear();
-                foreach(var perfil in new PerfilBLL().Consultar().OfType<RolBE>())roles.Items.Add(new ListItem(perfil.Nombre,perfil.Id.ToString()));
+                foreach(var perfil in new PerfilBLL().Consultar().OfType<RolBE>())roles.Items.Add(new ListItem(perfil.Sistema?TextosUI.Traducir(perfil.Nombre):perfil.Nombre,perfil.Id.ToString()));
                 roles.Enabled=SessionManager.Instancia.UsuarioActual.Rol=="Webmaster";
                 Control<TextBox>("txtNombre").Text = u.Nombre; Control<TextBox>("txtCorreo").Text = u.CorreoElectronico;
                 Control<DropDownList>("ddlRol").SelectedValue = u.IdRol.ToString(); Control<DropDownList>("ddlEstado").SelectedValue = u.Estado.ToString();

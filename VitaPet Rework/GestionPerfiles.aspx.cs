@@ -25,7 +25,7 @@ public partial class GestionPerfilesPage : PaginaBase
     private void Cargar()
     {
         var lista=new PerfilBLL().Consultar();
-        gvPerfiles.DataSource=lista.OfType<PerfilBE>().OrderBy(p => p.Id).Select(p => new {p.Id,p.Nombre,p.Sistema,Permisos=string.Join(", ",p.Pantallas().Select(PerfilBLL.NombrePantalla).OrderBy(x => x))}).ToList(); gvPerfiles.DataBind();
+        gvPerfiles.DataSource=lista.OfType<PerfilBE>().OrderBy(p => p.Id).Select(p => new {p.Id,Nombre=p.Sistema?TextosUI.Traducir(p.Nombre):p.Nombre,p.Sistema,Permisos=string.Join(", ",p.Pantallas().Select(PerfilBLL.NombrePantalla).Select(TextosUI.Traducir).OrderBy(x => x))}).ToList(); gvPerfiles.DataBind();
         chkComponentes.Items.Clear();
         foreach(var c in lista.OrderBy(c => c is PerfilBE ? 0 : 1).ThenBy(c => c.Nombre))
             if(c.Id!=Id) { var hoja=c as PermisoPantallaBE;chkComponentes.Items.Add(new ListItem(TextosUI.Traducir(hoja==null ? c.Nombre : PerfilBLL.NombrePantalla(hoja.Pantalla)),c.Id.ToString())); }
@@ -36,7 +36,7 @@ public partial class GestionPerfilesPage : PaginaBase
             CerrarConfirmacion();Id=(int)gvPerfiles.SelectedDataKey.Value; var p=new PerfilBLL().Consultar().OfType<PerfilBE>().Single(f => f.Id==Id);Version=p.Version;
             Cargar();txtNombre.Text=p.Nombre; txtNombre.ReadOnly=p.Sistema;
             foreach(ListItem item in chkComponentes.Items) item.Selected=p.Hijos.Any(h => h.Id.ToString()==item.Value);
-            litPerfil.Text=Server.HtmlEncode(p.Nombre); arbol.Nodes.Clear(); arbol.Nodes.Add(Nodo(p));arbol.ExpandAll();pnlDetalle.Visible=true;
+            litPerfil.Text=Server.HtmlEncode(p.Sistema?TextosUI.Traducir(p.Nombre):p.Nombre); arbol.Nodes.Clear(); arbol.Nodes.Add(Nodo(p));arbol.ExpandAll();pnlDetalle.Visible=true;
         });
     }
     private TreeNode Nodo(PermisoComponenteBE p)
@@ -61,7 +61,7 @@ public partial class GestionPerfilesPage : PaginaBase
             if(p==null)throw new ArgumentException("Seleccioná un perfil.");
             if(p.Sistema)throw new ArgumentException("Los tres perfiles iniciales deben conservarse.");
             IdEliminar=p.Id;VersionEliminar=p.Version;
-            litConfirmar.Text=Server.HtmlEncode("¿Confirmás la eliminación del perfil "+p.Nombre+"?");pnlConfirmar.Visible=true;pnlConfirmar.Focus();
+            litConfirmar.Text=Server.HtmlEncode(TextosUI.Formato("Perfil_ConfirmarFormato",p.Nombre));pnlConfirmar.Visible=true;pnlConfirmar.Focus();
         });
     }
     private void CerrarConfirmacion() {pnlConfirmar.Visible=false;ViewState.Remove("EliminarId");ViewState.Remove("EliminarVersion");}

@@ -1559,4 +1559,63 @@
   <data name="Home_Descripcion" xml:space="preserve"><value>En VitaPet buscamos facilitar el acceso a la atención veterinaria y promover la prevención, para acompañar a tus mascotas en cada etapa de su vida.</value></data>
   <data name="Home_Gestiones" xml:space="preserve"><value>Queremos que cuidar su salud sea más simple. Por eso, combinamos planes de cobertura y herramientas digitales que te ayudan a organizar sus controles, conocer su historial clínico y dar continuidad a su cuidado.</value></data>
   <data name="Home_FotoDescripcion" xml:space="preserve"><value>Una perra beagle y una gata blanca y negra descansan juntas en el jardín.</value></data>
+  <data name="Perfil_Menu" xml:space="preserve"><value>Perfiles</value></data>
+  <data name="Perfil_Titulo" xml:space="preserve"><value>Perfiles y permisos</value></data>
+  <data name="Perfil_Consultar" xml:space="preserve"><value>Consultar perfiles</value></data>
+  <data name="Usuario_Alta" xml:space="preserve"><value>Alta de usuarios</value></data>
+  <data name="Perfil_Nombre" xml:space="preserve"><value>Perfil</value></data>
+  <data name="Perfil_Pantallas" xml:space="preserve"><value>Pantallas permitidas</value></data>
+  <data name="Perfil_VerDetalle" xml:space="preserve"><value>Ver detalle</value></data>
+  <data name="Perfil_Eliminar" xml:space="preserve"><value>Eliminar perfil</value></data>
+  <data name="Perfil_ConfirmarEliminacion" xml:space="preserve"><value>Confirmar eliminación</value></data>
+  <data name="Perfil_EtiquetaNombre" xml:space="preserve"><value>Nombre del perfil</value></data>
+  <data name="Perfil_Guardar" xml:space="preserve"><value>Guardar perfil</value></data>
+  <data name="Perfil_Nuevo" xml:space="preserve"><value>Nuevo perfil</value></data>
+  <data name="Perfil_Heredados" xml:space="preserve"><value>Permisos heredados del perfil y sus componentes</value></data>
+  <data name="Perfil_SinIndividuales" xml:space="preserve"><value>Los usuarios reciben los permisos de su perfil; no se asignan permisos individuales.</value></data>
+  <data name="Perfil_Componentes" xml:space="preserve"><value>Pantallas y perfiles incluidos</value></data>
+  <data name="Perfil_Permisos" xml:space="preserve"><value>Permisos del perfil</value></data>
+  <data name="Usuario_Crear" xml:space="preserve"><value>Crear usuario</value></data>
+  <data name="Perfil_Vacio" xml:space="preserve"><value>No hay perfiles.</value></data>
+  <data name="Perfil_Guardado" xml:space="preserve"><value>El perfil se guardó correctamente.</value></data>
+  <data name="Perfil_Eliminado" xml:space="preserve"><value>El perfil se eliminó correctamente.</value></data>
+  <data name="Perfil_Seleccionar" xml:space="preserve"><value>Seleccioná un perfil.</value></data>
+  <data name="Perfil_ConservarIniciales" xml:space="preserve"><value>Los tres perfiles iniciales deben conservarse.</value></data>
+  <data name="Perfil_ErrorConexion" xml:space="preserve"><value>No se pudo completar la operación. Revisá la conexión e intentá nuevamente.</value></data>
+  <data name="Perfil_ErrorIntegridad" xml:space="preserve"><value>No se pudo completar la operación. Verificá la integridad o recargá los perfiles.</value></data>
+  <data name="Perfil_NombreInvalido" xml:space="preserve"><value>Ingresá un nombre de perfil de hasta 30 caracteres, usando letras, números, espacios o guiones.</value></data>
+  <data name="Perfil_Cambio" xml:space="preserve"><value>El perfil cambió. Volvé a seleccionarlo.</value></data>
+  <data name="Perfil_NombresIniciales" xml:space="preserve"><value>Los nombres de los tres perfiles iniciales se conservan.</value></data>
+  <data name="Perfil_Duplicado" xml:space="preserve"><value>Ya existe ese nombre.</value></data>
+  <data name="Perfil_RenombrarAsignado" xml:space="preserve"><value>No se puede renombrar un perfil asignado a usuarios.</value></data>
+  <data name="Perfil_SeleccionVacia" xml:space="preserve"><value>Seleccioná al menos una pantalla o perfil.</value></data>
+  <data name="Perfil_Ciclo" xml:space="preserve"><value>La combinación de perfiles contiene un ciclo o una selección inválida.</value></data>
+  <data name="Perfil_Exclusivo" xml:space="preserve"><value>La gestión de perfiles y el alta de usuarios son exclusivas del Webmaster.</value></data>
+  <data name="Perfil_AccesosEsenciales" xml:space="preserve"><value>El Webmaster debe conservar sus accesos de gestión y recuperación.</value></data>
+  <data name="Perfil_HerenciaExclusiva" xml:space="preserve"><value>Los accesos exclusivos del Webmaster no pueden heredarse en otro perfil.</value></data>
+  <data name="Perfil_QuitarGestion" xml:space="preserve"><value>El cambio quitaría accesos de gestión al Webmaster.</value></data>
+  <data name="Perfil_Asignado" xml:space="preserve"><value>El perfil está asignado a usuarios o incluido en otro perfil.</value></data>
+  <data name="Perfil_PagoFactura" xml:space="preserve"><value>Pago y factura</value></data>
+  <data name="Perfil_RegistroMascotas" xml:space="preserve"><value>Registro de mascotas</value></data>
+  <data name="Perfil_AltaEmpresas" xml:space="preserve"><value>Alta de empresas</value></data>
+  <data name="Perfil_AltaCorporativos" xml:space="preserve"><value>Alta de clientes corporativos</value></data>
+  <data name="Perfil_AltaPlanes" xml:space="preserve"><value>Alta de planes</value></data>
+  <data name="Perfil_Gestion" xml:space="preserve"><value>Gestión de perfiles</value></data>
+  <data name="Perfil_ConsultarUsuario" xml:space="preserve"><value>Consultar usuario</value></data>
+  <data name="Perfil_ModificarUsuario" xml:space="preserve"><value>Modificar usuario</value></data>
+  <data name="Perfil_BloquearUsuario" xml:space="preserve"><value>Bloquear usuario</value></data>
+  <data name="Perfil_DesbloquearUsuario" xml:space="preserve"><value>Desbloquear usuario</value></data>
+  <data name="Perfil_ConfirmarFormato" xml:space="preserve"><value>¿Confirmás la eliminación del perfil {0}?</value></data>
+  <data name="Usuario_CreadoFormato" xml:space="preserve"><value>El usuario se creó correctamente. ID: {0}</value></data>
+  <data name="Perfil_EventoGuardado" xml:space="preserve"><value>Guardado de perfil: {0}</value></data>
+  <data name="Perfil_EventoEliminado" xml:space="preserve"><value>Eliminación de perfil: {0}</value></data>
+  <data name="Error_ER048" xml:space="preserve"><value>No se pudo cambiar el idioma. Intentá nuevamente.</value></data>
+  <data name="Integridad_CifradoInvalido" xml:space="preserve"><value>Dato no cifrado o ciphertext inválido.</value></data>
+  <data name="Integridad_CifradoMigracion" xml:space="preserve"><value>El cifrado no coincide con el historial de migraciones.</value></data>
+  <data name="Perfil_ModificarMascota" xml:space="preserve"><value>Modificar mascota</value></data>
+  <data name="Perfil_ConsultarMascota" xml:space="preserve"><value>Consultar mascota</value></data>
+  <data name="Perfil_ConsultarEmpresa" xml:space="preserve"><value>Consultar empresa</value></data>
+  <data name="Perfil_ModificarEmpresa" xml:space="preserve"><value>Modificar empresa</value></data>
+  <data name="Perfil_ConsultarPlan" xml:space="preserve"><value>Consultar plan</value></data>
+  <data name="Perfil_ModificarPlan" xml:space="preserve"><value>Modificar plan</value></data>
 </root>

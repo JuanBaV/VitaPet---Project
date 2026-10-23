@@ -10,7 +10,7 @@ public partial class AltaUsuarioPage : PaginaBase
     protected override void OnInit(EventArgs e) {ViewStateUserKey=Session.SessionID;base.OnInit(e);}
     protected override void EjecutarFuncionalidad()
     {
-        if(!IsPostBack) Ejecutar(() => {ddlPerfil.Items.Clear();foreach(var p in new PerfilBLL().Consultar().OfType<RolBE>().OrderBy(p => p.Id))ddlPerfil.Items.Add(new ListItem(p.Nombre,p.Id.ToString()));MostrarPermisos();});
+        if(!IsPostBack) Ejecutar(() => {ddlPerfil.Items.Clear();foreach(var p in new PerfilBLL().Consultar().OfType<RolBE>().OrderBy(p => p.Id))ddlPerfil.Items.Add(new ListItem(p.Sistema?TextosUI.Traducir(p.Nombre):p.Nombre,p.Id.ToString()));MostrarPermisos();});
     }
     private void MostrarPermisos()
     {
@@ -23,7 +23,7 @@ public partial class AltaUsuarioPage : PaginaBase
         Ejecutar(() => {if(!ValidacionAlta.Validar(this,"AltaUsuario"))return;
             int id=new AltaUsuarioBLL().Registrar(Datos(),int.Parse(ddlPerfil.SelectedValue));
             txtNombre.Text=txtApellido.Text=txtContrasena.Text=txtTelefono.Text="";ucCorreo.Correo="";
-            Mensaje("El usuario se creó correctamente. ID: "+id);
+            Mensaje(TextosUI.Formato("Usuario_CreadoFormato",id));
         });
         txtContrasena.Text="";
     }
