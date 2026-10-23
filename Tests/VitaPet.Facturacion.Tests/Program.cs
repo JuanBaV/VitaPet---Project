@@ -83,6 +83,7 @@ class Program
             if(args.Contains("--contrasenas")){ContrasenasTests.Run();return;}
             if(args.Contains("--accesos")){AccesosTests.Run();return;}
             if(args.Contains("--idioma")){IdiomaTests.Run();return;}
+            if(args.Contains("--patrones")){PatronesTests.Run();return;}
             var c=Preparar();Check(c.ImporteUSD==34.2m&&b.Consultar(c.IdSuscripcion).Importe==34.2m,"Descuento 20% coincide en contratación y pago Rework");
             Check(f.ListarPropias().Count==0,"Perfil vacío no fabrica facturas");
             foreach(int id in new[]{0,2,3}){SessionAs(id);bool denied=false;try{f.ListarPropias();}catch(UnauthorizedAccessException){denied=true;}Check(denied,"Lista restringida a Cliente: "+id);}SessionAs(1);

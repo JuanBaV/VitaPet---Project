@@ -214,3 +214,19 @@ El argumento opcional `--clinica` agrega registros clínicos sintéticos de
 dos clientes a la base temporal antes de cifrarla. Los recorridos anteriores
 conservan su preparación habitual. No se modifican la base ni la clave del
 sitio real, y los correos de la compra de preparación se capturan localmente.
+
+El punto 24 valida los cinco patrones documentados: Singleton, Facade, State,
+Template Method y Composite. El usuario aceptó revisar esos cinco frente a los
+seis de la consigna original. El detalle de clases y la prueba manual están en
+[Punto-24.md](Punto-24.md).
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/bin/Debug/net48/VitaPet.Facturacion.Tests.exe --patrones
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 Accesos-Web.cjs '..\..\artifacts\punto24-accesos' 1 cifrado
+```
+
+La primera suite agrega comprobaciones de aislamiento de sesiones, concurrencia,
+transiciones de estado, persistencia y fachada de seguridad; reutiliza las pruebas
+de perfiles para el Composite. La segunda repite los accesos web protegidos,
+incluyendo páginas que heredan de PaginaBase. Se revisa además el método OnLoad
+sellado y sus pasos de extensión en el código de la clase base.
