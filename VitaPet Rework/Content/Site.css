@@ -613,7 +613,7 @@ textarea {
 .formulario-volver { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-bottom: 16px; }
 .formulario-volver:focus { outline: 2px solid #174d48; outline-offset: 2px; }
 
-@media (max-width: 600px) {
+@media (max-width: 1199px) {
     body { padding-top: 0; }
     #formPrincipal { min-height: 100vh; }
     .navbar-fixed-top { position: sticky; top: 0; flex: none; }
@@ -707,6 +707,8 @@ textarea {
 @media (max-width: 600px) { .plan-admin-card { padding: 22px 18px; } .plan-admin-card .empresa-acciones { flex-wrap: wrap; } }
 @media (max-width: 600px) {
     .plan-admin-card .empresa-resumen { grid-template-columns: minmax(0,1fr); gap: 18px; }
+}
+@media (max-width: 1199px) {
     .navbar-inverse .container { flex-direction: column; align-items: stretch; }
     .navbar-header { align-self: flex-start; }
     .navbar-session { max-width: none; width: 100%; margin-left: 0; justify-content: flex-start; }
