@@ -46,8 +46,8 @@ if(pago.status!==0)process.exit(pago.status||1);
     invalid:[['txtRazonSocial','a'.repeat(101),'revRazonSocial'],['txtCuit','123','revCuit'],['txtDireccion','a'.repeat(151),'revDireccion'],['txtTelefono','abc','revTelefono']],
     success:async()=>visible('lblConfirmacion','Empresa registrada')});
    await go('AltaPlan');
-   await probar({name:'plan-coberturas',button:'btnRegistrarPlan',fields:{txtNombrePlan:'Validacion '+suffix,txtPrecioPlan:'25.50',txtDescripcionPlan:'Plan de prueba',txtPrestacion:'Consulta',txtDetalle:'Consulta veterinaria'},required:['rfvNombrePlan','rfvPrecioPlan','rfvDescripcionPlan','rfvPrestacion','rfvDetalle'],
-    invalid:[['txtNombrePlan','a'.repeat(81),'revNombrePlan'],['txtPrecioPlan','-1','revPrecioPlan'],['txtDescripcionPlan','a'.repeat(256),'revDescripcionPlan'],['txtPrestacion','a'.repeat(101),'revPrestacion'],['txtDetalle','a'.repeat(256),'revDetalle']],
+   await probar({name:'plan-coberturas',button:'btnRegistrarPlan',fields:{txtNombrePlan:'Validacion '+suffix,txtNumero:'25.50',txtDescripcionPlan:'Plan de prueba',txtPrestacion:'Consulta',txtDetalle:'Consulta veterinaria'},required:['rfvNombrePlan','rfvNumero','rfvDescripcionPlan','rfvPrestacion','rfvDetalle'],
+    invalid:[['txtNombrePlan','a'.repeat(81),'revNombrePlan'],['txtNumero','-1','revNumero'],['txtDescripcionPlan','a'.repeat(256),'revDescripcionPlan'],['txtPrestacion','a'.repeat(101),'revPrestacion'],['txtDetalle','a'.repeat(256),'revDetalle']],
     success:async()=>check(new URL(page.url()).searchParams.has('resultado')&&await c('btnRegistrarPlan').isDisabled(),'Plan registrado y editor de confirmación bloqueado')});
    await go('RegistroClienteCorporativo');
    const empresa=page.locator('tr').filter({hasText:'Validacion '+suffix});
@@ -65,7 +65,7 @@ if(pago.status!==0)process.exit(pago.status||1);
    await login('webmaster');await go('AltaUsuario');
    await probar({name:'usuario',button:'btnCrear',fields:{...datos,txtCorreo:'usuario.'+suffix+'@test.local'},required:['rfvNombre','rfvApellido','rfvCorreo','rfvContrasena','rfvTelefono'],
     invalid:[['txtNombre','a'.repeat(61),'revNombre'],['txtApellido','a'.repeat(61),'revApellido'],['txtCorreo','sin-correo','revCorreo'],['txtContrasena','Aa1!aa','revContrasena'],['txtTelefono','abc','revTelefono']],
-    success:async()=>check((await page.locator('main').innerText()).includes('El usuario se creó correctamente'),'Confirmación del alta de usuario')});
+    success:async()=>{const en=await page.locator('html').getAttribute('lang')==='en';check((await c('pnlMensaje').innerText()).includes(en?'The user was created successfully. ID:':'El usuario se creó correctamente. ID:'),'Confirmación del alta de usuario en el idioma vigente');}});
    await go('GestionPerfiles');await click('btnGuardar');await visible('rfvNombre','Perfil: nombre obligatorio');
    await fill({txtNombre:'Validación '+suffix});await click('btnGuardar');await visible('cvComponentes','Perfil: componentes obligatorios');
    await fill({txtNombre:'Perfil!'});await page.locator('[id$="_chkComponentes"] input[type=checkbox]').last().check();await click('btnGuardar');await visible('revNombre','Perfil: caracteres inválidos');
@@ -74,14 +74,14 @@ if(pago.status!==0)process.exit(pago.status||1);
    check((await c('gvPerfiles').innerText()).includes('Validación '+suffix),suffix+': crea perfil con nombre válido y permisos');
    await click('btnNuevo');check(await c('txtNombre').inputValue()==='',suffix+': Nuevo perfil no queda bloqueado por validaciones');
    if(js){
-    await page.locator('#btnSelectorIdioma').click();await click('btnIdiomaEn');
+    await page.locator('#btnSelectorIdioma').click();await Promise.all([page.waitForNavigation(),c('btnIdiomaEn').click()]);
     await go('AltaUsuario');await click('btnCrear');check((await c('resumen').innerText()).includes('This field is required'), 'Validaciones de usuario en inglés');
     await go('GestionPerfiles');await click('btnGuardar');check((await c('vsPerfil').innerText()).includes('This field is required'),'Validaciones de perfil en inglés');
     await page.setViewportSize({width:390,height:844});
     check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Mensajes de perfil sin desbordamiento en móvil');
     await page.screenshot({path:path.join(path.dirname(file),'perfil-ingles-movil.png'),fullPage:true});
     await page.setViewportSize({width:1440,height:1000});
-    await page.locator('#btnSelectorIdioma').click();await click('btnIdiomaEs');
+    await page.locator('#btnSelectorIdioma').click();await Promise.all([page.waitForNavigation(),c('btnIdiomaEs').click()]);
    }
    await ctx.close();
   }

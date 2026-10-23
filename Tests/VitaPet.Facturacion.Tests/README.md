@@ -179,3 +179,21 @@ de validación y la integridad de la base cifrada al finalizar. Requiere la
 misma herramienta de cifrado compilada que el recorrido del punto 20.
 La preparación web captura los correos en una carpeta local de la base
 temporal y excluye la configuración privada de correo del sitio real.
+
+El punto 22 comprueba los cinco controles de la sección 12.4:
+ValidacionEmail, ValidacionNumerica, SelectorMascota, FiltroZona y
+ListadoPlanes. El validador numérico se reutiliza en el alta y la
+modificación de planes; acepta coma o punto decimal y conserva la
+validación del precio en PlanBLL.
+
+```powershell
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 Controles-Web.cjs controles-web-output 1 cifrado
+& Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 Altas-Web.cjs altas-web-output 3 cifrado
+```
+
+La primera prueba verifica los validadores con y sin JavaScript, su uso
+en formularios reales, el cambio de zona y mascota, la selección de
+planes y la integridad final de la base temporal cifrada. La segunda
+verifica los siete formularios de alta tras integrar el nuevo control.
+Ese recorrido deja tres suscripciones activas: la contratación particular
+inicial y las dos altas corporativas de prueba, con y sin JavaScript.
