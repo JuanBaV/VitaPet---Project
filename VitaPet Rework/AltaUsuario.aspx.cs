@@ -20,13 +20,16 @@ public partial class AltaUsuarioPage : PaginaBase
     protected void VerPermisos(object sender,EventArgs e) {Ejecutar(MostrarPermisos);}
     protected void Crear(object sender,EventArgs e)
     {
-        Ejecutar(() => {Page.Validate("AltaUsuario");if(!Page.IsValid)return;
-            int id=new AltaUsuarioBLL().Registrar(new RegistroClienteBE {Nombre=txtNombre.Text,Apellido=txtApellido.Text,CorreoElectronico=ucCorreo.Correo,Contrasena=txtContrasena.Text,Telefono=txtTelefono.Text},int.Parse(ddlPerfil.SelectedValue));
+        Ejecutar(() => {if(!ValidacionAlta.Validar(this,"AltaUsuario"))return;
+            int id=new AltaUsuarioBLL().Registrar(Datos(),int.Parse(ddlPerfil.SelectedValue));
             txtNombre.Text=txtApellido.Text=txtContrasena.Text=txtTelefono.Text="";ucCorreo.Correo="";
             Mensaje("El usuario se creó correctamente. ID: "+id);
         });
         txtContrasena.Text="";
     }
+    private RegistroClienteBE Datos() {return new RegistroClienteBE {Nombre=txtNombre.Text,Apellido=txtApellido.Text,CorreoElectronico=ucCorreo.Correo,Contrasena=txtContrasena.Text,Telefono=txtTelefono.Text};}
+    protected void ValidarDatos(object sender,ServerValidateEventArgs e)
+    {ValidacionAlta.Comprobar((CustomValidator)sender,e,()=>ClienteBLL.ValidarDatosRegistro(Datos()));}
     private void Mensaje(string texto) {pnlMensaje.Visible=true;litMensaje.Text=Server.HtmlEncode(TextosUI.Traducir(texto));}
     private void Ejecutar(Action accion)
     {

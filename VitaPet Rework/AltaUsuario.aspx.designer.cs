@@ -14,4 +14,13 @@ public partial class AltaUsuarioPage
     protected global::System.Web.UI.WebControls.DropDownList ddlPerfil;
     protected global::System.Web.UI.WebControls.BulletedList listaPermisos;
     protected global::System.Web.UI.WebControls.Button btnCrear;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator revNombre;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvApellido;
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator revApellido;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvContrasena;
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator revContrasena;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTelefono;
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator revTelefono;
+    protected global::System.Web.UI.WebControls.CustomValidator cvDatosUsuario;
 }
