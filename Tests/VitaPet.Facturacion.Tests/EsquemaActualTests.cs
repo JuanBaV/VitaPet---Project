@@ -88,11 +88,14 @@ static class EsquemaActualTests
                 var antiguo=ContingenciaArchivoDAL.Deserializar<BackupBE>(catalogoOriginal);antiguo.Esquema=SinUltimaVersion(antiguo.Esquema);
                 string xml=ContingenciaArchivoDAL.Serializar(antiguo);File.WriteAllText(catalogo,xml);File.WriteAllText(catalogo+".firma","sha256:"+EstadoAplicacion.CalcularHuella(xml));
                 string antes=new ContingenciaDatosDAL().ExportarXml();
+                Check(!respaldos.Listar().Any(b=>b.Id==backup.Id),"Selector SQL no ofrece respaldos de versiones anteriores");
                 Rechaza(()=>respaldos.Restaurar(backup.Id),"Restauración SQL rechaza versiones anteriores");
                 Check(antes==new ContingenciaDatosDAL().ExportarXml()&&!EstadoAplicacion.Mantenimiento,"Backup incompatible no altera la base ni inicia mantenimiento");
             }
             finally {File.WriteAllText(catalogo,catalogoOriginal);File.WriteAllText(catalogo+".firma",firmaOriginal);}
             seguridad.RegistrarBitacora(new BitacoraBE {IdUsuario=3,Fecha=DateTime.Now,Accion="Posterior al respaldo de prueba",Modulo="Prueba",Criticidad="Informativa"});
+            Sql("DELETE dbo.__SchemaMigrations WHERE migrationId='035_BitacoraBajaLogica.sql'");
+            Check(!seguridad.VerificarIntegridad()&&respaldos.Listar().Any(b=>b.Id==backup.Id),"Backup actual sigue disponible aunque el historial del destino esté dañado");
             respaldos.Restaurar(backup.Id);Sesion(3);
             Check(seguridad.VerificarIntegridad()&&Count("SELECT COUNT(*) FROM dbo.Bitacora WHERE accion='Posterior al respaldo de prueba'")==0,"Restauración SQL actual conserva cifrado e integridad sin conversiones");
 
@@ -109,6 +112,7 @@ static class EsquemaActualTests
                 antiguo.Firma=ProteccionContingencia.Firmar(ContingenciaArchivoDAL.Serializar(antiguo),cuenta.ClaveFirma);
                 archivos.GuardarRespaldo(id,ContingenciaArchivoDAL.Serializar(antiguo));
                 string antes=new ContingenciaDatosDAL().ExportarXml();
+                Check(!contingencia.Listar().Any(b=>b.Id==id),"Selector XML no ofrece respaldos de versiones anteriores");
                 Rechaza(()=>contingencia.Restaurar(id),"Recuperación XML rechaza un esquema anterior aunque su firma sea válida");
                 Check(antes==new ContingenciaDatosDAL().ExportarXml()&&!EstadoAplicacion.Mantenimiento,"XML incompatible conserva la evidencia y el estado original");
             }

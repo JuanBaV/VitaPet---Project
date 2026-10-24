@@ -150,7 +150,11 @@ namespace VitaPet.BLL
             var lista = new List<RespaldoContingenciaBE>();
             foreach (string id in archivos.Respaldos())
             {
-                try { lista.Add(LeerRespaldo(id, cuenta)); }
+                try
+                {
+                    var respaldo=LeerRespaldo(id, cuenta);
+                    if (BackupBLL.EsquemaCompatible(respaldo.Esquema,EsquemaDAL.VersionActual)) lista.Add(respaldo);
+                }
                 catch (InvalidDataException) { } // No ofrecer archivos alterados; otros puntos sanos siguen disponibles.
                 catch (InvalidOperationException) { }
             }

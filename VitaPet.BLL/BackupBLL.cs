@@ -62,7 +62,9 @@ namespace VitaPet.BLL
         public List<BackupBE> Listar()
         {
             seguridad.ExigirWebmaster("BaseDatos");
-            return Directory.GetFiles(Catalogo,"*.xml").Select(f=>Leer(Path.GetFileNameWithoutExtension(f))).OrderByDescending(b=>b.FechaUtc).ToList();
+            string actual=EsquemaDAL.VersionActual;
+            return Directory.GetFiles(Catalogo,"*.xml").Select(f=>Leer(Path.GetFileNameWithoutExtension(f)))
+                .Where(b=>EsquemaCompatible(b.Esquema,actual)).OrderByDescending(b=>b.FechaUtc).ToList();
         }
         private void ValidarContenido(string file,string esquema)
         {
@@ -106,7 +108,7 @@ namespace VitaPet.BLL
             using(EstadoAplicacion.BloquearOperacion())
             {
                 var actor=seguridad.ExigirWebmaster("BaseDatos"); var b=Leer(id); string file=Archivo(id);
-                if(!b.Verificado || Hash(file)!=b.HashArchivo || !EsquemaCompatible(b.Esquema,dal.Esquema())) throw new InvalidDataException("El respaldo no es válido o compatible.");
+                if(!b.Verificado || Hash(file)!=b.HashArchivo || !EsquemaCompatible(b.Esquema,EsquemaDAL.VersionActual)) throw new InvalidDataException("El respaldo no es válido o compatible.");
                 ValidarContenido(file,b.Esquema);
                 AuditarExterno("Restore iniciado",actor.IdUsuario,id);
                 EstadoAplicacion.IniciarMantenimiento(id);
