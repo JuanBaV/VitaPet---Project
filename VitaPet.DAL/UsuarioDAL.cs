@@ -12,19 +12,6 @@ namespace VitaPet.DAL
 
     public partial class UsuarioDAL
     {
-        private static int LeerIdRol(SqlDataReader lector)
-        {
-            for (int i=0;i<lector.FieldCount;i++)
-                if (lector.GetName(i)=="idRol") return lector.GetInt32(i);
-            return 0; // Esquema anterior a 032, validado antes de migrar o restaurar.
-        }
-        private static bool LeerRestablecimiento(SqlDataReader lector)
-        {
-            for(int i=0;i<lector.FieldCount;i++)
-                if(lector.GetName(i)=="requiereRestablecerContrasena") return lector.GetBoolean(i);
-            if(ConexionDAL.EnBaseTemporal) return false; // Respaldos anteriores a la migración 024.
-            throw new InvalidOperationException("ER023: falta el indicador de restablecimiento en Usuario.");
-        }
         private readonly ConexionDAL _conexionDAL;
 
         private static UsuarioBE LeerUsuario(SqlDataReader lector)
@@ -34,12 +21,12 @@ namespace VitaPet.DAL
                 CorreoElectronico = Convert.ToString(lector["correoElectronico"]),
                 Contrasena = Convert.ToString(lector["contrasena"]),
                 Nombre = Convert.ToString(lector["nombre"]),
-                IdRol = LeerIdRol(lector), Rol = Convert.ToString(lector["rol"]),
+                IdRol = Convert.ToInt32(lector["idRol"]), Rol = Convert.ToString(lector["rol"]),
                 Estado = Convert.ToBoolean(lector["estado"]),
                 IntentosFallidos = Convert.ToByte(lector["intentosFallidos"]),
                 Bloqueado = Convert.ToBoolean(lector["bloqueado"]),
                 Idioma = Convert.ToString(lector["idioma"]),
-                RequiereRestablecerContrasena = LeerRestablecimiento(lector),
+                RequiereRestablecerContrasena = Convert.ToBoolean(lector["requiereRestablecerContrasena"]),
                 DVH = Convert.ToString(lector["dvh"])
             };
         }
@@ -67,7 +54,7 @@ namespace VitaPet.DAL
                             IdUsuario = Convert.ToInt32(lector["idUsuario"]),
                             Nombre = Convert.ToString(lector["nombre"]),
                             CorreoElectronico = Convert.ToString(lector["correoElectronico"]),
-                            IdRol = LeerIdRol(lector), Rol = Convert.ToString(lector["rol"]),
+                            IdRol = Convert.ToInt32(lector["idRol"]), Rol = Convert.ToString(lector["rol"]),
                             Estado = Convert.ToBoolean(lector["estado"]),
                             Bloqueado = Convert.ToBoolean(lector["bloqueado"])
                         });

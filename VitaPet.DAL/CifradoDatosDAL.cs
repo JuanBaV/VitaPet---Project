@@ -13,15 +13,8 @@ namespace VitaPet.DAL
 {
     public static class CifradoDatosDAL
     {
-        public const string Migracion = "034_CifradoDatosPersonales.sql";
+        public const string VersionCifrado = "034_CifradoDatosPersonales.sql";
         public static readonly string[] Tablas = { "Usuario", "Cliente", "Empresa", "DetallePago", "Factura" };
-        public static void PrepararTemporal(string nombre)
-        {
-            ContingenciaDatosDAL.ValidarTemporal(nombre);
-            using (ConexionDAL.UsarBaseTemporal(nombre))
-            using (var operacion = new OperacionIntegridadDAL())
-            { DatabaseMigrator.AplicarCifrado(); operacion.Complete(); }
-        }
         private static readonly Dictionary<string,string[]> Campos = new Dictionary<string,string[]> {
             { "Usuario", new[] { "correoElectronico", "nombre" } },
             { "Cliente", new[] { "nombre", "apellido", "telefono" } },
@@ -40,10 +33,10 @@ namespace VitaPet.DAL
                 cmd.CommandText = "SELECT COUNT(*) FROM sys.symmetric_keys WHERE name='VitaPet_DatosV1'";
                 bool tieneClave = (int)cmd.ExecuteScalar() == 1;
                 cmd.CommandText = "SELECT COUNT(*) FROM dbo.__SchemaMigrations WHERE migrationId=@id";
-                cmd.Parameters.AddWithValue("@id", Migracion);
+                cmd.Parameters.AddWithValue("@id", VersionCifrado);
                 bool migrada = (int)cmd.ExecuteScalar() == 1;
                 if (migrada != tieneClave)
-                    errores.Add(new DetalleIntegridadBE { Tabla="__SchemaMigrations", Fila=Migracion, Columna="migrationId", Motivo="El cifrado no coincide con el historial de migraciones." });
+                    errores.Add(new DetalleIntegridadBE { Tabla="__SchemaMigrations", Fila=VersionCifrado, Columna="migrationId", Motivo="El cifrado no coincide con el historial de migraciones." });
                 if (!tieneClave) return errores;
                 cmd.Parameters.Clear();
                 cmd.CommandText = string.Join(" UNION ALL ", Campos.SelectMany(t => t.Value.Select(campo =>
@@ -73,13 +66,13 @@ namespace VitaPet.DAL
         }
 
         // La clave se abre por sesión SQL y no queda escrita en procedimientos ni en Web.config.
-        public static void Preparar(SqlConnection conexion, bool migrando = false)
+        public static void Preparar(SqlConnection conexion, bool creandoClave = false)
         {
             using (var cmd = conexion.CreateCommand())
             {
                 cmd.CommandText = "SELECT COUNT(*) FROM sys.symmetric_keys WHERE name='VitaPet_DatosV1'";
                 bool cifrada = (int)cmd.ExecuteScalar() != 0;
-                if (!cifrada && !migrando) return;
+                if (!cifrada && !creandoClave) return;
                 string clave = Clave();
                 cmd.Parameters.Add("@clave", SqlDbType.NVarChar, 128).Value = clave;
                 using (var hmac = new HMACSHA256(Convert.FromBase64String(clave)))
@@ -92,8 +85,8 @@ namespace VitaPet.DAL
                 {
                     cmd.Parameters.Clear();
                     cmd.CommandText = "EXEC sys.sp_set_session_context @key=N'VitaPetClave', @value=NULL;";
-                    // La migración necesita la contraseña hasta crear y abrir la clave SQL.
-                    if (!migrando) cmd.ExecuteNonQuery();
+                    // La reconstrucción de una base vacía necesita crear y abrir su clave SQL.
+                    if (!creandoClave) cmd.ExecuteNonQuery();
                 }
             }
         }

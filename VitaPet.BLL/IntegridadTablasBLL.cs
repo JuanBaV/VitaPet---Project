@@ -29,29 +29,12 @@ namespace VitaPet.BLL
             return hash.CalcularHash(string.Concat(fila.Table.Columns.Cast<DataColumn>()
                 .Where(c => c.ColumnName != "dvh" && !CampoAnteriorVacio(fila,c)).Select(c => Pack(Valor(fila[c])))));
         }
-        internal void Inicializar()
-        {
-            dal.ValidarCobertura();
-            var claves=dal.ClavesEsquema;
-            foreach (var tabla in claves.Keys)
-            {
-                var datos = dal.Leer(tabla); var valores = new List<string>();
-                foreach (DataRow fila in datos.Rows)
-                {
-                    string dvh = CalcularDVH(fila); valores.Add(dvh);
-                    dal.GuardarDvh(tabla, fila[claves[tabla]], dvh);
-                }
-                new DVVDAL().Guardar(new DVVBE { NombreTabla=tabla, ValorDVV=hash.CalcularDVV(valores) });
-            }
-        }
-        internal void Verificar(ResultadoIntegridadBE resultado,bool permitirMigracionesPendientes = false)
+        internal void Verificar(ResultadoIntegridadBE resultado)
         {
             try { dal.ValidarCobertura(); }
             catch (InvalidOperationException ex) { ReferenciaIntegridadBLL.Error(resultado,"Esquema","—","tabla",ex.Message); return; }
             resultado.Detalles.AddRange(CifradoDatosDAL.Diagnosticar());
             var claves=dal.ClavesEsquema;
-            foreach (var migration in DatabaseMigrator.MigracionesInconsistentes(!permitirMigracionesPendientes))
-                ReferenciaIntegridadBLL.Error(resultado,"__SchemaMigrations",migration,"checksum","Historial de migraciones ausente o alterado.");
             foreach (var tabla in claves.Keys)
             {
                 var datos=dal.Leer(tabla); var valores=new List<string>();

@@ -14,10 +14,7 @@
     <ProjectReference Include="..\VitaPet.BE\VitaPet.BE.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\Database\Migrations\*.sql">
-      <Link>Migrations\%(Filename)%(Extension)</Link>
-      <LogicalName>VitaPet.DAL.Migrations.%(Filename)%(Extension)</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\Database\Security\034_CifradoDatosPersonales.sql" LogicalName="VitaPet.DAL.Cifrado.034_CifradoDatosPersonales.sql" />
+    <EmbeddedResource Include="..\Database\EsquemaActual.sql" LogicalName="VitaPet.DAL.EsquemaActual.sql" />
+    <EmbeddedResource Include="..\Database\EsquemaActual.manifest" LogicalName="VitaPet.DAL.EsquemaActual.manifest" />
   </ItemGroup>
 </Project>

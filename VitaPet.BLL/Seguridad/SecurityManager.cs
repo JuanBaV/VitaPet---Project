@@ -54,14 +54,18 @@ namespace VitaPet.BLL.Seguridad
 
         public bool VerificarIntegridad() => DiagnosticarIntegridad().EsValida;
 
-        public ResultadoIntegridadBE DiagnosticarIntegridad(bool permitirMigracionesPendientes = false)
+        public ResultadoIntegridadBE DiagnosticarIntegridad()
         {
             using(var op=new OperacionIntegridadDAL())
             {
-                var resultado=DiagnosticarDigitos();
+                var resultado=new ResultadoIntegridadBE();
+                foreach (string version in EsquemaDAL.Inconsistencias())
+                    ReferenciaIntegridadBLL.Error(resultado,"__SchemaMigrations",version,"checksum","Historial de migraciones ausente o alterado.");
+                if (!resultado.EsValida) { op.Complete(); return resultado; }
+                resultado=DiagnosticarDigitos();
                 string formato=new ReferenciaIntegridadDAL().ObtenerFormato();
-                if(formato=="sha256-v2") new IntegridadTablasBLL().Verificar(resultado,permitirMigracionesPendientes);
-                else if(formato!="sha256-v1") ReferenciaIntegridadBLL.Error(resultado,"__FormatoIntegridad","1","formato","Formato de integridad no inicializado o desconocido.");
+                if(formato=="sha256-v2") new IntegridadTablasBLL().Verificar(resultado);
+                else ReferenciaIntegridadBLL.Error(resultado,"__FormatoIntegridad","1","formato","Formato de integridad no inicializado o desconocido.");
                 new ReferenciaIntegridadBLL().Verificar(resultado);
                 op.Complete();
                 return resultado;

@@ -14,6 +14,7 @@ using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.BLL.Seguridad;
 using VitaPet.DAL;
+using VitaPet.Pruebas;
 using VitaPet.SECURITY;
 
 static class BitacoraTests
@@ -62,7 +63,14 @@ static class BitacoraTests
         string temporal = "VitaPet_Verificacion_" + Guid.NewGuid().ToString("N");
         try
         {
-            DatabaseMigrator.CrearTemporalContingencia(temporal);
+            BasePruebas.Crear(temporal);
+            if (antiguo)
+            {
+                bool rechazo = false;
+                try { new ContingenciaDatosDAL().ImportarTemporal(temporal, xml); } catch (InvalidDataException) { rechazo = true; }
+                Check(rechazo, "XML anterior a 035 rechazado sin ampliar sus columnas");
+                return;
+            }
             new ContingenciaDatosDAL().ImportarTemporal(temporal, xml);
             using (ConexionDAL.UsarBaseTemporal(temporal))
                 Check(seguridad.VerificarIntegridad() && (antiguo ? new BitacoraDAL().ObtenerParaIntegridad().All(r => !r.Archivado) : new BitacoraDAL().ObtenerParaIntegridad().Count(r => r.Archivado) == 6),
@@ -73,19 +81,19 @@ static class BitacoraTests
 
     static void CompatibilidadBackup(string xmlAnterior = null)
     {
-        var backup = new BackupDAL();
+        var backup = new BackupDAL(); string versionActual = backup.Esquema();
         string origen = "VitaPet_Verificacion_" + Guid.NewGuid().ToString("N"), restaurada = null;
         string archivo = Path.Combine(Directory.GetCurrentDirectory(), "VitaPet Rework", "App_Data", "Backups", origen + ".bak");
         try
         {
             if (xmlAnterior != null)
             {
-                DatabaseMigrator.CrearTemporalContingencia(origen);
-                new ContingenciaDatosDAL().ImportarTemporal(origen, xmlAnterior);
+                BasePruebas.Crear(origen);
+                new ContingenciaDatosDAL().ImportarTemporal(origen, new ContingenciaDatosDAL().ExportarXml());
                 using (ConexionDAL.UsarBaseTemporal(origen))
                 {
                     Sql("ALTER TABLE dbo.Bitacora DROP CONSTRAINT DF_Bitacora_Archivado; ALTER TABLE dbo.Bitacora DROP COLUMN archivado; DELETE dbo.__SchemaMigrations WHERE migrationId='035_BitacoraBajaLogica.sql';");
-                    using (var reader = new StreamReader(typeof(DatabaseMigrator).Assembly.GetManifestResourceStream("VitaPet.DAL.Migrations.013_ProcedimientosSimples.sql")))
+                    using (var reader = new StreamReader(typeof(BasePruebas).Assembly.GetManifestResourceStream("VitaPet.Pruebas.Schema.013_ProcedimientosSimples.sql")))
                     foreach (string batch in Regex.Split(reader.ReadToEnd(), @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase))
                     {
                         var match = Regex.Match(batch, @"CREATE OR ALTER PROCEDURE dbo\.sp_Bitacora_(Eliminar|ObtenerParaIntegridad|ObtenerExcedentes)\b");
@@ -98,9 +106,15 @@ static class BitacoraTests
             backup.VerificarArchivo(archivo); restaurada = backup.CrearTemporal(archivo);
             using (ConexionDAL.UsarBaseTemporal(restaurada))
             {
-                Check(seguridad.DiagnosticarIntegridad(true).EsValida, "Backup SQL " + (xmlAnterior != null ? "anterior a 035" : "actual") + " íntegro antes de migrar");
-                new MigracionRolesBLL().Ejecutar();
-                Check(seguridad.VerificarIntegridad() && (xmlAnterior != null ? new BitacoraDAL().ObtenerParaIntegridad().All(r => !r.Archivado) : new BitacoraDAL().ObtenerParaIntegridad().Count(r => r.Archivado) == 6), "Backup SQL restaurado admite la migración y conserva el estado de las bajas");
+                if (xmlAnterior != null)
+                {
+                    var compatible = typeof(BackupBLL).GetMethod("EsquemaCompatible", BindingFlags.Static | BindingFlags.NonPublic);
+                    string versionAntigua = new BackupDAL().Esquema();
+                    Check(!(bool)compatible.Invoke(null, new object[] { versionAntigua, versionActual }), "Backup SQL anterior a 035 rechazado sin aplicar conversiones");
+                    return;
+                }
+                Check(seguridad.DiagnosticarIntegridad().EsValida, "Backup SQL actual íntegro sin aplicar cambios de esquema");
+                Check(seguridad.VerificarIntegridad() && (xmlAnterior != null ? new BitacoraDAL().ObtenerParaIntegridad().All(r => !r.Archivado) : new BitacoraDAL().ObtenerParaIntegridad().Count(r => r.Archivado) == 6), "Backup SQL del esquema actual conserva el estado de las bajas sin conversiones");
             }
         }
         finally

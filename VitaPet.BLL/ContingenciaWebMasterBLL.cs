@@ -29,10 +29,10 @@ namespace VitaPet.BLL
             catch (SqlException) { return true; }
             catch (InvalidOperationException) { return true; }
         }
-        public bool Necesaria(bool permitirMigracionesPendientes = false)
+        public bool Necesaria()
         {
             if (EstadoAplicacion.Mantenimiento) return true;
-            try { return !seguridad.DiagnosticarIntegridad(permitirMigracionesPendientes).EsValida || !HayWebmasterConfiable(); }
+            try { return !seguridad.DiagnosticarIntegridad().EsValida || !HayWebmasterConfiable(); }
             catch (SqlException) { return true; } // La autenticación de emergencia no consulta SQL.
             catch (InvalidOperationException) { return true; }
         }
@@ -168,23 +168,12 @@ namespace VitaPet.BLL
                 bool iniciado = false;
                 try
                 {
-                    DatabaseMigrator.CrearTemporalContingencia(temporal,b.Esquema.IndexOf("032_RolesRelacionales.sql:",StringComparison.Ordinal)<0 ? "031_AutorizacionPorPantallas.sql" : b.Esquema.IndexOf("033_EliminarPermisoRelacion.sql:",StringComparison.Ordinal)<0 ? "032_RolesRelacionales.sql" : null);
-                    if (b.Esquema.IndexOf(CifradoDatosDAL.Migracion+":",StringComparison.Ordinal)>=0)
-                        CifradoDatosDAL.PrepararTemporal(temporal);
-                    bool ampliar;
+                    if (!BackupBLL.EsquemaCompatible(b.Esquema,EsquemaDAL.VersionActual))
+                        throw new InvalidDataException("El respaldo XML no corresponde al esquema actual.");
+                    EsquemaDAL.CrearTemporal(temporal);
+                    datos.ImportarTemporal(temporal, b.DatosXml);
                     using (ConexionDAL.UsarBaseTemporal(temporal))
                     {
-                        string actual=backups.Esquema();
-                        if (!BackupBLL.EsquemaCompatible(b.Esquema,actual)) throw new InvalidDataException("El XML requiere migraciones compatibles.");
-                        ampliar=actual!=b.Esquema;
-                    }
-                    datos.ImportarTemporal(temporal, b.DatosXml, ampliar,
-                        b.Esquema.IndexOf("021_GestionMascotas.sql:", StringComparison.Ordinal)<0);
-                    using (ConexionDAL.UsarBaseTemporal(temporal))
-                    {
-                        if (ampliar) new ReferenciaIntegridadBLL().Inicializar();
-                        new MigracionRolesBLL().Ejecutar();
-                        new PerfilBLL().AsegurarIniciales();
                         seguridad.ExigirIntegridad();
                         if (!HayWebmasterConfiable()) throw new InvalidDataException("El XML no recupera un WebMaster válido.");
                     }

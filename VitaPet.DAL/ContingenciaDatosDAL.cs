@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -26,91 +26,38 @@ namespace VitaPet.DAL
             using (var a = new SqlDataAdapter("SELECT name FROM sys.tables WHERE schema_id=SCHEMA_ID('dbo') ORDER BY name", c)) a.Fill(t);
             return t.Rows.Cast<DataRow>().Select(r => (string)r[0]).ToArray();
         }
-        // Sólo se carga XML firmado en una base temporal recién creada con las migraciones vigentes.
-        public void ImportarTemporal(string nombre, string xml, bool ampliarIntegridad = false, bool ampliarDatosClinicos = false)
+        // Sólo se carga XML firmado en una base temporal vacía con el esquema actual.
+        public void ImportarTemporal(string nombre, string xml)
         {
             ValidarTemporal(nombre);
             var datos = new DataSet();
             using (var s = new StringReader(xml))
             using (var r = XmlReader.Create(s, new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit,
                 XmlResolver = null, MaxCharactersInDocument = 128L * 1024 * 1024 })) datos.ReadXml(r, XmlReadMode.ReadSchema);
-            // Sólo prepara el esquema de la base temporal recién creada. No cifra ni reescribe las filas del XML.
-            // Un XML anterior al cifrado sigue importándose con su esquema anterior.
-            if (datos.Tables.Contains("__SchemaMigrations") && datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>()
-                .Any(r => (string)r["migrationId"] == CifradoDatosDAL.Migracion))
-                CifradoDatosDAL.PrepararTemporal(nombre);
             using (ConexionDAL.UsarBaseTemporal(nombre))
             using (var c = new ConexionDAL().CrearConexion())
             {
                 c.Open(); var tablas = Tablas(c);
-                if(ampliarDatosClinicos && !datos.Tables.Contains("DatosClinicos") && datos.Tables.Contains("DVV") &&
-                    datos.Tables.Contains("__SchemaMigrations") &&
-                    !datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>().Any(r=>(string)r["migrationId"]=="021_GestionMascotas.sql") &&
-                    !datos.Tables["DVV"].Rows.Cast<DataRow>().Any(r=>(string)r["nombreTabla"]=="DatosClinicos"))
-                {
-                    using(var a=new SqlDataAdapter("SELECT TOP(0) * FROM dbo.DatosClinicos",c))a.Fill(datos,"DatosClinicos");
-                    var fila=datos.Tables["DVV"].NewRow();
-                    fila["idDVV"]=datos.Tables["DVV"].Rows.Cast<DataRow>().Select(r=>(int)r["idDVV"]).DefaultIfEmpty(0).Max()+1;
-                    fila["nombreTabla"]="DatosClinicos";
-                    fila["valorDVV"]="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
-                    datos.Tables["DVV"].Rows.Add(fila);
-                }
-                if(ampliarIntegridad && !datos.Tables.Contains("AgendaTurno") && datos.Tables.Contains("DVV") &&
-                    datos.Tables.Contains("__SchemaMigrations") &&
-                    !datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>().Any(r=>(string)r["migrationId"]=="022_Turnos.sql") &&
-                    !datos.Tables["DVV"].Rows.Cast<DataRow>().Any(r=>(string)r["nombreTabla"]=="AgendaTurno"))
-                {
-                    using(var a=new SqlDataAdapter("SELECT TOP(0) * FROM dbo.AgendaTurno",c))a.Fill(datos,"AgendaTurno");
-                    var fila=datos.Tables["DVV"].NewRow();
-                    fila["idDVV"]=datos.Tables["DVV"].Rows.Cast<DataRow>().Select(r=>(int)r["idDVV"]).DefaultIfEmpty(0).Max()+1;
-                    fila["nombreTabla"]="AgendaTurno";
-                    fila["valorDVV"]="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
-                    datos.Tables["DVV"].Rows.Add(fila);
-                }
-                if(ampliarIntegridad && datos.Tables.Contains("DVV") && datos.Tables.Contains("__SchemaMigrations") &&
-                    !datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>().Any(r=>(string)r["migrationId"]=="027_Facturacion.sql"))
-                foreach(string tablaNueva in new[]{"DetallePago","Factura"})
-                {
-                    if(datos.Tables.Contains(tablaNueva)||datos.Tables["DVV"].Rows.Cast<DataRow>().Any(r=>(string)r["nombreTabla"]==tablaNueva))
-                        throw new InvalidDataException("Esquema de facturacion inconsistente en el respaldo.");
-                    using(var a=new SqlDataAdapter("SELECT TOP(0) * FROM dbo.["+tablaNueva+"]",c))a.Fill(datos,tablaNueva);
-                    var fila=datos.Tables["DVV"].NewRow();fila["idDVV"]=datos.Tables["DVV"].Rows.Cast<DataRow>().Select(r=>(int)r["idDVV"]).DefaultIfEmpty(0).Max()+1;
-                    fila["nombreTabla"]=tablaNueva;fila["valorDVV"]="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";datos.Tables["DVV"].Rows.Add(fila);
-                }
-                if(ampliarIntegridad && datos.Tables.Contains("DVV") && datos.Tables.Contains("__SchemaMigrations") &&
-                    !datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>().Any(r=>(string)r["migrationId"]=="030_PerfilesComposite.sql"))
-                foreach(string tablaNueva in new[]{"PermisoComponente","PermisoRelacion"})
-                {
-                    if(datos.Tables.Contains(tablaNueva)||datos.Tables["DVV"].Rows.Cast<DataRow>().Any(r=>(string)r["nombreTabla"]==tablaNueva)) continue;
-                    using(var a=new SqlDataAdapter("SELECT TOP(0) * FROM dbo.["+tablaNueva+"]",c))a.Fill(datos,tablaNueva);
-                    var fila=datos.Tables["DVV"].NewRow();fila["idDVV"]=datos.Tables["DVV"].Rows.Cast<DataRow>().Select(r=>(int)r["idDVV"]).DefaultIfEmpty(0).Max()+1;
-                    fila["nombreTabla"]=tablaNueva;fila["valorDVV"]="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";datos.Tables["DVV"].Rows.Add(fila);
-                }
                 if (!tablas.OrderBy(n => n, StringComparer.Ordinal).SequenceEqual(datos.Tables.Cast<DataTable>().Select(t => t.TableName).OrderBy(n => n, StringComparer.Ordinal)))
                     throw new InvalidDataException("Las tablas del XML no corresponden al esquema actual.");
+                var historial = datos.Tables["__SchemaMigrations"];
+                if (historial == null || !historial.Columns.Contains("migrationId") || !historial.Columns.Contains("checksum"))
+                    throw new InvalidDataException("Falta la versión del esquema XML.");
+                var entradas = historial.Rows.Cast<DataRow>().Select(r => (string)r["migrationId"] + ":" + (string)r["checksum"] + ";")
+                    .OrderBy(v => v, StringComparer.Ordinal).ToArray();
+                string version = string.Concat(entradas);
+                if (version != new BackupDAL().Esquema()) throw new InvalidDataException("El XML no corresponde al esquema actual.");
                 using (var tx = c.BeginTransaction())
                 {
                     foreach (string tabla in tablas) Ejecutar(c, tx, "ALTER TABLE dbo." + Q(tabla) + " NOCHECK CONSTRAINT ALL;");
                     foreach (string tabla in tablas)
                     {
-                        // Las migraciones y procedimientos provienen del código, nunca del archivo.
+                        // El esquema y los procedimientos provienen del código, nunca del archivo.
                         if (tabla == "__SchemaMigrations") continue;
                         Ejecutar(c, tx, "DELETE FROM dbo." + Q(tabla));
                         var expected = new DataTable();
                         using (var a = new SqlDataAdapter(new SqlCommand("SELECT TOP (0) * FROM dbo." + Q(tabla), c, tx))) a.Fill(expected);
                         var source = datos.Tables[tabla];
-                        if (tabla == "Bitacora" && !source.Columns.Contains("archivado") &&
-                            datos.Tables.Contains("__SchemaMigrations") && !datos.Tables["__SchemaMigrations"].Rows.Cast<DataRow>()
-                                .Any(r => (string)r["migrationId"] == "035_BitacoraBajaLogica.sql"))
-                        {
-                            source.Columns.Add("archivado", typeof(bool));
-                            foreach (DataRow row in source.Rows) row["archivado"] = false;
-                        }
-                        if (ampliarIntegridad && tabla == "ErrorSistema" && !source.Columns.Contains("dvh"))
-                        {
-                            source.Columns.Add("dvh", typeof(string));
-                            foreach (DataRow row in source.Rows) row["dvh"] = "";
-                        }
                         if (expected.Columns.Count != source.Columns.Count || expected.Columns.Cast<DataColumn>().Any(col =>
                             !source.Columns.Contains(col.ColumnName) || source.Columns[col.ColumnName].DataType != col.DataType))
                             throw new InvalidDataException("Columnas XML incompatibles.");

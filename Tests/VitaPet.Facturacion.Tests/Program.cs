@@ -12,6 +12,7 @@ using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.BLL.Seguridad;
 using VitaPet.DAL;
+using VitaPet.Pruebas;
 using VitaPet.SECURITY;
 class Program
 {
@@ -38,6 +39,7 @@ class Program
     static void Limpiar(){Sql("DELETE dbo.Factura;DELETE dbo.DetallePago;DELETE dbo.Pago;DELETE dbo.Suscripcion;");foreach(string t in new[]{"Factura","DetallePago","Pago","Suscripcion"})Refrescar(t);}
     static void Main(string[] args)
     {
+        if(args.Contains("--cifrar-fixture")){BasePruebas.Cifrar();Console.WriteLine("Fixture cifrado e íntegro.");return;}
         if(args.Contains("--certificados")){CertificadosPagoTests.Run();return;}
         if(args.Contains("--correo")){CorreoFacturaTests.Run();return;}
         var cfg=ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);var cs=new SqlConnectionStringBuilder(cfg.ConnectionStrings.ConnectionStrings["VitaPetConnection"].ConnectionString);
@@ -48,14 +50,14 @@ class Program
         cfg.Save();ConfigurationManager.RefreshSection("connectionStrings");ConfigurationManager.RefreshSection("appSettings");bool keep=false;
         try
         {
-            DatabaseMigrator.Migrate("031_AutorizacionPorPantallas.sql");DatabaseMigrator.Migrate("031_AutorizacionPorPantallas.sql");
-            Sql("INSERT dbo.Usuario(correoElectronico,contrasena,nombre,rol,estado,dvh) VALUES('otro@test.local','hash','Otro','Cliente',1,'');INSERT dbo.Cliente(idUsuario,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(1,'Juan Bautista','Villaverde','55555555','Individual',1,''),(4,'Otro','Cliente','55555555','Individual',1,'');INSERT dbo.Mascota(idCliente,nombre,especie,raza,fechaNacimiento,estado,dvh) VALUES(1,'Luna','Perro','Mestizo','20200101',1,''),(1,'Sol','Gato','Mestizo','20210101',1,''),(1,'Inactiva','Gato','Mestizo','20210101',0,''),(2,'Ajena','Perro','Mestizo','20210101',1,'');");
+            BasePruebas.Crear();
+            Sql("INSERT dbo.Usuario(correoElectronico,contrasena,nombre,idRol,estado,dvh) VALUES('otro@test.local','hash','Otro',(SELECT idComponente FROM dbo.PermisoComponente WHERE nombre='Cliente' AND sistema=1),1,'');INSERT dbo.Cliente(idUsuario,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(1,'Juan Bautista','Villaverde','55555555','Individual',1,''),(4,'Otro','Cliente','55555555','Individual',1,'');INSERT dbo.Mascota(idCliente,nombre,especie,raza,fechaNacimiento,estado,dvh) VALUES(1,'Luna','Perro','Mestizo','20200101',1,''),(1,'Sol','Gato','Mestizo','20210101',1,''),(1,'Inactiva','Gato','Mestizo','20210101',0,''),(2,'Ajena','Perro','Mestizo','20210101',1,'');");
             var users=new UsuarioDAL();var h=new IntegridadBLL();foreach(var u in users.ObtenerParaIntegridad())
             {
                 if(u.IdUsuario==1||u.IdUsuario==4||args.Contains("--web")){u.Contrasena=h.CalcularHash("Prueba2026!");using(var cn=new SqlConnection(connection))using(var cmd=new SqlCommand("UPDATE dbo.Usuario SET contrasena=@p WHERE idUsuario=@id",cn)){cmd.Parameters.AddWithValue("@p",u.Contrasena);cmd.Parameters.AddWithValue("@id",u.IdUsuario);cn.Open();cmd.ExecuteNonQuery();}}
                 users.ActualizarDVH(u.IdUsuario,h.CalcularDVH(u));
             }
-            new DVVDAL().Guardar(new DVVBE {NombreTabla="Usuario",ValorDVV=h.CalcularDVV(users.ObtenerDVHs())});new MigracionRolesBLL().Ejecutar();new PerfilBLL().AsegurarIniciales();
+            new DVVDAL().Guardar(new DVVBE {NombreTabla="Usuario",ValorDVV=h.CalcularDVV(users.ObtenerDVHs())});BasePruebas.ActualizarControles();new PerfilBLL().AsegurarIniciales();
             var err=new ErrorSistemaBLL();err.AsegurarErroresPlanes();err.AsegurarErroresPago();err.AsegurarErroresFacturacion();
             new ContratacionPlanBLL().AsegurarCatalogo();SessionAs(1);var b=new GestionPagoBLL();var f=new FacturaBLL();var sec=new SecurityManager();
             Check(sec.VerificarIntegridad(),"Esquema Rework 029 y controles íntegros");
@@ -63,12 +65,13 @@ class Program
             using(var cn=new SqlConnection(connection))using(var cmd=new SqlCommand("SELECT checksum FROM dbo.__SchemaMigrations WHERE migrationId='029_CorreoFactura.sql'",cn))
             {cn.Open();checksumCorreo=(string)cmd.ExecuteScalar();}
             Sql("DELETE dbo.__SchemaMigrations WHERE migrationId='029_CorreoFactura.sql'");
-            Check(!sec.VerificarIntegridad()&&sec.DiagnosticarIntegridad(true).EsValida,"Solo la validación previa a migrar admite scripts pendientes, conservando la validación de datos");
+            Check(!sec.VerificarIntegridad(),"La versión incompleta del esquema se rechaza sin aplicar cambios");
             Sql("INSERT dbo.__SchemaMigrations(migrationId,checksum) VALUES('029_CorreoFactura.sql',REPLICATE('0',64))");
-            Check(!sec.DiagnosticarIntegridad(true).EsValida,"La validación previa a migrar sigue rechazando un checksum aplicado alterado");
+            Check(!sec.DiagnosticarIntegridad().EsValida,"La validación de esquema rechaza un checksum alterado");
             Sql("UPDATE dbo.__SchemaMigrations SET checksum='"+checksumCorreo+"' WHERE migrationId='029_CorreoFactura.sql'");
             Check(sec.VerificarIntegridad(),"Historial de migraciones restituido sin modificar datos ni verificadores");
             if(args.Contains("--cifrado")){CifradoTests.Run(runtime);return;}
+            if(args.Contains("--esquema-actual")){EsquemaActualTests.Run(runtime);return;}
             if(args.Contains("--bitacora"))
             {
                 if(args.Contains("--web")) BitacoraTests.Semillar();

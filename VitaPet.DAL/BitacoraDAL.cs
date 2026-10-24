@@ -13,10 +13,6 @@ namespace VitaPet.DAL
 
         private static BitacoraBE LeerRegistro(SqlDataReader lector)
         {
-            // Durante la validación previa a migrar, el SP todavía puede tener el esquema anterior.
-            bool archivado = false;
-            for (int i = 0; i < lector.FieldCount; i++)
-                if (lector.GetName(i) == "archivado") archivado = Convert.ToBoolean(lector.GetValue(i));
             return new BitacoraBE {
                 IdBitacora = Convert.ToInt32(lector["idBitacora"]),
                 IdUsuario = lector["idUsuario"] == DBNull.Value ? (int?)null : Convert.ToInt32(lector["idUsuario"]),
@@ -24,7 +20,7 @@ namespace VitaPet.DAL
                 Accion = Convert.ToString(lector["accion"]),
                 Modulo = Convert.ToString(lector["modulo"]),
                 Criticidad = Convert.ToString(lector["criticidad"]),
-                DVH = Convert.ToString(lector["dvh"]), Archivado = archivado
+                DVH = Convert.ToString(lector["dvh"]), Archivado = Convert.ToBoolean(lector["archivado"])
             };
         }
 

@@ -26,23 +26,8 @@ namespace VitaPet.BLL
         { using(var s=File.OpenRead(file)) using(var h=SHA256.Create()) return BitConverter.ToString(h.ComputeHash(s)).Replace("-","").ToLowerInvariant(); }
         internal static bool EsquemaCompatible(string respaldo,string actual)
         {
-            if (string.IsNullOrEmpty(respaldo) || string.IsNullOrEmpty(actual) ||
-                !respaldo.EndsWith(";", StringComparison.Ordinal) ||
-                !actual.EndsWith(";", StringComparison.Ordinal)) return false;
-            if(respaldo==actual) return true;
-            if (!actual.StartsWith(respaldo, StringComparison.Ordinal)) return false;
-            var pendientes = actual.Substring(respaldo.Length)
-                .Split(new[] {';'}, StringSplitOptions.RemoveEmptyEntries);
-            if (pendientes.Length == 1 &&
-                pendientes[0].StartsWith("006_HuellasSinClave.sql:", StringComparison.Ordinal)) return true;
-            // Adaptaciones conocidas, verificadas en la base temporal antes de restaurar.
-            // 013-015 cambian SP; 016 admite precio NULL sin alterar filas existentes.
-            var admitidas = new[] { "012_IntegridadTodasLasTablas.sql", "013_ProcedimientosSimples.sql",
-                "014_IdiomaUsuario.sql", "015_RegistroCliente.sql", "016_ContratacionPlanes.sql", "017_GestionPago.sql", "018_ConsultaCobertura.sql", "019_ConsultaReintegros.sql", "020_RegistroMascota.sql", "021_GestionMascotas.sql", "022_Turnos.sql",
-                "026_SimplificacionProcedimientos.sql", "027_Facturacion.sql", "028_OptimizarLecturas.sql",
-                "029_CorreoFactura.sql", "030_PerfilesComposite.sql", "031_AutorizacionPorPantallas.sql", "032_RolesRelacionales.sql", "033_EliminarPermisoRelacion.sql", CifradoDatosDAL.Migracion, "035_BitacoraBajaLogica.sql" };
-            return pendientes.Length > 0 && pendientes.All(p =>
-                admitidas.Any(id => p.StartsWith(id + ":", StringComparison.Ordinal)));
+            return !string.IsNullOrEmpty(respaldo) && respaldo.EndsWith(";", StringComparison.Ordinal) &&
+                string.Equals(respaldo, actual, StringComparison.Ordinal);
         }
         private void Guardar(BackupBE backup)
         {
@@ -88,15 +73,7 @@ namespace VitaPet.BLL
                 using(ConexionDAL.UsarBaseTemporal(temporal))
                 {
                     if(dal.Esquema()!=esquema) throw new InvalidDataException("Esquema de backup incompatible.");
-                    if(esquema.IndexOf("006_HuellasSinClave.sql:",StringComparison.Ordinal)>=0)
-                        seguridad.ExigirIntegridad();
-                    else if(!seguridad.DiagnosticarDigitos().EsValida)
-                        throw new InvalidDataException("El backup tiene DVH o DVV inconsistentes.");
-                }
-                // Validar también las actualizaciones de procedimientos antes de restaurar.
-                {
-                    using (ConexionDAL.UsarBaseTemporal(temporal))
-                    { new MigracionRolesBLL().Ejecutar(); new ReferenciaIntegridadBLL().Inicializar(); new PerfilBLL().AsegurarIniciales(); seguridad.ExigirIntegridad(); }
+                    seguridad.ExigirIntegridad();
                 }
             }
             finally { dal.EliminarTemporal(temporal); }
@@ -139,9 +116,6 @@ namespace VitaPet.BLL
                     dal.Crear(Path.Combine(Carpeta,"contingencia_"+Guid.NewGuid().ToString("N")+".bak"));
                     EstadoAplicacion.InvalidarSesiones();
                     dal.Restaurar(file);
-                    new MigracionRolesBLL().Ejecutar();
-                    new ReferenciaIntegridadBLL().Inicializar();
-                    new PerfilBLL().AsegurarIniciales();
                     seguridad.ExigirIntegridad();
                     // El operador puede no existir en un backup antiguo: conservar identidad en el evento externo.
                     var usuario=new UsuarioDAL().ObtenerPorCorreo(actor.CorreoElectronico);

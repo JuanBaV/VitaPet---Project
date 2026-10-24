@@ -30,8 +30,7 @@ namespace VitaPet.BLL
             Add(r,"Usuario",u.IdUsuario,"idUsuario",u.IdUsuario);
             Add(r,"Usuario",u.IdUsuario,"correoElectronico",u.CorreoElectronico);
             Add(r,"Usuario",u.IdUsuario,"contrasena",u.Contrasena);
-            if (u.IdRol > 0) Add(r,"Usuario",u.IdUsuario,"idRol",u.IdRol);
-            else Add(r,"Usuario",u.IdUsuario,"rol",u.Rol); // Referencias de respaldos anteriores a 032.
+            Add(r,"Usuario",u.IdUsuario,"idRol",u.IdRol);
             Add(r,"Usuario",u.IdUsuario,"estado",u.Estado);
             Add(r,"Usuario",u.IdUsuario,"nombre",u.Nombre);
             Add(r,"Usuario",u.IdUsuario,"intentosFallidos",u.IntentosFallidos);
@@ -42,7 +41,7 @@ namespace VitaPet.BLL
             Add(r,"Usuario",u.IdUsuario,"dvh",u.DVH);
             return r;
         }
-        public List<ReferenciaCampoBE> CamposActuales(bool ampliar = true)
+        public List<ReferenciaCampoBE> CamposActuales()
         {
             var r=new List<ReferenciaCampoBE>();
             foreach(var u in new UsuarioDAL().ObtenerParaIntegridad()) r.AddRange(CamposUsuario(u));
@@ -57,7 +56,7 @@ namespace VitaPet.BLL
                 if(b.Archivado) Add(r,"Bitacora",b.IdBitacora,"archivado",true);
                 Add(r,"Bitacora",b.IdBitacora,"dvh",b.DVH);
             }
-            if (ampliar && dal.ObtenerFormato() == "sha256-v2") r.AddRange(new IntegridadTablasBLL().CamposActuales());
+            r.AddRange(new IntegridadTablasBLL().CamposActuales());
             return r;
         }
         private static string Sello(IEnumerable<ReferenciaCampoBE> campos) => EstadoAplicacion.CalcularHuella(Pack("conjunto-v1",
@@ -92,14 +91,14 @@ namespace VitaPet.BLL
             }
             return true;
         }
-        public void Verificar(ResultadoIntegridadBE resultado, bool ampliar = true)
+        public void Verificar(ResultadoIntegridadBE resultado)
         {
             var stored=dal.Obtener();
             var refs=stored.Where(c=>c.Tabla!="#").ToDictionary(c=>c.Clave,StringComparer.Ordinal);
             var sello=stored.SingleOrDefault(c=>c.Clave=="#/0/sello");
             if(sello==null || sello.Huella!=Sello(refs.Values))
                 Error(resultado,"ReferenciaIntegridad","—","huella","La referencia protegida está incompleta o alterada.");
-            foreach(var c in CamposActuales(ampliar))
+            foreach(var c in CamposActuales())
             {
                 ReferenciaCampoBE before;
                 if(!refs.TryGetValue(c.Clave,out before)) Error(resultado,c.Tabla,c.Fila,c.Columna,"Campo o fila sin referencia confiable.");
@@ -123,23 +122,6 @@ namespace VitaPet.BLL
                 ReferenciaCampoBE anterior;
                 if(!anteriores.TryGetValue(c.Clave,out anterior) || anterior.Huella!=c.Huella)
                     dal.Guardar(c);
-            }
-        }
-        public void Inicializar()
-        {
-            using(var op=new OperacionIntegridadDAL())
-            {
-                string formato=dal.ObtenerFormato();
-                if(formato=="sha256-v2") { op.Complete(); return; }
-                if(formato!="pendiente" && formato!="sha256-v1") throw new InvalidOperationException("Formato de integridad desconocido o ausente.");
-                if(formato=="pendiente" && dal.Obtener().Count != 0) throw new InvalidOperationException("ER023: no se reinicializan referencias existentes.");
-                var result=new Seguridad.SecurityManager().DiagnosticarDigitos();
-                if(formato=="sha256-v1") Verificar(result, false);
-                if(!result.EsValida) throw new InvalidOperationException("ER023: no se migran referencias sobre una BD inconsistente.");
-                new IntegridadTablasBLL().Inicializar();
-                dal.GuardarFormato("sha256-v2");
-                GuardarEstadoVerificado();
-                op.Complete();
             }
         }
         internal static void Error(ResultadoIntegridadBE r,string tabla,string fila,string columna,string motivo)

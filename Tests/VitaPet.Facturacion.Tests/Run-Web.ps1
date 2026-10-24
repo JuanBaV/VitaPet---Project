@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = 'Stop'
+$ErrorActionPreference = 'Stop'
 $browserScript = if ($args.Count -gt 0) { $args[0] } else { 'Web.cjs' }
 $outputDirectory = if ($args.Count -gt 1) { $args[1] } else { 'web-output' }
 $expectedActiveSubscriptions = if ($args.Count -gt 2) { [int]$args[2] } else { 1 }
@@ -18,18 +18,12 @@ $web = Join-Path ([IO.Path]::GetTempPath()) ('VitaPet-rework-site-' + [guid]::Ne
 $output = Join-Path $PSScriptRoot $outputDirectory
 $proc = $null
 $claveAnterior = $env:VITAPET_CLAVE_ARCHIVO
-$respaldoCifrado = $null
 try {
     if ($probarCifrado) {
         $env:VITAPET_CLAVE_ARCHIVO = Join-Path $fixture[1] 'cifrado.key'
         & (Join-Path $repo 'Scripts\ConfigurarClaveCifrado.ps1') -Archivo $env:VITAPET_CLAVE_ARCHIVO
-        $herramienta = if ($env:VITAPET_TEST_BIN) { Join-Path $testBin 'VitaPet.Cifrado.exe' } else { Join-Path $repo 'Tools\VitaPet.Cifrado\bin\Debug\net48\VitaPet.Cifrado.exe' }
-        if (-not (Test-Path -LiteralPath $herramienta)) { throw 'Compilar Tools/VitaPet.Cifrado antes de probar el cifrado web.' }
-        Copy-Item -LiteralPath (Join-Path $testBin 'VitaPet.Facturacion.Tests.exe.config') -Destination ($herramienta+'.config') -Force
-        # Carpeta del proyecto ya habilitada para backups SQL y accesible para limpiar el archivo de prueba.
-        $respaldoCifrado=Join-Path (Join-Path $repo 'VitaPet Rework\App_Data\Backups') ($fixture[0]+'_previo.bak')
-        & $herramienta --aplicar $respaldoCifrado
-        if ($LASTEXITCODE -ne 0) { throw 'La migración cifrada de la base temporal falló.' }
+        & (Join-Path $testBin 'VitaPet.Facturacion.Tests.exe') --cifrar-fixture
+        if ($LASTEXITCODE -ne 0) { throw 'La preparación cifrada de la base temporal falló.' }
     }
     New-Item -ItemType Directory -Path $web | Out-Null
     & robocopy (Join-Path $repo 'VitaPet Rework') $web /E /XD App_Data obj /XF Correo.local.config /NFL /NDL /NJH /NJS /NP | Out-Null
@@ -104,5 +98,4 @@ try {
         $command.CommandText='IF DB_ID(N'''+$fixture[0]+''') IS NOT NULL BEGIN ALTER DATABASE ['+$fixture[0]+'] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE ['+$fixture[0]+']; END'
         $command.ExecuteNonQuery() | Out-Null
     } finally { $connection.Dispose() }
-    if ($respaldoCifrado -and (Test-Path -LiteralPath $respaldoCifrado)) { Remove-Item -LiteralPath $respaldoCifrado }
 }

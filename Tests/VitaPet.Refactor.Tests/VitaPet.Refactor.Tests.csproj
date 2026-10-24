@@ -4,6 +4,11 @@
     <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="../Infraestructura/BasePruebas.cs" Link="BasePruebas.cs" />
+    <EmbeddedResource Include="../../Database/Migrations/*.sql" LogicalName="VitaPet.Pruebas.Schema.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="../../Database/Security/034_CifradoDatosPersonales.sql" LogicalName="VitaPet.Pruebas.Schema.034_CifradoDatosPersonales.sql" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />

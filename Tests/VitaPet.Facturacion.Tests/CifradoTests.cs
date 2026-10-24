@@ -12,6 +12,7 @@ using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.BLL.Seguridad;
 using VitaPet.DAL;
+using VitaPet.Pruebas;
 
 static class CifradoTests
 {
@@ -54,18 +55,18 @@ static class CifradoTests
         string referencias = (string)Scalar("SELECT STRING_AGG(CONVERT(varchar(max),huella),'|') WITHIN GROUP(ORDER BY tabla,fila,columna) FROM dbo.ReferenciaIntegridad");
         try
         {
-            Rechaza(() => new MigracionCifradoBLL().Ejecutar(),"Sin archivo de clave no se inicia la migración");
-            Check(!DatabaseMigrator.EstaAplicada(CifradoDatosDAL.Migracion),"El rechazo no cambia el esquema");
+            Rechaza(() => BasePruebas.Cifrar(),"Sin archivo de clave no se inicia la migración");
+            Check(!BasePruebas.TieneCifrado,"El rechazo no cambia el esquema");
             byte[] bytes=new byte[32]; using(var rng=RandomNumberGenerator.Create()) rng.GetBytes(bytes);
             string clave=Convert.ToBase64String(bytes);File.WriteAllText(archivo,clave);
             using(var tx = new OperacionIntegridadDAL())
             {
-                new MigracionCifradoBLL().Ejecutar();
+                BasePruebas.Cifrar();
                 Check(seguridad.VerificarIntegridad(),"Migración completa e íntegra antes del commit");
             }
-            Check(!DatabaseMigrator.EstaAplicada(CifradoDatosDAL.Migracion),"Rollback revierte columnas, vistas, procedimientos y clave SQL");
-            new MigracionCifradoBLL().Ejecutar();
-            new MigracionCifradoBLL().Ejecutar();
+            Check(!BasePruebas.TieneCifrado,"Rollback revierte columnas, vistas, procedimientos y clave SQL");
+            BasePruebas.Cifrar();
+            BasePruebas.Cifrar();
             Check(seguridad.VerificarIntegridad(),"Migración aplicada una sola vez; integridad conservada");
             Check(((byte[])Scalar("SELECT dbo.fn_HmacDatos(0x4869205468657265,0x0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b)",true)).SequenceEqual(Enumerable.Range(0,32).Select(i=>Convert.ToByte("b0344c61d8db38535ca8afceaf0bf12b881dc200c9833da726e9376c2e32cff7".Substring(i*2,2),16))),"HMAC-SHA256 coincide con el vector oficial RFC 4231");
             Check(referencias==(string)Scalar("SELECT STRING_AGG(CONVERT(varchar(max),huella),'|') WITHIN GROUP(ORDER BY tabla,fila,columna) FROM dbo.ReferenciaIntegridad"),"No se recalcularon las referencias para aceptar los datos migrados");
@@ -128,7 +129,7 @@ static class CifradoTests
             var backup=new BackupDAL();
             try
             {
-                DatabaseMigrator.CrearTemporalContingencia(temporal);
+                EsquemaDAL.CrearTemporal(temporal);
                 new ContingenciaDatosDAL().ImportarTemporal(temporal,new ContingenciaDatosDAL().ExportarXml());
                 using(ConexionDAL.UsarBaseTemporal(temporal))
                     Check(seguridad.VerificarIntegridad()&&new UsuarioDAL().ObtenerPorCorreo("ana.nueva@example.test")!=null,"Recuperación XML en base temporal reconstruye la clave SQL desde el mismo archivo");
@@ -137,13 +138,12 @@ static class CifradoTests
             temporal="VitaPet_Verificacion_"+Guid.NewGuid().ToString("N");
             try
             {
-                DatabaseMigrator.CrearTemporalContingencia(temporal);
-                new ContingenciaDatosDAL().ImportarTemporal(temporal,xmlAnterior);
-                using(ConexionDAL.UsarBaseTemporal(temporal))
-                    Check(seguridad.VerificarIntegridad()&&!DatabaseMigrator.EstaAplicada(CifradoDatosDAL.Migracion),"El XML antiguo conserva su formato sin cifrado automático");
+                EsquemaDAL.CrearTemporal(temporal);
+                bool rechazo=false;try{new ContingenciaDatosDAL().ImportarTemporal(temporal,xmlAnterior);}catch(InvalidDataException){rechazo=true;}
+                Check(rechazo&&seguridad.VerificarIntegridad(),"El XML anterior al esquema cifrado se rechaza sin convertirlo ni modificar la base actual");
             }
             finally {backup.EliminarTemporal(temporal);}
-            string carpeta=Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"..","..","..","..","..","VitaPet Rework","App_Data","Backups"));
+            string carpeta=Path.Combine(Directory.GetCurrentDirectory(),"VitaPet Rework","App_Data","Backups");
             string bak=Path.Combine(carpeta,nombre+".bak");
             try
             {

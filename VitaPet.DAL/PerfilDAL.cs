@@ -9,12 +9,6 @@ namespace VitaPet.DAL
         public DataTable Componentes() { return new IntegridadTablasDAL().Leer("PermisoComponente"); }
         public DataTable Roles() { return new IntegridadTablasDAL().Leer("Rol"); }
         public DataTable PermisosRoles() { return new IntegridadTablasDAL().Leer("RolPermiso"); }
-        public bool UsaRoles()
-        {
-            using(var cn=new ConexionDAL().CrearConexion())
-            using(var cmd=new SqlCommand("SELECT CASE WHEN COL_LENGTH('dbo.Usuario','idRol') IS NULL THEN 0 ELSE 1 END",cn))
-            { cn.Open(); return (int)cmd.ExecuteScalar()==1; }
-        }
         private object Ejecutar(string sql, params SqlParameter[] parametros)
         {
             if (System.Transactions.Transaction.Current == null) throw new InvalidOperationException("Se requiere una transacción de integridad.");

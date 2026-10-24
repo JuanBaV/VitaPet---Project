@@ -14,6 +14,7 @@ using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.BLL.Seguridad;
 using VitaPet.DAL;
+using VitaPet.Pruebas;
 using VitaPet.SECURITY;
 
 class Program
@@ -115,9 +116,9 @@ class Program
 
     static void Procedimientos()
     {
-        var assembly=typeof(DatabaseMigrator).Assembly;
+        var assembly=typeof(BasePruebas).Assembly;
         foreach(string recurso in new[]{"026_SimplificacionProcedimientos.sql","027_Facturacion.sql"})
-        using(var reader=new StreamReader(assembly.GetManifestResourceStream("VitaPet.DAL.Migrations."+recurso)))
+        using(var reader=new StreamReader(assembly.GetManifestResourceStream("VitaPet.Pruebas.Schema."+recurso)))
         foreach(string batch in Regex.Split(reader.ReadToEnd(),@"^\s*GO\s*$",RegexOptions.Multiline|RegexOptions.IgnoreCase))
         {
             var match=Regex.Match(batch,@"CREATE OR ALTER PROCEDURE dbo\.(sp_Mascota_Actualizar|sp_Factura_Emitir)\b");
@@ -145,10 +146,10 @@ class Program
             Comparar("sp_Factura_Emitir",usuario+","+cotizacion.IdSuscripcion,transaccion);
         string refs=ContingenciaArchivoDAL.Serializar(new ReferenciaIntegridadDAL().Obtener());
         string esquema=new BackupDAL().Esquema();
-        DatabaseMigrator.Migrate();DatabaseMigrator.Migrate();
-        Check(esquema==new BackupDAL().Esquema()&&refs==ContingenciaArchivoDAL.Serializar(new ReferenciaIntegridadDAL().Obtener())&&seguridad.VerificarIntegridad()&&Valor("SELECT COUNT(*) FROM dbo.__SchemaMigrations WHERE migrationId='035_BitacoraBajaLogica.sql'")=="1","Migraciones sobre base poblada son idempotentes y conservan referencias");
+        Check(EsquemaDAL.Inconsistencias().Count==0,"Validación de versión de esquema es de sólo lectura");
+        Check(esquema==new BackupDAL().Esquema()&&refs==ContingenciaArchivoDAL.Serializar(new ReferenciaIntegridadDAL().Obtener())&&seguridad.VerificarIntegridad()&&Valor("SELECT COUNT(*) FROM dbo.__SchemaMigrations WHERE migrationId='035_BitacoraBajaLogica.sql'")=="1","Validación de versión conserva el historial y las referencias de la base poblada");
         var compatible=typeof(BackupBLL).GetMethod("EsquemaCompatible",BindingFlags.Static|BindingFlags.NonPublic);
-        Check((bool)compatible.Invoke(null,new object[]{"027_Facturacion.sql:hash;","027_Facturacion.sql:hash;028_OptimizarLecturas.sql:hash;"}),"Respaldos anteriores admiten la migración de procedimientos");
+        Check(!(bool)compatible.Invoke(null,new object[]{"027_Facturacion.sql:hash;","027_Facturacion.sql:hash;028_OptimizarLecturas.sql:hash;"}),"Respaldos de versiones anteriores se rechazan sin aplicar conversiones");
         Check(!(bool)compatible.Invoke(null,new object[]{"027_Facturacion.sql:hash;","027_Facturacion.sql:hash;999_Desconocida.sql:hash;"}),"Migraciones desconocidas siguen rechazadas al restaurar");
         Sql("DROP PROCEDURE dbo.sp_Mascota_Actualizar_Anterior;DROP PROCEDURE dbo.sp_Factura_Emitir_Anterior;");
     }
@@ -210,9 +211,9 @@ class Program
         seguridad=new SecurityManager();
         try
         {
-            DatabaseMigrator.Migrate("031_AutorizacionPorPantallas.sql");
+            BasePruebas.Crear();
             Sql("INSERT dbo.Cliente(idUsuario,nombre,apellido,telefono,tipoCliente,estado,dvh) VALUES(1,'Cliente','Prueba','55555555','Individual',1,'');");
-            new MigracionRolesBLL().Ejecutar();new PerfilBLL().AsegurarIniciales();new ContratacionPlanBLL().AsegurarCatalogo();
+            BasePruebas.ActualizarControles();new PerfilBLL().AsegurarIniciales();new ContratacionPlanBLL().AsegurarCatalogo();
             Check(seguridad.VerificarIntegridad(),"Base aislada inicializada");
             if(args.Contains("--integridad-todas") || args.Contains("--integridad-login"))
             {

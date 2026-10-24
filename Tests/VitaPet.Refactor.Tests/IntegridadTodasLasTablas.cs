@@ -10,6 +10,7 @@ using VitaPet.BE;
 using VitaPet.BLL;
 using VitaPet.BLL.Seguridad;
 using VitaPet.DAL;
+using VitaPet.Pruebas;
 
 static class IntegridadTodasLasTablas
 {
@@ -65,7 +66,7 @@ END;");
         var logs=new BitacoraDAL();
         foreach(var log in logs.ObtenerParaIntegridad())Sql("UPDATE dbo.Bitacora SET dvh='"+hash.CalcularDVH(log)+"' WHERE idBitacora="+log.IdBitacora);
         new DVVDAL().Guardar(new DVVBE{NombreTabla="Bitacora",ValorDVV=hash.CalcularDVV(logs.ObtenerDVHs())});
-        typeof(IntegridadTablasBLL).GetMethod("Inicializar",BindingFlags.Instance|BindingFlags.NonPublic).Invoke(new IntegridadTablasBLL(),null);
+        BasePruebas.ActualizarControles();
         typeof(ReferenciaIntegridadBLL).GetMethod("GuardarEstadoVerificado",BindingFlags.Instance|BindingFlags.NonPublic).Invoke(new ReferenciaIntegridadBLL(),null);
     }
     static void CorruptThree(string table,string key,string field)
