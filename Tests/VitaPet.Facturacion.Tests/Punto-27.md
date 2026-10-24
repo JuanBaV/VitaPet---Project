@@ -27,5 +27,5 @@ pago, facturación, PDF y correo. El mapa de esa revisión está en
 `Docs/Diagramas/README.md`. Los SVG editables y los PNG están en esa carpeta.
 
 No se modificó el comportamiento de la aplicación ni se ejecutaron cobros o
-envíos de correo para este punto. La confirmación del punto 27 queda pendiente
-de la revisión del usuario.
+envíos de correo para este punto. Revisión y aprobación del punto 27 confirmadas
+por el usuario el 24/10/2026.
