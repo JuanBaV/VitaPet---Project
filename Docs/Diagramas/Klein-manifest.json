@@ -1,0 +1,536 @@
+[
+  {
+    "nombre": "Klein-VitaPet",
+    "nodos": {
+      "inicio": {
+        "x": 143.25,
+        "y": 81.6,
+        "w": 14,
+        "h": 14,
+        "label": "",
+        "tipo": "inicio"
+      },
+      "plan": {
+        "x": 143.25,
+        "y": 114,
+        "w": 210.5,
+        "h": 34,
+        "label": "Seleccionar plan",
+        "tipo": "accion"
+      },
+      "cotizar": {
+        "x": 397.75,
+        "y": 168,
+        "w": 210.5,
+        "h": 40,
+        "label": "Mostrar cobertura\ny precio por mascota",
+        "tipo": "accion"
+      },
+      "confirmar": {
+        "x": 143.25,
+        "y": 222,
+        "w": 210.5,
+        "h": 34,
+        "label": "Confirmar plan",
+        "tipo": "accion"
+      },
+      "pendiente": {
+        "x": 397.75,
+        "y": 276,
+        "w": 210.5,
+        "h": 40,
+        "label": "Registrar suscripción\npendiente de pago",
+        "tipo": "accion"
+      },
+      "datos": {
+        "x": 143.25,
+        "y": 330,
+        "w": 210.5,
+        "h": 40,
+        "label": "Elegir medio de pago\nConfirmar los datos",
+        "tipo": "accion"
+      },
+      "validar": {
+        "x": 397.75,
+        "y": 384,
+        "w": 210.5,
+        "h": 40,
+        "label": "Validar datos\ne importe vigente",
+        "tipo": "accion"
+      },
+      "autorizar": {
+        "x": 652.25,
+        "y": 438,
+        "w": 210.5,
+        "h": 40,
+        "label": "Autorizar pago\n(simulador local)",
+        "tipo": "accion"
+      },
+      "pago": {
+        "x": 397.75,
+        "y": 546,
+        "w": 210.5,
+        "h": 40,
+        "label": "Registrar pago\ny detalle",
+        "tipo": "accion"
+      },
+      "factura": {
+        "x": 397.75,
+        "y": 600,
+        "w": 210.5,
+        "h": 40,
+        "label": "Emitir factura\nnumerada",
+        "tipo": "accion"
+      },
+      "pdf": {
+        "x": 397.75,
+        "y": 654,
+        "w": 210.5,
+        "h": 40,
+        "label": "Generar PDF\nde la factura",
+        "tipo": "accion"
+      },
+      "correo": {
+        "x": 906.75,
+        "y": 708,
+        "w": 210.5,
+        "h": 40,
+        "label": "Enviar factura\nPDF adjunta",
+        "tipo": "accion"
+      },
+      "resultado": {
+        "x": 397.75,
+        "y": 762,
+        "w": 210.5,
+        "h": 40,
+        "label": "Informar estado\ny permitir reintento",
+        "tipo": "accion"
+      },
+      "certificar": {
+        "x": 652.25,
+        "y": 816,
+        "w": 210.5,
+        "h": 40,
+        "label": "Firmar autorización\nCER / P7M",
+        "tipo": "accion"
+      },
+      "comprobante": {
+        "x": 397.75,
+        "y": 870,
+        "w": 210.5,
+        "h": 40,
+        "label": "Mostrar comprobante\ny estado del correo",
+        "tipo": "accion"
+      },
+      "documento": {
+        "x": 143.25,
+        "y": 924,
+        "w": 210.5,
+        "h": 46,
+        "label": "Factura PDF\nGuardar / imprimir",
+        "tipo": "documento"
+      },
+      "continuar": {
+        "x": 143.25,
+        "y": 978,
+        "w": 210.5,
+        "h": 34,
+        "label": "Pulsar Continuar",
+        "tipo": "accion"
+      },
+      "activar": {
+        "x": 397.75,
+        "y": 1032,
+        "w": 210.5,
+        "h": 34,
+        "label": "Activar suscripción",
+        "tipo": "accion"
+      },
+      "aprobado": {
+        "x": 652.25,
+        "y": 492,
+        "w": 210.5,
+        "h": 48,
+        "label": "¿Aprobado?",
+        "tipo": "decision"
+      },
+      "rechazo": {
+        "x": 143.25,
+        "y": 492,
+        "w": 210.5,
+        "h": 40,
+        "label": "Informar error\nCorregir y reintentar",
+        "tipo": "accion"
+      },
+      "fin": {
+        "x": 397.75,
+        "y": 1086,
+        "w": 14,
+        "h": 14,
+        "label": "",
+        "tipo": "fin"
+      }
+    },
+    "conexiones": [
+      [
+        "inicio",
+        "plan"
+      ],
+      [
+        "plan",
+        "cotizar"
+      ],
+      [
+        "cotizar",
+        "confirmar"
+      ],
+      [
+        "confirmar",
+        "pendiente"
+      ],
+      [
+        "pendiente",
+        "datos"
+      ],
+      [
+        "datos",
+        "validar"
+      ],
+      [
+        "validar",
+        "autorizar"
+      ],
+      [
+        "autorizar",
+        "aprobado"
+      ],
+      [
+        "aprobado",
+        "pago"
+      ],
+      [
+        "pago",
+        "factura"
+      ],
+      [
+        "factura",
+        "pdf"
+      ],
+      [
+        "pdf",
+        "correo"
+      ],
+      [
+        "correo",
+        "resultado"
+      ],
+      [
+        "resultado",
+        "certificar"
+      ],
+      [
+        "certificar",
+        "comprobante"
+      ],
+      [
+        "aprobado",
+        "rechazo"
+      ],
+      [
+        "rechazo",
+        "datos"
+      ],
+      [
+        "validar",
+        "rechazo"
+      ],
+      [
+        "comprobante",
+        "documento"
+      ],
+      [
+        "comprobante",
+        "continuar"
+      ],
+      [
+        "continuar",
+        "activar"
+      ],
+      [
+        "activar",
+        "fin"
+      ]
+    ]
+  },
+  {
+    "nombre": "Klein-VitaPet-Capas",
+    "nodos": {
+      "gui": {
+        "x": 117.8,
+        "y": 114,
+        "w": 159.6,
+        "h": 40,
+        "label": "Confirmar\ncontratación",
+        "tipo": "accion"
+      },
+      "seg": {
+        "x": 321.4,
+        "y": 168,
+        "w": 159.6,
+        "h": 40,
+        "label": "Validar acceso\ne integridad",
+        "tipo": "accion"
+      },
+      "preparar": {
+        "x": 525.0,
+        "y": 222,
+        "w": 159.6,
+        "h": 40,
+        "label": "Validar plan\ny cotización",
+        "tipo": "accion"
+      },
+      "pendiente": {
+        "x": 728.6,
+        "y": 276,
+        "w": 159.6,
+        "h": 40,
+        "label": "Suscripción\npendiente",
+        "tipo": "accion"
+      },
+      "form": {
+        "x": 117.8,
+        "y": 330,
+        "w": 159.6,
+        "h": 40,
+        "label": "Confirmar pago\nDébito o crédito",
+        "tipo": "accion"
+      },
+      "pagar": {
+        "x": 525.0,
+        "y": 384,
+        "w": 159.6,
+        "h": 40,
+        "label": "Validar datos\ny autorizar pago",
+        "tipo": "accion"
+      },
+      "rechazo": {
+        "x": 117.8,
+        "y": 438,
+        "w": 159.6,
+        "h": 40,
+        "label": "Informar error\ny reintentar",
+        "tipo": "accion"
+      },
+      "pago": {
+        "x": 728.6,
+        "y": 492,
+        "w": 159.6,
+        "h": 40,
+        "label": "Guardar pago\ny detalle",
+        "tipo": "accion"
+      },
+      "emitir": {
+        "x": 525.0,
+        "y": 546,
+        "w": 159.6,
+        "h": 40,
+        "label": "Emitir factura\nVerificar datos",
+        "tipo": "accion"
+      },
+      "factura": {
+        "x": 728.6,
+        "y": 600,
+        "w": 159.6,
+        "h": 40,
+        "label": "Guardar y leer\ndatos de factura",
+        "tipo": "accion"
+      },
+      "mail": {
+        "x": 932.1999999999999,
+        "y": 654,
+        "w": 159.6,
+        "h": 40,
+        "label": "Generar PDF\nEnviar correo",
+        "tipo": "accion"
+      },
+      "cert": {
+        "x": 932.1999999999999,
+        "y": 708,
+        "w": 159.6,
+        "h": 40,
+        "label": "Firmar pago\nCER / P7M",
+        "tipo": "accion"
+      },
+      "res": {
+        "x": 117.8,
+        "y": 762,
+        "w": 159.6,
+        "h": 40,
+        "label": "Ver comprobante\nEstado del correo",
+        "tipo": "accion"
+      },
+      "download": {
+        "x": 525.0,
+        "y": 816,
+        "w": 159.6,
+        "h": 40,
+        "label": "Consultar factura\npropia",
+        "tipo": "accion"
+      },
+      "obtener": {
+        "x": 728.6,
+        "y": 816,
+        "w": 159.6,
+        "h": 40,
+        "label": "Leer datos\nde la factura",
+        "tipo": "accion"
+      },
+      "pdf": {
+        "x": 932.1999999999999,
+        "y": 870,
+        "w": 159.6,
+        "h": 40,
+        "label": "Generar PDF\nde la factura",
+        "tipo": "accion"
+      },
+      "doc": {
+        "x": 117.8,
+        "y": 924,
+        "w": 159.6,
+        "h": 46,
+        "label": "Factura PDF\nDescarga",
+        "tipo": "documento"
+      },
+      "continuar": {
+        "x": 117.8,
+        "y": 978,
+        "w": 159.6,
+        "h": 34,
+        "label": "Pulsar Continuar",
+        "tipo": "accion"
+      },
+      "activar": {
+        "x": 525.0,
+        "y": 978,
+        "w": 159.6,
+        "h": 40,
+        "label": "Confirmar pago\nde suscripción",
+        "tipo": "accion"
+      },
+      "dalactivar": {
+        "x": 728.6,
+        "y": 1032,
+        "w": 159.6,
+        "h": 40,
+        "label": "Activar\nsuscripción",
+        "tipo": "accion"
+      },
+      "fin": {
+        "x": 117.8,
+        "y": 1086,
+        "w": 159.6,
+        "h": 40,
+        "label": "Mostrar plan\nactivo",
+        "tipo": "accion"
+      },
+      "ok": {
+        "x": 525.0,
+        "y": 438,
+        "w": 159.6,
+        "h": 48,
+        "label": "¿Aprobado?",
+        "tipo": "decision"
+      }
+    },
+    "conexiones": [
+      [
+        "gui",
+        "seg"
+      ],
+      [
+        "seg",
+        "preparar"
+      ],
+      [
+        "preparar",
+        "pendiente"
+      ],
+      [
+        "pendiente",
+        "form"
+      ],
+      [
+        "form",
+        "pagar"
+      ],
+      [
+        "pagar",
+        "ok"
+      ],
+      [
+        "ok",
+        "pago"
+      ],
+      [
+        "pago",
+        "emitir"
+      ],
+      [
+        "emitir",
+        "factura"
+      ],
+      [
+        "factura",
+        "mail"
+      ],
+      [
+        "mail",
+        "cert"
+      ],
+      [
+        "cert",
+        "res"
+      ],
+      [
+        "ok",
+        "rechazo"
+      ],
+      [
+        "rechazo",
+        "form"
+      ],
+      [
+        "res",
+        "download"
+      ],
+      [
+        "download",
+        "obtener"
+      ],
+      [
+        "obtener",
+        "pdf"
+      ],
+      [
+        "pdf",
+        "doc"
+      ],
+      [
+        "res",
+        "continuar"
+      ],
+      [
+        "continuar",
+        "activar"
+      ],
+      [
+        "activar",
+        "dalactivar"
+      ],
+      [
+        "dalactivar",
+        "fin"
+      ]
+    ]
+  }
+]

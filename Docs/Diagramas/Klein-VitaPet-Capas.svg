@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="1150" viewBox="0 0 1050 1150">
+<rect width="100%" height="100%" fill="white"/>
+<title>Diagrama de Klein por capas - Contratación y factura</title>
+<path d="M117.8,134.0 L117.8,141.0 L321.4,141.0 L321.4,148.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="321.4,148.0 318.35524126122135,141.69687028353127 324.4447587387786,141.69687028353127" fill="#333"/>
+<path d="M321.4,188.0 L321.4,195.0 L525.0,195.0 L525.0,202.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="525.0,202.0 521.9552412612214,195.69687028353127 528.0447587387786,195.69687028353127" fill="#333"/>
+<path d="M525.0,242.0 L525.0,249.0 L728.6,249.0 L728.6,256.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="728.6,256.0 725.5552412612215,249.69687028353127 731.6447587387786,249.69687028353127" fill="#333"/>
+<path d="M728.6,296.0 L728.6,303.0 L117.8,303.0 L117.8,310.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="117.8,310.0 114.75524126122139,303.69687028353127 120.84475873877861,303.69687028353127" fill="#333"/>
+<path d="M117.8,350.0 L117.8,357.0 L525.0,357.0 L525.0,364.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="525.0,364.0 521.9552412612214,357.69687028353127 528.0447587387786,357.69687028353127" fill="#333"/>
+<path d="M525.0,404.0 L525.0,409.0 L525.0,414.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="525.0,414.0 521.9552412612214,407.69687028353127 528.0447587387786,407.69687028353127" fill="#333"/>
+<path d="M525.0,462.0 L525.0,467.0 L728.6,467.0 L728.6,472.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="728.6,472.0 725.5552412612215,465.69687028353127 731.6447587387786,465.69687028353127" fill="#333"/>
+<text x="537.0" y="479.0" font-family="Arial" font-size="14" fill="#222">Sí</text>
+<path d="M728.6,512.0 L728.6,519.0 L525.0,519.0 L525.0,526.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="525.0,526.0 521.9552412612214,519.6968702835312 528.0447587387786,519.6968702835312" fill="#333"/>
+<path d="M525.0,566.0 L525.0,573.0 L728.6,573.0 L728.6,580.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="728.6,580.0 725.5552412612215,573.6968702835312 731.6447587387786,573.6968702835312" fill="#333"/>
+<path d="M728.6,620.0 L728.6,627.0 L932.1999999999999,627.0 L932.1999999999999,634.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="932.1999999999999,634.0 929.1552412612214,627.6968702835312 935.2447587387785,627.6968702835312" fill="#333"/>
+<path d="M932.1999999999999,674.0 L932.1999999999999,681.0 L932.1999999999999,688.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="932.1999999999999,688.0 929.1552412612214,681.6968702835312 935.2447587387785,681.6968702835312" fill="#333"/>
+<path d="M932.1999999999999,728.0 L932.1999999999999,735.0 L117.8,735.0 L117.8,742.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="117.8,742.0 114.75524126122139,735.6968702835312 120.84475873877861,735.6968702835312" fill="#333"/>
+<path d="M445.2,438 L197.6,438" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="197.6,438 203.90312971646873,434.9552412612214 203.90312971646873,441.0447587387786" fill="#333"/>
+<text x="418.2" y="430" font-family="Arial" font-size="14" fill="#222">No</text>
+<path d="M38.0,438 L28,438 L28,330 L38.0,330" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="6 4"/>
+<polygon points="38.0,330 31.69687028353126,333.0447587387786 31.69687028353126,326.9552412612214" fill="#333"/>
+<path d="M117.8,782.0 L117.8,789.0 L525.0,789.0 L525.0,796.0" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="6 4"/>
+<polygon points="525.0,796.0 521.9552412612214,789.6968702835312 528.0447587387786,789.6968702835312" fill="#333"/>
+<text x="129.8" y="799.0" font-family="Arial" font-size="14" fill="#222">Opcional</text>
+<path d="M604.8,816 L648.8000000000001,816" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="6 4"/>
+<polygon points="648.8000000000001,816 642.4968702835313,819.0447587387786 642.4968702835313,812.9552412612214" fill="#333"/>
+<path d="M728.6,836.0 L728.6,843.0 L932.1999999999999,843.0 L932.1999999999999,850.0" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="6 4"/>
+<polygon points="932.1999999999999,850.0 929.1552412612214,843.6968702835312 935.2447587387785,843.6968702835312" fill="#333"/>
+<path d="M932.1999999999999,890.0 L932.1999999999999,895.5 L117.8,895.5 L117.8,901.0" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="6 4"/>
+<polygon points="117.8,901.0 114.75524126122139,894.6968702835312 120.84475873877861,894.6968702835312" fill="#333"/>
+<path d="M197.6,762 L209.6,762 L209.6,952 L117.8,952 L117.8,961.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="117.8,961.0 114.75524126122139,954.6968702835312 120.84475873877861,954.6968702835312" fill="#333"/>
+<path d="M197.6,978 L445.2,978" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="445.2,978 438.89687028353126,981.0447587387786 438.89687028353126,974.9552412612214" fill="#333"/>
+<path d="M525.0,998.0 L525.0,1005.0 L728.6,1005.0 L728.6,1012.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="728.6,1012.0 725.5552412612215,1005.6968702835312 731.6447587387786,1005.6968702835312" fill="#333"/>
+<path d="M728.6,1052.0 L728.6,1059.0 L117.8,1059.0 L117.8,1066.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="117.8,1066.0 114.75524126122139,1059.6968702835313 120.84475873877861,1059.6968702835313" fill="#333"/>
+<g font-family="Arial, sans-serif" fill="#171717" stroke-linejoin="round">
+<text x="525.0" y="23" font-size="23" font-weight="bold" text-anchor="middle">Diagrama de Klein por capas - Contratación y factura</text>
+<path d="M16.0,42 V1110" fill="none" stroke="#666" stroke-width="1.2"/>
+<text x="117.8" y="59" font-size="20" font-weight="bold" text-anchor="middle">GUI</text>
+<path d="M219.6,42 V1110" fill="none" stroke="#666" stroke-width="1.2"/>
+<text x="321.4" y="59" font-size="20" font-weight="bold" text-anchor="middle">SEGURIDAD</text>
+<path d="M423.2,42 V1110" fill="none" stroke="#666" stroke-width="1.2"/>
+<text x="525.0" y="59" font-size="20" font-weight="bold" text-anchor="middle">BLL</text>
+<path d="M626.8,42 V1110" fill="none" stroke="#666" stroke-width="1.2"/>
+<text x="728.5999999999999" y="59" font-size="20" font-weight="bold" text-anchor="middle">DAL</text>
+<path d="M830.4,42 V1110" fill="none" stroke="#666" stroke-width="1.2"/>
+<text x="932.1999999999999" y="59" font-size="20" font-weight="bold" text-anchor="middle">SERVICIOS</text>
+<path d="M1034,42 V1110 M16,72 H1034" fill="none" stroke="#666" stroke-width="1.2"/>
+<rect x="38.0" y="94.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="117.8" y="110.5" font-size="21" font-weight="normal" text-anchor="middle">Confirmar</text>
+<text x="117.8" y="127.5" font-size="21" font-weight="normal" text-anchor="middle">contratación</text>
+<rect x="241.59999999999997" y="148.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="321.4" y="164.5" font-size="21" font-weight="normal" text-anchor="middle">Validar acceso</text>
+<text x="321.4" y="181.5" font-size="21" font-weight="normal" text-anchor="middle">e integridad</text>
+<rect x="445.2" y="202.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="525.0" y="218.5" font-size="21" font-weight="normal" text-anchor="middle">Validar plan</text>
+<text x="525.0" y="235.5" font-size="21" font-weight="normal" text-anchor="middle">y cotización</text>
+<rect x="648.8000000000001" y="256.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="728.6" y="272.5" font-size="21" font-weight="normal" text-anchor="middle">Suscripción</text>
+<text x="728.6" y="289.5" font-size="21" font-weight="normal" text-anchor="middle">pendiente</text>
+<rect x="38.0" y="310.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="117.8" y="326.5" font-size="20.5" font-weight="normal" text-anchor="middle">Confirmar pago</text>
+<text x="117.8" y="343.5" font-size="20.5" font-weight="normal" text-anchor="middle">Débito o crédito</text>
+<rect x="445.2" y="364.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="525.0" y="380.5" font-size="20.0" font-weight="normal" text-anchor="middle">Validar datos</text>
+<text x="525.0" y="397.5" font-size="20.0" font-weight="normal" text-anchor="middle">y autorizar pago</text>
+<rect x="38.0" y="418.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="117.8" y="434.5" font-size="21" font-weight="normal" text-anchor="middle">Informar error</text>
+<text x="117.8" y="451.5" font-size="21" font-weight="normal" text-anchor="middle">y reintentar</text>
+<rect x="648.8000000000001" y="472.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="728.6" y="488.5" font-size="21" font-weight="normal" text-anchor="middle">Guardar pago</text>
+<text x="728.6" y="505.5" font-size="21" font-weight="normal" text-anchor="middle">y detalle</text>
+<rect x="445.2" y="526.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="525.0" y="542.5" font-size="21" font-weight="normal" text-anchor="middle">Emitir factura</text>
+<text x="525.0" y="559.5" font-size="21" font-weight="normal" text-anchor="middle">Verificar datos</text>
+<rect x="648.8000000000001" y="580.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="728.6" y="596.5" font-size="20.0" font-weight="normal" text-anchor="middle">Guardar y leer</text>
+<text x="728.6" y="613.5" font-size="20.0" font-weight="normal" text-anchor="middle">datos de factura</text>
+<rect x="852.4" y="634.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="932.1999999999999" y="650.5" font-size="21" font-weight="normal" text-anchor="middle">Generar PDF</text>
+<text x="932.1999999999999" y="667.5" font-size="21" font-weight="normal" text-anchor="middle">Enviar correo</text>
+<rect x="852.4" y="688.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="932.1999999999999" y="704.5" font-size="21" font-weight="normal" text-anchor="middle">Firmar pago</text>
+<text x="932.1999999999999" y="721.5" font-size="21" font-weight="normal" text-anchor="middle">CER / P7M</text>
+<rect x="38.0" y="742.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="117.8" y="758.5" font-size="18.3" font-weight="normal" text-anchor="middle">Ver comprobante</text>
+<text x="117.8" y="775.5" font-size="18.3" font-weight="normal" text-anchor="middle">Estado del correo</text>
+<rect x="445.2" y="796.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="525.0" y="812.5" font-size="18.9" font-weight="normal" text-anchor="middle">Consultar factura</text>
+<text x="525.0" y="829.5" font-size="18.9" font-weight="normal" text-anchor="middle">propia</text>
+<rect x="648.8000000000001" y="796.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="728.6" y="812.5" font-size="21" font-weight="normal" text-anchor="middle">Leer datos</text>
+<text x="728.6" y="829.5" font-size="21" font-weight="normal" text-anchor="middle">de la factura</text>
+<rect x="852.4" y="850.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="932.1999999999999" y="866.5" font-size="21" font-weight="normal" text-anchor="middle">Generar PDF</text>
+<text x="932.1999999999999" y="883.5" font-size="21" font-weight="normal" text-anchor="middle">de la factura</text>
+<path d="M38.0,901.0 H197.6 V943.0 C157.7,935.0 77.9,951.0 38.0,943.0 Z" fill="#fafafa" stroke="#333" stroke-width="1.4"/>
+<text x="117.8" y="918.5" font-size="21" font-weight="normal" text-anchor="middle">Factura PDF</text>
+<text x="117.8" y="935.5" font-size="21" font-weight="normal" text-anchor="middle">Descarga</text>
+<rect x="38.0" y="961.0" width="159.6" height="34" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="117.8" y="983.0" font-size="19.3" font-weight="normal" text-anchor="middle">Pulsar Continuar</text>
+<rect x="445.2" y="958.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="525.0" y="974.5" font-size="20.8" font-weight="normal" text-anchor="middle">Confirmar pago</text>
+<text x="525.0" y="991.5" font-size="20.8" font-weight="normal" text-anchor="middle">de suscripción</text>
+<rect x="648.8000000000001" y="1012.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="728.6" y="1028.5" font-size="21" font-weight="normal" text-anchor="middle">Activar</text>
+<text x="728.6" y="1045.5" font-size="21" font-weight="normal" text-anchor="middle">suscripción</text>
+<rect x="38.0" y="1066.0" width="159.6" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="117.8" y="1082.5" font-size="21" font-weight="normal" text-anchor="middle">Mostrar plan</text>
+<text x="117.8" y="1099.5" font-size="21" font-weight="normal" text-anchor="middle">activo</text>
+<path d="M445.2,438 L525.0,414.0 L604.8,438 L525.0,462.0 Z" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="525.0" y="443.0" font-size="18" font-weight="normal" text-anchor="middle">¿Aprobado?</text>
+<text x="525.0" y="1133" font-size="18" font-weight="normal" text-anchor="middle">BE transporta los datos entre capas. Persistencia: SQL Server. Correo: SMTP.</text>
+</g></svg>

@@ -82,4 +82,4 @@ comprobaciones; el recorrido web sobre una base cifrada aprobó 28 y la regresi�
 web de facturación, 18. También se aprobaron 59 comprobaciones de regresión
 general y 203 de cobertura de integridad. La documentación Word se actualizó en el diccionario de Bitacora,
 la política 12.8.6, los verificadores de 12.9.2 y los procedimientos de 12.9.3.
-La confirmación manual del usuario continúa pendiente.
+Prueba manual y funcionamiento confirmados por el usuario el 24/10/2026.
