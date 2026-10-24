@@ -62,8 +62,8 @@
         "x": 652.25,
         "y": 438,
         "w": 210.5,
-        "h": 40,
-        "label": "Autorizar pago\n(simulador local)",
+        "h": 34,
+        "label": "Autorizar pago",
         "tipo": "accion"
       },
       "pago": {

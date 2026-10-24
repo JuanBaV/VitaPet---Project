@@ -112,7 +112,7 @@ def negocio():
     items=[('plan',0,0,'Seleccionar plan'),('cotizar',1,1,'Mostrar cobertura\ny precio por mascota'),
            ('confirmar',0,2,'Confirmar plan'),('pendiente',1,3,'Registrar suscripción\npendiente de pago'),
            ('datos',0,4,'Elegir medio de pago\nConfirmar los datos'),('validar',1,5,'Validar datos\ne importe vigente'),
-           ('autorizar',2,6,'Autorizar pago\n(simulador local)'),('pago',1,8,'Registrar pago\ny detalle'),
+           ('autorizar',2,6,'Autorizar pago'),('pago',1,8,'Registrar pago\ny detalle'),
            ('factura',1,9,'Emitir factura\nnumerada'),('pdf',1,10,'Generar PDF\nde la factura'),
            ('correo',3,11,'Enviar factura\nPDF adjunta'),('resultado',1,12,'Informar estado\ny permitir reintento'),
            ('certificar',2,13,'Firmar autorización\nCER / P7M'),('comprobante',1,14,'Mostrar comprobante\ny estado del correo'),

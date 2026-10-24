@@ -13,9 +13,9 @@
 <polygon points="143.25,310.0 140.20524126122137,303.69687028353127 146.29475873877863,303.69687028353127" fill="#333"/>
 <path d="M143.25,350.0 L143.25,357.0 L397.75,357.0 L397.75,364.0" fill="none" stroke="#333" stroke-width="1.5"/>
 <polygon points="397.75,364.0 394.7052412612214,357.69687028353127 400.7947587387786,357.69687028353127" fill="#333"/>
-<path d="M397.75,404.0 L397.75,411.0 L652.25,411.0 L652.25,418.0" fill="none" stroke="#333" stroke-width="1.5"/>
-<polygon points="652.25,418.0 649.2052412612214,411.69687028353127 655.2947587387786,411.69687028353127" fill="#333"/>
-<path d="M652.25,458.0 L652.25,463.0 L652.25,468.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<path d="M397.75,404.0 L397.75,412.5 L652.25,412.5 L652.25,421.0" fill="none" stroke="#333" stroke-width="1.5"/>
+<polygon points="652.25,421.0 649.2052412612214,414.69687028353127 655.2947587387786,414.69687028353127" fill="#333"/>
+<path d="M652.25,455.0 L652.25,461.5 L652.25,468.0" fill="none" stroke="#333" stroke-width="1.5"/>
 <polygon points="652.25,468.0 649.2052412612214,461.69687028353127 655.2947587387786,461.69687028353127" fill="#333"/>
 <path d="M652.25,516.0 L652.25,521.0 L397.75,521.0 L397.75,526.0" fill="none" stroke="#333" stroke-width="1.5"/>
 <polygon points="397.75,526.0 394.7052412612214,519.6968702835312 400.7947587387786,519.6968702835312" fill="#333"/>
@@ -77,9 +77,8 @@
 <rect x="292.5" y="364.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
 <text x="397.75" y="380.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Validar datos</text>
 <text x="397.75" y="397.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">e importe vigente</text>
-<rect x="547.0" y="418.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="652.25" y="434.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Autorizar pago</text>
-<text x="652.25" y="451.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">(simulador local)</text>
+<rect x="547.0" y="421.0" width="210.5" height="34" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
+<text x="652.25" y="443.0" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Autorizar pago</text>
 <rect x="292.5" y="526.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
 <text x="397.75" y="542.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Registrar pago</text>
 <text x="397.75" y="559.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">y detalle</text>
