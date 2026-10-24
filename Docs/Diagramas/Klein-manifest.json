@@ -270,92 +270,140 @@
         "y": 114,
         "w": 159.6,
         "h": 40,
-        "label": "Confirmar\ncontratación",
-        "tipo": "accion"
-      },
-      "seg": {
-        "x": 321.4,
-        "y": 168,
-        "w": 159.6,
-        "h": 40,
-        "label": "Validar acceso\ne integridad",
+        "label": "Solicitar\ncontratación",
         "tipo": "accion"
       },
       "preparar": {
-        "x": 525.0,
-        "y": 222,
+        "x": 321.4,
+        "y": 114,
         "w": 159.6,
         "h": 40,
         "label": "Validar plan\ny cotización",
         "tipo": "accion"
       },
       "pendiente": {
-        "x": 728.6,
-        "y": 276,
+        "x": 525.0,
+        "y": 114,
         "w": 159.6,
         "h": 40,
-        "label": "Suscripción\npendiente",
+        "label": "Registrar\nsuscripción",
+        "tipo": "accion"
+      },
+      "dbsuscripcion": {
+        "x": 932.1999999999999,
+        "y": 168,
+        "w": 126,
+        "h": 44,
+        "label": "VitaPet",
+        "tipo": "datos"
+      },
+      "consultar": {
+        "x": 525.0,
+        "y": 222,
+        "w": 159.6,
+        "h": 40,
+        "label": "Obtener resumen\nde contratación",
+        "tipo": "accion"
+      },
+      "resumen": {
+        "x": 321.4,
+        "y": 222,
+        "w": 159.6,
+        "h": 40,
+        "label": "Devolver precio\ny condiciones",
         "tipo": "accion"
       },
       "form": {
         "x": 117.8,
-        "y": 330,
+        "y": 222,
         "w": 159.6,
         "h": 40,
-        "label": "Confirmar pago\nDébito o crédito",
+        "label": "Ver resumen\nConfirmar pago",
         "tipo": "accion"
       },
       "pagar": {
-        "x": 525.0,
-        "y": 384,
+        "x": 321.4,
+        "y": 330,
         "w": 159.6,
         "h": 40,
         "label": "Validar datos\ny autorizar pago",
         "tipo": "accion"
       },
-      "rechazo": {
-        "x": 117.8,
+      "pago": {
+        "x": 525.0,
+        "y": 330,
+        "w": 159.6,
+        "h": 40,
+        "label": "Registrar pago\ny detalle",
+        "tipo": "accion"
+      },
+      "dbpago": {
+        "x": 932.1999999999999,
+        "y": 384,
+        "w": 126,
+        "h": 44,
+        "label": "VitaPet",
+        "tipo": "datos"
+      },
+      "emitir": {
+        "x": 321.4,
+        "y": 438,
+        "w": 159.6,
+        "h": 34,
+        "label": "Emitir factura",
+        "tipo": "accion"
+      },
+      "factura": {
+        "x": 525.0,
         "y": 438,
         "w": 159.6,
         "h": 40,
-        "label": "Informar error\ny reintentar",
+        "label": "Registrar datos\nde la factura",
         "tipo": "accion"
       },
-      "pago": {
-        "x": 728.6,
+      "dbfactura": {
+        "x": 932.1999999999999,
         "y": 492,
-        "w": 159.6,
-        "h": 40,
-        "label": "Guardar pago\ny detalle",
-        "tipo": "accion"
+        "w": 126,
+        "h": 44,
+        "label": "VitaPet",
+        "tipo": "datos"
       },
-      "emitir": {
+      "obtener": {
         "x": 525.0,
         "y": 546,
         "w": 159.6,
         "h": 40,
-        "label": "Emitir factura\nVerificar datos",
+        "label": "Obtener datos\nde la factura",
         "tipo": "accion"
       },
-      "factura": {
-        "x": 728.6,
-        "y": 600,
+      "datosfactura": {
+        "x": 321.4,
+        "y": 546,
         "w": 159.6,
         "h": 40,
-        "label": "Guardar y leer\ndatos de factura",
+        "label": "Preparar datos\nde la factura",
         "tipo": "accion"
       },
-      "mail": {
-        "x": 932.1999999999999,
+      "pdf": {
+        "x": 728.6,
         "y": 654,
         "w": 159.6,
         "h": 40,
-        "label": "Generar PDF\nEnviar correo",
+        "label": "Generar factura\nPDF",
+        "tipo": "accion"
+      },
+      "mail": {
+        "x": 728.6,
+        "y": 708,
+        "w": 159.6,
+        "h": 40,
+        "label": "Enviar factura\npor correo",
         "tipo": "accion"
       },
       "cert": {
-        "x": 932.1999999999999,
-        "y": 708,
+        "x": 728.6,
+        "y": 762,
         "w": 159.6,
         "h": 40,
         "label": "Firmar pago\nCER / P7M",
@@ -369,61 +417,45 @@
         "label": "Ver comprobante\nEstado del correo",
         "tipo": "accion"
       },
-      "download": {
-        "x": 525.0,
-        "y": 816,
-        "w": 159.6,
-        "h": 40,
-        "label": "Consultar factura\npropia",
-        "tipo": "accion"
-      },
-      "obtener": {
-        "x": 728.6,
-        "y": 816,
-        "w": 159.6,
-        "h": 40,
-        "label": "Leer datos\nde la factura",
-        "tipo": "accion"
-      },
-      "pdf": {
-        "x": 932.1999999999999,
-        "y": 870,
-        "w": 159.6,
-        "h": 40,
-        "label": "Generar PDF\nde la factura",
-        "tipo": "accion"
-      },
       "doc": {
         "x": 117.8,
-        "y": 924,
-        "w": 159.6,
+        "y": 816,
+        "w": 174,
         "h": 46,
-        "label": "Factura PDF\nDescarga",
+        "label": "Factura PDF",
         "tipo": "documento"
       },
       "continuar": {
         "x": 117.8,
-        "y": 978,
+        "y": 924,
         "w": 159.6,
         "h": 34,
         "label": "Pulsar Continuar",
         "tipo": "accion"
       },
       "activar": {
-        "x": 525.0,
-        "y": 978,
+        "x": 321.4,
+        "y": 924,
         "w": 159.6,
         "h": 40,
         "label": "Confirmar pago\nde suscripción",
         "tipo": "accion"
       },
       "dalactivar": {
-        "x": 728.6,
-        "y": 1032,
+        "x": 525.0,
+        "y": 924,
         "w": 159.6,
         "h": 40,
         "label": "Activar\nsuscripción",
         "tipo": "accion"
+      },
+      "dbactiva": {
+        "x": 932.1999999999999,
+        "y": 978,
+        "w": 126,
+        "h": 44,
+        "label": "VitaPet",
+        "tipo": "datos"
       },
       "fin": {
         "x": 117.8,
@@ -432,23 +464,11 @@
         "h": 40,
         "label": "Mostrar plan\nactivo",
         "tipo": "accion"
-      },
-      "ok": {
-        "x": 525.0,
-        "y": 438,
-        "w": 159.6,
-        "h": 48,
-        "label": "¿Aprobado?",
-        "tipo": "decision"
       }
     },
     "conexiones": [
       [
         "gui",
-        "seg"
-      ],
-      [
-        "seg",
         "preparar"
       ],
       [
@@ -457,6 +477,18 @@
       ],
       [
         "pendiente",
+        "dbsuscripcion"
+      ],
+      [
+        "dbsuscripcion",
+        "consultar"
+      ],
+      [
+        "consultar",
+        "resumen"
+      ],
+      [
+        "resumen",
         "form"
       ],
       [
@@ -465,14 +497,14 @@
       ],
       [
         "pagar",
-        "ok"
-      ],
-      [
-        "ok",
         "pago"
       ],
       [
         "pago",
+        "dbpago"
+      ],
+      [
+        "dbpago",
         "emitir"
       ],
       [
@@ -481,6 +513,22 @@
       ],
       [
         "factura",
+        "dbfactura"
+      ],
+      [
+        "dbfactura",
+        "obtener"
+      ],
+      [
+        "obtener",
+        "datosfactura"
+      ],
+      [
+        "datosfactura",
+        "pdf"
+      ],
+      [
+        "pdf",
         "mail"
       ],
       [
@@ -492,27 +540,7 @@
         "res"
       ],
       [
-        "ok",
-        "rechazo"
-      ],
-      [
-        "rechazo",
-        "form"
-      ],
-      [
         "res",
-        "download"
-      ],
-      [
-        "download",
-        "obtener"
-      ],
-      [
-        "obtener",
-        "pdf"
-      ],
-      [
-        "pdf",
         "doc"
       ],
       [
@@ -529,6 +557,10 @@
       ],
       [
         "dalactivar",
+        "dbactiva"
+      ],
+      [
+        "dbactiva",
         "fin"
       ]
     ]

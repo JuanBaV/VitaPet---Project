@@ -10,8 +10,9 @@ W, H = 1050, 1150
 
 
 class Diagrama:
-    def __init__(self, nombre, columnas, titulo):
+    def __init__(self, nombre, columnas, titulo, clasico=False):
         self.nombre, self.columnas = nombre, columnas
+        self.clasico = clasico
         self.ancho = (W - 32) / len(columnas)
         self.nodes, self.edges = {}, []
         self.partes = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
@@ -19,14 +20,20 @@ class Diagrama:
                        f'<title>{escape(titulo)}</title>',
                        '<g font-family="Arial, sans-serif" fill="#171717" stroke-linejoin="round">']
         self.texto(W/2, 23, titulo, 23, True)
+        if clasico:
+            self.partes.append(f'<rect x="16" y="42" width="{W-32}" height="42" fill="#222"/>')
         for i, label in enumerate(columnas):
             x = 16 + i * self.ancho
             self.partes.append(f'<path d="M{x},42 V{H-40}" fill="none" stroke="#666" stroke-width="1.2"/>')
-            self.texto(x+self.ancho/2, 59, label, 20, True)
-        self.partes.append(f'<path d="M{W-16},42 V{H-40} M16,72 H{W-16}" fill="none" stroke="#666" stroke-width="1.2"/>')
+            for j,line in enumerate(label.split('\n')):
+                y=59+j*19 if '\n' in label else 68 if clasico else 59
+                self.texto(x+self.ancho/2, y, line, 18 if clasico else 20, True, '#fff' if clasico else '#171717')
+        header=84 if clasico else 72
+        self.partes.append(f'<path d="M{W-16},42 V{H-40} M16,{header} H{W-16}" fill="none" stroke="#333" stroke-width="1.4"/>')
+        if clasico:self.partes.append(f'<path d="M16,42 H{W-16} M16,{H-40} H{W-16}" fill="none" stroke="#333" stroke-width="1.4"/>')
 
-    def texto(self, x, y, value, size=18, bold=False):
-        self.partes.append(f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{"bold" if bold else "normal"}" text-anchor="middle">{escape(value)}</text>')
+    def texto(self, x, y, value, size=18, bold=False, color='#171717'):
+        self.partes.append(f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{"bold" if bold else "normal"}" text-anchor="middle" fill="{color}">{escape(value)}</text>')
 
     def nodo(self, key, col, row, label, tipo='accion', width=None, size=21):
         assert key not in self.nodes
@@ -47,7 +54,7 @@ class Diagrama:
             l, r, t, b = x-width/2, x+width/2, y-height/2, y+height/2
             self.partes.append(f'<path d="M{l},{t+4} C{l},{t-2} {r},{t-2} {r},{t+4} V{b-4} C{r},{b+2} {l},{b+2} {l},{b-4} Z M{l},{t+4} C{l},{t+10} {r},{t+10} {r},{t+4}" fill="white" stroke="#333" stroke-width="1.4"/>')
         else:
-            self.partes.append(f'<rect x="{x-width/2}" y="{y-height/2}" width="{width}" height="{height}" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>')
+            self.partes.append(f'<rect x="{x-width/2}" y="{y-height/2}" width="{width}" height="{height}" rx="{0 if self.clasico else 8}" fill="{"white" if self.clasico else "#f5f5f5"}" stroke="#333" stroke-width="1.4"/>')
         font = min(size, (width-16)/max(stringWidth(line, 'Helvetica', 1) for line in lines))
         assert font >= 18, (key, font)
         for i, line in enumerate(lines):
@@ -99,7 +106,7 @@ class Diagrama:
 
 
 def negocio():
-    d=Diagrama('Klein-VitaPet',['Cliente','VitaPet','Pago simulado','Correo'],
+    d=Diagrama('Klein-VitaPet',['Cliente','VitaPet','Servicio de pago','Correo'],
                'Diagrama de Klein - Contratación, pago y factura')
     d.punto('inicio',0,-.6)
     items=[('plan',0,0,'Seleccionar plan'),('cotizar',1,1,'Mostrar cobertura\ny precio por mascota'),
@@ -128,30 +135,34 @@ def negocio():
 
 
 def capas():
-    d=Diagrama('Klein-VitaPet-Capas',['GUI','SEGURIDAD','BLL','DAL','SERVICIOS'],
-               'Diagrama de Klein por capas - Contratación y factura')
-    nodes=[('gui',0,0,'Confirmar\ncontratación'),('seg',1,1,'Validar acceso\ne integridad'),
-           ('preparar',2,2,'Validar plan\ny cotización'),('pendiente',3,3,'Suscripción\npendiente'),
-           ('form',0,4,'Confirmar pago\nDébito o crédito'),('pagar',2,5,'Validar datos\ny autorizar pago'),
-           ('rechazo',0,6,'Informar error\ny reintentar'),('pago',3,7,'Guardar pago\ny detalle'),
-           ('emitir',2,8,'Emitir factura\nVerificar datos'),('factura',3,9,'Guardar y leer\ndatos de factura'),
-           ('mail',4,10,'Generar PDF\nEnviar correo'),('cert',4,11,'Firmar pago\nCER / P7M'),
-           ('res',0,12,'Ver comprobante\nEstado del correo'),('download',2,13,'Consultar factura\npropia'),
-           ('obtener',3,13,'Leer datos\nde la factura'),('pdf',4,14,'Generar PDF\nde la factura'),
-           ('doc',0,15,'Factura PDF\nDescarga'),('continuar',0,16,'Pulsar Continuar'),
-           ('activar',2,16,'Confirmar pago\nde suscripción'),('dalactivar',3,17,'Activar\nsuscripción'),
-           ('fin',0,18,'Mostrar plan\nactivo')]
-    for key,c,r,label in nodes:d.nodo(key,c,r,label,'documento' if key=='doc' else 'accion',size=21)
-    d.nodo('ok',2,6,'¿Aprobado?','decision',size=18)
-    seq=['gui','seg','preparar','pendiente','form','pagar','ok','pago','emitir','factura','mail','cert','res']
-    for a,b in zip(seq,seq[1:]):d.conectar(a,b,'Sí' if a=='ok' else '')
-    d.conectar('ok','rechazo','No')
-    d.conectar('rechazo','form',via=[(28,d.nodes['rechazo']['y']),(28,d.nodes['form']['y'])],salida=-1,entrada=-1,dashed=True)
-    for a,b in [('res','download'),('download','obtener'),('obtener','pdf'),('pdf','doc')]:d.conectar(a,b,'Opcional' if a=='res' else '',dashed=True)
-    track=d.nodes['res']['x']+d.nodes['res']['w']/2+12
-    d.conectar('res','continuar',via=[(track,d.nodes['res']['y']),(track,d.nodes['continuar']['y']-26),(d.nodes['continuar']['x'],d.nodes['continuar']['y']-26)],salida=1)
-    for a,b in [('continuar','activar'),('activar','dalactivar'),('dalactivar','fin')]:d.conectar(a,b)
-    return d.guardar('BE transporta los datos entre capas. Persistencia: SQL Server. Correo: SMTP.')
+    d=Diagrama('Klein-VitaPet-Capas',
+               ['Capa de\nPresentación','Capa de\nNegocio','Acceso a\nDatos','Servicios','Base de\ndatos'],
+               'Diagrama de Klein por capas - Contratación y factura',clasico=True)
+    nodes=[('gui',0,0,'Solicitar\ncontratación'),('preparar',1,0,'Validar plan\ny cotización'),
+           ('pendiente',2,0,'Registrar\nsuscripción'),('dbsuscripcion',4,1,'VitaPet'),
+           ('consultar',2,2,'Obtener resumen\nde contratación'),('resumen',1,2,'Devolver precio\ny condiciones'),
+           ('form',0,2,'Ver resumen\nConfirmar pago'),('pagar',1,4,'Validar datos\ny autorizar pago'),
+           ('pago',2,4,'Registrar pago\ny detalle'),('dbpago',4,5,'VitaPet'),
+           ('emitir',1,6,'Emitir factura'),('factura',2,6,'Registrar datos\nde la factura'),
+           ('dbfactura',4,7,'VitaPet'),('obtener',2,8,'Obtener datos\nde la factura'),
+           ('datosfactura',1,8,'Preparar datos\nde la factura'),('pdf',3,10,'Generar factura\nPDF'),
+           ('mail',3,11,'Enviar factura\npor correo'),('cert',3,12,'Firmar pago\nCER / P7M'),
+           ('res',0,12,'Ver comprobante\nEstado del correo'),
+           ('doc',0,13,'Factura PDF'),('continuar',0,15,'Pulsar Continuar'),
+           ('activar',1,15,'Confirmar pago\nde suscripción'),('dalactivar',2,15,'Activar\nsuscripción'),
+           ('dbactiva',4,16,'VitaPet'),('fin',0,18,'Mostrar plan\nactivo')]
+    for key,c,r,label in nodes:
+        tipo='documento' if key=='doc' else 'datos' if key.startswith('db') else 'accion'
+        d.nodo(key,c,r,label,tipo,width=174 if key=='doc' else 126 if tipo=='datos' else None,size=21)
+    seq=['gui','preparar','pendiente','dbsuscripcion','consultar','resumen','form','pagar','pago','dbpago',
+         'emitir','factura','dbfactura','obtener','datosfactura','pdf','mail','cert','res']
+    for a,b in zip(seq,seq[1:]):d.conectar(a,b)
+    d.conectar('res','doc',dashed=True)
+    track=d.nodes['res']['x']+max(d.nodes['res']['w'],d.nodes['doc']['w'])/2+12
+    d.conectar('res','continuar',via=[(track,d.nodes['res']['y']),(track,d.nodes['continuar']['y']-26),
+                                    (d.nodes['continuar']['x'],d.nodes['continuar']['y']-26)],salida=1)
+    for a,b in [('continuar','activar'),('activar','dalactivar'),('dalactivar','dbactiva'),('dbactiva','fin')]:d.conectar(a,b)
+    return d.guardar('Seguridad e integridad transversales. BE transporta datos. Descarga opcional.')
 
 
 if __name__=='__main__':

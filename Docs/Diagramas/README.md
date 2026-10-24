@@ -5,10 +5,15 @@ facturación. `Klein-VitaPet-Capas.svg` ubica las actividades del mismo circuito
 en las capas que las ejecutan. Los PNG se incorporan a la documentación Word;
 los SVG conservan texto y trazos vectoriales editables.
 
-El formato sigue los ejemplos aprobados: carriles, actividades, decisiones,
-flechas y un símbolo de documento para la factura digital. Las dos láminas del
-Word usan A4 vertical. El diagrama por capas muestra actividades y capas, sin
-nombres de clases ni métodos, según el alcance solicitado.
+Las dos láminas del Word usan A4 vertical. El diagrama de negocio conserva sus
+carriles de Cliente, VitaPet, Servicio de pago y Correo. El servicio de pago
+representa el simulador local existente.
+
+El diagrama por capas sigue el formato de las fotografías aprobadas: marco y
+columnas cerradas, encabezado oscuro, actividades rectangulares, cilindros de
+base de datos y símbolo de documento para la factura. Las columnas son
+Presentación, Negocio, Acceso a Datos, Servicios y Base de datos. Seguridad y BE
+se indican como apoyo transversal. Las actividades no incluyen clases ni métodos.
 
 ## Correspondencia con el código
 
@@ -38,7 +43,7 @@ reintentar sin registrar otro pago. La activación se realiza al pulsar Continua
 ## Regeneración
 
 Ejecutar `generar_klein.py` con Python y ReportLab para reconstruir los SVG y su
-manifiesto. Los PNG se rasterizan desde los SVG con Sharp a densidad 180. Estas
+manifiesto. Los PNG se rasterizan desde los SVG con Sharp a densidad 220. Estas
 herramientas se usan para la documentación y no son dependencias de VitaPet.
 
 La generación comprueba que cada identificador sea único y que los textos

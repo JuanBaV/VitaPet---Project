@@ -15,8 +15,10 @@ El segundo muestra actividades y capas, sin nombres de clases ni métodos.
    y que puedan seguirse las flechas, las decisiones y sus rótulos.
 3. Recorrer selección del plan, contratación pendiente, pago aprobado o rechazado,
    factura numerada, PDF, correo, descarga opcional y activación al pulsar Continuar.
-4. En el diagrama por capas, comprobar la ubicación de las actividades en GUI,
-   Seguridad, BLL, DAL y Servicios. BE transporta datos entre ellas.
+4. En el diagrama por capas, comprobar las columnas de Presentación, Negocio,
+   Acceso a Datos, Servicios y Base de datos, con encabezado oscuro, marco,
+   actividades rectangulares y cilindros VitaPet. Seguridad e integridad se
+   indican como controles transversales y BE como transporte de datos.
 5. Identificar la factura PDF: Servicios la genera, Negocio coordina su emisión,
    Datos conserva la información y Presentación entrega el archivo al cliente.
 

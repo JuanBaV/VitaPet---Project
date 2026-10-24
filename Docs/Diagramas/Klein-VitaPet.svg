@@ -50,70 +50,70 @@
 <path d="M397.75,1049.0 L397.75,1064.0 L397.75,1079.0" fill="none" stroke="#333" stroke-width="1.5"/>
 <polygon points="397.75,1079.0 394.7052412612214,1072.6968702835313 400.7947587387786,1072.6968702835313" fill="#333"/>
 <g font-family="Arial, sans-serif" fill="#171717" stroke-linejoin="round">
-<text x="525.0" y="23" font-size="23" font-weight="bold" text-anchor="middle">Diagrama de Klein - Contratación, pago y factura</text>
+<text x="525.0" y="23" font-size="23" font-weight="bold" text-anchor="middle" fill="#171717">Diagrama de Klein - Contratación, pago y factura</text>
 <path d="M16.0,42 V1110" fill="none" stroke="#666" stroke-width="1.2"/>
-<text x="143.25" y="59" font-size="20" font-weight="bold" text-anchor="middle">Cliente</text>
+<text x="143.25" y="59" font-size="20" font-weight="bold" text-anchor="middle" fill="#171717">Cliente</text>
 <path d="M270.5,42 V1110" fill="none" stroke="#666" stroke-width="1.2"/>
-<text x="397.75" y="59" font-size="20" font-weight="bold" text-anchor="middle">VitaPet</text>
+<text x="397.75" y="59" font-size="20" font-weight="bold" text-anchor="middle" fill="#171717">VitaPet</text>
 <path d="M525.0,42 V1110" fill="none" stroke="#666" stroke-width="1.2"/>
-<text x="652.25" y="59" font-size="20" font-weight="bold" text-anchor="middle">Pago simulado</text>
+<text x="652.25" y="59" font-size="20" font-weight="bold" text-anchor="middle" fill="#171717">Servicio de pago</text>
 <path d="M779.5,42 V1110" fill="none" stroke="#666" stroke-width="1.2"/>
-<text x="906.75" y="59" font-size="20" font-weight="bold" text-anchor="middle">Correo</text>
-<path d="M1034,42 V1110 M16,72 H1034" fill="none" stroke="#666" stroke-width="1.2"/>
+<text x="906.75" y="59" font-size="20" font-weight="bold" text-anchor="middle" fill="#171717">Correo</text>
+<path d="M1034,42 V1110 M16,72 H1034" fill="none" stroke="#333" stroke-width="1.4"/>
 <circle cx="143.25" cy="81.6" r="6" fill="#222"/>
 <rect x="38.0" y="97.0" width="210.5" height="34" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="143.25" y="119.0" font-size="21" font-weight="normal" text-anchor="middle">Seleccionar plan</text>
+<text x="143.25" y="119.0" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Seleccionar plan</text>
 <rect x="292.5" y="148.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="397.75" y="164.5" font-size="21.0" font-weight="normal" text-anchor="middle">Mostrar cobertura</text>
-<text x="397.75" y="181.5" font-size="21.0" font-weight="normal" text-anchor="middle">y precio por mascota</text>
+<text x="397.75" y="164.5" font-size="21.0" font-weight="normal" text-anchor="middle" fill="#171717">Mostrar cobertura</text>
+<text x="397.75" y="181.5" font-size="21.0" font-weight="normal" text-anchor="middle" fill="#171717">y precio por mascota</text>
 <rect x="38.0" y="205.0" width="210.5" height="34" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="143.25" y="227.0" font-size="21" font-weight="normal" text-anchor="middle">Confirmar plan</text>
+<text x="143.25" y="227.0" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Confirmar plan</text>
 <rect x="292.5" y="256.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="397.75" y="272.5" font-size="20.8" font-weight="normal" text-anchor="middle">Registrar suscripción</text>
-<text x="397.75" y="289.5" font-size="20.8" font-weight="normal" text-anchor="middle">pendiente de pago</text>
+<text x="397.75" y="272.5" font-size="20.8" font-weight="normal" text-anchor="middle" fill="#171717">Registrar suscripción</text>
+<text x="397.75" y="289.5" font-size="20.8" font-weight="normal" text-anchor="middle" fill="#171717">pendiente de pago</text>
 <rect x="38.0" y="310.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="143.25" y="326.5" font-size="20.6" font-weight="normal" text-anchor="middle">Elegir medio de pago</text>
-<text x="143.25" y="343.5" font-size="20.6" font-weight="normal" text-anchor="middle">Confirmar los datos</text>
+<text x="143.25" y="326.5" font-size="20.6" font-weight="normal" text-anchor="middle" fill="#171717">Elegir medio de pago</text>
+<text x="143.25" y="343.5" font-size="20.6" font-weight="normal" text-anchor="middle" fill="#171717">Confirmar los datos</text>
 <rect x="292.5" y="364.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="397.75" y="380.5" font-size="21" font-weight="normal" text-anchor="middle">Validar datos</text>
-<text x="397.75" y="397.5" font-size="21" font-weight="normal" text-anchor="middle">e importe vigente</text>
+<text x="397.75" y="380.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Validar datos</text>
+<text x="397.75" y="397.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">e importe vigente</text>
 <rect x="547.0" y="418.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="652.25" y="434.5" font-size="21" font-weight="normal" text-anchor="middle">Autorizar pago</text>
-<text x="652.25" y="451.5" font-size="21" font-weight="normal" text-anchor="middle">(simulador local)</text>
+<text x="652.25" y="434.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Autorizar pago</text>
+<text x="652.25" y="451.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">(simulador local)</text>
 <rect x="292.5" y="526.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="397.75" y="542.5" font-size="21" font-weight="normal" text-anchor="middle">Registrar pago</text>
-<text x="397.75" y="559.5" font-size="21" font-weight="normal" text-anchor="middle">y detalle</text>
+<text x="397.75" y="542.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Registrar pago</text>
+<text x="397.75" y="559.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">y detalle</text>
 <rect x="292.5" y="580.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="397.75" y="596.5" font-size="21" font-weight="normal" text-anchor="middle">Emitir factura</text>
-<text x="397.75" y="613.5" font-size="21" font-weight="normal" text-anchor="middle">numerada</text>
+<text x="397.75" y="596.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Emitir factura</text>
+<text x="397.75" y="613.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">numerada</text>
 <rect x="292.5" y="634.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="397.75" y="650.5" font-size="21" font-weight="normal" text-anchor="middle">Generar PDF</text>
-<text x="397.75" y="667.5" font-size="21" font-weight="normal" text-anchor="middle">de la factura</text>
+<text x="397.75" y="650.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Generar PDF</text>
+<text x="397.75" y="667.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">de la factura</text>
 <rect x="801.5" y="688.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="906.75" y="704.5" font-size="21" font-weight="normal" text-anchor="middle">Enviar factura</text>
-<text x="906.75" y="721.5" font-size="21" font-weight="normal" text-anchor="middle">PDF adjunta</text>
+<text x="906.75" y="704.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Enviar factura</text>
+<text x="906.75" y="721.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">PDF adjunta</text>
 <rect x="292.5" y="742.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="397.75" y="758.5" font-size="21" font-weight="normal" text-anchor="middle">Informar estado</text>
-<text x="397.75" y="775.5" font-size="21" font-weight="normal" text-anchor="middle">y permitir reintento</text>
+<text x="397.75" y="758.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Informar estado</text>
+<text x="397.75" y="775.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">y permitir reintento</text>
 <rect x="547.0" y="796.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="652.25" y="812.5" font-size="21" font-weight="normal" text-anchor="middle">Firmar autorización</text>
-<text x="652.25" y="829.5" font-size="21" font-weight="normal" text-anchor="middle">CER / P7M</text>
+<text x="652.25" y="812.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Firmar autorización</text>
+<text x="652.25" y="829.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">CER / P7M</text>
 <rect x="292.5" y="850.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="397.75" y="866.5" font-size="20.5" font-weight="normal" text-anchor="middle">Mostrar comprobante</text>
-<text x="397.75" y="883.5" font-size="20.5" font-weight="normal" text-anchor="middle">y estado del correo</text>
+<text x="397.75" y="866.5" font-size="20.5" font-weight="normal" text-anchor="middle" fill="#171717">Mostrar comprobante</text>
+<text x="397.75" y="883.5" font-size="20.5" font-weight="normal" text-anchor="middle" fill="#171717">y estado del correo</text>
 <path d="M38.0,901.0 H248.5 V943.0 C195.875,935.0 90.625,951.0 38.0,943.0 Z" fill="#fafafa" stroke="#333" stroke-width="1.4"/>
-<text x="143.25" y="918.5" font-size="21" font-weight="normal" text-anchor="middle">Factura PDF</text>
-<text x="143.25" y="935.5" font-size="21" font-weight="normal" text-anchor="middle">Guardar / imprimir</text>
+<text x="143.25" y="918.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Factura PDF</text>
+<text x="143.25" y="935.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Guardar / imprimir</text>
 <rect x="38.0" y="961.0" width="210.5" height="34" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="143.25" y="983.0" font-size="21" font-weight="normal" text-anchor="middle">Pulsar Continuar</text>
+<text x="143.25" y="983.0" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Pulsar Continuar</text>
 <rect x="292.5" y="1015.0" width="210.5" height="34" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="397.75" y="1037.0" font-size="21" font-weight="normal" text-anchor="middle">Activar suscripción</text>
+<text x="397.75" y="1037.0" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Activar suscripción</text>
 <path d="M547.0,492 L652.25,468.0 L757.5,492 L652.25,516.0 Z" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="652.25" y="497.0" font-size="20" font-weight="normal" text-anchor="middle">¿Aprobado?</text>
+<text x="652.25" y="497.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#171717">¿Aprobado?</text>
 <rect x="38.0" y="472.0" width="210.5" height="40" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="1.4"/>
-<text x="143.25" y="488.5" font-size="21" font-weight="normal" text-anchor="middle">Informar error</text>
-<text x="143.25" y="505.5" font-size="21" font-weight="normal" text-anchor="middle">Corregir y reintentar</text>
+<text x="143.25" y="488.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Informar error</text>
+<text x="143.25" y="505.5" font-size="21" font-weight="normal" text-anchor="middle" fill="#171717">Corregir y reintentar</text>
 <circle cx="397.75" cy="1086" r="10" fill="white" stroke="#222" stroke-width="1.4"/>
 <circle cx="397.75" cy="1086" r="6" fill="#222"/>
-<text x="525.0" y="1133" font-size="18" font-weight="normal" text-anchor="middle">La descarga es opcional. El correo se reintenta sin volver a cobrar.</text>
+<text x="525.0" y="1133" font-size="18" font-weight="normal" text-anchor="middle" fill="#171717">La descarga es opcional. El correo se reintenta sin volver a cobrar.</text>
 </g></svg>
