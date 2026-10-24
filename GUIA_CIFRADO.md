@@ -26,76 +26,44 @@ MAC independiente. El secreto no se guarda en el código, Web.config ni Git.
 Las conexiones de la aplicación abren la clave sólo en su sesión SQL; las vistas
 `vw_*Descifrado` recuperan los valores originales. Una sesión SQL sin las claves
 no obtiene el texto original de esas vistas. DVH, DVV y referencias se verifican
-sobre los valores lógicos originales, sin recalcularlos durante la migración.
+sobre los valores lógicos originales, conservando los verificadores almacenados.
 
 Requisitos: Windows, .NET Framework 4.8, Visual Studio/MSBuild y SQL Server 2019
 o posterior. El cifrado desactiva la optimización de funciones escalares en la
 función que genera el IV para evitar evaluaciones duplicadas del cifrado.
 
-## Primera configuración en una instalación sin cifrar
+## Configurar el acceso a la base actual
 
-Abrir PowerShell en la raíz de `VitaPet Rework` y ejecutar:
+Esta versión utiliza una base con el esquema vigente ya aplicado. El inicio
+comprueba la versión y la integridad en modo de solo lectura; no convierte una
+base anterior ni aplica el cifrado a datos existentes.
 
-```powershell
-.\Scripts\ConfigurarClaveCifrado.ps1
-```
-
-El destino predeterminado es:
+Conservar el archivo de clave que ya descifra la base. Su ubicación predeterminada es:
 
 ```text
 %USERPROFILE%\.vitapet\cifrado.key
 ```
 
-El script genera una clave criptográficamente aleatoria, restringe el acceso al
-usuario de Windows que lo ejecuta y no muestra su contenido. Rechaza sobrescribir
-un archivo existente. Guardar una copia protegida de este archivo, separada del
-backup de la base. No compartirlo por correo ni agregarlo al repositorio.
-
-Se usa una carpeta del perfil fuera de `AppData` para que Visual Studio y las
-herramientas empaquetadas (MSIX) lean el mismo archivo. Windows puede virtualizar
-`LocalAppData` y mantener dos archivos diferentes bajo una ruta aparente idéntica.
-Si la base ya está cifrada con una versión anterior, importar la clave existente
-que efectivamente la descifra; no generar otra. Conservar las copias anteriores
-hasta comprobar login e integridad desde Visual Studio.
-
-Si se necesita otra ubicación, especificar la ruta del archivo y configurar la
-variable de entorno `VITAPET_CLAVE_ARCHIVO` con esa misma ruta:
+Si hace falta importar una copia existente, ejecutar desde la raíz del proyecto:
 
 ```powershell
-.\Scripts\ConfigurarClaveCifrado.ps1 -Archivo 'D:\ClavesPrivadas\VitaPet\cifrado.key'
+.\Scripts\ConfigurarClaveCifrado.ps1 -ImportarDesde 'E:\TrasladoProtegido\cifrado.key'
+```
+
+El script copia la misma clave, limita su acceso al usuario de Windows y rechaza
+sobrescribir un archivo existente. No generar una clave diferente para una base
+ya cifrada. Visual Studio e IIS Express deben ejecutarse con acceso al archivo.
+
+Para una ubicación personalizada, configurar la ruta, sin incluir el secreto:
+
+```powershell
 [Environment]::SetEnvironmentVariable('VITAPET_CLAVE_ARCHIVO', 'D:\ClavesPrivadas\VitaPet\cifrado.key', 'User')
 $env:VITAPET_CLAVE_ARCHIVO = 'D:\ClavesPrivadas\VitaPet\cifrado.key'
 ```
 
-La variable contiene una ruta, no la clave. Reiniciar Visual Studio/IIS Express
-cuando se cambie una variable de entorno: los procesos abiertos conservan el
-entorno anterior. Con la ruta predeterminada no hace falta definir la variable.
-
-## Aplicar el cifrado a una base existente
-
-Cerrar el sitio y detener su ejecución en Visual Studio durante este paso.
-Revisar que `VitaPet Rework\Web.config` apunte a la base correcta.
-
-```powershell
-.\Scripts\AplicarCifrado.ps1 -RespaldoPrevio 'C:\RutaConPermisoSQL\antes_cifrado_20261023.bak'
-```
-
-La ruta debe ser absoluta y nueva. La cuenta del servicio SQL Server necesita
-permiso para escribir allí. Puede utilizarse la carpeta de backups del sitio
-si ya se configuraron esos permisos. La herramienta:
-
-1. Compila los componentes y actualiza los DLL del sitio.
-2. Comprueba la integridad de la base.
-3. Crea un backup previo, verifica su checksum, lo restaura en una base temporal
-   y comprueba la integridad de esa restauración. Elimina la base temporal.
-4. Cifra los campos y adapta los procedimientos dentro de una transacción.
-5. Comprueba que los datos recuperados coincidan con sus DVH, DVV y referencias
-   originales. Ante una discrepancia, revierte la migración completa.
-
-No se ejecuta esta migración automáticamente al iniciar el sitio. Repetir la
-herramienta sobre una base ya cifrada sólo verifica su integridad. No cambia la
-clave ni vuelve a cifrar los campos. El backup previo conserva el formato sin
-cifrar: protegerlo y conservarlo según la política de respaldos.
+Reiniciar Visual Studio/IIS Express después de cambiar esa variable. Se conserva
+la ubicación fuera de AppData para evitar diferencias por virtualización MSIX.
+La herramienta que aplicaba el cifrado y su script de ejecución fueron retirados.
 
 ## Trasladar el proyecto a otra PC
 
@@ -145,11 +113,11 @@ rotación de claves: no reemplazar el archivo para intentar cambiarla.
    cada dato almacenado. La consulta de SSMS sólo comprueba el formato externo.
 5. Crear un backup nuevo y conservar el archivo de clave por separado.
 
-Los backups SQL y XML creados después de la migración conservan los campos
-cifrados. La recuperación XML reconstruye la clave SQL en una base temporal
-usando el mismo archivo externo. Los backups anteriores conservan su formato
-original: si se restaura uno sin cifrar, repetir el paso explícito de aplicación
-del cifrado antes de continuar utilizando esa base.
+Los backups SQL y XML del esquema actual conservan los campos cifrados. La
+recuperación XML crea una base temporal vacía con EsquemaActual.sql y reconstruye
+la clave SQL usando el mismo archivo externo. También funciona si falta la base
+principal. Las versiones anteriores se rechazan antes de modificar el destino;
+ya no se convierten ni se vuelven a cifrar durante la restauración.
 
 El cifrado de columnas no convierte archivos PDF, correos ni backups históricos
 en archivos cifrados, ni protege frente a quien obtenga conjuntamente la clave y
@@ -160,14 +128,18 @@ con `Scripts\ConfigurarCorreo.ps1`; esta clave sólo corresponde a los datos de 
 ## Pruebas automatizadas
 
 ```powershell
-& 'Tests\VitaPet.Facturacion.Tests\bin\Debug\net48\VitaPet.Facturacion.Tests.exe' --cifrado
+& '.\artifacts\sin-migraciones-build\VitaPet.Facturacion.Tests.exe' --cifrado
 ```
 
 La suite usa bases temporales, crea una clave de prueba y las elimina al terminar.
-Comprueba migración/rollback, un vector HMAC-SHA256 de RFC 4231, conservación de
+La preparación de los datos cifrados ocurre sólo en el ejecutable de pruebas.
+Comprueba rollback del fixture, un vector HMAC-SHA256 de RFC 4231, conservación de
 Unicode, altas, modificaciones, duplicados, pago, PDF, autenticación del cifrado,
 clave importada/incorrecta/ausente y restauración SQL y XML. No envía correos
 reales ni utiliza tarjetas reales.
+
+La compilación aislada y las pruebas de la aplicación sin migraciones se describen
+en [SIN_MIGRACIONES.md](SIN_MIGRACIONES.md).
 
 Referencias: [ENCRYPTBYKEY de Microsoft](https://learn.microsoft.com/en-us/sql/t-sql/functions/encryptbykey-transact-sql),
 [almacenamiento criptográfico de OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html),

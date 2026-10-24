@@ -147,8 +147,9 @@ correo del perfil se mantiene como dato del cliente. Las facturas anteriores
 sin destinatario elegido no generan nuevos envíos automáticos.
 
 El punto 20 incorpora cifrado AES-256 y HMAC-SHA256 de los 14 campos personales
-de Usuario, Cliente, Empresa, DetallePago y Factura. La migración es explícita;
-no se aplica al iniciar el sitio. La clave portable y la configuración en otra
+de Usuario, Cliente, Empresa, DetallePago y Factura. La base del sitio ya está
+cifrada; la preparación de fixtures pertenece sólo a los ejecutables de pruebas.
+La aplicación no convierte bases al iniciar. La clave y la configuración en otra
 PC se describen en `GUIA_CIFRADO.md`.
 
 ```powershell
@@ -158,9 +159,9 @@ PC se describen en `GUIA_CIFRADO.md`.
 
 La primera variante prueba el almacenamiento, las escrituras, el rechazo de
 claves incorrectas, la autenticación del cifrado y la restauración SQL/XML.
-La segunda requiere compilar `Tools/VitaPet.Cifrado/VitaPet.Cifrado.csproj` y
-ejecuta esa herramienta sobre la base temporal antes del recorrido en Edge:
-incluye backup previo, restauración de validación y migración transaccional.
+La segunda prepara el cifrado dentro del ejecutable de pruebas antes del
+recorrido en Edge. La infraestructura sólo admite bases temporales de prueba;
+la herramienta de conversión fue retirada de la aplicación.
 Usa una clave de prueba propia y no modifica la clave ni la base del sitio real.
 
 El punto 21 verifica español e inglés, incluyendo páginas públicas, los tres
@@ -209,7 +210,7 @@ El procedimiento manual y las operaciones están en [Punto-23.md](Punto-23.md).
 & Tests/VitaPet.Facturacion.Tests/Run-Web.ps1 Servicios-Web.cjs '..\..\artifacts\punto23-servicios' 1 cifrado --clinica
 ```
 
-Compilar primero la solución, el proyecto de pruebas y Tools/VitaPet.Cifrado.
+Compilar primero la solución y el proyecto de pruebas.
 El argumento opcional `--clinica` agrega registros clínicos sintéticos de
 dos clientes a la base temporal antes de cifrarla. Los recorridos anteriores
 conservan su preparación habitual. No se modifican la base ni la clave del
@@ -248,3 +249,8 @@ además una contratación por el flujo existente. Se comprueban UTF-8, escape,
 formato de fechas e importes, selección, contenido completo, idiomas, cabeceras
 de descarga y aislamiento entre clientes. La variante web cifra la base temporal
 y conserva las verificaciones de facturación del recorrido anterior.
+
+La aplicación sin migraciones se comprueba con `--esquema-actual`: valida el
+esquema en modo de solo lectura, excluye y rechaza backups anteriores, restaura
+SQL/XML cifrados y reconstruye una base principal inexistente. La preparación
+se describe en [SIN_MIGRACIONES.md](../../SIN_MIGRACIONES.md).

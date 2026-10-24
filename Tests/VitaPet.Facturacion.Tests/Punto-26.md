@@ -13,8 +13,8 @@ siguiente ejecución de estos controles.
 ## Prueba manual
 
 1. Detener la ejecución en Visual Studio y volver a iniciar **VitaPet Rework**.
-   El inicio aplica la migración `035_BitacoraBajaLogica.sql` y ejecuta el
-   mantenimiento. No ejecutar los scripts antiguos de migración por separado.
+   El inicio valida el esquema actual y ejecuta el mantenimiento. Las
+   migraciones aplicadas ya no se ejecutan desde la aplicación.
 2. Iniciar sesión como **WebMaster** y abrir **Consulta de bitácora**.
 3. Elegir fechas desde hace treinta días hasta hoy y pulsar **Consultar**.
    Comprobar que los eventos corresponden al intervalo. Las fechas de ambos
@@ -40,20 +40,20 @@ Desde una terminal PowerShell ubicada en la raíz de VitaPet Rework, ejecutar el
 binario de pruebas ya compilado en la carpeta aislada:
 
 ```powershell
-& '.\artifacts\punto26-build\VitaPet.Facturacion.Tests.exe' --bitacora
+& '.\artifacts\sin-migraciones-build\VitaPet.Facturacion.Tests.exe' --bitacora
 ```
 
 La prueba crea una base temporal con 65 eventos sintéticos: cinco de hace más de
 treinta días y sesenta recientes. Comprueba las bajas, el histórico, los filtros,
 la integridad, los fallos del XML/SQL y la restauración de respaldos anteriores y
 actuales. Al finalizar elimina sus bases temporales. Debe terminar con
-`TOTAL: 43 verificaciones de tratamiento de bitácora`.
+`TOTAL: 42 verificaciones de tratamiento de bitácora`.
 
 Para recompilar las pruebas sin actualizar las DLL del sitio que esté abierto:
 
 ```powershell
 $msbuild = 'C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\MSBuild.exe'
-$salida = Join-Path (Get-Location) 'artifacts\punto26-build\'
+$salida = Join-Path (Get-Location) 'artifacts\sin-migraciones-build\'
 & $msbuild 'VitaPet Rework.slnx' /t:Build /v:minimal /nologo /m:1 /nr:false "/p:OutDir=$salida"
 & $msbuild 'Tests\VitaPet.Facturacion.Tests\VitaPet.Facturacion.Tests.csproj' /t:Build /v:minimal /nologo /m:1 /nr:false /p:BuildProjectReferences=false "/p:OutDir=$salida"
 ```
@@ -70,16 +70,16 @@ $salida = Join-Path (Get-Location) 'artifacts\punto26-build\'
 - La consulta reúne SQL y XML por identificador y contenido original. También
   admite archivos históricos previos a la incorporación de la marca.
 - Los backups SQL conservan las bajas y los respaldos XML de contingencia
-  incluyen el histórico. Se mantiene la compatibilidad con respaldos previos a
-  la migración 035.
+  incluyen el histórico. Se aceptan respaldos del esquema actual; los anteriores
+  a la incorporación de la baja lógica se rechazan sin convertirlos.
 - Si SQL está corrupto, la consulta restringida de evidencia de Integridad no
   ejecuta bajas ni modifica la base.
 
 ## Verificación técnica
 
-Las pruebas se ejecutan sobre bases temporales. La suite específica aprobó 43
+Las pruebas se ejecutan sobre bases temporales. La suite específica aprobó 42
 comprobaciones; el recorrido web sobre una base cifrada aprobó 28 y la regresión
-web de facturación, 18. También se aprobaron 58 comprobaciones de regresión
+web de facturación, 18. También se aprobaron 59 comprobaciones de regresión
 general y 203 de cobertura de integridad. La documentación Word se actualizó en el diccionario de Bitacora,
 la política 12.8.6, los verificadores de 12.9.2 y los procedimientos de 12.9.3.
 La confirmación manual del usuario continúa pendiente.
