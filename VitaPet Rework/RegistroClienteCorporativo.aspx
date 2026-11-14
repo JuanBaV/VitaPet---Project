@@ -21,7 +21,7 @@
     <div><dt><%: TextosUI.Obtener("Corporativo_Plan") %></dt><dd><asp:Label ID="lblPlanCorporativo" runat="server" Text="<%$ Resources:Textos, Corporativo_NombrePlan %>" /></dd></div></dl>
    <asp:Label ID="lblCondicionesPlan" runat="server" CssClass="corporativo-condiciones" Text="<%$ Resources:Textos, Corporativo_Condiciones %>" />
    <asp:ValidationSummary ID="vsCorreoCorporativo" runat="server" ValidationGroup="CorporativoCorreo" CssClass="login-validation-summary" HeaderText="<%$ Resources:Textos, UI_RevisaLosSiguientesDatos %>" DisplayMode="BulletList" role="alert" />
-<div class="corporativo-correo"><vp:ValidacionEmail ID="ucCorreo" runat="server" MaxLength="100" ValidationGroup="CorporativoCorreo" EnableClientValidation="true" />
+<div class="corporativo-correo"><%-- implementacion del componente ValidacionEmail.ascx --%><vp:ValidacionEmail ID="ucCorreo" runat="server" MaxLength="100" ValidationGroup="CorporativoCorreo" EnableClientValidation="true" />
     <asp:Button ID="btnValidarCorreo" runat="server" CssClass="btn btn-primary" CausesValidation="true" ValidationGroup="CorporativoCorreo" formnovalidate="formnovalidate" Text="<%$ Resources:Textos, Corporativo_ValidarCorreo %>" OnClick="ValidarCorreo" /></div>
    <asp:ValidationSummary ID="vsAltaCorporativo" runat="server" ValidationGroup="CorporativoAlta" CssClass="login-validation-summary" HeaderText="<%$ Resources:Textos, UI_RevisaLosSiguientesDatos %>" DisplayMode="BulletList" role="alert" />
 <asp:Panel ID="pnlDatos" runat="server" CssClass="empresa-campos" Enabled="false">

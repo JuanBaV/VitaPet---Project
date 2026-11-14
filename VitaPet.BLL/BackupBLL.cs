@@ -33,6 +33,7 @@ namespace VitaPet.BLL
         {
             string xml; using(var sw=new StringWriter()) { new XmlSerializer(typeof(BackupBE)).Serialize(sw,backup); xml=sw.ToString(); }
             string file=Path.Combine(Catalogo,backup.Id+".xml");
+            // salida xml {id}.xml
             EstadoAplicacion.EscribirAtomico(file,xml);
             EstadoAplicacion.EscribirAtomico(file+".firma","sha256:"+EstadoAplicacion.CalcularHuella(xml));
         }
@@ -135,6 +136,7 @@ namespace VitaPet.BLL
         {
             string folder=Path.Combine(EstadoAplicacion.Directorio,"auditoria"); Directory.CreateDirectory(folder);
             string file=Path.Combine(folder,DateTime.UtcNow.ToString("yyyyMMddHHmmssfff")+"_"+Guid.NewGuid().ToString("N")+".xml");
+            // salida xml {yyyyMMddHHmmssfff}_{guid}.xml
             using(var x=new XmlTextWriter(file,System.Text.Encoding.UTF8))
             {
                 x.WriteStartDocument(); x.WriteStartElement("EventoRecuperacion");

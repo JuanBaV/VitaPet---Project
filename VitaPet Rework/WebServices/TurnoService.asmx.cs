@@ -13,7 +13,7 @@ namespace VitaPet.GUI.WebServices
     [ToolboxItem(false)]
     public class TurnoService : WebService
     {
-        private static T ConBloqueo<T>(Func<T> operacion)
+        private static T ConBloqueo<T>(Func<T> operacion) //evita que dos operaciones se lancen a la vez, y bloquea la solicitud si el sistema está en mantenimiento
         {
             try
             {
@@ -24,25 +24,25 @@ namespace VitaPet.GUI.WebServices
             catch(UnauthorizedAccessException){throw new SoapException("Acceso denegado.",SoapException.ClientFaultCode);}
         }
         [WebMethod(EnableSession=true)]
-        public ResultadoDisponibilidadTurnoBE ObtenerDisponibilidadPorZona(int idMascota,string zona)
+        public ResultadoDisponibilidadTurnoBE ObtenerDisponibilidadPorZona(int idMascota,string zona) //consultar turnos disponibles de una zona
         {
             return ConBloqueo(()=>{try{return new ResultadoDisponibilidadTurnoBE {Turnos=new SolicitudTurnoBLL().Disponibilidad(idMascota,zona)};}
                 catch(TurnoException ex){return new ResultadoDisponibilidadTurnoBE {CodigoError=ex.Codigo};}});
         }
         [WebMethod(EnableSession=true)]
-        public ResultadoValidacionTurnoBE VerificarDisponibilidadTurno(int idMascota,int idAgendaTurno,DateTime fecha,string horario)
+        public ResultadoValidacionTurnoBE VerificarDisponibilidadTurno(int idMascota,int idAgendaTurno,DateTime fecha,string horario) //verificar si un turno sigue disponible
         {
             return ConBloqueo(()=>{try{return new ResultadoValidacionTurnoBE {Turno=new SolicitudTurnoBLL().Verificar(idMascota,idAgendaTurno,fecha,horario)};}
                 catch(TurnoException ex){return new ResultadoValidacionTurnoBE {CodigoError=ex.Codigo};}});
         }
         [WebMethod(EnableSession=true)]
-        public ResultadoRegistroTurnoBE RegistrarTurno(int idMascota,int idAgendaTurno,DateTime fecha,string horario)
+        public ResultadoRegistroTurnoBE RegistrarTurno(int idMascota,int idAgendaTurno,DateTime fecha,string horario) //registrar un turno
         {
             return ConBloqueo(()=>{try{return new ResultadoRegistroTurnoBE {Turno=new SolicitudTurnoBLL().Registrar(idMascota,idAgendaTurno,fecha,horario)};}
                 catch(TurnoException ex){return new ResultadoRegistroTurnoBE {CodigoError=ex.Codigo};}});
         }
         [WebMethod(EnableSession=true)]
-        public ResultadoConsultaTurnosBE ObtenerTurnosMascota(int idMascota)
+        public ResultadoConsultaTurnosBE ObtenerTurnosMascota(int idMascota) //consultar turnos de una mascota
         {
             return ConBloqueo(()=>{try{return new ConsultaTurnosBLL().Consultar(idMascota);}
                 catch(TurnoException ex){return new ResultadoConsultaTurnosBE {CodigoError=ex.Codigo};}});

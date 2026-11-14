@@ -7,6 +7,7 @@ using VitaPet.SERVICES;
 
 namespace VitaPet.GUI.Presentacion
 {
+    //Template Method: esta es la pagina base que define la estructura de todas las paginas del sistema
     public abstract class PaginaBase : PaginaConIdioma
     {
         private const string RutaLogin = "~/Login.aspx";
@@ -17,7 +18,7 @@ namespace VitaPet.GUI.Presentacion
             get;
         }
 
-        protected sealed override void OnLoad(EventArgs e)
+        protected sealed override void OnLoad(EventArgs e) //sobreescribe OnLoad para validar la sesion y el rol del usuario antes de ejecutar la funcionalidad de la pagina
         {
             if (!ValidarSesion())
             {
@@ -46,7 +47,7 @@ namespace VitaPet.GUI.Presentacion
 
         protected abstract void EjecutarFuncionalidad();
 
-        private bool ValidarSesion()
+        private bool ValidarSesion() //validar sesion mediante singleton
         {
             if (SessionManager.Instancia.HaySesionActiva)
             {
@@ -57,7 +58,7 @@ namespace VitaPet.GUI.Presentacion
             return false;
         }
 
-        private bool ValidarRol()
+        private bool ValidarRol() 
         {
             UsuarioBE usuario = SessionManager.Instancia.UsuarioActual;
 

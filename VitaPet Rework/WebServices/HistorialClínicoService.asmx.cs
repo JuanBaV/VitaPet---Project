@@ -13,8 +13,8 @@ namespace VitaPet.GUI.WebServices
  [ToolboxItem(false)]
  public class HistorialClinicoService : WebService
  {
-  private static T ConBloqueo<T>(Func<T> consulta)
-  {
+  private static T ConBloqueo<T>(Func<T> consulta) //evita que dos operaciones se lancen a la vez, y bloquea la solicitud si el sistema está en mantenimiento
+        {
    try {
     if(HttpContext.Current!=null&&HttpContext.Current.Items["BloqueoVitaPet"]!=null)return consulta();
     using(var bloqueo=EstadoAplicacion.BloquearSolicitud())
@@ -22,10 +22,10 @@ namespace VitaPet.GUI.WebServices
    }catch(UnauthorizedAccessException){throw new SoapException("Acceso denegado.",SoapException.ClientFaultCode);}
   }
   [WebMethod(EnableSession=true,MessageName="ObtenerHistorialClínico")]
-  public ResultadoHistorialClinicoBE ObtenerHistorialClinico(int idMascota)
-  {return ConBloqueo(()=>{try{return new ConsultaHistorialClinicoBLL().Consultar(idMascota);}catch(GestionMascotaException ex){return new ResultadoHistorialClinicoBE {CodigoError=ex.Codigo};}});}
+  public ResultadoHistorialClinicoBE ObtenerHistorialClinico(int idMascota) //consultar historial clínico de una mascota
+        { return ConBloqueo(()=>{try{return new ConsultaHistorialClinicoBLL().Consultar(idMascota);}catch(GestionMascotaException ex){return new ResultadoHistorialClinicoBE {CodigoError=ex.Codigo};}});}
   [WebMethod(EnableSession=true,MessageName="ObtenerDatosClínicos")]
-  public ResultadoDatosClinicosBE ObtenerDatosClinicos(int idMascota)
-  {return ConBloqueo(()=>{try{return new ConsultaDatosClinicosBLL().Consultar(idMascota);}catch(GestionMascotaException ex){return new ResultadoDatosClinicosBE {CodigoError=ex.Codigo};}});}
+  public ResultadoDatosClinicosBE ObtenerDatosClinicos(int idMascota) //consultar datos clínicos de una mascota
+        { return ConBloqueo(()=>{try{return new ConsultaDatosClinicosBLL().Consultar(idMascota);}catch(GestionMascotaException ex){return new ResultadoDatosClinicosBE {CodigoError=ex.Codigo};}});}
  }
 }

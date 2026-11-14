@@ -56,6 +56,7 @@ namespace VitaPet.DAL
         public void GuardarCuenta(CuentaContingenciaBE cuenta)
         {
             ValidarCuenta(cuenta);
+            // salida xml cuenta.xml
             Guardar("cuenta.xml", Serializar(cuenta));
         }
         private static void ValidarCuenta(CuentaContingenciaBE cuenta)
@@ -74,6 +75,7 @@ namespace VitaPet.DAL
             }
             catch (FormatException ex) { throw new InvalidDataException("Material de verificación de la cuenta inválido.", ex); }
         }
+        // salida xml respaldo-{id}.xml
         public void GuardarRespaldo(string id, string xml) => Guardar(Nombre(id), xml);
         public string LeerRespaldo(string id) => File.ReadAllText(Path.Combine(directorio, Nombre(id)));
         public IEnumerable<string> Respaldos()
@@ -101,6 +103,7 @@ namespace VitaPet.DAL
         public void Auditar(string accion, string cuenta, string respaldo)
         {
             Preparar();
+            // salida xml evento-{guid}.xml
             using (var x = XmlWriter.Create(Path.Combine(directorio, "evento-" + Guid.NewGuid().ToString("N") + ".xml")))
             {
                 x.WriteStartElement("EventoContingencia");

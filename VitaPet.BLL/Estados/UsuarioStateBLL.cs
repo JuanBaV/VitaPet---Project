@@ -6,9 +6,9 @@ namespace VitaPet.BLL.Estados
     public class UsuarioStateBLL
     {
         private readonly UsuarioBE _usuario;
-        private IUsuarioStateBLL _estadoActual;
+        private IUsuarioStateBLL _estadoActual; //referencia al estado actual del usuario, que implementa la interfaz IUsuarioStateBLL
 
-        public UsuarioStateBLL(UsuarioBE usuario)
+        public UsuarioStateBLL(UsuarioBE usuario) //constructor que recibe un objeto UsuarioBE y establece el estado inicial del usuario
         {
             if (usuario == null)
             {
@@ -19,7 +19,7 @@ namespace VitaPet.BLL.Estados
             ActualizarEstado();
         }
 
-        public UsuarioBE Usuario
+        public UsuarioBE Usuario 
         {
             get
             {
@@ -27,6 +27,8 @@ namespace VitaPet.BLL.Estados
             }
         }
 
+        //metodos traidos de IUsuarioStateBLL para manejar la logica de estado del usuario,
+        //delegando la responsabilidad al estado actual
         public bool PuedeIniciarSesion()
         {
             return _estadoActual.PuedeIniciarSesion(_usuario);
@@ -50,15 +52,15 @@ namespace VitaPet.BLL.Estados
             ActualizarEstado();
         }
 
-        private void ActualizarEstado()
+        private void ActualizarEstado() //metodo que actualiza el estado actual del usuario
         {
             if (_usuario.Bloqueado)
             {
-                _estadoActual = new UsuarioBloqueadoStateBLL();
+                _estadoActual = new UsuarioBloqueadoStateBLL(); //si el usuario esta bloqueado, se establece el estado como UsuarioBloqueadoStateBLL
                 return;
             }
 
-            _estadoActual = new UsuarioActivoStateBLL();
+            _estadoActual = new UsuarioActivoStateBLL(); //si el usuario no esta bloqueado, se establece el estado como UsuarioActivoStateBLL
         }
     }
 }

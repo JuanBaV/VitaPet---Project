@@ -58,6 +58,7 @@ namespace VitaPet.BLL
                 }
                 string archivo = ObtenerRutaArchivo();
                 Directory.CreateDirectory(Path.GetDirectoryName(archivo));
+                // salida xml Bitacora.xml
                 EstadoAplicacion.EscribirAtomico(archivo, documento.OuterXml);
                 var verificados = new ConsultaBitacoraBLL().LeerHistorico();
                 if (nuevos.Any(n => !verificados.Any(v => v.IdBitacora == n.IdBitacora && v.DVH == n.DVH)))
@@ -276,6 +277,7 @@ namespace VitaPet.BLL
             try
             {
                 Directory.CreateDirectory(directorio);
+                // salida xml Bitacora.xml
                 EstadoAplicacion.EscribirAtomico(rutaArchivo, documento.OuterXml);
             }
             catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)

@@ -34,7 +34,7 @@
                     runat="server" />
             </asp:Panel>
 
-            <vp:ValidacionEmail
+            <%-- implementacion del componente ValidacionEmail.ascx --%><vp:ValidacionEmail
                 ID="ucCorreo"
                 runat="server"
                 ValidationGroup="Login" />

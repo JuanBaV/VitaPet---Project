@@ -7,14 +7,14 @@ namespace VitaPet.BLL.Estados
     {
         private const byte LimiteIntentosFallidos = 3;
 
-        public bool PuedeIniciarSesion(UsuarioBE usuario)
+        public bool PuedeIniciarSesion(UsuarioBE usuario) //verifica si el usuario puede iniciar sesión según su estado actual
         {
             ValidarUsuario(usuario);
 
             return usuario.Estado && !usuario.Bloqueado && !usuario.RequiereRestablecerContrasena;
         }
 
-        public void RegistrarIntentoFallido(UsuarioBE usuario)
+        public void RegistrarIntentoFallido(UsuarioBE usuario) //registra un intento de login fallido y actualiza el estado en caso de superar el limite
         {
             ValidarUsuario(usuario);
 
@@ -30,22 +30,19 @@ namespace VitaPet.BLL.Estados
             }
         }
 
-        public void RegistrarIngresoExitoso(UsuarioBE usuario)
+        public void RegistrarIngresoExitoso(UsuarioBE usuario) //registra un ingreso exitoso y reinicia el contador de intentos fallidos
         {
             ValidarUsuario(usuario);
-
             usuario.IntentosFallidos = 0;
         }
-
-        public void Desbloquear(UsuarioBE usuario)
+       
+        public void Desbloquear(UsuarioBE usuario) //desbloquea al usuario y reinicia el contador de intentos fallidos
         {
             ValidarUsuario(usuario);
-
             usuario.Bloqueado = false;
             usuario.IntentosFallidos = 0;
         }
-
-        private void ValidarUsuario(UsuarioBE usuario)
+        private void ValidarUsuario(UsuarioBE usuario) //metodo privado para validar que el objeto UsuarioBE no sea nulo antes de realizar operaciones sobre él
         {
             if (usuario == null)
             {
@@ -54,3 +51,5 @@ namespace VitaPet.BLL.Estados
         }
     }
 }
+
+        

@@ -7,8 +7,8 @@
         <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
         <section class="facturas-seccion" aria-labelledby="tituloFacturas">
             <h2 id="tituloFacturas"><%: VitaPet.GUI.Resources.Textos.Factura_MisFacturas %></h2>
-            <vp:ListadoFacturas ID="ucFacturas" runat="server" />
+            <%-- implementacion del componente ListadoFacturas.ascx --%><vp:ListadoFacturas ID="ucFacturas" runat="server" />
         </section>
-        <vp:ListadoPlanes ID="ucPlanes" runat="server" OnPlanSeleccionado="PlanSeleccionado" />
+        <%-- implementacion del componente ListadoPlanes.ascx --%><vp:ListadoPlanes ID="ucPlanes" runat="server" OnPlanSeleccionado="PlanSeleccionado" />
     </section></main>
 </asp:Content>

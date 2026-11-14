@@ -85,6 +85,7 @@ public partial class ConsultaBitacoraPage : PaginaBase
             if (consulta == null || !Iguales(consulta.Filtro, filtro))
                 consulta = Consultar(filtro);
             if (consulta.Registros.Count == 0) { MostrarError("ER019"); return; }
+            // salida xml bitacora-{yyyyMMdd-HHmmss}.xml
             byte[] xml = bitacora.ExportarXml(consulta.Registros);
             Response.Clear();
             Response.ContentType = "application/xml";

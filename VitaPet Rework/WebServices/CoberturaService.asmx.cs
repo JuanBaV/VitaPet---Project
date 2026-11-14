@@ -14,15 +14,14 @@ namespace VitaPet.GUI.WebServices
     [ToolboxItem(false)]
     public class CoberturaService : WebService
     {
-        // Sobrecarga para consumo desde C# en CU-001-004. No acepta identificadores
-        // del navegador: la BLL resuelve la suscripcion del cliente autenticado.
-        public ResultadoConsultaCoberturaBE ObtenerCobertura()
+
+        public ResultadoConsultaCoberturaBE ObtenerCobertura() 
         {
             return ObtenerCoberturaCuenta();
         }
 
         [WebMethod(EnableSession = true)]
-        public ResultadoConsultaCoberturaBE ObtenerCoberturaCuenta()
+        public ResultadoConsultaCoberturaBE ObtenerCoberturaCuenta() //evita duplicados para facilitar la consulta y delega en la operacion publicada
         {
             if (HttpContext.Current != null && HttpContext.Current.Items["BloqueoVitaPet"] != null)
                 return ConsultarCuenta();
@@ -34,7 +33,7 @@ namespace VitaPet.GUI.WebServices
             }
         }
 
-        private static ResultadoConsultaCoberturaBE ConsultarCuenta()
+        private static ResultadoConsultaCoberturaBE ConsultarCuenta() //consulta la cobertura de la cuenta del cliente autenticado
         {
             try {return new ResultadoConsultaCoberturaBE{Consulta=new ConsultaCoberturaBLL().Consultar()};}
             catch (ConsultaCoberturaException ex) {return new ResultadoConsultaCoberturaBE{CodigoError=ex.Codigo};}
@@ -42,7 +41,7 @@ namespace VitaPet.GUI.WebServices
         }
 
         [WebMethod(EnableSession = true)]
-        public ResultadoCoberturaBE ObtenerCobertura(int idPlan)
+        public ResultadoCoberturaBE ObtenerCobertura(int idPlan) //evita duplicados para facilitar la consulta y delega en la operacion publicada
         {
             // Las páginas ya mantienen este bloqueo durante la solicitud.
             if (HttpContext.Current != null &&
@@ -63,7 +62,7 @@ namespace VitaPet.GUI.WebServices
             }
         }
 
-        private static ResultadoCoberturaBE ConsultarCobertura(int idPlan)
+        private static ResultadoCoberturaBE ConsultarCobertura(int idPlan) //consulta la cobertura de un plan específico
         {
             try
             {

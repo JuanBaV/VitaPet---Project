@@ -42,6 +42,7 @@ public partial class ConsultaCoberturaPage : PaginaClientePlanes
     protected void ExportarXml(object sender,EventArgs e)
     {
         EjecutarPlan(()=>{
+            // salida xml Cobertura.xml
             byte[] contenido=new ConsultaCoberturaBLL().ExportarXml();
             Response.Clear();Response.ContentType="application/xml";Response.ContentEncoding=System.Text.Encoding.UTF8;
             Response.Charset="utf-8";Response.AddHeader("Content-Disposition","attachment; filename=Cobertura.xml");

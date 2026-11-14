@@ -7,7 +7,7 @@
         <p><asp:HyperLink ID="lnkConsultarCobertura" runat="server" NavigateUrl="~/ConsultaCobertura.aspx" CssClass="btn btn-default" Text="<%$ Resources:Textos, Cobertura_Consultar %>" /></p>
         <section class="facturas-seccion" aria-labelledby="tituloFacturas">
             <h2 id="tituloFacturas"><%: VitaPet.GUI.Resources.Textos.Factura_MisFacturas %></h2>
-            <vp:ListadoFacturas ID="ucFacturas" runat="server" />
+            <%-- implementacion del componente ListadoFacturas.ascx --%><vp:ListadoFacturas ID="ucFacturas" runat="server" />
         </section>
     </section></main>
 </asp:Content>

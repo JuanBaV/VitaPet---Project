@@ -187,7 +187,7 @@ public partial class LoginPage : VitaPet.GUI.Presentacion.PaginaConIdioma
                 usuarioBLL.RegistrarIngresoExitoso(usuario);
             }
 
-            SessionManager.Instancia.IniciarSesion(usuario);
+            SessionManager.Instancia.IniciarSesion(usuario); //login con singleton
 
             BitacoraBE eventoLoginExitoso =
                 new BitacoraBE

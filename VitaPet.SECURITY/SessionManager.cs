@@ -14,13 +14,14 @@ namespace VitaPet.SECURITY
             "RecuperacionContrasenaAutorizada";
 
         private static readonly Lazy<SessionManager> _instancia =
-            new Lazy<SessionManager>(() => new SessionManager());
+            new Lazy<SessionManager>(() => new SessionManager()); //declaracion de instancia unica de singleton
 
-        private SessionManager()
+        private SessionManager() //impide la creacion de instancias desde fuera de la clase
         {
         }
+        
 
-        public static SessionManager Instancia
+        public static SessionManager Instancia //propiedad estatica para acceder a la instancia unica de SessionManager
         {
             get
             {
@@ -28,7 +29,7 @@ namespace VitaPet.SECURITY
             }
         }
 
-        public UsuarioBE UsuarioActual
+        public UsuarioBE UsuarioActual //propiedad para obtener el usuario actualmente autenticado en la sesión
         {
             get
             {
@@ -36,7 +37,7 @@ namespace VitaPet.SECURITY
             }
         }
 
-        public bool HaySesionActiva
+        public bool HaySesionActiva //propiedad para verificar si hay una sesión activa con un usuario autenticado
         {
             get
             {
@@ -44,7 +45,7 @@ namespace VitaPet.SECURITY
             }
         }
 
-        public int? IdUsuarioRecuperacion
+        public int? IdUsuarioRecuperacion //propiedad para obtener el ID del usuario que está en proceso de recuperación de contraseña
         {
             get
             {
@@ -57,7 +58,7 @@ namespace VitaPet.SECURITY
             }
         }
 
-        public bool RecuperacionContrasenaAutorizada
+        public bool RecuperacionContrasenaAutorizada //propiedad para verificar si la recuperación de contraseña está autorizada en la sesión
         {
             get
             {
@@ -69,7 +70,7 @@ namespace VitaPet.SECURITY
             }
         }
 
-        public void IniciarSesion(UsuarioBE usuario)
+        public void IniciarSesion(UsuarioBE usuario) //método para iniciar sesión con un usuario autenticado
         {
             if(usuario != null && usuario.RequiereRestablecerContrasena)
                 throw new UnauthorizedAccessException("Debe restablecer la contraseña antes de iniciar sesión.");
@@ -84,7 +85,7 @@ namespace VitaPet.SECURITY
             sesion["GeneracionVitaPet"] = EstadoAplicacion.Generacion;
         }
 
-        public bool HaySesionContingencia
+        public bool HaySesionContingencia //propiedad para verificar si hay una sesión de contingencia activa
         {
             get
             {
@@ -95,8 +96,8 @@ namespace VitaPet.SECURITY
                 return true;
             }
         }
-        public string CuentaContingencia => HaySesionContingencia ? (string)ObtenerSesion()["CuentaContingencia"] : null;
-        public void IniciarContingencia(string cuenta)
+        public string CuentaContingencia => HaySesionContingencia ? (string)ObtenerSesion()["CuentaContingencia"] : null; //propiedad para obtener la cuenta de contingencia activa en la sesión, si existe
+        public void IniciarContingencia(string cuenta) //metodo para iniciar una sesión de contingencia con una cuenta específica
         {
             if (string.IsNullOrWhiteSpace(cuenta)) throw new ArgumentException("Cuenta requerida.");
             var sesion = ObtenerSesion();
@@ -106,20 +107,20 @@ namespace VitaPet.SECURITY
             sesion["GeneracionVitaPet"] = EstadoAplicacion.Generacion;
         }
 
-        public void ActualizarUsuarioActual(UsuarioBE usuario)
+        public void ActualizarUsuarioActual(UsuarioBE usuario) //metodo para actualizar la informadcion del usuario actualmente autenticado en la sesión
         {
             var actual = UsuarioActual;
             if (usuario != null && actual != null && actual.IdUsuario == usuario.IdUsuario)
                 ObtenerSesion()[ClaveUsuario] = usuario;
         }
 
-        public string ObtenerIdiomaUsuario()
+        public string ObtenerIdiomaUsuario() //metodo para obtener el idioma de la sesion
         {
             string idioma = UsuarioActual?.Idioma ?? ObtenerSesion()["IdiomaPublico"] as string;
             return idioma == "en" ? "en" : "es";
         }
 
-        public void ActualizarIdiomaUsuario(string nuevoIdioma)
+        public void ActualizarIdiomaUsuario(string nuevoIdioma) //metodo para actualizar el idioma de la sesion
         {
             if (nuevoIdioma != "es" && nuevoIdioma != "en")
                 throw new ArgumentException("Idioma no admitido.", nameof(nuevoIdioma));
@@ -134,8 +135,7 @@ namespace VitaPet.SECURITY
             ObtenerSesion()[ClaveUsuario] = usuario;
         }
 
-        public void AutorizarRecuperacionContrasena(
-            int idUsuario)
+        public void AutorizarRecuperacionContrasena(int idUsuario) //metodo para autorizar la recuperación de contraseña para un usuario específico en la sesión
         {
             if (idUsuario <= 0)
             {
@@ -153,7 +153,7 @@ namespace VitaPet.SECURITY
                 true;
         }
 
-        public void FinalizarRecuperacionContrasena()
+        public void FinalizarRecuperacionContrasena() //metodo para finalizar la recuperación de contraseña y limpiar los datos relacionados en la sesión
         {
             HttpSessionState sesion = ObtenerSesion();
 
@@ -161,14 +161,14 @@ namespace VitaPet.SECURITY
             sesion.Remove(ClaveRecuperacionAutorizada);
         }
 
-        public void CerrarSesion()
+        public void CerrarSesion() //metodo para cerrar la sesión y limpiar todos los datos relacionados
         {
             HttpSessionState sesion = ObtenerSesion();
             sesion.Clear();
             sesion.Abandon();
         }
 
-        private HttpSessionState ObtenerSesion()
+        private HttpSessionState ObtenerSesion() //metodo privado para obtener la sesión HTTP actual, asegurando que exista y sea válida
         {
             HttpContext contexto = HttpContext.Current;
 

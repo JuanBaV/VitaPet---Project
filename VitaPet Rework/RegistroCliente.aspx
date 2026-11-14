@@ -26,7 +26,7 @@
 <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ControlToValidate="txtApellido" ValidationGroup="RegistroCliente" Display="Dynamic" CssClass="login-validation" ErrorMessage="<%$ Resources:Textos, Alta_Obligatorio %>" />
 <asp:RegularExpressionValidator ID="revApellido" runat="server" ControlToValidate="txtApellido" ValidationGroup="RegistroCliente" Display="Dynamic" CssClass="login-validation" ValidationExpression="^[^\x00-\x1F\x7F]{1,60}$" ErrorMessage="<%$ Resources:Textos, Alta_TextoInvalido %>" />
                 </div>
-                <vp:ValidacionEmail ID="ucCorreo" runat="server" ValidationGroup="RegistroCliente" MaxLength="100" />
+                <%-- implementacion del componente ValidacionEmail.ascx --%><vp:ValidacionEmail ID="ucCorreo" runat="server" ValidationGroup="RegistroCliente" MaxLength="100" />
                 <div class="form-group login-field">
                     <asp:Label ID="lblContrasena" runat="server" AssociatedControlID="txtContrasena" CssClass="login-label" Text="<%$ Resources:Textos, UI_Contrasena %>" />
                     <asp:TextBox ID="txtContrasena" runat="server" TextMode="Password" CssClass="form-control login-input" MaxLength="100" autocomplete="new-password" aria-describedby="ayudaContrasena" />

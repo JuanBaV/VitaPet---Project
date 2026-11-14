@@ -4,7 +4,7 @@
  <main class="planes-page"><section class="planes-card">
   <header class="login-header"><h1><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("UI_Mascotas") %></h1></header>
   <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
-<uc:SelectorMascota ID="ucSelectorMascota" runat="server" OnMascotaSeleccionada="Seleccionar" />
+<%-- implementacion del componente SelectorMascota.ascx --%><uc:SelectorMascota ID="ucSelectorMascota" runat="server" OnMascotaSeleccionada="Seleccionar" />
 <div class="mascota-acciones"><asp:Button ID="btnActualizarDatos" runat="server" Enabled="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Mascota_Actualizar %>" OnClick="Actualizar" />
 <asp:Button ID="btnConsultarDatos" runat="server" Enabled="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Mascota_Consultar %>" OnClick="Consultar" />
 <asp:Button ID="btnHistorialClinico" runat="server" Enabled="false" CssClass="btn btn-default" Text="<%$ Resources:Textos, Mascota_Historial %>" OnClick="Historial" />

@@ -59,6 +59,7 @@ public partial class ReintegrosPage : PaginaClientePlanes
     {
         Ejecutar(()=>{
             if(!Seleccionado.HasValue)throw new ConsultaReintegroException("ER011");
+            // salida xml Reintegros.xml
             byte[] contenido=new ConsultaReintegroBLL().ExportarXml(Seleccionado.Value);
             Response.Clear();Response.ContentType="application/xml";Response.ContentEncoding=System.Text.Encoding.UTF8;
             Response.Charset="utf-8";Response.AddHeader("Content-Disposition","attachment; filename=Reintegros.xml");

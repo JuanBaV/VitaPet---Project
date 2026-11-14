@@ -15,7 +15,7 @@ namespace VitaPet.BLL
         private readonly UsuarioDAL _usuarioDAL;
         private readonly SecurityManager _seguridad;
 
-        public UsuarioBLL()
+        public UsuarioBLL() //
         {
             _usuarioDAL = new UsuarioDAL();
             _seguridad = new SecurityManager();

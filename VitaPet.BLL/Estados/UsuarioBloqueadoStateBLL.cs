@@ -3,6 +3,7 @@ using VitaPet.BE;
 
 namespace VitaPet.BLL.Estados
 {
+    //Esto funciona igual que el estado activo pero al reves
     public class UsuarioBloqueadoStateBLL : IUsuarioStateBLL
     {
         private const byte LimiteIntentosFallidos = 3;

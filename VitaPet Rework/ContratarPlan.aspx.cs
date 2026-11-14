@@ -25,8 +25,8 @@ public partial class ContratarPlanPage : PaginaClientePlanes
         gvCoberturas.DataSource = new List<CoberturaBE>();
         try
         {
-            CoberturaService service = new CoberturaService();
-            ResultadoCoberturaBE resultado = service.ObtenerCobertura(IdPlan);
+            CoberturaService service = new CoberturaService(); //crear instancia de CoberturaService
+            ResultadoCoberturaBE resultado = service.ObtenerCobertura(IdPlan); //obtener cobertura del plan mediante CoberturaService
             if (string.IsNullOrEmpty(resultado.CodigoError))
                 gvCoberturas.DataSource = resultado.Coberturas;
             else

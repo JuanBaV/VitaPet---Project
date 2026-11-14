@@ -10,11 +10,13 @@
   <header class="login-header"><h1><asp:Literal ID="litTitulo" runat="server" /></h1></header>
   <asp:Panel ID="pnlMensaje" runat="server" Visible="false" CssClass="login-message registro-error" role="alert"><asp:Literal ID="litMensaje" runat="server" /></asp:Panel>
   <h2 class="turnos-subtitulo"><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Turno_Mascota") %></h2>
-  <uc:SelectorMascota ID="ucSelectorMascota" runat="server" OnMascotaSeleccionada="SeleccionarMascota" />
+     <%--//suscripcion al evento de seleccion de mascota del OBSERVER--%>
+  <%-- implementacion del componente SelectorMascota.ascx --%><uc:SelectorMascota ID="ucSelectorMascota" runat="server" OnMascotaSeleccionada="SeleccionarMascota" /> 
   <asp:Panel ID="pnlSolicitud" runat="server">
    <p class="turnos-ayuda"><%: VitaPet.GUI.Presentacion.TextosUI.Obtener("Turno_Instrucciones") %></p>
    <div class="turnos-filtros">
-    <div class="turnos-zona"><uc:FiltroZona ID="ucFiltroZona" runat="server" OnZonaCambiada="CambiarZona" /></div>
+       <%--suscripcion al evento de cambio de zona del OBSERVER--%>
+    <div class="turnos-zona"><%-- implementacion del componente FiltroZona.ascx --%><uc:FiltroZona ID="ucFiltroZona" runat="server" OnZonaCambiada="CambiarZona" /></div> 
     <div class="turnos-zona">
      <asp:Label ID="lblEspecialidad" runat="server" AssociatedControlID="ddlEspecialidad" Text="<%$ Resources:Textos, Turno_Especialidad %>" />
      <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-control" Enabled="false" AutoPostBack="true" OnSelectedIndexChanged="CambiarEspecialidad" />

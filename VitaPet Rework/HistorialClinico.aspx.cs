@@ -12,8 +12,8 @@ public partial class HistorialClinicoPage : PaginaMascota
  {
   pnlMensaje.Visible=false;pnlDatos.Visible=false;
   EjecutarPlan(()=>{try{
-   var r=new HistorialClinicoService().ObtenerHistorialClinico(IdMascota);
-   if(!string.IsNullOrEmpty(r.CodigoError))throw new GestionMascotaException(r.CodigoError);
+   var r=new HistorialClinicoService().ObtenerHistorialClinico(IdMascota); //obtener historial clínico de la mascota mediante HistorialClinicoService
+          if (!string.IsNullOrEmpty(r.CodigoError))throw new GestionMascotaException(r.CodigoError);
    if(r.Mascota==null||r.Historial==null)throw new GestionMascotaException("ER063");
    lblMascota.Text=Server.HtmlEncode(r.Mascota.Nombre+" · "+r.Mascota.Especie+" · "+r.Mascota.Raza);
    gvHistorialClinico.DataSource=r.Historial;gvHistorialClinico.DataBind();

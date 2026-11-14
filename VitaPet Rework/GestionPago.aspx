@@ -13,7 +13,7 @@
 <dt><%: VitaPet.GUI.Resources.Textos.Planes_TotalMensual %></dt><dd><asp:Label ID="lblImporte" runat="server" /></dd></dl>
             <div class="pago-campos">
                 <div class="pago-ancho">
-                    <vp:ValidacionEmail ID="ucCorreoFactura" runat="server" MaxLength="100" ValidationGroup="Pago" EnableClientValidation="true" TextoEtiqueta="<%$ Resources:Textos, Pago_CorreoFactura %>" />
+                    <%-- implementacion del componente ValidacionEmail.ascx --%><vp:ValidacionEmail ID="ucCorreoFactura" runat="server" MaxLength="100" ValidationGroup="Pago" EnableClientValidation="true" TextoEtiqueta="<%$ Resources:Textos, Pago_CorreoFactura %>" />
                 </div>
                 <div class="form-group login-field pago-ancho">
                     <asp:Label runat="server" AssociatedControlID="ddlMedioPago" CssClass="login-label" Text="<%$ Resources:Textos, Pago_Medio %>" />

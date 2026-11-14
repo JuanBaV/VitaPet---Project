@@ -21,7 +21,10 @@ namespace VitaPet.BLL.Seguridad
         private readonly ErrorSistemaBLL _errorSistemaBLL;
         private readonly IntegridadBLL _integridadBLL;
 
-        public SecurityManager()
+        //constructor que inicializa prepara los colaboradores,
+        //permite que el resto de la BLL pueda usar los metodos de seguridad
+        //sin necesidad de instanciar la DAL y BLL de seguridad
+        public SecurityManager() 
         {
             _usuarioDAL = new UsuarioDAL();
             _bitacoraDAL = new BitacoraDAL();

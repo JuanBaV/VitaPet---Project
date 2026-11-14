@@ -56,12 +56,12 @@ public partial class TurnosPage : PaginaClientePlanes
         ddlEspecialidad.Enabled=false;
     }
     private void LimpiarConsulta(){gvTurnos.DataSource=null;gvTurnos.DataBind();btnExportarXml.Enabled=false;}
-    protected void SeleccionarMascota(object sender,EventArgs e)
+    protected void SeleccionarMascota(object sender,EventArgs e) //evento del OBSERVER que se dispara cuando se selecciona una mascota en el control SelectorMascota
     {
         disponibilidad=null;LimpiarCalendario();LimpiarEspecialidades();LimpiarConsulta();
         EjecutarPlan(()=>{
             var propia=new MascotaBLL().Seleccionar(Mascota);ViewState["TurnoMascotaNombre"]=propia.Nombre;
-            if(Consulta)CargarConsulta();
+            if(Consulta)CargarConsulta(); 
             else {ucFiltroZona.LimpiarSeleccion();ucFiltroZona.Habilitado=true;}
         });
     }
@@ -69,7 +69,7 @@ public partial class TurnosPage : PaginaClientePlanes
     {
         if(disponibilidad==null)
         {
-            var r=Servicio(()=>new TurnoService().ObtenerDisponibilidadPorZona(Mascota,ucFiltroZona.ZonaSeleccionada));
+            var r=Servicio(()=>new TurnoService().ObtenerDisponibilidadPorZona(Mascota,ucFiltroZona.ZonaSeleccionada)); //llamada a TurnoService
             Validar(r.CodigoError);if(r.Turnos==null)throw new TurnoException("ER065");
             disponibilidad=r.Turnos;
         }
@@ -162,6 +162,7 @@ public partial class TurnosPage : PaginaClientePlanes
             // Consumir la operación definida en el CU y volver a verificar los datos al generar el XML.
             var r=Servicio(()=>new TurnoService().ObtenerTurnosMascota(Mascota));Validar(r.CodigoError);
             if(r.Mascota==null||r.Turnos==null)throw new TurnoException("ER065");
+            // salida xml Turnos.xml
             byte[] contenido=new ConsultaTurnosBLL().ExportarXml(Mascota);
             Response.Clear();Response.ContentType="application/xml";Response.ContentEncoding=System.Text.Encoding.UTF8;Response.Charset="utf-8";
             Response.AddHeader("Content-Disposition","attachment; filename=Turnos.xml");Response.Cache.SetCacheability(HttpCacheability.NoCache);Response.Cache.SetNoStore();

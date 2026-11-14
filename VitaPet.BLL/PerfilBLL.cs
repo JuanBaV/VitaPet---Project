@@ -57,7 +57,7 @@ namespace VitaPet.BLL
                 default: return pantalla;
             }
         }
-        internal List<PermisoComponenteBE> Leer()
+        internal List<PermisoComponenteBE> Leer() //lee los permisos y perfiles de la DB
         {
             var roles = dal.Roles().Rows.Cast<DataRow>().ToDictionary(r => (int)r["idRol"]);
             var todos = dal.Componentes().Rows.Cast<DataRow>().ToDictionary(r => (int)r["idComponente"], r =>
@@ -74,7 +74,7 @@ namespace VitaPet.BLL
                 perfil.Version=new IntegridadBLL().CalcularHash(perfil.Version+string.Concat(permisosRoles.Rows.Cast<DataRow>().Where(r => (int)r["idRol"]==perfil.Id).Select(r => (string)r["dvh"])));
             return todos.Values.ToList();
         }
-        private static PerfilBE CrearPerfil(DataRow fila, Dictionary<int,DataRow> roles)
+        private static PerfilBE CrearPerfil(DataRow fila, Dictionary<int,DataRow> roles) //crea un perfil
         {
             int id=(int)fila["idComponente"];
             if (!roles.ContainsKey(id)) throw new InvalidOperationException("Un componente compuesto debe corresponder a un rol.");
@@ -83,7 +83,7 @@ namespace VitaPet.BLL
             perfil.Version=(string)fila["dvh"]+(string)roles[id]["dvh"];
             return perfil;
         }
-        public List<PermisoComponenteBE> Consultar()
+        public List<PermisoComponenteBE> Consultar() //consulta los permisos y perfiles de la DB, exigiendo seguridad e integridad
         {
             using (var tx = new OperacionIntegridadDAL())
             {
@@ -92,7 +92,7 @@ namespace VitaPet.BLL
                 sec.ExigirIntegridad(); var lista = Leer(); tx.Complete(); return lista;
             }
         }
-        public bool PuedeAcceder(string pantalla)
+        public bool PuedeAcceder(string pantalla) //verifica si el usuario actual puede acceder a una pantalla especifica, exigiendo integridad y seguridad
         {
             var actual=SessionManager.Instancia.UsuarioActual;
             if(actual==null || SessionManager.Instancia.HaySesionContingencia) return false;
@@ -102,7 +102,7 @@ namespace VitaPet.BLL
             sec.ExigirIntegridad();
             return PantallasActuales().Contains(pantalla,StringComparer.OrdinalIgnoreCase);
         }
-        public IEnumerable<string> PantallasActuales()
+        public IEnumerable<string> PantallasActuales() //obtiene el listado de pantallas a las que el usuario tiene acceso
         {
             var sesion = SessionManager.Instancia;
             if (sesion.HaySesionContingencia || sesion.UsuarioActual == null) return Enumerable.Empty<string>();
@@ -126,7 +126,7 @@ namespace VitaPet.BLL
             }
             new ReferenciaIntegridadBLL().GuardarEstadoVerificado();
         }
-        public void AsegurarIniciales()
+        public void AsegurarIniciales() //asegura que los 3 perfiles basicos sigan existiendo en la DB (Webmaster, Administrador y Cliente)
         {
             using (var tx = new OperacionIntegridadDAL())
             {
@@ -139,12 +139,12 @@ namespace VitaPet.BLL
                 ActualizarIntegridad("PermisoComponente","Rol","RolPermiso"); sec.ExigirIntegridad(); tx.Complete();
             }
         }
-        private static void ExigirGestion()
+        private static void ExigirGestion() 
         {
             var sec = new SecurityManager(); var u = sec.ExigirPermiso("GestionPerfiles");
             if (u.Rol != "Webmaster") throw new UnauthorizedAccessException("La gestión de perfiles corresponde al Webmaster.");
         }
-        public void Guardar(int id, string version, string nombre, IEnumerable<int> hijos)
+        public void Guardar(int id, string version, string nombre, IEnumerable<int> hijos) //guardar un perfil, verificando que no se creen ciclos 
         {
             using (var tx = new OperacionIntegridadDAL())
             {
@@ -178,8 +178,8 @@ namespace VitaPet.BLL
                 ActualizarIntegridad("PermisoComponente","Rol","RolPermiso"); Auditar("Guardado de perfil: "+nombre); sec.ExigirIntegridad(); tx.Complete();
             }
         }
-        private static bool Alcanza(PermisoComponenteBE p,int id) { var f=p as PerfilBE; return p.Id==id || f!=null && f.Hijos.Any(h => Alcanza(h,id)); }
-        public void Eliminar(int id,string version)
+        private static bool Alcanza(PermisoComponenteBE p,int id) { var f=p as PerfilBE; return p.Id==id || f!=null && f.Hijos.Any(h => Alcanza(h,id)); } 
+        public void Eliminar(int id,string version) //eliminar un perfil
         {
             using(var tx=new OperacionIntegridadDAL())
             {

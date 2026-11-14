@@ -4,7 +4,7 @@ using VitaPet.GUI.Presentacion;
 
 public partial class AltaPlanPage:PaginaPlan
 {
-    protected override void EjecutarFuncionalidad()
+    protected override void EjecutarFuncionalidad() //metodo traido de PaginaBase
     {
         pnlMensaje.Visible=false;
         if(!IsPostBack)EjecutarPlan(()=>{
