@@ -51,7 +51,7 @@ CREATE TABLE #Cambios
 );
 
 DECLARE @tabla SYSNAME, @clave SYSNAME, @campo SYSNAME,
-        @sql NVARCHAR(MAX), @filtro NVARCHAR(100), @cantidad INT,
+        @sql NVARCHAR(MAX), @filtro NVARCHAR(MAX), @cantidad INT,
         @marca VARCHAR(40);
 -- La marca por ejecucion y la clave mantienen distintos los valores con indice unico.
 SET @marca = 'P4_' + LEFT(REPLACE(CONVERT(VARCHAR(36), NEWID()), '-', ''), 12);
