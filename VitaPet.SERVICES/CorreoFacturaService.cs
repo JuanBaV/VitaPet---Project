@@ -44,7 +44,17 @@ namespace VitaPet.SERVICES
                     {
                         if (File.Exists(archivo))
                         {
-                            string estado = Encoding.UTF8.GetString(ProtectedData.Unprotect(File.ReadAllBytes(archivo), null, DataProtectionScope.CurrentUser));
+                            string estado;
+                            try
+                            {
+                                estado = Encoding.UTF8.GetString(ProtectedData.Unprotect(File.ReadAllBytes(archivo), null, DataProtectionScope.CurrentUser));
+                            }
+                            catch (CryptographicException)
+                            {
+                                if (!reintentar) return;
+                                File.Copy(archivo, archivo + ".anterior-" + Guid.NewGuid().ToString("N"), false);
+                                estado = null;
+                            }
                             if (estado == "Enviado") { factura.EstadoCorreo = estado; return; }
                             if (!reintentar) return;
                         }
