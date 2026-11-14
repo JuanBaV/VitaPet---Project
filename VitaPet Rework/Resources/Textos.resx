@@ -1533,7 +1533,7 @@
   <data name="Factura_Pendiente" xml:space="preserve"><value>Pendiente de emisión</value></data>
   <data name="Factura_Consultar" xml:space="preserve"><value>Consultar pago y factura</value></data>
   <data name="Factura_Vacio" xml:space="preserve"><value>Todavía no tenés pagos ni facturas registrados.</value></data>
-  <data name="Factura_Descuento" xml:space="preserve"><value>La primera mascota abona el precio completo. Cada mascota adicional tiene un 20 % de descuento.</value></data>
+  <data name="Factura_Descuento" xml:space="preserve"><value>La primera mascota abona el precio completo. Cada mascota adicional tiene un 10 % de descuento.</value></data>
   <data name="Error_ER079" xml:space="preserve"><value>No se pudo preparar o emitir la factura</value></data>
   <data name="Error_ER080" xml:space="preserve"><value>No se pudo registrar la factura o sus verificadores</value></data>
   <data name="Error_ER081" xml:space="preserve"><value>No se pudo generar o entregar el archivo de la factura</value></data>

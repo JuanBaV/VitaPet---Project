@@ -1258,7 +1258,7 @@ namespace VitaPet.GUI.Resources {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to La primera mascota abona el precio completo. Cada mascota adicional tiene un 20 % de descuento..
+        ///   Looks up a localized string similar to La primera mascota abona el precio completo. Cada mascota adicional tiene un 10 % de descuento..
         /// </summary>
         public static string Factura_Descuento {
             get {

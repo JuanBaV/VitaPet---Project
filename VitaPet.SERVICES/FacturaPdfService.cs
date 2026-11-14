@@ -56,7 +56,9 @@ namespace VitaPet.SERVICES
             Texto(52,426,f.CantidadMascotas>0?"Primera mascota · precio completo":"Importe del pago registrado",9,false,"0.38 0.46 0.44");
             if(f.CantidadMascotas>1)
             {
-                Texto(52,397,"Mascotas adicionales · descuento 20 %",10);
+                string descripcion="Mascotas adicionales";
+                if(f.PrecioMascota>0)descripcion+=" · descuento "+((1m-f.PrecioMascotaAdicional/f.PrecioMascota)*100m).ToString("0.##",CultureInfo.InvariantCulture)+" %";
+                Texto(52,397,descripcion,10);
                 Texto(307,397,(f.CantidadMascotas-1).ToString(CultureInfo.InvariantCulture));
                 Texto(365,397,N(f.PrecioMascotaAdicional));Texto(463,397,N(f.PrecioMascotaAdicional*(f.CantidadMascotas-1)));
             }

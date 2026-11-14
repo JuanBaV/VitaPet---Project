@@ -14,7 +14,7 @@ namespace VitaPet.BE
     {
         public PlanBE Plan { get; set; }
         public int CantidadMascotas { get; set; }
-        public decimal PrecioMascotaAdicional {get{return decimal.Round(Plan.Precio*0.8m,2,System.MidpointRounding.AwayFromZero);}}
+        public decimal PrecioMascotaAdicional {get{return decimal.Round(Plan.Precio*0.9m,2,System.MidpointRounding.AwayFromZero);}}
         public decimal ImporteUSD { get { return CantidadMascotas<=0?0:Plan.Precio+PrecioMascotaAdicional*(CantidadMascotas-1); } }
         public int IdSuscripcion { get; set; }
     }

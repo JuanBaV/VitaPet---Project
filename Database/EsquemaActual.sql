@@ -2169,7 +2169,7 @@ BEGIN
     IF @precio IS NULL THROW 50050,'Plan no disponible.',1;
     DECLARE @cantidad INT=(SELECT COUNT(*) FROM dbo.Mascota WITH(UPDLOCK,HOLDLOCK) WHERE idCliente=@cliente AND estado=1);
     IF @cantidad=0 THROW 50052,'No existen mascotas activas.',1;
-    DECLARE @importe DECIMAL(38,2)=CONVERT(DECIMAL(20,2),@precio)+CONVERT(DECIMAL(20,2),ROUND(@precio*0.8,2))*(@cantidad-1);
+    DECLARE @importe DECIMAL(38,2)=CONVERT(DECIMAL(20,2),@precio)+CONVERT(DECIMAL(20,2),ROUND(@precio*0.9,2))*(@cantidad-1);
     IF @importe<=0 OR @importe>99999999.99 THROW 50025,'Importe invalido.',1;
     SELECT @idSuscripcion idSuscripcion,@plan idPlan,@nombre nombre,@precio precio,@cantidad cantidadMascotas,CONVERT(DECIMAL(10,2),@importe) importe;
 END;
@@ -2372,7 +2372,7 @@ BEGIN
     INSERT dbo.Pago(idSuscripcion,importe,medioPago,fechaPago,estado,dvh) VALUES(@idSuscripcion,@importe,@medioPago,CONVERT(DATE,GETDATE()),'Aprobado','');
     DECLARE @pago INT=SCOPE_IDENTITY();
     INSERT dbo.DetallePago(idPago,precioMascota,precioMascotaAdicional,cantidadMascotas,titular,correoFactura,dvh)
-    SELECT @pago,precio,ROUND(precio*0.8,2),cantidadMascotas,dbo.fn_CifrarDato(@titular,N'DetallePago.titular'),dbo.fn_CifrarDato(@correoFactura,N'DetallePago.correoFactura'),'' FROM @resumen;
+    SELECT @pago,precio,ROUND(precio*0.9,2),cantidadMascotas,dbo.fn_CifrarDato(@titular,N'DetallePago.titular'),dbo.fn_CifrarDato(@correoFactura,N'DetallePago.correoFactura'),'' FROM @resumen;
     SELECT @pago;
 END;
 GO
@@ -2466,3 +2466,4 @@ INSERT dbo.__SchemaMigrations(migrationId,checksum) VALUES(N'032_RolesRelacional
 INSERT dbo.__SchemaMigrations(migrationId,checksum) VALUES(N'033_EliminarPermisoRelacion.sql','8b273e270d81cd994854d79e3dd8190ce94a36700da690ac2bf612c2c34ad23e');
 INSERT dbo.__SchemaMigrations(migrationId,checksum) VALUES(N'034_CifradoDatosPersonales.sql','cdbb249765714e403a04f06bfbad7e8a74d15829e765f12feaee691dc26d3b09');
 INSERT dbo.__SchemaMigrations(migrationId,checksum) VALUES(N'035_BitacoraBajaLogica.sql','a770337d1d645c89c6834fed63148a3f6ebcfb3bcc40f49e8a5204992c49e24e');
+INSERT dbo.__SchemaMigrations(migrationId,checksum) VALUES(N'036_DescuentoMascotaAdicional.sql','7a4235d61e943d857a11f43ef0c3efc81196c2a8824a33039466f78ad3fe315d');
