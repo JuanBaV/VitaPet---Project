@@ -92,6 +92,10 @@ namespace VitaPet.BLL
                 sec.ExigirIntegridad(); var lista = Leer(); tx.Complete(); return lista;
             }
         }
+        public static string PermisoDePantalla(string pantalla) //obtener el permiso especifico de una pantalla
+        {
+            return string.Equals(pantalla, "ConsultaVirtual", StringComparison.OrdinalIgnoreCase) ? "Cliente" : pantalla;
+        }
         public bool PuedeAcceder(string pantalla) //verifica si el usuario actual puede acceder a una pantalla especifica, exigiendo integridad y seguridad
         {
             var actual=SessionManager.Instancia.UsuarioActual;
@@ -100,7 +104,7 @@ namespace VitaPet.BLL
             // La recuperación de integridad debe seguir disponible para un Webmaster confiable.
             if(pantalla=="BaseDatos" && sec.EsWebmasterConfiable(new UsuarioDAL().ObtenerPorId(actual.IdUsuario))) return true;
             sec.ExigirIntegridad();
-            return PantallasActuales().Contains(pantalla,StringComparer.OrdinalIgnoreCase);
+            return PantallasActuales().Contains(PermisoDePantalla(pantalla),StringComparer.OrdinalIgnoreCase);
         }
         public IEnumerable<string> PantallasActuales() //obtiene el listado de pantallas a las que el usuario tiene acceso
         {

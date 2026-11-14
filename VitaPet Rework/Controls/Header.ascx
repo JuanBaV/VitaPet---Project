@@ -86,6 +86,12 @@
                         Text="<%$ Resources:Textos, UI_Turnos %>" />
 
                     <asp:HyperLink
+                        ID="lnkConsultaVirtual"
+                        runat="server"
+                        NavigateUrl="~/ConsultaVirtual.aspx"
+                        Text="<%$ Resources:Textos, ConsultaVirtual_Titulo %>" />
+
+                    <asp:HyperLink
                         ID="lnkReintegros"
                         runat="server"
                         NavigateUrl="~/Reintegros.aspx"

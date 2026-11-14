@@ -11,4 +11,8 @@
     <ProjectReference Include="..\VitaPet.BE\VitaPet.BE.csproj" />
     <ProjectReference Include="..\VitaPet.Interfaces\VitaPet.Interfaces.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
 </Project>

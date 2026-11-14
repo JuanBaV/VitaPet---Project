@@ -1,4 +1,4 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -1620,4 +1620,54 @@
   <data name="Perfil_ModificarPlan" xml:space="preserve"><value>Modificar plan</value></data>
   <data name="Numerico_Etiqueta" xml:space="preserve"><value>Número</value></data>
   <data name="Numerico_FormatoInvalido" xml:space="preserve"><value>ER025 - Ingresá un número no negativo con un máximo de dos decimales.</value></data>
+  <data name="ConsultaVirtual_Etiqueta" xml:space="preserve"><value>Asistencia para tu mascota</value></data>
+  <data name="ConsultaVirtual_Titulo" xml:space="preserve"><value>Consulta virtual</value></data>
+  <data name="ConsultaVirtual_Incluida" xml:space="preserve"><value>Con tu plan activo</value></data>
+  <data name="ConsultaVirtual_Intro" xml:space="preserve"><value>Contanos qué le pasa a tu mascota o adjuntá una foto. El asistente puede orientarte sobre posibles causas y cuándo consultar al veterinario.</value></data>
+  <data name="ConsultaVirtual_Aviso" xml:space="preserve"><value>Esta orientación con inteligencia artificial no es un diagnóstico ni reemplaza una consulta veterinaria. Ante una urgencia, acudí a una guardia sin esperar la respuesta del chat.</value></data>
+  <data name="ConsultaVirtual_Verificando" xml:space="preserve"><value>Verificando tu plan…</value></data>
+  <data name="ConsultaVirtual_Contratar" xml:space="preserve"><value>Ver planes y contratar</value></data>
+  <data name="ConsultaVirtual_Historial" xml:space="preserve"><value>Conversación de consulta virtual</value></data>
+  <data name="ConsultaVirtual_Bienvenida" xml:space="preserve"><value>Para empezar, indicá la especie, la edad, qué notaste y desde cuándo. También podés enviar una foto de la zona que te preocupa.</value></data>
+  <data name="ConsultaVirtual_Sintomas" xml:space="preserve"><value>¿Qué le pasa a tu mascota?</value></data>
+  <data name="ConsultaVirtual_Ejemplo" xml:space="preserve"><value>Mi perro tiene una mancha roja en la panza desde ayer y se rasca. Tiene 3 años…</value></data>
+  <data name="ConsultaVirtual_Foto" xml:space="preserve"><value>Adjuntar una foto (opcional)</value></data>
+  <data name="ConsultaVirtual_FotoAyuda" xml:space="preserve"><value>JPG o PNG, hasta 3 MB. Usá una foto clara y evitá incluir personas o datos personales.</value></data>
+  <data name="ConsultaVirtual_VistaPrevia" xml:space="preserve"><value>Vista previa de la foto seleccionada</value></data>
+  <data name="ConsultaVirtual_QuitarFoto" xml:space="preserve"><value>Quitar foto</value></data>
+  <data name="ConsultaVirtual_Privacidad" xml:space="preserve"><value>Al enviar, compartís los mensajes y fotos de esta conversación con Agente de IA para generar la respuesta. VitaPet conserva hasta los últimos 6 intercambios en tu sesión. Podés borrarlos con Nueva consulta.</value></data>
+  <data name="ConsultaVirtual_Enviar" xml:space="preserve"><value>Enviar consulta</value></data>
+  <data name="ConsultaVirtual_Enviando" xml:space="preserve"><value>Consultando…</value></data>
+  <data name="ConsultaVirtual_Nueva" xml:space="preserve"><value>Nueva consulta</value></data>
+  <data name="ConsultaVirtual_Tu" xml:space="preserve"><value>Vos</value></data>
+  <data name="ConsultaVirtual_Asistente" xml:space="preserve"><value>Asistente VitaPet</value></data>
+  <data name="ConsultaVirtual_FotoAdjunta" xml:space="preserve"><value>Foto adjunta</value></data>
+  <data name="ConsultaVirtual_Javascript" xml:space="preserve"><value>Activá JavaScript para usar la consulta virtual.</value></data>
+  <data name="ConsultaVirtual_Error_SinPlan" xml:space="preserve"><value>Para usar la consulta virtual necesitás un plan contratado, activo y vigente. Podés consultar los planes disponibles.</value></data>
+  <data name="ConsultaVirtual_Error_Sesion" xml:space="preserve"><value>Tu sesión venció. Volvé a iniciar sesión para continuar.</value></data>
+  <data name="ConsultaVirtual_Error_Acceso" xml:space="preserve"><value>No se pudo autorizar la consulta. Recargá la página o volvé a iniciar sesión.</value></data>
+  <data name="ConsultaVirtual_Error_Verificacion" xml:space="preserve"><value>No se pudo verificar tu plan. Intentá nuevamente más tarde.</value></data>
+  <data name="ConsultaVirtual_Error_SinConfigurar" xml:space="preserve"><value>La consulta virtual todavía no está disponible. Se debe revisar la configuración del Agente de IA.</value></data>
+  <data name="ConsultaVirtual_Error_TextoLargo" xml:space="preserve"><value>Describí los síntomas en hasta 2000 caracteres.</value></data>
+  <data name="ConsultaVirtual_Error_Vacio" xml:space="preserve"><value>Escribí los síntomas o adjuntá una foto para consultar.</value></data>
+  <data name="ConsultaVirtual_Error_ImagenGrande" xml:space="preserve"><value>La foto debe pesar hasta 3 MB y tener como máximo 24 megapíxeles y 8000 píxeles por lado.</value></data>
+  <data name="ConsultaVirtual_Error_ImagenInvalida" xml:space="preserve"><value>No se pudo leer la foto. Elegí una imagen JPG o PNG válida.</value></data>
+  <data name="ConsultaVirtual_Error_Espera" xml:space="preserve"><value>Esperá unos segundos antes de enviar otra consulta.</value></data>
+  <data name="ConsultaVirtual_Error_LimiteGemini" xml:space="preserve"><value>Se alcanzó temporalmente el límite de consultas. Intentá más tarde.</value></data>
+  <data name="ConsultaVirtual_Error_NoDisponible" xml:space="preserve"><value>No se pudo conectar con el asistente. Intentá nuevamente más tarde.</value></data>
+  <data name="ConsultaVirtual_Error_SinRespuesta" xml:space="preserve"><value>El asistente no pudo generar una respuesta completa. Reformulá la consulta o enviá otra foto.</value></data>
+  <data name="ConsultaVirtual_Error_TiempoAgotado" xml:space="preserve"><value>El asistente tardó demasiado en responder. Intentá nuevamente en unos segundos.</value></data>
+  <data name="ConsultaVirtual_InicioAyuda" xml:space="preserve"><value>Contanos qué notaste y desde cuándo. Estamos para ayudarte a cuidar a tu mascota.</value></data>
+  <data name="ConsultaVirtual_Sugerencias" xml:space="preserve"><value>Ideas para empezar la consulta</value></data>
+  <data name="ConsultaVirtual_SugerenciaPiel" xml:space="preserve"><value>Un cambio en su piel</value></data>
+  <data name="ConsultaVirtual_SugerenciaPielTexto" xml:space="preserve"><value>Noté un cambio en la piel de mi mascota. </value></data>
+  <data name="ConsultaVirtual_SugerenciaApetito" xml:space="preserve"><value>Cambió su apetito</value></data>
+  <data name="ConsultaVirtual_SugerenciaApetitoTexto" xml:space="preserve"><value>Mi mascota está comiendo menos de lo habitual. </value></data>
+  <data name="ConsultaVirtual_SugerenciaComportamiento" xml:space="preserve"><value>Se comporta diferente</value></data>
+  <data name="ConsultaVirtual_SugerenciaComportamientoTexto" xml:space="preserve"><value>Noté que mi mascota se comporta diferente. </value></data>
+  <data name="ConsultaVirtual_Escribir" xml:space="preserve"><value>Contanos qué le pasa a tu mascota…</value></data>
+  <data name="ConsultaVirtual_FormatoFoto" xml:space="preserve"><value>JPG o PNG · hasta 3 MB</value></data>
+  <data name="ConsultaVirtual_Teclado" xml:space="preserve"><value>Enter para enviar · Shift + Enter para un salto de línea</value></data>
+  <data name="ConsultaVirtual_Acerca" xml:space="preserve"><value>Sobre esta consulta</value></data>
+  <data name="ConsultaVirtual_PrivacidadBreve" xml:space="preserve"><value>Orientación automatizada de VitaPet. No reemplaza la atención veterinaria. Al enviar, compartís los mensajes y fotos con Agente de IA.</value></data>
 </root>

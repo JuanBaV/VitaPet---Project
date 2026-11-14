@@ -57,7 +57,7 @@ public partial class Controls_Header : UserControl
             panel.Visible=true; bool alguno=false;
             foreach(var enlace in panel.Controls.OfType<HyperLink>())
             {
-                bool permitido=accesos.Contains(System.IO.Path.GetFileNameWithoutExtension(enlace.NavigateUrl));
+                bool permitido=accesos.Contains(PerfilBLL.PermisoDePantalla(System.IO.Path.GetFileNameWithoutExtension(enlace.NavigateUrl)));
                 if(enlace.NavigateUrl=="~/ConsultarPerfiles.aspx" && accesos.Contains("GestionPerfiles")) permitido=false;
                 enlace.Visible=permitido;
                 alguno|=permitido;

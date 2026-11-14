@@ -62,7 +62,7 @@ namespace VitaPet.GUI
                 if (recuperacion) return;
                 if (VitaPet.SECURITY.EstadoAplicacion.Mantenimiento && !login)
                     throw new HttpException(503, "La base de datos está en mantenimiento.");
-                string pantalla = System.IO.Path.GetFileNameWithoutExtension(pagina);
+                string pantalla = VitaPet.BLL.PerfilBLL.PermisoDePantalla(System.IO.Path.GetFileNameWithoutExtension(pagina));
                 if (VitaPet.BLL.PerfilBLL.Catalogo.ContainsKey(pantalla))
                 {
                     try
@@ -97,6 +97,7 @@ namespace VitaPet.GUI
                     string.Equals(pagina,"ModificarPlan.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"Planes.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"Cliente.aspx",StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(pagina,"ConsultaVirtual.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ContratarPlan.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"GestionPago.aspx",StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(pagina,"ConsultaCobertura.aspx",StringComparison.OrdinalIgnoreCase) ||

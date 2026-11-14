@@ -17,6 +17,7 @@
         protected global::System.Web.UI.WebControls.HyperLink lnkPlanesCliente;
         protected global::System.Web.UI.WebControls.HyperLink lnkMascotas;
         protected global::System.Web.UI.WebControls.HyperLink lnkTurnos;
+        protected global::System.Web.UI.WebControls.HyperLink lnkConsultaVirtual;
         protected global::System.Web.UI.WebControls.HyperLink lnkReintegros;
         protected global::System.Web.UI.WebControls.Panel pnlMenuAdministrador;
         protected global::System.Web.UI.WebControls.HyperLink lnkGestionEmpresas;

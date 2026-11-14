@@ -1,0 +1,87 @@
+.consulta-virtual-page { display:flex; flex:1; min-width:0; padding:24px 0 30px; }
+.consulta-virtual { display:flex; flex-direction:column; width:100%; height:calc(100dvh - 155px); min-height:620px; max-height:1000px; border:1px solid #dfe7e3; border-radius:20px; background:#fff; color:#273a33; box-shadow:0 8px 32px #18372a08; overflow:hidden; }
+.consulta-virtual, .consulta-virtual * { box-sizing:border-box; }
+.consulta-virtual [hidden] { display:none !important; }
+.consulta-virtual button, .consulta-virtual textarea { font:inherit; }
+.consulta-virtual button { -webkit-tap-highlight-color:transparent; }
+.consulta-virtual svg { display:block; width:21px; height:21px; flex-shrink:0; }
+.consulta-virtual-cabecera { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-shrink:0; padding:20px 26px; border-bottom:1px solid #edf0ee; }
+.consulta-virtual-identidad { display:flex; align-items:center; gap:12px; min-width:0; }
+.consulta-virtual-avatar { display:grid; place-items:center; flex:0 0 42px; width:42px; height:42px; background:#edf5ef; color:#3c7257; border:1px solid #dceade; border-radius:14px; }
+.consulta-virtual-avatar svg { width:25px; height:25px; }
+.consulta-virtual h1 { font-size:18px; font-weight:600; letter-spacing:-.3px; line-height:1.4; margin:0 0 3px; color:#273a33; }
+.consulta-virtual-subtitulo { display:flex; align-items:center; gap:6px; color:#718077; font-size:12px; }
+.consulta-virtual-subtitulo > span { width:6px; height:6px; border-radius:50%; background:#91a498; }
+.consulta-virtual:not(.esta-bloqueado) .consulta-virtual-subtitulo > span { background:#5c946c; }
+.consulta-virtual-nueva { display:flex; align-items:center; justify-content:center; gap:8px; border:1px solid #e1e7e3; border-radius:10px; padding:9px 12px; background:white; color:#4c6255; font-size:13px !important; white-space:nowrap; }
+.consulta-virtual-nueva:hover:enabled { background:#f4f7f5; border-color:#bfcec3; }
+.consulta-virtual-nueva svg { width:18px; height:18px; }
+.consulta-virtual-estado { font-size:13px; color:#6a786e; margin:12px 24px 0; padding:9px 12px; background:#f4f7f5; border-radius:8px; flex-shrink:0; }
+.consulta-virtual-estado:empty { display:none; }
+.consulta-virtual-estado.es-error { color:#983d35; background:#fff3f0; border:1px solid #f2ded7; }
+.consulta-virtual.esta-bloqueado .consulta-virtual-estado { max-width:580px; align-self:center; margin:50px 24px 12px; line-height:1.7; }
+.consulta-virtual-contratar { text-align:center; padding:0 20px; }
+.consulta-virtual-chat { display:flex; flex:1; flex-direction:column; min-height:0; }
+.consulta-virtual-conversacion { flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#d4ddd6 transparent; padding:30px max(24px,calc((100% - 800px)/2)); }
+.consulta-virtual-bienvenida { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100%; padding:24px 12px 36px; text-align:center; }
+.consulta-virtual-saludo { display:grid; place-items:center; width:60px; height:60px; margin-bottom:22px; border-radius:20px; background:#edf5ef; color:#4e7c5d; font-size:38px; line-height:1; }
+.consulta-virtual-bienvenida h2 { margin:0 0 12px; color:#304538; font-size:28px; font-weight:600; letter-spacing:-.7px; line-height:1.3; }
+.consulta-virtual-bienvenida p { max-width:440px; margin:0; font-size:14px; color:#7a877e; line-height:1.8; }
+.consulta-virtual-sugerencias { display:flex; justify-content:center; flex-wrap:wrap; gap:9px; margin:26px 0 0; }
+.consulta-virtual-sugerencias button { display:flex; align-items:center; gap:7px; padding:10px 13px; border:1px solid #e4e9e5; border-radius:12px; background:#fff; color:#586a5d; font-size:12px; text-align:left; }
+.consulta-virtual-sugerencias button span { color:#839b89; font-size:16px; }
+.consulta-virtual-sugerencias button:hover:enabled { border-color:#a7c0ae; background:#f6faf7; }
+.consulta-virtual-historial { display:flex; flex-direction:column; gap:28px; }
+.consulta-virtual-historial:empty { display:none; }
+.consulta-virtual-mensaje { align-self:flex-start; width:100%; min-width:0; }
+.consulta-virtual-mensaje.es-cliente { width:auto; max-width:82%; align-self:flex-end; padding:13px 18px; border-radius:20px 20px 5px 20px; background:#f0f4f1; }
+.consulta-virtual-autor { display:flex; align-items:center; gap:8px; margin-bottom:10px; font-weight:600; font-size:13px; color:#48624f; }
+.consulta-virtual-autor::before { content:'✦'; display:grid; place-items:center; width:26px; height:26px; background:#edf5ef; color:#4e7c5d; border-radius:9px; font-size:18px; }
+.consulta-virtual-mensaje.es-cliente .consulta-virtual-autor { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+.consulta-virtual-mensaje p { white-space:pre-wrap; overflow-wrap:anywhere; font-size:14px; line-height:1.85; margin:0; color:#35443a; }
+.consulta-virtual-mensaje small { display:flex; align-items:center; gap:5px; margin-top:8px; color:#718075; font-size:12px; }
+.consulta-virtual-pendiente p { display:flex; align-items:center; gap:5px; min-height:24px; }
+.consulta-virtual-pendiente i { width:6px; height:6px; background:#829b89; border-radius:50%; animation:consulta-pulso 1.2s infinite ease-in-out; }
+.consulta-virtual-pendiente i:nth-child(2) { animation-delay:.15s; }
+.consulta-virtual-pendiente i:nth-child(3) { animation-delay:.3s; }
+.consulta-virtual-pie { padding:10px max(24px,calc((100% - 800px)/2)) 16px; background:#fff; flex-shrink:0; }
+.consulta-virtual-compositor { padding:14px 16px 10px; border:1px solid #dce5de; border-radius:20px; background:#fff; box-shadow:0 3px 14px #203f2d07; transition:border-color .2s,box-shadow .2s; }
+.consulta-virtual-compositor:focus-within { border-color:#8dae97; box-shadow:0 0 0 3px #6496710d; }
+.consulta-virtual textarea { display:block; width:100%; max-width:none; height:47px; min-height:47px; max-height:160px; resize:none; border:0; border-radius:0; outline:none; background:transparent; padding:4px 2px 12px; font-size:14px; line-height:1.6; color:#304337; box-shadow:none; }
+.consulta-virtual textarea::placeholder { color:#929c94; opacity:1; }
+.consulta-virtual textarea:focus-visible { outline:none; }
+.consulta-virtual-herramientas, .consulta-virtual-adjuntar, .consulta-virtual-envio { display:flex; align-items:center; }
+.consulta-virtual-herramientas { justify-content:space-between; gap:12px; }
+.consulta-virtual-adjuntar { gap:8px; color:#99a29b; font-size:11px; }
+.consulta-virtual-icono { display:grid; place-items:center; flex:0 0 34px; width:34px; height:34px; border:0; border-radius:9px; background:transparent; color:#708576; padding:6px; }
+.consulta-virtual-icono:hover:enabled { background:#eff4f0; color:#40604a; }
+.consulta-virtual-envio { gap:14px; }
+.consulta-virtual-contador { color:#9aa69d; font-size:11px; font-variant-numeric:tabular-nums; }
+.consulta-virtual-enviar { display:grid; place-items:center; border:0; border-radius:50%; width:36px; height:36px; background:#497254; color:#fff; transition:background .2s; }
+.consulta-virtual-enviar:hover:enabled { background:#355d40; }
+.consulta-virtual-enviar:disabled { background:#e9eee9; color:#a7b5aa; opacity:1; }
+.consulta-virtual-enviar.esta-enviando { background:#edf3ee; }
+.consulta-virtual-enviar .consulta-virtual-spinner { display:none; }
+.consulta-virtual-enviar.esta-enviando svg { display:none; }
+.consulta-virtual-enviar.esta-enviando .consulta-virtual-spinner { display:block; width:16px; height:16px; border:2px solid #c8d7cc; border-top-color:#497254; border-radius:50%; animation:consulta-giro .8s linear infinite; }
+.consulta-virtual-vista { display:flex; align-items:center; gap:10px; max-width:300px; padding:7px; border:1px solid #e3eae5; border-radius:12px; margin-bottom:12px; background:#f7faf8; }
+.consulta-virtual-vista img { width:48px; height:48px; border-radius:7px; object-fit:cover; }
+.consulta-virtual-vista > div { flex:1; min-width:0; }
+.consulta-virtual-vista strong { display:block; font-size:12px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.consulta-virtual-vista small { font-size:11px; color:#8b988e; }
+.consulta-virtual-notas { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:9px 4px 0; font-size:10px; color:#8b988e; line-height:1.6; }
+.consulta-virtual-notas details { text-align:right; max-width:60%; }
+.consulta-virtual-notas summary { cursor:pointer; color:#75887b; }
+.consulta-virtual-notas details[open] { font-size:11px; }
+.consulta-virtual-notas details p { text-align:left; margin:8px 0 0; color:#718075; }
+.consulta-virtual-privacidad { margin:8px 0 0; font-size:10px; line-height:1.6; color:#8b988e; text-align:center; }
+.consulta-virtual button:disabled { cursor:default; opacity:.5; }
+.consulta-virtual :focus-visible { outline:2px solid #5d8a69; outline-offset:3px; }
+.consulta-virtual-solo-lector { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+@keyframes consulta-giro { to { transform:rotate(360deg); } }
+@keyframes consulta-pulso { 0%,80%,100% { opacity:.35; transform:translateY(0); } 40% { opacity:1; transform:translateY(-3px); } }
+@media(max-width:600px) { .consulta-virtual-page { padding:14px 0 20px; } .consulta-virtual { min-height:580px; height:calc(100dvh - 190px); border-radius:16px; } .consulta-virtual-cabecera { padding:16px; gap:10px; } .consulta-virtual h1 { font-size:16px; } .consulta-virtual-avatar { width:36px; height:36px; flex-basis:36px; border-radius:12px; } .consulta-virtual-nueva { font-size:11px !important; padding:9px; gap:5px; } .consulta-virtual-identidad { gap:9px; } .consulta-virtual-conversacion { padding:24px 16px; } .consulta-virtual-pie { padding:10px 12px 14px; } .consulta-virtual-bienvenida { padding:18px 2px; } .consulta-virtual-bienvenida h2 { font-size:23px; } .consulta-virtual-bienvenida p { font-size:13px; } .consulta-virtual-sugerencias { gap:7px; margin-top:20px; } .consulta-virtual-sugerencias button { font-size:11px; padding:8px 10px; } .consulta-virtual-mensaje.es-cliente { max-width:90%; } .consulta-virtual textarea { font-size:16px; } .consulta-virtual-notas > span { display:none; } .consulta-virtual-notas { justify-content:center; } .consulta-virtual-notas details { max-width:100%; text-align:center; } .consulta-virtual-privacidad { font-size:10px; } }
+@media(prefers-reduced-motion:reduce) { .consulta-virtual *, .consulta-virtual *::before { animation:none !important; transition:none !important; } }
+
+/* Contenedor de actualización parcial del historial. */
+#consultaVirtualRespuesta { display:flex; flex:1; flex-direction:column; min-height:0; }
