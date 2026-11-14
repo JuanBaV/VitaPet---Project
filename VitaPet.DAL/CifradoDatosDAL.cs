@@ -61,7 +61,7 @@ namespace VitaPet.DAL
             }
             catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException || ex is FormatException)
             {
-                throw new ConfigurationErrorsException("No se pudo leer la clave de cifrado de VitaPet. Consulte GUIA_CIFRADO.md; no genere otra clave para una base ya cifrada.", ex);
+                throw new ConfigurationErrorsException("No se pudo leer la clave de cifrado de VitaPet. Configure el archivo de clave original; no genere otra clave para una base ya cifrada.", ex);
             }
         }
 

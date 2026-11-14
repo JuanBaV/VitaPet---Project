@@ -1,7 +1,7 @@
 -- Esquema cifrado vigente de VitaPet, sin datos de usuarios ni conversiones historicas.
 -- Creacion exclusiva en una base nueva de recuperacion; clave suministrada por sesion.
 DECLARE @clave nvarchar(128)=CONVERT(nvarchar(128),SESSION_CONTEXT(N'VitaPetClave'));
-IF @clave IS NULL THROW 50080,'Falta configurar el archivo de clave de cifrado. Consulte GUIA_CIFRADO.md.',1;
+IF @clave IS NULL THROW 50080,'Falta configurar el archivo con la clave de cifrado original.',1;
 DECLARE @sql nvarchar(max)=N'CREATE SYMMETRIC KEY VitaPet_DatosV1 WITH ALGORITHM=AES_256, KEY_SOURCE='+QUOTENAME(@clave,'''')+
     N', IDENTITY_VALUE=''VitaPet.DatosPersonales.v1'' ENCRYPTION BY PASSWORD='+QUOTENAME(@clave,'''');
 EXEC sys.sp_executesql @sql;
